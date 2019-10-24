@@ -11,14 +11,6 @@ space.lg = space[4];
 space.xl = space[5];
 space.xxl = space[6];
 
-/*
-Alternative spacings to consider:
-const space = [0, 4, 8, 16, 32, 64, 128, 256, 512]
-const space = [0, 2, 4, 8, 16, 32, 64, 128, 256]
-const space = [0, '0.25rem', '0.5rem', '1rem', '2rem', '4rem', '8rem', '16rem', '32rem']
-const space = [0, '0.125rem', '0.25rem', '0.5rem', '1rem', '1.5rem', '2.5rem', '4rem', '6.5rem', '10.5rem']
-*/
-
 const fonts = {
   body: "'Open Sans', sans-serif",
   display: "'Montserrat', sans-serif"
@@ -52,7 +44,7 @@ const colors = {
   gray300: onyx
 };
 
-// <600px, 600px, 900px, 1200px and 1800px, at 1rem === 16px:
+// These are <600px, 600px, 900px, 1200px and 1800px, at 1rem === 16px:
 const breakpoints = ["37.5rem", "56.25rem", "75rem", "112.5rem"];
 
 const mediaQueries = {

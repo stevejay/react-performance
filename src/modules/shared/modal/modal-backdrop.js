@@ -1,14 +1,6 @@
 import React from "react";
-import { Portal } from "react-portal";
 import styled from "styled-components/macro";
 import { animated, useTransition } from "react-spring";
-
-const TRANSITION_VALUES = {
-  config: { duration: 300 },
-  from: { opacity: 0 },
-  enter: { opacity: 0.5 },
-  leave: { opacity: 0 }
-};
 
 const StyledModalBackdrop = styled(animated.div)`
   position: fixed;
@@ -20,19 +12,19 @@ const StyledModalBackdrop = styled(animated.div)`
   outline: 0;
   background-color: ${props => props.theme.colors.black};
   will-change: opacity;
-  pointer-events: none;
 `;
 
-const ModalBackdrop = ({ isVisible }) => {
-  const transitions = useTransition(isVisible, null, TRANSITION_VALUES);
+const ModalBackdrop = ({ isVisible, duration }) => {
+  const transitions = useTransition(isVisible, null, {
+    config: { duration },
+    from: { opacity: 0 },
+    enter: { opacity: 0.5 },
+    leave: { opacity: 0 }
+  });
 
   return transitions.map(
     ({ item, key, props }) =>
-      item && (
-        <Portal key={key}>
-          <StyledModalBackdrop tabIndex={-1} style={props} />
-        </Portal>
-      )
+      item && <StyledModalBackdrop key={key} tabIndex={-1} style={props} />
   );
 };
 

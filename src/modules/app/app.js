@@ -12,7 +12,57 @@ const App = () => (
       <Box minHeight="100vh" display="flex" flexDirection="column">
         <Header />
         <Box as="main" flexGrow={1}>
-          Hello
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
         </Box>
       </Box>
     </ThemeProvider>

@@ -4,48 +4,41 @@ import FocusLock from "react-focus-lock";
 import { useTransition } from "react-spring";
 import { useAriaHidden } from "./use-aria-hidden";
 import { ModalWrap } from "./modal-wrap";
+import { ModalBackdrop } from "./modal-backdrop";
 
 const ESCAPE_KEY_CODE = 27;
 
-const TRANSITION_VALUES = {
-  config: { duration: 300 },
-  //   from: {},
-  //   enter: {},
-  //   leave: {}
-  from: { opacity: 0, transform: "translateX(100px)" },
-  enter: { opacity: 1, transform: "translateX(0)" },
-  leave: { opacity: 0, transform: "translateX(100px)" }
-};
-
-// const TRANSITION_VALUES = {
-//     config: { duration: 300 },
-//     from: { opacity: 0, transform: "scale(1.1)" },
-//     enter: { opacity: 1, transform: "scale(1)" },
-//     leave: { opacity: 0, transform: "scale(1.1)" }
-//   };
-
-const Modal = ({ isOpen, dismissable = true, onClose, children }) => {
+const Modal = ({ isOpen, dismissable = true, duration, onClose, children }) => {
   useAriaHidden(isOpen);
-  const transitions = useTransition(isOpen, null, TRANSITION_VALUES);
+
+  const transitions = useTransition(isOpen, null, {
+    config: { duration },
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 }
+  });
 
   const handleKeyDown = event => {
-    if (dismissable && event.keyCode === ESCAPE_KEY_CODE && onClose) {
+    if (event.keyCode === ESCAPE_KEY_CODE && onClose) {
       onClose();
     }
   };
 
   return transitions.map(
-    ({ item, key, props }) =>
+    ({ item, key }) =>
       item && (
         <Portal key={key}>
+          <ModalBackdrop isVisible={isOpen} duration={duration} />
           <FocusLock autoFocus returnFocus>
             <ModalWrap
               role="dialog"
-              onKeyDown={handleKeyDown}
+              // tabIndex must be set for ModalWrap to receive keyboard events:
+              tabIndex="-1"
+              onKeyDown={dismissable ? handleKeyDown : undefined}
               onMouseDown={dismissable ? onClose : undefined}
               onTouchStart={dismissable ? onClose : undefined}
             >
-              {children(props)}
+              {children}
             </ModalWrap>
           </FocusLock>
         </Portal>

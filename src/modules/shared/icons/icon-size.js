@@ -1,7 +1,7 @@
 import { system } from "styled-system";
 
 const iconSize = system({
-  iconSize: {
+  size: {
     properties: ["width", "height"],
     scale: "fontSizes"
   }

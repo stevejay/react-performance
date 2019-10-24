@@ -1,22 +1,9 @@
 import React from "react";
-// import { animated } from "react-spring";
-import {
-  Box,
-  Button,
-  Heading,
-  MenuIcon,
-  Modal,
-  ModalBackdrop
-} from "modules/shared";
+import { Box, Button, Heading, Icons, Modal } from "modules/shared";
 import { Sidebar } from "./sidebar";
 
-// import styled from "styled-components/macro";
-
-// const Foo = styled(animated.div)`
-//   width: 100px;
-//   height: 100px;
-//   background-color: red;
-// `;
+const DURATION_MS = 250;
+const SIDEBAR_ID = "main-sidebar";
 
 const Header = () => {
   const [sidebarIsOpen, setSidebarIsOpen] = React.useState(false);
@@ -41,19 +28,21 @@ const Header = () => {
         onClick={() => setSidebarIsOpen(true)}
         aria-haspopup="menu"
         aria-expanded={sidebarIsOpen}
-        aria-controls="main-sidebar"
+        aria-controls={SIDEBAR_ID}
+        aria-label="Open site navigation menu"
       >
-        <MenuIcon color="white" iconSize={5} label="Open navigation menu" />
+        <Icons.Menu color="white" size={5} />
       </Button>
-      <ModalBackdrop isVisible={sidebarIsOpen} />
-      <Modal isOpen={sidebarIsOpen} dismissable onClose={handleClose}>
-        {style => (
-          <>
-            <Sidebar id="main-sidebar" style={style} />
-            {/* <Foo id="main-sidebar" style={style} /> */}
-          </>
-        )}
-        {/* {styleProps => <Sidebar id="main-sidebar" style={style} />} */}
+      <Modal
+        isOpen={sidebarIsOpen}
+        onClose={handleClose}
+        duration={DURATION_MS}
+      >
+        <Sidebar
+          id={SIDEBAR_ID}
+          isOpen={sidebarIsOpen}
+          duration={DURATION_MS}
+        />
       </Modal>
     </Box>
   );
