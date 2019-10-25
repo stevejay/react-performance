@@ -4,5 +4,6 @@ export * from "./heading";
 export * from "./icons";
 export * from "./modal";
 export * from "./paragraph";
+export * from "./skip-link";
 export * from "./stack";
 export * from "./visually-hidden";

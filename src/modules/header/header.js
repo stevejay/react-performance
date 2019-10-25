@@ -1,11 +1,11 @@
 import React from "react";
-import { Box, Button, Heading, Icons, Modal } from "modules/shared";
+import { Box, Button, Heading, Icons, Modal, SkipLink } from "modules/shared";
 import { Sidebar } from "./sidebar";
 
 const DURATION_MS = 250;
 const SIDEBAR_ID = "main-sidebar";
 
-const Header = () => {
+const Header = ({ mainRef }) => {
   const [sidebarIsOpen, setSidebarIsOpen] = React.useState(false);
 
   const handleClose = () => setSidebarIsOpen(false);
@@ -20,6 +20,7 @@ const Header = () => {
       justifyContent="space-between"
       alignItems="center"
     >
+      <SkipLink skipRef={mainRef}>Skip to main content</SkipLink>
       <Heading as="h2" fontSize={[3, 4]} fontWeight="light">
         React in Motion
       </Heading>

@@ -33,6 +33,7 @@ const persianPink = "#E574BC";
 const lightHotPink = "#F9B4ED";
 const onyx = "#334139";
 const charlestonGreen = "#1E2D24";
+const link = "#0000EE";
 
 const colors = {
   primary100: redViolet,
@@ -41,7 +42,8 @@ const colors = {
   black: "#000",
   white: "#FFF",
   gray100: charlestonGreen,
-  gray300: onyx
+  gray300: onyx,
+  link
 };
 
 // These are <600px, 600px, 900px, 1200px and 1800px, at 1rem === 16px:
@@ -62,9 +64,7 @@ const fontWeights = {
 
 const lineHeights = [1, 1.4, 1.5];
 
-const zIndices = {
-  modal: 1000
-};
+const radii = [0, "0.25em", "0.5em", "1em"];
 
 const theme = {
   space,
@@ -75,7 +75,7 @@ const theme = {
   mediaQueries,
   fontWeights,
   lineHeights,
-  zIndices
+  radii
 };
 
 export { theme };
