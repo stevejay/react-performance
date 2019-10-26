@@ -1,6 +1,7 @@
 import React from "react";
 import { animated, useTransition } from "react-spring";
 import styled from "styled-components/macro";
+import { ThemeContext } from "styled-components";
 import { useBodyScrollLock } from "modules/shared";
 
 const SidebarNavBox = styled(animated.nav)`
@@ -15,7 +16,12 @@ const SidebarNavBox = styled(animated.nav)`
   -webkit-overflow-scrolling: touch;
 `;
 
-const Sidebar = ({ id, isOpen, duration }) => {
+const Sidebar = ({ id, isOpen }) => {
+  const duration = React.useContext(ThemeContext).timings.modalAnimation;
+
+  const sidebarRef = React.useRef(null);
+  useBodyScrollLock(sidebarRef);
+
   const transitions = useTransition(isOpen, null, {
     config: { duration },
     from: { opacity: 0, transform: "translateX(100px)" },
@@ -23,17 +29,14 @@ const Sidebar = ({ id, isOpen, duration }) => {
     leave: { opacity: 0, transform: "translateX(100px)" }
   });
 
-  const sidebarRef = React.useRef(null);
-  useBodyScrollLock(sidebarRef);
-
   return transitions.map(
     ({ item, key, props }) =>
       item && (
         <SidebarNavBox
+          ref={sidebarRef}
           key={key}
           id={id}
           style={props}
-          ref={sidebarRef}
           onMouseDown={e => e.stopPropagation()}
           onTouchStart={e => e.stopPropagation()}
         >

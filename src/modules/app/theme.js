@@ -66,6 +66,9 @@ const lineHeights = [1, 1.4, 1.5];
 
 const radii = [0, "0.25em", "0.5em", "1em"];
 
+const timings = [0, 250]; // In milliseconds
+timings.modalAnimation = timings[1];
+
 const theme = {
   space,
   fonts,
@@ -75,7 +78,8 @@ const theme = {
   mediaQueries,
   fontWeights,
   lineHeights,
-  radii
+  radii,
+  timings
 };
 
 export { theme };

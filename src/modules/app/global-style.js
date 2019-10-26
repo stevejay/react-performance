@@ -9,11 +9,9 @@ const GlobalStyle = createGlobalStyle`
     }
 
     /* Change the box model to be border-box by default */
-    
     html {
         box-sizing: border-box;
     }
-
     *, *:before, *:after {
         box-sizing: inherit;
     }

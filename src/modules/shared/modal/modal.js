@@ -1,4 +1,5 @@
 import React from "react";
+import { ThemeContext } from "styled-components";
 import { Portal } from "react-portal";
 import FocusLock from "react-focus-lock";
 import { useTransition } from "react-spring";
@@ -8,7 +9,8 @@ import { ModalBackdrop } from "./modal-backdrop";
 
 const ESCAPE_KEY_CODE = 27;
 
-const Modal = ({ isOpen, dismissable = true, duration, onClose, children }) => {
+const Modal = ({ isOpen, onClose, children }) => {
+  const duration = React.useContext(ThemeContext).timings.modalAnimation;
   useAriaHidden(isOpen);
 
   const transitions = useTransition(isOpen, null, {
@@ -19,7 +21,7 @@ const Modal = ({ isOpen, dismissable = true, duration, onClose, children }) => {
   });
 
   const handleKeyDown = event => {
-    if (event.keyCode === ESCAPE_KEY_CODE && onClose) {
+    if (event.keyCode === ESCAPE_KEY_CODE) {
       onClose();
     }
   };
@@ -34,9 +36,9 @@ const Modal = ({ isOpen, dismissable = true, duration, onClose, children }) => {
               role="dialog"
               // tabIndex must be set for ModalWrap to receive keyboard events:
               tabIndex="-1"
-              onKeyDown={dismissable ? handleKeyDown : undefined}
-              onMouseDown={dismissable ? onClose : undefined}
-              onTouchStart={dismissable ? onClose : undefined}
+              onKeyDown={onClose ? handleKeyDown : undefined}
+              onMouseDown={onClose ? onClose : undefined}
+              onTouchStart={onClose ? onClose : undefined}
             >
               {children}
             </ModalWrap>

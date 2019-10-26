@@ -13,6 +13,11 @@ const StyledButton = styled.button`
   padding: 0 0.25em;
   margin: 0;
   ${typography}
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
 `;
 
 const StyledWrap = styled.span`

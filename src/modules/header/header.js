@@ -2,13 +2,10 @@ import React from "react";
 import { Box, Button, Heading, Icons, Modal, SkipLink } from "modules/shared";
 import { Sidebar } from "./sidebar";
 
-const DURATION_MS = 250;
 const SIDEBAR_ID = "main-sidebar";
 
 const Header = ({ mainRef }) => {
   const [sidebarIsOpen, setSidebarIsOpen] = React.useState(false);
-
-  const handleClose = () => setSidebarIsOpen(false);
 
   return (
     <Box
@@ -25,25 +22,16 @@ const Header = ({ mainRef }) => {
         React in Motion
       </Heading>
       <Button
-        fontSize={4}
-        onClick={() => setSidebarIsOpen(true)}
         aria-haspopup="menu"
         aria-expanded={sidebarIsOpen}
         aria-controls={SIDEBAR_ID}
         aria-label="Open site navigation menu"
+        onClick={() => setSidebarIsOpen(true)}
       >
         <Icons.Menu color="white" size={5} />
       </Button>
-      <Modal
-        isOpen={sidebarIsOpen}
-        onClose={handleClose}
-        duration={DURATION_MS}
-      >
-        <Sidebar
-          id={SIDEBAR_ID}
-          isOpen={sidebarIsOpen}
-          duration={DURATION_MS}
-        />
+      <Modal isOpen={sidebarIsOpen} onClose={() => setSidebarIsOpen(false)}>
+        <Sidebar id={SIDEBAR_ID} isOpen={sidebarIsOpen} />
       </Modal>
     </Box>
   );
