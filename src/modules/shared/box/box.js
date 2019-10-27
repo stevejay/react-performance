@@ -1,5 +1,5 @@
 import styled from "styled-components/macro";
-import { color, flexbox, layout, position, space } from "styled-system";
+import { color, flexbox, layout, position, shadow, space } from "styled-system";
 
 const Box = styled.div`
   min-width: 0;
@@ -7,6 +7,7 @@ const Box = styled.div`
   ${flexbox}
   ${layout}
   ${position}
+  ${shadow}
   ${space}
 `;
 

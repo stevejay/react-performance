@@ -6,6 +6,7 @@ const SIDEBAR_ID = "main-sidebar";
 
 const Header = ({ mainRef }) => {
   const [sidebarIsOpen, setSidebarIsOpen] = React.useState(false);
+  const handleClose = () => setSidebarIsOpen(false);
 
   return (
     <Box
@@ -16,6 +17,7 @@ const Header = ({ mainRef }) => {
       display="flex"
       justifyContent="space-between"
       alignItems="center"
+      boxShadow="md"
     >
       <SkipLink skipRef={mainRef}>Skip to main content</SkipLink>
       <Heading as="h2" fontSize={[3, 4]} fontWeight="light">
@@ -30,8 +32,8 @@ const Header = ({ mainRef }) => {
       >
         <Icons.Menu color="white" size={5} />
       </Button>
-      <Modal isOpen={sidebarIsOpen} onClose={() => setSidebarIsOpen(false)}>
-        <Sidebar id={SIDEBAR_ID} isOpen={sidebarIsOpen} />
+      <Modal isOpen={sidebarIsOpen} onClose={handleClose}>
+        <Sidebar id={SIDEBAR_ID} isOpen={sidebarIsOpen} onClose={handleClose} />
       </Modal>
     </Box>
   );

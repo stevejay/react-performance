@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-// See https://a11yproject.com/posts/how-to-hide-content/
+// See https://zellwk.com/blog/hide-content-accessibly/
 // Compatibility: IE9+ and modern browsers; see
 // https://caniuse.com/#feat=mdn-css_selectors_not
 
@@ -8,11 +8,12 @@ const VisuallyHidden = styled.span`
   /* && for increased specificity: */
   &&${props => (props.isFocusable ? ":not(:focus):not(:active)" : "")} {
     border: 0;
-    clip: rect(1px, 1px, 1px, 1px);
+    clip: rect(0 0 0 0);
     clip-path: inset(50%);
-    height: 1px;
-    padding: 0;
+    height: auto;
+    margin: 0;
     overflow: hidden;
+    padding: 0;
     position: absolute;
     white-space: nowrap;
     width: 1px;

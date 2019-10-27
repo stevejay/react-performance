@@ -7,11 +7,13 @@ const StyledButton = styled.button`
   background: none repeat scroll 0 0 transparent;
   font-weight: ${props => props.theme.fontWeights.normal};
   line-height: ${props => props.theme.lineHeights[2]};
-  border: 1px solid white;
+  border: ${props => props.theme.borderWidths.hair} solid
+    ${props => props.theme.colors.white};
   border-spacing: 0;
-  border-radius: 0.25em;
+  border-radius: ${props => props.theme.radii[1]};
   padding: 0 0.25em;
   margin: 0;
+  cursor: pointer;
   ${typography}
 
   &:disabled {

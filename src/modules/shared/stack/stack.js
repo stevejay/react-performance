@@ -1,17 +1,10 @@
 import styled from "styled-components/macro";
-import { system } from "styled-system";
+import { spacing } from "./spacing";
 
-// A vertical stack of content
+// A stack of content
 const Stack = styled.div`
-  .stack > * + * {
-    /* margin-top: 1.5rem; */
-
-    ${system({
-      marginTop: {
-        property: "spacing",
-        scale: "space"
-      }
-    })}
+  & > * + * {
+    ${spacing}
   }
 
   /* Allow 'margin-bottom: auto' to be used on a stack child */
