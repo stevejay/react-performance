@@ -1,13 +1,12 @@
 import React from "react";
 import { useTransition } from "react-spring";
-import { ThemeContext } from "styled-components";
-import { useBodyScrollLock } from "modules/shared";
+import { useBodyScrollLock, useTheme } from "modules/shared";
 import { SidebarNavBox } from "./sidebar-nav-box";
-import { LinkList } from "./link-list";
-import { LinkListItem } from "./link-list-item";
+import { NavLink } from "./nav-link";
+import { NavLinkList } from "./nav-link-list";
 
 const LINKS = [
-  { to: "/", label: "Home" },
+  { to: "/", label: "Picture Element" },
   {
     to: "/transform-opacity-animations",
     label: "Transform & Opacity Animations"
@@ -16,10 +15,10 @@ const LINKS = [
 ];
 
 const Sidebar = ({ id, isOpen, onClose }) => {
-  const duration = React.useContext(ThemeContext).timings.modalAnimation;
-
   const sidebarRef = React.useRef(null);
   useBodyScrollLock(sidebarRef);
+
+  const duration = useTheme().timings.modalAnimation;
 
   const transitions = useTransition(isOpen, null, {
     config: { duration },
@@ -39,11 +38,16 @@ const Sidebar = ({ id, isOpen, onClose }) => {
           onMouseDown={e => e.stopPropagation()}
           onTouchStart={e => e.stopPropagation()}
         >
-          <LinkList>
+          <NavLinkList>
             {LINKS.map(link => (
-              <LinkListItem to={link.to} label={link.label} onClick={onClose} />
+              <NavLink
+                key={link.to}
+                to={link.to}
+                label={link.label}
+                onClick={onClose}
+              />
             ))}
-          </LinkList>
+          </NavLinkList>
         </SidebarNavBox>
       )
   );

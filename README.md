@@ -1,5 +1,10 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Bugs
+
+- Jump on sidebar navigation (prob. something to do with `@react/router`).
+- Need to close sidebar on browser back button. (Maybe try changing closing of sidebar to happen on push/pop history state?).
+
 ## Available Scripts
 
 In the project directory, you can run:

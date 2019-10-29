@@ -1,4 +1,5 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import { Box, Button, Heading, Icons, Modal, SkipLink } from "modules/shared";
 import { Sidebar } from "./sidebar";
 
@@ -7,6 +8,10 @@ const SIDEBAR_ID = "main-sidebar";
 const Header = ({ mainRef }) => {
   const [sidebarIsOpen, setSidebarIsOpen] = React.useState(false);
   const handleClose = () => setSidebarIsOpen(false);
+
+  // Ensure sidebar closes if user uses browser back/forward buttons:
+  const location = useLocation();
+  React.useEffect(() => handleClose(), [location]);
 
   return (
     <Box
@@ -21,7 +26,7 @@ const Header = ({ mainRef }) => {
     >
       <SkipLink skipRef={mainRef}>Skip to main content</SkipLink>
       <Heading as="h2" fontSize={[3, 4]} fontWeight="light">
-        React in Motion
+        React Experiments
       </Heading>
       <Button
         aria-haspopup="menu"

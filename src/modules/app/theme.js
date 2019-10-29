@@ -39,7 +39,8 @@ const colors = {
   primary100: redViolet,
   primary500: persianPink,
   primary900: lightHotPink,
-  secondary500: "#F8CA1F",
+  contrastHot500: "#F8CA1F",
+  contrastCool500: "#60B4B4",
   black: "#000",
   white: "#FFF",
   gray100: charlestonGreen,
@@ -49,6 +50,10 @@ const colors = {
 
 // These are <600px, 600px, 900px, 1200px and 1800px, at 1rem === 16px:
 const breakpoints = ["37.5rem", "56.25rem", "75rem", "112.5rem"];
+breakpoints.tabletPortrait = breakpoints[0];
+breakpoints.tabletLandscape = breakpoints[1];
+breakpoints.desktop = breakpoints[2];
+breakpoints.wideDesktop = breakpoints[3];
 
 const mediaQueries = {
   tabletPortrait: `@media screen and (min-width: ${breakpoints[0]})`,
@@ -69,6 +74,7 @@ const radii = [0, "0.25em", "0.5em", "1em"];
 
 const timings = [0, 250]; // In milliseconds
 timings.modalAnimation = timings[1];
+timings.contentFade = timings[1];
 
 const shadows = [
   "none",

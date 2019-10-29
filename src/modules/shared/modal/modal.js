@@ -1,8 +1,8 @@
 import React from "react";
-import { ThemeContext } from "styled-components";
 import { Portal } from "react-portal";
 import FocusLock from "react-focus-lock";
 import { useTransition } from "react-spring";
+import { useTheme } from "../use-theme";
 import { useAriaHidden } from "./use-aria-hidden";
 import { ModalWrap } from "./modal-wrap";
 import { ModalBackdrop } from "./modal-backdrop";
@@ -10,7 +10,7 @@ import { ModalBackdrop } from "./modal-backdrop";
 const ESCAPE_KEY_CODE = 27;
 
 const Modal = ({ isOpen, onClose, children }) => {
-  const duration = React.useContext(ThemeContext).timings.modalAnimation;
+  const duration = useTheme().timings.modalAnimation;
   useAriaHidden(isOpen);
 
   const transitions = useTransition(isOpen, null, {
