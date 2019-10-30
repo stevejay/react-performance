@@ -36,15 +36,16 @@ const charlestonGreen = "#1E2D24";
 const link = "#0000EE";
 
 const colors = {
-  primary100: redViolet,
+  primary900: redViolet,
   primary500: persianPink,
-  primary900: lightHotPink,
+  primary100: lightHotPink,
   contrastHot500: "#F8CA1F",
   contrastCool500: "#60B4B4",
   black: "#000",
   white: "#FFF",
-  gray100: charlestonGreen,
-  gray300: onyx,
+  gray900: charlestonGreen,
+  gray600: onyx,
+  gray100: "#ECEFF1",
   link
 };
 
@@ -72,9 +73,9 @@ const lineHeights = [1, 1.4, 1.5];
 
 const radii = [0, "0.25em", "0.5em", "1em"];
 
-const timings = [0, 250]; // In milliseconds
+const timings = [0, 250, 500]; // In milliseconds
 timings.modalAnimation = timings[1];
-timings.contentFade = timings[1];
+timings.contentFade = timings[2];
 
 const shadows = [
   "none",
@@ -93,6 +94,11 @@ shadows.xxl = shadows[5];
 const borderWidths = [0, "1px"];
 borderWidths.hair = "1px";
 
+const zIndices = [100, 200, 300];
+zIndices.header = zIndices[0];
+zIndices.sidebar = zIndices[1];
+zIndices.modalDialog = zIndices[2];
+
 const theme = {
   space,
   fonts,
@@ -105,7 +111,8 @@ const theme = {
   lineHeights,
   radii,
   shadows,
-  timings
+  timings,
+  zIndices
 };
 
 export { theme };

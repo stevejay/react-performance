@@ -5,7 +5,7 @@ import { Sidebar } from "./sidebar";
 
 const SIDEBAR_ID = "main-sidebar";
 
-const Header = ({ mainRef }) => {
+const Header = ({ mainRef, pages }) => {
   const [sidebarIsOpen, setSidebarIsOpen] = React.useState(false);
   const handleClose = () => setSidebarIsOpen(false);
 
@@ -17,12 +17,13 @@ const Header = ({ mainRef }) => {
     <Box
       as="header"
       color="white"
-      bg="primary100"
+      bg="primary900"
       p={[1, 2]}
       display="flex"
       justifyContent="space-between"
       alignItems="center"
       boxShadow="md"
+      zIndex="header"
     >
       <SkipLink skipRef={mainRef}>Skip to main content</SkipLink>
       <Heading as="h2" fontSize={[3, 4]} fontWeight="light">
@@ -38,7 +39,12 @@ const Header = ({ mainRef }) => {
         <Icons.Menu color="white" size={5} />
       </Button>
       <Modal isOpen={sidebarIsOpen} onClose={handleClose}>
-        <Sidebar id={SIDEBAR_ID} isOpen={sidebarIsOpen} onClose={handleClose} />
+        <Sidebar
+          id={SIDEBAR_ID}
+          pages={pages}
+          isOpen={sidebarIsOpen}
+          onClose={handleClose}
+        />
       </Modal>
     </Box>
   );

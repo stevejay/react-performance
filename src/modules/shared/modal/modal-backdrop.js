@@ -11,6 +11,7 @@ const StyledModalBackdrop = styled(animated.div)`
   margin: 0;
   outline: 0;
   background-color: ${props => props.theme.colors.black};
+  z-index: ${props => props.theme.zIndices.sidebar};
   will-change: opacity;
 `;
 

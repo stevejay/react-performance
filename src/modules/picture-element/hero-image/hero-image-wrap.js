@@ -8,7 +8,7 @@ const HeroImageWrap = styled.div`
   padding-top: 100%; /* Square aspect ratio for portrait mode */
   position: relative;
   overflow: hidden;
-  background-color: #675e5d;
+  background-color: ${props => props.theme.colors.gray100};
 
   ${props => props.theme.mediaQueries.tabletPortrait} {
     padding-top: 60%; /* Rectangular aspect ratio for landscape mode */

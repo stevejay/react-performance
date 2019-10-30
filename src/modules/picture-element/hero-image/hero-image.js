@@ -9,6 +9,9 @@ import {
   JPEG_EXTENSION
 } from "./constants";
 
+// Object fit could be an option in the future (no support in IE).
+// https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit
+
 const HeroImage = ({
   landscapeImagePath,
   portraitImagePath,

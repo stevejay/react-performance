@@ -8,13 +8,19 @@ const StyledImage = styled.img`
   top: 0;
   left: 0;
   opacity: ${props => (props.isLoaded ? 1 : 0)};
-  transition: ${props => props.theme.timings.contentFade + "ms"};
+  transition: ${props => props.theme.timings.contentFade}ms;
   will-change: opacity;
 `;
 
-const InnerImage = () => {
+const InnerImage = props => {
   const [isLoaded, setIsLoaded] = React.useState(false);
-  return <StyledImage onLoad={() => setIsLoaded(true)} isLoaded={isLoaded} />;
+  return (
+    <StyledImage
+      {...props}
+      onLoad={() => setIsLoaded(true)}
+      isLoaded={isLoaded}
+    />
+  );
 };
 
 export { InnerImage };

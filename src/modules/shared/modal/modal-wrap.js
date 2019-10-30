@@ -8,6 +8,7 @@ const ModalWrap = styled.div`
   right: 0;
   margin: 0;
   outline: 0;
+  z-index: ${props => props.theme.zIndices.sidebar};
 `;
 
 export { ModalWrap };

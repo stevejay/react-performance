@@ -5,16 +5,7 @@ import { SidebarNavBox } from "./sidebar-nav-box";
 import { NavLink } from "./nav-link";
 import { NavLinkList } from "./nav-link-list";
 
-const LINKS = [
-  { to: "/", label: "Picture Element" },
-  {
-    to: "/transform-opacity-animations",
-    label: "Transform & Opacity Animations"
-  },
-  { to: "/bar-chart", label: "Bar Chart" }
-];
-
-const Sidebar = ({ id, isOpen, onClose }) => {
+const Sidebar = ({ id, pages, isOpen, onClose }) => {
   const sidebarRef = React.useRef(null);
   useBodyScrollLock(sidebarRef);
 
@@ -39,11 +30,11 @@ const Sidebar = ({ id, isOpen, onClose }) => {
           onTouchStart={e => e.stopPropagation()}
         >
           <NavLinkList>
-            {LINKS.map(link => (
+            {pages.map(page => (
               <NavLink
-                key={link.to}
-                to={link.to}
-                label={link.label}
+                key={page.path}
+                to={page.path}
+                label={page.title}
                 onClick={onClose}
               />
             ))}

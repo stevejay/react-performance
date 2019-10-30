@@ -9,7 +9,7 @@ const SidebarNavBox = styled(animated.nav)`
   width: 80vw;
   max-width: 300px;
   color: ${props => props.theme.colors.white};
-  background-color: ${props => props.theme.colors.primary100};
+  background-color: ${props => props.theme.colors.primary900};
   overflow-y: scroll;
   box-shadow: ${props => props.theme.shadows.xxl};
   -webkit-overflow-scrolling: touch;
