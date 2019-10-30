@@ -26,7 +26,15 @@ const App = () => {
         <GlobalStyle />
         <Box minHeight="100vh" display="flex" flexDirection="column">
           <Header mainRef={mainRef} pages={PAGES} />
-          <Box as="main" ref={mainRef} flexGrow={1}>
+          <Box
+            as="main"
+            ref={mainRef}
+            flexGrow={1}
+            flexDirection="column"
+            // Ensure that focus will be moved to correct relative
+            // position in document:
+            tabIndex="-1"
+          >
             <Switch>
               {PAGES.map(page => {
                 const PageComponent = page.component;

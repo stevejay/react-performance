@@ -18,22 +18,8 @@ const PictureElementPage = ({ title }) => {
       <HeroImage
         landscapeImagePath="/images/light/desert-landscape"
         portraitImagePath="/images/light/desert-portrait"
-        // dominantColor="928584" // light is 928584, dark is 675e5d
         altText="Desert landscape"
-      >
-        <Box m={[2, 4]} position="absolute" top={0} left={0} right={0}>
-          {/* <Heading
-            color="white"
-            pb={[1, 2]}
-            fontSize={[4, 5]}
-            fontWeight="light"
-            borderBottom="1px solid"
-            borderColor="contrastCool500"
-          >
-            {title}
-          </Heading> */}
-        </Box>
-      </HeroImage>
+      />
       <Box m={[3, 5]}>
         <Stack spacing={[2, 3]}>
           <Heading

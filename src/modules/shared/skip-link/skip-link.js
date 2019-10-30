@@ -6,9 +6,11 @@ const SkipLink = ({ skipRef, children }) => {
   const buttonRef = React.createRef(null);
 
   const handleClick = () => {
-    if (skipRef.current && skipRef.current.scrollIntoView) {
-      buttonRef.current.blur();
-      skipRef.current.scrollIntoView();
+    if (skipRef.current) {
+      if (skipRef.current.scrollIntoView) {
+        skipRef.current.scrollIntoView();
+      }
+      skipRef.current.focus();
     }
   };
 

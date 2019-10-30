@@ -73,9 +73,10 @@ const lineHeights = [1, 1.4, 1.5];
 
 const radii = [0, "0.25em", "0.5em", "1em"];
 
-const timings = [0, 250, 500]; // In milliseconds
+const timings = [0, 250, 500, 750]; // In milliseconds
 timings.modalAnimation = timings[1];
 timings.contentFade = timings[2];
+timings.spinner = timings[3];
 
 const shadows = [
   "none",
@@ -99,6 +100,19 @@ zIndices.header = zIndices[0];
 zIndices.sidebar = zIndices[1];
 zIndices.modalDialog = zIndices[2];
 
+const buttons = {
+  primary: {
+    color: colors.white,
+    backgroundColor: colors.primary900,
+    borderColor: colors.primary900
+  },
+  outlineInverted: {
+    color: colors.white,
+    backgroundColor: "transparent",
+    borderColor: colors.white
+  }
+};
+
 const theme = {
   space,
   fonts,
@@ -112,7 +126,8 @@ const theme = {
   radii,
   shadows,
   timings,
-  zIndices
+  zIndices,
+  buttons
 };
 
 export { theme };

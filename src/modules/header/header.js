@@ -30,6 +30,8 @@ const Header = ({ mainRef, pages }) => {
         React Experiments
       </Heading>
       <Button
+        variant="outlineInverted"
+        px="0.25em"
         aria-haspopup="menu"
         aria-expanded={sidebarIsOpen}
         aria-controls={SIDEBAR_ID}

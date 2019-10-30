@@ -1,8 +1,23 @@
 import React from "react";
-import { Box, Stack, Heading, useScrollToTop } from "modules/shared";
+import {
+  Box,
+  Button,
+  Heading,
+  Paragraph,
+  Stack,
+  useScrollToTop
+} from "modules/shared";
 
 const CompositingAnimationPage = ({ title }) => {
+  const [isLoading, setIsLoading] = React.useState(false);
   useScrollToTop();
+
+  const handleClick = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+  };
 
   return (
     <Box m={[3, 5]}>
@@ -16,6 +31,21 @@ const CompositingAnimationPage = ({ title }) => {
         >
           {title}
         </Heading>
+        <Paragraph>
+          The button below will show the loading state for three seconds when
+          clicked.
+        </Paragraph>
+        <Box display="flex">
+          <Button
+            isLoading={isLoading}
+            variant="primary"
+            py={1}
+            px={2}
+            onClick={handleClick}
+          >
+            Perform some action
+          </Button>
+        </Box>
       </Stack>
     </Box>
   );
