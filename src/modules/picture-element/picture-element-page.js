@@ -23,6 +23,7 @@ const PictureElementPage = ({ title }) => {
       <Box m={[3, 5]}>
         <Stack spacing={[2, 3]}>
           <Heading
+            isSkipLink={true}
             pb={[1, 2]}
             fontSize={[4, 5]}
             fontWeight="light"

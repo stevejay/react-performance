@@ -1,5 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+`body` element is focusable
+
 ## Bugs
 
 - Jump on sidebar navigation (prob. something to do with `@react/router`).

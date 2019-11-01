@@ -5,7 +5,7 @@ import { Sidebar } from "./sidebar";
 
 const SIDEBAR_ID = "main-sidebar";
 
-const Header = ({ mainRef, pages }) => {
+const Header = ({ pages }) => {
   const [sidebarIsOpen, setSidebarIsOpen] = React.useState(false);
   const handleClose = () => setSidebarIsOpen(false);
 
@@ -25,7 +25,7 @@ const Header = ({ mainRef, pages }) => {
       boxShadow="md"
       zIndex="header"
     >
-      <SkipLink skipRef={mainRef}>Skip to main content</SkipLink>
+      <SkipLink targetId="main-content">Skip to main content</SkipLink>
       <Heading as="h2" fontSize={[3, 4]} fontWeight="light">
         React Experiments
       </Heading>

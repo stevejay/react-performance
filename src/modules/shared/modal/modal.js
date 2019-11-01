@@ -35,6 +35,7 @@ const Modal = ({ isOpen, onClose, children }) => {
             <ModalWrap
               role="dialog"
               // tabIndex must be set for ModalWrap to receive keyboard events:
+              // TODO does this make the modal wrap focus on click????
               tabIndex="-1"
               onKeyDown={onClose ? handleKeyDown : undefined}
               onMouseDown={onClose ? onClose : undefined}
