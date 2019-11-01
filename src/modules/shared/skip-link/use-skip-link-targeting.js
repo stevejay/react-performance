@@ -12,7 +12,8 @@ const useSkipLinkTargeting = (targetId, targetRef) => {
 
     contextValue.addRef(targetId, targetRef);
     return () => contextValue.removeRef(targetId, targetRef);
-  }, [targetId, targetRef, contextValue]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [targetId, targetRef]);
 };
 
 export { useSkipLinkTargeting };

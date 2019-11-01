@@ -16,8 +16,8 @@ const PictureElementPage = ({ title }) => {
   return (
     <>
       <HeroImage
-        landscapeImagePath="/images/light/desert-landscape"
-        portraitImagePath="/images/light/desert-portrait"
+        landscapeImagePath={`${process.env.PUBLIC_URL}/images/light/desert-landscape`}
+        portraitImagePath={`${process.env.PUBLIC_URL}/images/light/desert-portrait`}
         altText="Desert landscape"
       />
       <Box m={[3, 5]}>
