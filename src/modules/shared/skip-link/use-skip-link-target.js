@@ -1,19 +1,17 @@
 import React from "react";
 import { SkipLinkContext } from "./skip-link-context";
 
-const useSkipLinkTargeting = (targetId, targetRef) => {
+const useSkipLinkTarget = (targetId, targetRef) => {
   const contextValue = React.useContext(SkipLinkContext);
 
   React.useEffect(() => {
-    if (!targetRef) {
-      console.log("Bailing out because targetRef is nil");
+    if (!targetId || !targetRef) {
       return;
     }
 
     contextValue.addRef(targetId, targetRef);
     return () => contextValue.removeRef(targetId, targetRef);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [targetId, targetRef]);
+  }, [targetId, targetRef, contextValue]);
 };
 
-export { useSkipLinkTargeting };
+export { useSkipLinkTarget };

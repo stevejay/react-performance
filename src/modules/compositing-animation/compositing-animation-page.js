@@ -5,12 +5,16 @@ import {
   Heading,
   Paragraph,
   Stack,
-  useScrollToTop
+  useScrollToTop,
+  useSkipLinkTarget
 } from "modules/shared";
 
 const CompositingAnimationPage = ({ title }) => {
   const [isLoading, setIsLoading] = React.useState(false);
   useScrollToTop();
+
+  const headingRef = React.useRef();
+  useSkipLinkTarget("main-content", headingRef);
 
   const handleClick = () => {
     setIsLoading(true);
@@ -23,7 +27,7 @@ const CompositingAnimationPage = ({ title }) => {
     <Box m={[3, 5]}>
       <Stack spacing={[2, 3]}>
         <Heading
-          isSkipLink={true}
+          ref={headingRef}
           pb={[1, 2]}
           fontSize={[4, 5]}
           fontWeight="light"

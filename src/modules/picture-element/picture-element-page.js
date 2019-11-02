@@ -1,6 +1,13 @@
 import React from "react";
 import { LoremIpsum } from "lorem-ipsum";
-import { Box, Heading, Paragraph, Stack, useScrollToTop } from "modules/shared";
+import {
+  Box,
+  Heading,
+  Paragraph,
+  Stack,
+  useScrollToTop,
+  useSkipLinkTarget
+} from "modules/shared";
 import { HeroImage } from "./hero-image";
 
 const lorem = new LoremIpsum({
@@ -13,6 +20,9 @@ const lorem = new LoremIpsum({
 const PictureElementPage = ({ title }) => {
   useScrollToTop();
 
+  const headingRef = React.useRef();
+  useSkipLinkTarget("main-content", headingRef);
+
   return (
     <>
       <HeroImage
@@ -23,7 +33,7 @@ const PictureElementPage = ({ title }) => {
       <Box m={[3, 5]}>
         <Stack spacing={[2, 3]}>
           <Heading
-            isSkipLink={true}
+            ref={headingRef}
             pb={[1, 2]}
             fontSize={[4, 5]}
             fontWeight="light"
