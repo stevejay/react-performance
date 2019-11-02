@@ -42,7 +42,10 @@ const PictureElementPage = ({ title }) => {
           >
             {title}
           </Heading>
-          <Paragraph>{lorem.generateParagraphs(1)}</Paragraph>
+          {[...Array(500).keys()].map(key => (
+            <Paragraph key={key}>{lorem.generateParagraphs(1)}</Paragraph>
+          ))}
+          {/* <Paragraph>{lorem.generateParagraphs(1)}</Paragraph> */}
         </Stack>
       </Box>
     </>

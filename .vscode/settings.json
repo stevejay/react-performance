@@ -4,9 +4,11 @@
         "dialog",
         "dismissable",
         "flexbox",
+        "force",
         "grays",
         "haspopup",
         "hyperlink",
+        "reflow",
         "renderprops",
         "tabindex"
     ]

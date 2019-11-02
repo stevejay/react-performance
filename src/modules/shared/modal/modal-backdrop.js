@@ -15,7 +15,7 @@ const StyledModalBackdrop = styled(animated.div)`
   will-change: opacity;
 `;
 
-const ModalBackdrop = ({ isVisible, duration }) => {
+const ModalBackdrop = ({ isVisible, duration, onClick }) => {
   const transitions = useTransition(isVisible, null, {
     config: { duration },
     from: { opacity: 0 },
@@ -25,7 +25,7 @@ const ModalBackdrop = ({ isVisible, duration }) => {
 
   return transitions.map(
     ({ item, key, props }) =>
-      item && <StyledModalBackdrop key={key} tabIndex={-1} style={props} />
+      item && <StyledModalBackdrop key={key} style={props} onClick={onClick} />
   );
 };
 

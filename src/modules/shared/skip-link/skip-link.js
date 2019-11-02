@@ -1,5 +1,5 @@
 import React from "react";
-import { isFocusable } from "../is-focusable";
+import tabbable from "tabbable";
 import { VisuallyHidden } from "../visually-hidden";
 import { SkipLinkButton } from "./skip-link-button";
 import { SkipLinkContext } from "./skip-link-context";
@@ -15,7 +15,7 @@ const SkipLink = ({ targetId, children }) => {
 
     const element = targetRef.current;
 
-    if (!isFocusable(element)) {
+    if (!tabbable.isFocusable(element)) {
       element.setAttribute("tabindex", "-1");
 
       element.onblur = element.onfocusout = () => {

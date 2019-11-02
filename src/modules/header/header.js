@@ -1,17 +1,26 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import { Box, Button, Heading, Icons, Modal, SkipLink } from "modules/shared";
+import {
+  Box,
+  Button,
+  CSSTransitionModal,
+  Heading,
+  Icons,
+  Modal,
+  SkipLink
+} from "modules/shared";
 import { Sidebar } from "./sidebar";
+import { CSSTransitionSidebar } from "./css-transition-sidebar";
 
 const SIDEBAR_ID = "main-sidebar";
 
 const Header = ({ pages }) => {
   const [sidebarIsOpen, setSidebarIsOpen] = React.useState(false);
-  const handleClose = () => setSidebarIsOpen(false);
+  const handleClose = React.useCallback(() => setSidebarIsOpen(false), []);
 
   // Ensure sidebar closes if user uses browser back/forward buttons:
   const location = useLocation();
-  React.useEffect(() => handleClose(), [location]);
+  React.useEffect(() => setSidebarIsOpen(false), [location]);
 
   return (
     <Box
@@ -40,14 +49,31 @@ const Header = ({ pages }) => {
       >
         <Icons.Menu color="white" size={5} />
       </Button>
-      <Modal isOpen={sidebarIsOpen} onClose={handleClose}>
-        <Sidebar
-          id={SIDEBAR_ID}
-          pages={pages}
-          isOpen={sidebarIsOpen}
-          onClose={handleClose}
-        />
-      </Modal>
+      {true && (
+        <CSSTransitionModal isOpen={sidebarIsOpen} onClose={handleClose}>
+          {(state, duration) => (
+            <CSSTransitionSidebar
+              id={SIDEBAR_ID}
+              animationState={state}
+              duration={duration}
+              pages={pages}
+              isOpen={sidebarIsOpen}
+              onClose={handleClose}
+            />
+          )}
+        </CSSTransitionModal>
+      )}
+      {false && (
+        <Modal isOpen={sidebarIsOpen} onClose={handleClose}>
+          <Sidebar
+            role="dialog"
+            id={SIDEBAR_ID}
+            pages={pages}
+            isOpen={sidebarIsOpen}
+            onClose={handleClose}
+          />
+        </Modal>
+      )}
     </Box>
   );
 };

@@ -1,13 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
-import { App } from "./modules/app";
+import { ThemeProvider } from "styled-components";
+import { App, theme } from "./modules/app";
 import * as serviceWorker from "./service-worker";
 
 ReactDOM.render(
-  <Router>
-    <App />
-  </Router>,
+  <ThemeProvider theme={theme}>
+    <Router>
+      <App />
+    </Router>
+  </ThemeProvider>,
   document.getElementById("root")
 );
 

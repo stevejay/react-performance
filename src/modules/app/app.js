@@ -1,12 +1,10 @@
 import React from "react";
-import { ThemeProvider } from "styled-components";
 import { Route, Switch, useLocation } from "react-router-dom";
-import { Box, SkipLinkProvider } from "modules/shared";
+import { Box, SkipLinkProvider, useTheme } from "modules/shared";
 import { Header } from "modules/header";
 import { PictureElementPage } from "modules/picture-element";
 import { CompositingAnimationPage } from "modules/compositing-animation";
 import { GlobalStyle } from "./global-style";
-import { theme } from "./theme";
 
 const PAGES = [
   { path: "/", title: "Picture Element", component: PictureElementPage },
@@ -19,9 +17,19 @@ const PAGES = [
 
 const App = () => {
   const location = useLocation();
+  //   const [delayedLocation, setDelayedLocation] = React.useState(location);
+  //   const duration = useTheme().timings.modalAnimation;
+
+  //   React.useEffect(() => {
+  //     const timeoutID = setTimeout(
+  //       () => setDelayedLocation(location),
+  //       duration + 1
+  //     );
+  //     return () => clearTimeout(timeoutID);
+  //   }, [location, duration]);
 
   return (
-    <ThemeProvider theme={theme}>
+    <>
       <GlobalStyle />
       <Box minHeight="100vh" display="flex" flexDirection="column">
         <SkipLinkProvider>
@@ -37,7 +45,7 @@ const App = () => {
           </Box>
         </SkipLinkProvider>
       </Box>
-    </ThemeProvider>
+    </>
   );
 };
 

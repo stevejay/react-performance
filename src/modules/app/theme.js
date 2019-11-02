@@ -73,7 +73,7 @@ const lineHeights = [1, 1.4, 1.5];
 
 const radii = [0, "0.25em", "0.5em", "1em"];
 
-const timings = [0, 250, 500, 750]; // In milliseconds
+const timings = [0, 250, 500, 750]; // milliseconds
 timings.modalAnimation = timings[1];
 timings.contentFade = timings[2];
 timings.spinner = timings[3];
