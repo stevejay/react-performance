@@ -1,5 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
+import window from "global/window";
 
 const useScrollToTop = () => {
   const location = useLocation();

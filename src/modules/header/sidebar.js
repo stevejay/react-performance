@@ -31,12 +31,9 @@ const Sidebar = ({ id, pages, isOpen, onClose }) => {
         >
           <NavLinkList>
             {pages.map(page => (
-              <NavLink
-                key={page.path}
-                to={page.path}
-                label={page.title}
-                onClick={onClose}
-              />
+              <li key={page.path}>
+                <NavLink to={page.path} label={page.title} onClick={onClose} />
+              </li>
             ))}
           </NavLinkList>
         </SidebarNavBox>

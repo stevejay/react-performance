@@ -1,5 +1,6 @@
 import React from "react";
 import { LoremIpsum } from "lorem-ipsum";
+// import global from "global";
 import {
   Box,
   Heading,
@@ -22,6 +23,24 @@ const PictureElementPage = ({ title }) => {
 
   const headingRef = React.useRef();
   useSkipLinkTarget("main-content", headingRef);
+
+  //   const [shouldRender, setShouldRender] = React.useState(false);
+
+  //   React.useEffect(() => {
+  //     if (shouldRender) {
+  //       return;
+  //     }
+
+  //     const timeoutID = global.setTimeout(() => {
+  //       setShouldRender(true);
+  //     }, 300);
+
+  //     return () => clearTimeout(timeoutID);
+  //   }, [shouldRender, setShouldRender]);
+
+  //   if (!shouldRender) {
+  //     return null;
+  //   }
 
   return (
     <>

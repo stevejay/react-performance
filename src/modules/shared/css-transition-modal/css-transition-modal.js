@@ -31,13 +31,13 @@ const CSSTransitionModal = ({ isOpen, onClose, children }) => {
   useBodyKeyDownListener(isOpen, handleKeyDown);
 
   return (
-    <TransitionGroup component={null} appear={true}>
+    <TransitionGroup component={null} appear>
       {isOpen && (
         <Transition
           timeout={duration}
           onEnter={forceReflow}
-          mountOnEnter={true}
-          unmountOnExit={true}
+          mountOnEnter
+          unmountOnExit
         >
           {animationState => (
             <Portal>

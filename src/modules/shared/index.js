@@ -8,6 +8,7 @@ export * from "./paragraph";
 export * from "./skip-link";
 export * from "./stack";
 export * from "./use-body-scroll-lock";
+export * from "./use-delayed-link-click-handler";
 export * from "./use-scroll-to-top";
 export * from "./use-theme";
 export * from "./visually-hidden";

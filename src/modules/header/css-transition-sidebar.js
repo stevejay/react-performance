@@ -20,6 +20,7 @@ const CSSTransitionSidebar = ({
   onClose
 }) => {
   const sidebarRef = React.useRef(null);
+
   useBodyScrollLock(sidebarRef);
 
   return (
@@ -33,12 +34,9 @@ const CSSTransitionSidebar = ({
     >
       <NavLinkList>
         {pages.map(page => (
-          <NavLink
-            key={page.path}
-            to={page.path}
-            label={page.title}
-            onClick={onClose}
-          />
+          <li key={page.path}>
+            <NavLink to={page.path} label={page.title} onClick={onClose} />
+          </li>
         ))}
       </NavLinkList>
     </CSSTransitionSidebarNavBox>

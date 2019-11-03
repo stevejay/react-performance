@@ -51,6 +51,7 @@ const colors = {
 
 // These are <600px, 600px, 900px, 1200px and 1800px, at 1rem === 16px:
 const breakpoints = ["37.5rem", "56.25rem", "75rem", "112.5rem"];
+
 breakpoints.tabletPortrait = breakpoints[0];
 breakpoints.tabletLandscape = breakpoints[1];
 breakpoints.desktop = breakpoints[2];
@@ -74,6 +75,7 @@ const lineHeights = [1, 1.4, 1.5];
 const radii = [0, "0.25em", "0.5em", "1em"];
 
 const timings = [0, 250, 500, 750]; // milliseconds
+
 timings.modalAnimation = timings[1];
 timings.contentFade = timings[2];
 timings.spinner = timings[3];
@@ -86,6 +88,7 @@ const shadows = [
   "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
   "0 25px 50px -12px rgba(0, 0, 0, 0.25)"
 ];
+
 shadows.sm = shadows[1];
 shadows.md = shadows[2];
 shadows.lg = shadows[3];
@@ -93,9 +96,11 @@ shadows.xl = shadows[4];
 shadows.xxl = shadows[5];
 
 const borderWidths = [0, "1px"];
+
 borderWidths.hair = "1px";
 
 const zIndices = [100, 200, 300];
+
 zIndices.header = zIndices[0];
 zIndices.sidebar = zIndices[1];
 zIndices.modalDialog = zIndices[2];

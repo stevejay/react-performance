@@ -1,4 +1,5 @@
 import React from "react";
+import global from "global";
 import {
   Box,
   Button,
@@ -18,7 +19,7 @@ const CompositingAnimationPage = ({ title }) => {
 
   const handleClick = () => {
     setIsLoading(true);
-    setTimeout(() => {
+    global.setTimeout(() => {
       setIsLoading(false);
     }, 3000);
   };
