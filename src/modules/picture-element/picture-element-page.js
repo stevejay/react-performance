@@ -1,6 +1,5 @@
 import React from "react";
 import { LoremIpsum } from "lorem-ipsum";
-// import global from "global";
 import {
   Box,
   Heading,
@@ -8,7 +7,7 @@ import {
   Stack,
   useScrollToTop,
   useSkipLinkTarget
-} from "modules/shared";
+} from "shared";
 import { HeroImage } from "./hero-image";
 
 const lorem = new LoremIpsum({
@@ -23,24 +22,6 @@ const PictureElementPage = ({ title }) => {
 
   const headingRef = React.useRef();
   useSkipLinkTarget("main-content", headingRef);
-
-  //   const [shouldRender, setShouldRender] = React.useState(false);
-
-  //   React.useEffect(() => {
-  //     if (shouldRender) {
-  //       return;
-  //     }
-
-  //     const timeoutID = global.setTimeout(() => {
-  //       setShouldRender(true);
-  //     }, 300);
-
-  //     return () => clearTimeout(timeoutID);
-  //   }, [shouldRender, setShouldRender]);
-
-  //   if (!shouldRender) {
-  //     return null;
-  //   }
 
   return (
     <>
@@ -64,7 +45,6 @@ const PictureElementPage = ({ title }) => {
           {[...Array(500).keys()].map(key => (
             <Paragraph key={key}>{lorem.generateParagraphs(1)}</Paragraph>
           ))}
-          {/* <Paragraph>{lorem.generateParagraphs(1)}</Paragraph> */}
         </Stack>
       </Box>
     </>

@@ -1,6 +1,7 @@
 export * from "./box";
 export * from "./button";
 export * from "./css-transition-modal";
+export * from "./dom-utils";
 export * from "./heading";
 export * from "./icons";
 export * from "./modal";

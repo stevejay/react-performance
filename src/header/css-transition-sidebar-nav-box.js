@@ -13,8 +13,8 @@ const CSSTransitionSidebarNavBox = styled.nav`
   box-shadow: ${props => props.theme.shadows.xxl};
   z-index: ${props => props.theme.zIndices.sidebar};
   -webkit-overflow-scrolling: touch;
-  transition: opacity ${props => props.duration}ms ease-in,
-    transform ${props => props.duration}ms ease-in;
+  transition: opacity ${props => props.theme.timings.modalAnimation}ms ease-in,
+    transform ${props => props.theme.timings.modalAnimation}ms ease-in;
   will-change: opacity, transform;
 `;
 

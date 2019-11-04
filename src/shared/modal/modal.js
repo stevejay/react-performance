@@ -9,7 +9,9 @@ import { ModalBackdrop } from "./modal-backdrop";
 
 const Modal = ({ isOpen, onClose, children }) => {
   const duration = useTheme().timings.modalAnimation;
-  useAriaHidden(isOpen);
+
+  const focusLockRef = React.useRef();
+  useAriaHidden(focusLockRef, isOpen);
 
   const handleKeyDown = React.useCallback(
     event => {
@@ -38,7 +40,7 @@ const Modal = ({ isOpen, onClose, children }) => {
             duration={duration}
             onClick={onClose}
           />
-          <FocusLock autoFocus returnFocus>
+          <FocusLock autoFocus returnFocus ref={focusLockRef}>
             {children}
           </FocusLock>
         </Portal>

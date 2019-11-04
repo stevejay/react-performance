@@ -8,7 +8,10 @@ const GlobalStyle = createGlobalStyle`
         font-family: ${props => props.theme.fonts.body};
     }
 
-    /* Change the box model to be border-box by default */
+    /*
+    Change the box model to be border-box by default,
+    using the inherit method:
+    */
     html {
         box-sizing: border-box;
     }

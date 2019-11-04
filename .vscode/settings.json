@@ -8,6 +8,7 @@
         "grays",
         "haspopup",
         "hyperlink",
+        "polyfill",
         "predeploy",
         "reflow",
         "renderprops",

@@ -1,12 +1,12 @@
 import React from "react";
 import { useTransition } from "react-spring";
-import { useBodyScrollLock, useTheme } from "modules/shared";
+import { useBodyScrollLock, useTheme } from "shared";
 import { SidebarNavBox } from "./sidebar-nav-box";
 import { NavLink } from "./nav-link";
 import { NavLinkList } from "./nav-link-list";
 
 const Sidebar = ({ id, pages, isOpen, onClose }) => {
-  const sidebarRef = React.useRef(null);
+  const sidebarRef = React.useRef();
   useBodyScrollLock(sidebarRef);
 
   const duration = useTheme().timings.modalAnimation;
@@ -21,14 +21,7 @@ const Sidebar = ({ id, pages, isOpen, onClose }) => {
   return transitions.map(
     ({ item, key, props }) =>
       item && (
-        <SidebarNavBox
-          ref={sidebarRef}
-          key={key}
-          id={id}
-          style={props}
-          onMouseDown={e => e.stopPropagation()}
-          onTouchStart={e => e.stopPropagation()}
-        >
+        <SidebarNavBox ref={sidebarRef} key={key} id={id} style={props}>
           <NavLinkList>
             {pages.map(page => (
               <li key={page.path}>

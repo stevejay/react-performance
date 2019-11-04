@@ -8,7 +8,7 @@ import {
   Icons,
   Modal,
   SkipLink
-} from "modules/shared";
+} from "shared";
 import { Sidebar } from "./sidebar";
 import { CSSTransitionSidebar } from "./css-transition-sidebar";
 
@@ -51,11 +51,10 @@ const Header = ({ pages }) => {
       </Button>
       {true && (
         <CSSTransitionModal isOpen={sidebarIsOpen} onClose={handleClose}>
-          {(state, duration) => (
+          {animationState => (
             <CSSTransitionSidebar
               id={SIDEBAR_ID}
-              animationState={state}
-              duration={duration}
+              animationState={animationState}
               pages={pages}
               isOpen={sidebarIsOpen}
               onClose={handleClose}

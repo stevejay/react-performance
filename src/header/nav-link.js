@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components/macro";
-import { useDelayedLinkClickHandler } from "modules/shared";
+import { useDelayedLinkClickHandler } from "shared";
 
 const StyledLink = styled.a`
   color: ${props => props.theme.colors.white};

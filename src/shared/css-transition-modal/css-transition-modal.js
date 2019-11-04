@@ -17,7 +17,9 @@ const TRANSITION_STYLES = {
 
 const CSSTransitionModal = ({ isOpen, onClose, children }) => {
   const duration = useTheme().timings.modalAnimation;
-  useAriaHidden(isOpen);
+
+  const focusLockRef = React.useRef();
+  useAriaHidden(focusLockRef, isOpen);
 
   const handleKeyDown = React.useCallback(
     event => {
@@ -46,8 +48,8 @@ const CSSTransitionModal = ({ isOpen, onClose, children }) => {
                 style={TRANSITION_STYLES[animationState]}
                 onClick={onClose}
               />
-              <FocusLock autoFocus returnFocus>
-                {children(animationState, duration)}
+              <FocusLock autoFocus returnFocus ref={focusLockRef}>
+                {children(animationState)}
               </FocusLock>
             </Portal>
           )}
