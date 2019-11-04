@@ -8,8 +8,10 @@
         "grays",
         "haspopup",
         "hyperlink",
+        "predeploy",
         "reflow",
         "renderprops",
+        "tabbable",
         "tabindex"
     ]
 }

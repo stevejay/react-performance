@@ -1,11 +1,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-`body` element is focusable
+## TODO
 
-## Bugs
-
-- Jump on sidebar navigation (prob. something to do with `@react/router`).
-- Need to close sidebar on browser back button. (Maybe try changing closing of sidebar to happen on push/pop history state?).
+- check out styled transition group again
 
 ## Available Scripts
 
