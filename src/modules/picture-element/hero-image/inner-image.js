@@ -14,6 +14,7 @@ const StyledImage = styled.img`
 
 const InnerImage = props => {
   const [isLoaded, setIsLoaded] = React.useState(false);
+
   return (
     <StyledImage
       {...props}

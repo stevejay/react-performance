@@ -5,6 +5,8 @@ import global from "global";
 const isModifiedEvent = event =>
   Boolean(event.metaKey || event.altKey || event.ctrlKey || event.shiftKey);
 
+// Creates a click handler to be used with a react-router Link component
+// that delays navigating to the new URL.
 const useDelayedLinkClickHandler = (to, delayMs, onClick = null) => {
   const history = useHistory();
 

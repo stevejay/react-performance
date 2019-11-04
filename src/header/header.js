@@ -3,14 +3,18 @@ import { useLocation } from "react-router-dom";
 import {
   Box,
   Button,
-  CSSTransitionModal,
   Heading,
   Icons,
-  Modal,
+  SpringModal,
+  SpringModalBackdrop,
+  TransitionModal,
+  TransitionModalBackdrop,
   SkipLink
 } from "shared";
-import { Sidebar } from "./sidebar";
-import { CSSTransitionSidebar } from "./css-transition-sidebar";
+import { TransitionSidebar } from "./transition-sidebar";
+import { SpringSidebar } from "./spring-sidebar";
+import { NavLink } from "./nav-link";
+import { NavLinkList } from "./nav-link-list";
 
 const SIDEBAR_ID = "main-sidebar";
 
@@ -20,7 +24,14 @@ const Header = ({ pages }) => {
 
   // Ensure sidebar closes if user uses browser back/forward buttons:
   const location = useLocation();
-  React.useEffect(() => setSidebarIsOpen(false), [location]);
+  React.useEffect(handleClose, [location]);
+
+  const transition = false;
+  const Modal = transition ? TransitionModal : SpringModal;
+  const Sidebar = transition ? TransitionSidebar : SpringSidebar;
+  const ModalBackdrop = transition
+    ? TransitionModalBackdrop
+    : SpringModalBackdrop;
 
   return (
     <Box
@@ -49,30 +60,24 @@ const Header = ({ pages }) => {
       >
         <Icons.Menu color="white" size={5} />
       </Button>
-      {true && (
-        <CSSTransitionModal isOpen={sidebarIsOpen} onClose={handleClose}>
-          {animationState => (
-            <CSSTransitionSidebar
-              id={SIDEBAR_ID}
-              animationState={animationState}
-              pages={pages}
-              isOpen={sidebarIsOpen}
-              onClose={handleClose}
-            />
-          )}
-        </CSSTransitionModal>
-      )}
-      {false && (
-        <Modal isOpen={sidebarIsOpen} onClose={handleClose}>
-          <Sidebar
-            role="dialog"
-            id={SIDEBAR_ID}
-            pages={pages}
-            isOpen={sidebarIsOpen}
-            onClose={handleClose}
-          />
-        </Modal>
-      )}
+      <ModalBackdrop isOpen={sidebarIsOpen} />
+      <Modal isOpen={sidebarIsOpen} onClose={handleClose}>
+        {animationState => (
+          <Sidebar animationState={animationState} id={SIDEBAR_ID}>
+            <NavLinkList>
+              {pages.map(page => (
+                <li key={page.path}>
+                  <NavLink
+                    to={page.path}
+                    label={page.title}
+                    onClick={handleClose}
+                  />
+                </li>
+              ))}
+            </NavLinkList>
+          </Sidebar>
+        )}
+      </Modal>
     </Box>
   );
 };

@@ -12,6 +12,7 @@
         "predeploy",
         "reflow",
         "renderprops",
+        "seznam",
         "tabbable",
         "tabindex"
     ]

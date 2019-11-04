@@ -1,6 +1,8 @@
 import React from "react";
+import { Portal } from "react-portal";
 import styled from "styled-components/macro";
 import { animated, useTransition } from "react-spring";
+import { useTheme } from "../use-theme";
 
 const StyledModalBackdrop = styled(animated.div)`
   position: fixed;
@@ -15,8 +17,10 @@ const StyledModalBackdrop = styled(animated.div)`
   will-change: opacity;
 `;
 
-const ModalBackdrop = ({ isVisible, duration, onClick }) => {
-  const transitions = useTransition(isVisible, null, {
+const SpringModalBackdrop = ({ isOpen }) => {
+  const duration = useTheme().timings.modalAnimation;
+
+  const transitions = useTransition(isOpen, null, {
     config: { duration },
     from: { opacity: 0 },
     enter: { opacity: 0.5 },
@@ -24,9 +28,13 @@ const ModalBackdrop = ({ isVisible, duration, onClick }) => {
   });
 
   return transitions.map(
-    ({ item, key, props }) =>
-      item && <StyledModalBackdrop key={key} style={props} onClick={onClick} />
+    ({ item: visible, key, props }) =>
+      visible && (
+        <Portal key={key}>
+          <StyledModalBackdrop style={props} role="presentation" />
+        </Portal>
+      )
   );
 };
 
-export { ModalBackdrop };
+export { SpringModalBackdrop };

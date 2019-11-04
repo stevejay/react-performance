@@ -1,12 +1,23 @@
 import React from "react";
 import { Portal } from "react-portal";
-import FocusLock from "react-focus-lock";
 import { Transition, TransitionGroup } from "react-transition-group";
+import styled from "styled-components/macro";
 import { useTheme } from "../use-theme";
-import { useAriaHidden } from "../use-aria-hidden";
-import { useBodyKeyDownListener } from "../use-body-key-down-listener";
 import { forceReflow } from "../dom-utils";
-import { ModalBackdrop } from "./modal-backdrop";
+
+const StyledModalBackdrop = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: 0;
+  outline: 0;
+  background-color: ${props => props.theme.colors.black};
+  z-index: ${props => props.theme.zIndices.sidebar};
+  transition: opacity ${props => props.theme.timings.modalAnimation}ms ease-in;
+  will-change: opacity;
+`;
 
 const TRANSITION_STYLES = {
   entering: { opacity: 0.5 },
@@ -15,22 +26,8 @@ const TRANSITION_STYLES = {
   exited: { opacity: 0 }
 };
 
-const CSSTransitionModal = ({ isOpen, onClose, children }) => {
+const TransitionModalBackdrop = ({ isOpen }) => {
   const duration = useTheme().timings.modalAnimation;
-
-  const focusLockRef = React.useRef();
-  useAriaHidden(focusLockRef, isOpen);
-
-  const handleKeyDown = React.useCallback(
-    event => {
-      if (event.key === "Esc" || event.key === "Escape") {
-        onClose();
-      }
-    },
-    [onClose]
-  );
-
-  useBodyKeyDownListener(isOpen, handleKeyDown);
 
   return (
     <TransitionGroup component={null} appear>
@@ -43,14 +40,10 @@ const CSSTransitionModal = ({ isOpen, onClose, children }) => {
         >
           {animationState => (
             <Portal>
-              <ModalBackdrop
-                duration={duration}
+              <StyledModalBackdrop
                 style={TRANSITION_STYLES[animationState]}
-                onClick={onClose}
+                role="presentation"
               />
-              <FocusLock autoFocus returnFocus ref={focusLockRef}>
-                {children(animationState)}
-              </FocusLock>
             </Portal>
           )}
         </Transition>
@@ -59,4 +52,4 @@ const CSSTransitionModal = ({ isOpen, onClose, children }) => {
   );
 };
 
-export { CSSTransitionModal };
+export { TransitionModalBackdrop };
