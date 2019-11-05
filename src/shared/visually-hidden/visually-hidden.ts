@@ -10,6 +10,7 @@ type Props = {
 
 const VisuallyHidden = styled.span<Props>`
   /* && is for increased specificity: */
+
   &&${props => (props.isFocusable ? ":not(:focus):not(:active)" : "")} {
     border: 0;
     clip: rect(0 0 0 0);
