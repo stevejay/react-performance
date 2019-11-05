@@ -1,5 +1,13 @@
 {
-  "tags": ["header"],
-  "exports": ["index"],
-  "imports": ["shared", "compositing-animation-page", "picture-element"]
+    "tags": [
+        "header"
+    ],
+    "exports": [
+        "index"
+    ],
+    "imports": [
+        "shared",
+        "compositing-animation-page",
+        "picture-element"
+    ]
 }

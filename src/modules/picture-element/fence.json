@@ -1,5 +1,11 @@
 {
-  "tags": ["picture-element"],
-  "exports": ["index"],
-  "imports": []
+    "tags": [
+        "picture-element"
+    ],
+    "exports": [
+        "index"
+    ],
+    "imports": [
+        "shared"
+    ]
 }
