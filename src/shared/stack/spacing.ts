@@ -1,14 +1,14 @@
 import { system, SpaceProps } from "styled-system";
 
-export type SpacingProp = {
-  spacing: SpaceProps["margin"];
-};
-
 const spacing = system({
   spacing: {
     property: "marginTop",
     scale: "space"
   }
 });
+
+export type SpacingProp = {
+  spacing: SpaceProps["margin"];
+};
 
 export { spacing };

@@ -1,24 +1,31 @@
 {
-    "cSpell.words": [
-        "browserslist",
-        "ctrl",
-        "dialog",
-        "dismissable",
-        "flexbox",
-        "force",
-        "grays",
-        "haspopup",
-        "hyperlink",
-        "key",
-        "nowrap",
-        "placeholder",
-        "polyfill",
-        "predeploy",
-        "reflow",
-        "renderprops",
-        "seznam",
-        "tabbable",
-        "tabindex",
-        "webp"
-    ]
+  "cSpell.words": [
+    "browserslist",
+    "ctrl",
+    "dialog",
+    "dismissable",
+    "flexbox",
+    "force",
+    "grays",
+    "haspopup",
+    "hyperlink",
+    "key",
+    "nowrap",
+    "performant",
+    "placeholder",
+    "polyfill",
+    "predeploy",
+    "reflow",
+    "renderprops",
+    "seznam",
+    "tabbable",
+    "tabindex",
+    "webp"
+],
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    { "language": "typescript", "autoFix": true },
+    { "language": "typescriptreact", "autoFix": true }
+  ]
 }

@@ -1,18 +1,15 @@
 import React from "react";
 import styled from "styled-components/macro";
 import { color, space, ColorProps, SpaceProps } from "styled-system";
-import { iconSize, IconSizeProp } from "./icon-size";
+import { size, SizeProp } from "./size";
 
-// See about doing the following to dynamically generate icon components:
-// https://github.com/styled-components/styled-components/issues/1434
-
-type Props = ColorProps & SpaceProps & IconSizeProp;
+type Props = ColorProps & SpaceProps & SizeProp;
 
 const createIconComponent = <T extends React.ComponentType<any>>(
   component: T
 ) =>
   styled(component)<Props>`
-    ${iconSize}
+    ${size}
     ${color}
     ${space}
 `;
