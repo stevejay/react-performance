@@ -19,8 +19,14 @@ const StyledNav = styled(animated.nav)`
   -webkit-overflow-scrolling: touch;
 `;
 
-const SpringSidebar = ({ id, animationState: isOpen, children }) => {
-  const ref = React.useRef();
+type Props = {
+  readonly id: string;
+  readonly animationState: boolean;
+  children: React.ReactNode;
+};
+
+const SpringSidebar = ({ id, animationState: isOpen, children }: Props) => {
+  const ref = React.useRef<HTMLElement>(null);
   useBodyScrollLock(ref);
 
   const duration = useTheme().timings.modalAnimation;

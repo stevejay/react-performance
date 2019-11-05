@@ -10,11 +10,15 @@ import {
   useSkipLinkTarget
 } from "src/shared";
 
-const CompositingAnimationPage = ({ title }) => {
+type Props = {
+  readonly title: string;
+};
+
+const CompositingAnimationPage: React.FC<Props> = ({ title }) => {
   const [isLoading, setIsLoading] = React.useState(false);
   useScrollToTop();
 
-  const headingRef = React.useRef();
+  const headingRef = React.useRef<HTMLHeadingElement>(null);
   useSkipLinkTarget("main-content", headingRef);
 
   const handleClick = () => {
@@ -31,7 +35,7 @@ const CompositingAnimationPage = ({ title }) => {
           ref={headingRef}
           pb={[1, 2]}
           fontSize={[4, 5]}
-          fontWeight="light"
+          fontWeight="lighter"
           borderBottom="1px solid"
           borderColor="contrastCool500"
         >

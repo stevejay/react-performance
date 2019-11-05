@@ -54,7 +54,7 @@ const StyledButton = styled.button<StyledButtonProps>`
 `;
 
 type ButtonProps = React.ComponentProps<typeof StyledButton> & {
-  readonly disabled: boolean;
+  readonly disabled?: boolean;
   readonly isLoading: boolean;
   readonly onClick: () => void;
 };

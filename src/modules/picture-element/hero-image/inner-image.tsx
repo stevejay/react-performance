@@ -1,7 +1,11 @@
 import React from "react";
 import styled from "styled-components/macro";
 
-const StyledImage = styled.img`
+type StyledProps = {
+  readonly isLoaded: boolean;
+};
+
+const StyledImage = styled.img<StyledProps>`
   width: 100%;
   height: auto;
   position: absolute;
@@ -12,7 +16,9 @@ const StyledImage = styled.img`
   will-change: opacity;
 `;
 
-const InnerImage = props => {
+type Props = React.ImgHTMLAttributes<HTMLImageElement>;
+
+const InnerImage: React.FC<Props> = props => {
   const [isLoaded, setIsLoaded] = React.useState(false);
 
   return (

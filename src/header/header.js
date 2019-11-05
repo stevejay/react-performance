@@ -46,7 +46,7 @@ const Header = ({ pages }) => {
       zIndex="header"
     >
       <SkipLink targetId="main-content">Skip to main content</SkipLink>
-      <Heading as="h2" fontSize={[3, 4]} fontWeight="light">
+      <Heading as="h2" fontSize={[3, 4]} fontWeight="lighter">
         React Experiments
       </Heading>
       <Button

@@ -17,11 +17,27 @@ const lorem = new LoremIpsum({
   }
 });
 
-const PictureElementPage = ({ title }) => {
+type Props = {
+  readonly title: string;
+};
+
+const PictureElementPage: React.FC<Props> = ({ title }) => {
   useScrollToTop();
 
-  const headingRef = React.useRef();
+  const headingRef = React.useRef<HTMLHeadingElement>(null);
   useSkipLinkTarget("main-content", headingRef);
+
+  const createParagraphs = () => {
+    const paragraphs: Array<JSX.Element> = [];
+
+    for (let i = 0; i < 500; ++i) {
+      paragraphs.push(
+        <Paragraph key={i}>{lorem.generateParagraphs(1)}</Paragraph>
+      );
+    }
+
+    return paragraphs;
+  };
 
   return (
     <>
@@ -36,15 +52,13 @@ const PictureElementPage = ({ title }) => {
             ref={headingRef}
             pb={[1, 2]}
             fontSize={[4, 5]}
-            fontWeight="light"
+            fontWeight="lighter"
             borderBottom="1px solid"
             borderColor="contrastCool500"
           >
             {title}
           </Heading>
-          {[...Array(500).keys()].map(key => (
-            <Paragraph key={key}>{lorem.generateParagraphs(1)}</Paragraph>
-          ))}
+          {createParagraphs()}
         </Stack>
       </Box>
     </>

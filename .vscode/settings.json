@@ -11,12 +11,14 @@
         "hyperlink",
         "key",
         "nowrap",
+        "placeholder",
         "polyfill",
         "predeploy",
         "reflow",
         "renderprops",
         "seznam",
         "tabbable",
-        "tabindex"
+        "tabindex",
+        "webp"
     ]
 }

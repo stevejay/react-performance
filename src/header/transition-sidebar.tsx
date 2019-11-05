@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
+import { TransitionStatus } from "react-transition-group/Transition";
 import { useBodyScrollLock } from "src/shared";
 
 const StyledNav = styled.nav`
@@ -20,15 +21,28 @@ const StyledNav = styled.nav`
   will-change: opacity, transform;
 `;
 
-const TRANSITION_STYLES = {
+const TRANSITION_STYLES: Partial<
+  {
+    [key in TransitionStatus]: React.CSSProperties;
+  }
+> = {
   entering: { opacity: 1, transform: "translateX(0)" },
   entered: { opacity: 1, transform: "translateX(0)" },
   exiting: { opacity: 0, transform: "translateX(100px)" },
   exited: { opacity: 0, transform: "translateX(100px)" }
 };
 
-const TransitionSidebar = ({ animationState, id, children }) => {
-  const ref = React.useRef();
+type Props = {
+  readonly animationState: TransitionStatus;
+  readonly id: string;
+};
+
+const TransitionSidebar: React.FC<Props> = ({
+  animationState,
+  id,
+  children
+}) => {
+  const ref = React.useRef<HTMLElement>(null);
   useBodyScrollLock(ref);
 
   return (

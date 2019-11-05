@@ -92,7 +92,7 @@ const mediaQueries = {
 // ----- fontWeights -----
 
 const fontWeights = {
-  light: 300,
+  lighter: 300,
   normal: 400,
   bold: 600
 } as const;

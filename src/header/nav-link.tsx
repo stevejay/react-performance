@@ -11,7 +11,13 @@ const StyledLink = styled.a`
   padding: ${props => props.theme.space[1]} 0;
 `;
 
-const NavLink = ({ to, label, onClick }) => {
+type Props = {
+  readonly to: string;
+  readonly label: string;
+  readonly onClick: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
+};
+
+const NavLink: React.FC<Props> = ({ to, label, onClick }) => {
   const handleClick = useDelayedLinkClickHandler(to, 300, onClick);
 
   return (
