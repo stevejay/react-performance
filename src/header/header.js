@@ -10,7 +10,7 @@ import {
   TransitionModal,
   TransitionModalBackdrop,
   SkipLink
-} from "shared";
+} from "src/shared";
 import { TransitionSidebar } from "./transition-sidebar";
 import { SpringSidebar } from "./spring-sidebar";
 import { NavLink } from "./nav-link";

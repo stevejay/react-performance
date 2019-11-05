@@ -7,7 +7,7 @@ import {
   Stack,
   useScrollToTop,
   useSkipLinkTarget
-} from "shared";
+} from "src/shared";
 import { HeroImage } from "./hero-image";
 
 const lorem = new LoremIpsum({

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components/macro";
 import { animated, useTransition } from "react-spring";
-import { useBodyScrollLock, useTheme } from "shared";
+import { useBodyScrollLock, useTheme } from "src/shared";
 
 const StyledNav = styled(animated.nav)`
   position: fixed;

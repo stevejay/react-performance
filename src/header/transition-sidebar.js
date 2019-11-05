@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
-import { useBodyScrollLock } from "shared";
+import { useBodyScrollLock } from "src/shared";
 
 const StyledNav = styled.nav`
   position: fixed;

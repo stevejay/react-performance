@@ -8,7 +8,7 @@ import {
   Stack,
   useScrollToTop,
   useSkipLinkTarget
-} from "shared";
+} from "src/shared";
 
 const CompositingAnimationPage = ({ title }) => {
   const [isLoading, setIsLoading] = React.useState(false);

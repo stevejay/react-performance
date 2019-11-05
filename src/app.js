@@ -1,10 +1,10 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
-import { Box, SkipLinkProvider } from "shared";
-import { Header } from "header";
-import { PictureElementPage } from "modules/picture-element";
-import { CompositingAnimationPage } from "modules/compositing-animation";
+import { Box, SkipLinkProvider } from "src/shared";
+import { Header } from "src/header";
+import { PictureElementPage } from "src/modules/picture-element";
+import { CompositingAnimationPage } from "src/modules/compositing-animation";
 import { GlobalStyle } from "./global-style";
 import { theme } from "./theme";
 

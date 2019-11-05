@@ -1,5 +1,5 @@
 import React from "react";
-import { useTheme } from "shared";
+import { useTheme } from "src/shared";
 import { HeroImageWrap } from "./hero-image-wrap";
 import { InnerImage } from "./inner-image";
 import {
