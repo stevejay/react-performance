@@ -1,9 +1,13 @@
 import React from "react";
 import { useRefsMap } from "./use-refs-map";
 
-const SkipLinkContext = React.createContext();
+const SkipLinkContext = React.createContext<ReturnType<typeof useRefsMap>>({
+  addRef: () => {},
+  removeRef: () => {},
+  getRef: () => null
+});
 
-const SkipLinkProvider = ({ children }) => {
+const SkipLinkProvider: React.FC = ({ children }) => {
   const refsMap = useRefsMap();
 
   return (

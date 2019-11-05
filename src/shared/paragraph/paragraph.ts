@@ -1,7 +1,9 @@
 import styled from "styled-components/macro";
-import { color, typography } from "styled-system";
+import { color, typography, ColorProps, TypographyProps } from "styled-system";
 
-const Paragraph = styled.p`
+type Props = ColorProps & TypographyProps;
+
+const Paragraph = styled.p<Props>`
   margin: 0;
   padding: 0;
   /* Max of 66 characters per line for readability */

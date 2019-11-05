@@ -1,4 +1,8 @@
-import { system } from "styled-system";
+import { system, FontSizeProps } from "styled-system";
+
+export type IconSizeProp = {
+  size: FontSizeProps["fontSize"];
+};
 
 const iconSize = system({
   size: {

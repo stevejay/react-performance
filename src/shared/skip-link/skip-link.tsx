@@ -4,7 +4,11 @@ import { VisuallyHidden } from "../visually-hidden";
 import { SkipLinkButton } from "./skip-link-button";
 import { SkipLinkContext } from "./skip-link-context";
 
-const SkipLink = ({ targetId, children }) => {
+type Props = {
+  readonly targetId: string;
+};
+
+const SkipLink: React.FC<Props> = ({ targetId, children }) => {
   const contextValue = React.useContext(SkipLinkContext);
 
   const handleClick = React.useCallback(() => {
@@ -18,7 +22,7 @@ const SkipLink = ({ targetId, children }) => {
     if (!tabbable.isFocusable(element)) {
       element.setAttribute("tabindex", "-1");
 
-      element.onblur = element.onfocusout = () => {
+      element.onblur = () => {
         element.removeAttribute("tabindex");
       };
     }

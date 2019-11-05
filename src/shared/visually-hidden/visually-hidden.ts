@@ -4,7 +4,11 @@ import styled from "styled-components";
 // Compatibility: IE9+ and modern browsers; see
 // https://caniuse.com/#feat=mdn-css_selectors_not
 
-const VisuallyHidden = styled.span`
+type Props = {
+  readonly isFocusable: boolean;
+};
+
+const VisuallyHidden = styled.span<Props>`
   /* && for increased specificity: */
   &&${props => (props.isFocusable ? ":not(:focus):not(:active)" : "")} {
     border: 0;

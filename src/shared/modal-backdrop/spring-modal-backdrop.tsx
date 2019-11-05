@@ -17,7 +17,11 @@ const StyledModalBackdrop = styled(animated.div)`
   will-change: opacity;
 `;
 
-const SpringModalBackdrop = ({ isOpen }) => {
+type Props = {
+  readonly isOpen: boolean;
+};
+
+const SpringModalBackdrop = ({ isOpen }: Props) => {
   const duration = useTheme().timings.modalAnimation;
 
   const transitions = useTransition(isOpen, null, {

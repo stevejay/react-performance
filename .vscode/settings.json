@@ -1,6 +1,7 @@
 {
     "cSpell.words": [
         "browserslist",
+        "ctrl",
         "dialog",
         "dismissable",
         "flexbox",
@@ -8,6 +9,8 @@
         "grays",
         "haspopup",
         "hyperlink",
+        "key",
+        "nowrap",
         "polyfill",
         "predeploy",
         "reflow",

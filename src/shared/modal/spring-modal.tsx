@@ -6,10 +6,16 @@ import { useTheme } from "../use-theme";
 import { useAriaHidden } from "../use-aria-hidden";
 import { useDocumentEventListener } from "../use-document-event-listener";
 
-const SpringModal = ({ isOpen, onClose, children }) => {
-  const duration = useTheme().timings.modalAnimation;
+type Props = {
+  readonly isOpen: boolean;
+  readonly onClose: () => void;
+  children: (isOpen: boolean) => React.ReactNode;
+};
 
-  const focusLockRef = React.useRef();
+const SpringModal = ({ isOpen, onClose, children }: Props) => {
+  const duration = useTheme().timings.modalAnimation || 0;
+
+  const focusLockRef = React.useRef<HTMLElement>(null);
   useAriaHidden(focusLockRef, isOpen);
 
   const handleCloseOnKeyDown = React.useCallback(
@@ -24,7 +30,7 @@ const SpringModal = ({ isOpen, onClose, children }) => {
   const handleCloseOnTouch = React.useCallback(
     event => {
       // Prevent a click on the modal closing it.
-      if (focusLockRef.current.contains(event.target)) {
+      if (focusLockRef.current && focusLockRef.current.contains(event.target)) {
         return;
       }
 

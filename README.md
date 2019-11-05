@@ -3,6 +3,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## TODO
 
 - check out styled transition group again
+- An alternative to `styled-system` is `@xstyled/system`. The latter may be more performant.
 
 ## Justifications
 

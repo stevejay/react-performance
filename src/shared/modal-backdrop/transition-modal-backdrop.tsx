@@ -1,6 +1,7 @@
 import React from "react";
 import { Portal } from "react-portal";
 import { Transition, TransitionGroup } from "react-transition-group";
+import { TransitionStatus } from "react-transition-group/Transition";
 import styled from "styled-components/macro";
 import { useTheme } from "../use-theme";
 import { forceReflow } from "../dom-utils";
@@ -19,15 +20,23 @@ const StyledModalBackdrop = styled.div`
   will-change: opacity;
 `;
 
-const TRANSITION_STYLES = {
+const TRANSITION_STYLES: Partial<
+  {
+    [key in TransitionStatus]: React.CSSProperties;
+  }
+> = {
   entering: { opacity: 0.5 },
   entered: { opacity: 0.5 },
   exiting: { opacity: 0 },
   exited: { opacity: 0 }
 };
 
-const TransitionModalBackdrop = ({ isOpen }) => {
-  const duration = useTheme().timings.modalAnimation;
+type Props = {
+  readonly isOpen: boolean;
+};
+
+const TransitionModalBackdrop: React.FC<Props> = ({ isOpen }) => {
+  const duration = useTheme().timings.modalAnimation || 0;
 
   return (
     <TransitionGroup component={null} appear>
@@ -38,7 +47,7 @@ const TransitionModalBackdrop = ({ isOpen }) => {
           mountOnEnter
           unmountOnExit
         >
-          {animationState => (
+          {(animationState: TransitionStatus) => (
             <Portal>
               <StyledModalBackdrop
                 style={TRANSITION_STYLES[animationState]}

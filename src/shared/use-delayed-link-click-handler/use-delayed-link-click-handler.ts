@@ -2,16 +2,22 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import global from "global";
 
-const isModifiedEvent = event =>
+type Event = React.MouseEvent<HTMLElement, MouseEvent>;
+
+const isModifiedEvent = (event: Event) =>
   Boolean(event.metaKey || event.altKey || event.ctrlKey || event.shiftKey);
 
 // Creates a click handler to be used with a react-router Link component
 // that delays navigating to the new URL.
-const useDelayedLinkClickHandler = (to, delayMs, onClick = null) => {
+const useDelayedLinkClickHandler = (
+  to: string,
+  delayMs: number,
+  onClick?: (event: Event) => void
+) => {
   const history = useHistory();
 
   const handler = React.useCallback(
-    event => {
+    (event: Event) => {
       if (onClick) {
         onClick(event);
       }

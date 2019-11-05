@@ -1,7 +1,11 @@
 import React from "react";
 import document from "global/document";
 
-const useDocumentEventListener = (eventName, isListening, listener) => {
+const useDocumentEventListener = (
+  eventName: string,
+  isListening: boolean,
+  listener: EventListenerOrEventListenerObject
+) => {
   React.useEffect(() => {
     if (!isListening) {
       return;

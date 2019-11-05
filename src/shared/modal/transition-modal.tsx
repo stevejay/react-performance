@@ -2,15 +2,22 @@ import React from "react";
 import { Portal } from "react-portal";
 import FocusLock from "react-focus-lock";
 import { Transition, TransitionGroup } from "react-transition-group";
+import { TransitionStatus } from "react-transition-group/Transition";
 import { useTheme } from "../use-theme";
 import { useAriaHidden } from "../use-aria-hidden";
 import { useDocumentEventListener } from "../use-document-event-listener";
 import { forceReflow } from "../dom-utils";
 
-const TransitionModal = ({ isOpen, onClose, children }) => {
-  const duration = useTheme().timings.modalAnimation;
+type Props = {
+  readonly isOpen: boolean;
+  readonly onClose: () => void;
+  children: (animationState: TransitionStatus) => React.ReactNode;
+};
 
-  const focusLockRef = React.useRef();
+const TransitionModal = ({ isOpen, onClose, children }: Props) => {
+  const duration = useTheme().timings.modalAnimation || 0;
+
+  const focusLockRef = React.useRef<HTMLElement>(null);
   useAriaHidden(focusLockRef, isOpen);
 
   const handleCloseOnKeyDown = React.useCallback(
@@ -25,7 +32,7 @@ const TransitionModal = ({ isOpen, onClose, children }) => {
   const handleCloseOnTouch = React.useCallback(
     event => {
       // Prevent a click on the modal closing it.
-      if (focusLockRef.current.contains(event.target)) {
+      if (focusLockRef.current && focusLockRef.current.contains(event.target)) {
         return;
       }
 
@@ -47,7 +54,7 @@ const TransitionModal = ({ isOpen, onClose, children }) => {
           mountOnEnter
           unmountOnExit
         >
-          {animationState => (
+          {(animationState: TransitionStatus) => (
             <Portal>
               <FocusLock ref={focusLockRef} autoFocus returnFocus>
                 {children(animationState)}
