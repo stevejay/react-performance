@@ -4,6 +4,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 - check out styled transition group again
 
+## Justifications
+
+- [use `type` for React props](https://medium.com/@martin_hotell/interface-vs-type-alias-in-typescript-2-7-2a8f1777af4c)
+
 ## Available Scripts
 
 In the project directory, you can run:

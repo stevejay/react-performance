@@ -1,7 +1,19 @@
 // Documentation for styled-system theme format:
 // https://styled-system.com/theme-specification
 
-const space = [0, "0.5rem", "1rem", "1.5rem", "2.5rem", "4rem", "6.5rem"];
+// ----- types -----
+
+type ReadonlyArrayWithAliases<T, K extends string> = ReadonlyArray<T> &
+  {
+    [P in K]?: T;
+  };
+
+// ----- space -----
+
+const space: ReadonlyArrayWithAliases<
+  string,
+  "none" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
+> = ["0", "0.5rem", "1rem", "1.5rem", "2.5rem", "4rem", "6.5rem"];
 
 space.none = space[0];
 space.xs = space[1];
@@ -11,12 +23,16 @@ space.lg = space[4];
 space.xl = space[5];
 space.xxl = space[6];
 
+// ----- fonts -----
+
 const fonts = {
   body: "'Open Sans', sans-serif",
   display: "'Montserrat', sans-serif"
 };
 
-const fontSizes = [
+// ----- fontSizes -----
+
+const fontSizes: ReadonlyArrayWithAliases<string, "body"> = [
   "0.75rem",
   "0.875rem",
   "1rem",
@@ -27,6 +43,8 @@ const fontSizes = [
 ];
 
 fontSizes.body = fontSizes[2];
+
+// ----- colors -----
 
 const redViolet = "#C52184";
 const persianPink = "#E574BC";
@@ -47,40 +65,63 @@ const colors = {
   gray600: onyx,
   gray100: "#ECEFF1",
   link
-};
+} as const;
+
+// ----- breakpoints -----
 
 // These are <600px, 600px, 900px, 1200px and 1800px, at 1rem === 16px:
-const breakpoints = ["37.5rem", "56.25rem", "75rem", "112.5rem"];
+const breakpoints: ReadonlyArrayWithAliases<
+  string,
+  "tabletPortrait" | "tabletLandscape" | "desktop" | "wideDesktop"
+> = ["37.5rem", "56.25rem", "75rem", "112.5rem"];
 
 breakpoints.tabletPortrait = breakpoints[0];
 breakpoints.tabletLandscape = breakpoints[1];
 breakpoints.desktop = breakpoints[2];
 breakpoints.wideDesktop = breakpoints[3];
 
+// ----- mediaQueries -----
+
 const mediaQueries = {
   tabletPortrait: `@media screen and (min-width: ${breakpoints[0]})`,
   tabletLandscape: `@media screen and (min-width: ${breakpoints[1]})`,
   desktop: `@media screen and (min-width: ${breakpoints[2]})`,
   wideDesktop: `@media screen and (min-width: ${breakpoints[3]})`
-};
+} as const;
+
+// ----- fontWeights -----
 
 const fontWeights = {
   light: 300,
   normal: 400,
   bold: 600
-};
+} as const;
 
-const lineHeights = [1, 1.4, 1.5];
+// ----- lineHeights -----
 
-const radii = [0, "0.25em", "0.5em", "1em"];
+const lineHeights: ReadonlyArray<number> = [1, 1.4, 1.5];
 
-const timings = [0, 250, 500, 750]; // milliseconds
+// ----- radii -----
+
+const radii: ReadonlyArray<string> = ["0", "0.25em", "0.5em", "1em"];
+
+// ----- timings -----
+
+const timings: ReadonlyArrayWithAliases<
+  number,
+  "modalAnimation" | "contentFade" | "spinner"
+> = [0, 250, 500, 750]; // in milliseconds
 
 timings.modalAnimation = timings[1];
 timings.contentFade = timings[2];
 timings.spinner = timings[3];
 
-const shadows = [
+// ----- shadows -----
+
+const shadows: ReadonlyArrayWithAliases<
+  string,
+  "sm" | "md" | "lg" | "xl" | "xxl"
+> = [
   "none",
   "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)",
   "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
@@ -95,15 +136,24 @@ shadows.lg = shadows[3];
 shadows.xl = shadows[4];
 shadows.xxl = shadows[5];
 
-const borderWidths = [0, "1px"];
+// ----- borderWidths -----
+
+const borderWidths: ReadonlyArrayWithAliases<string, "hair"> = ["0", "1px"];
 
 borderWidths.hair = "1px";
 
-const zIndices = [100, 200, 300];
+// ----- zIndices -----
+
+const zIndices: ReadonlyArrayWithAliases<
+  number,
+  "header" | "sidebar" | "modalDialog"
+> = [100, 200, 300];
 
 zIndices.header = zIndices[0];
 zIndices.sidebar = zIndices[1];
 zIndices.modalDialog = zIndices[2];
+
+// ----- buttons -----
 
 const buttons = {
   primary: {
@@ -116,7 +166,9 @@ const buttons = {
     backgroundColor: "transparent",
     borderColor: colors.white
   }
-};
+} as const;
+
+// ----- theme -----
 
 const theme = {
   space,
