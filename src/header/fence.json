@@ -6,7 +6,6 @@
         "index"
     ],
     "imports": [
-        "shared",
         "compositing-animation-page",
         "picture-element"
     ]
