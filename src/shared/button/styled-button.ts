@@ -1,4 +1,6 @@
-import styled, { DefaultTheme } from "styled-components/macro";
+import styled from "styled-components/macro";
+// eslint-disable-next-line import/named
+import { DefaultTheme } from "styled-components";
 import { space, typography, SpaceProps, TypographyProps } from "styled-system";
 import { darken, lighten } from "polished";
 

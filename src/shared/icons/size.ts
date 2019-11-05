@@ -1,3 +1,4 @@
+/* eslint-disable import/group-exports */
 import { system, FontSizeProps } from "styled-system";
 
 const size = system({

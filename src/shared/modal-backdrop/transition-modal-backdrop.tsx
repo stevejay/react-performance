@@ -3,8 +3,8 @@ import { Portal } from "react-portal";
 import { Transition, TransitionGroup } from "react-transition-group";
 import { TransitionStatus } from "react-transition-group/Transition";
 import styled from "styled-components/macro";
-import { useTheme } from "../use-theme";
-import { forceReflow } from "../dom-utils";
+import { useTheme } from "src/shared/use-theme";
+import { forceReflow } from "src/shared/dom-utils";
 
 const StyledModalBackdrop = styled.div`
   position: fixed;

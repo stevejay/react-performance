@@ -10,6 +10,7 @@
     "haspopup",
     "hyperlink",
     "key",
+    "no",
     "nowrap",
     "performant",
     "placeholder",
@@ -20,6 +21,8 @@
     "seznam",
     "tabbable",
     "tabindex",
+    "unused",
+    "vars",
     "webp"
 ],
   "eslint.validate": [

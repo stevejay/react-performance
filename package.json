@@ -18,8 +18,11 @@
         "aria-hidden": "^1.1.1",
         "body-scroll-lock": "^2.6.4",
         "global": "^4.4.0",
+        "husky": "^3.0.9",
+        "lint-staged": "^9.4.2",
         "lorem-ipsum": "^2.0.3",
         "polished": "^3.4.2",
+        "prettier": "^1.18.2",
         "react": "0.0.0-experimental-f6b8d31a7",
         "react-dom": "0.0.0-experimental-f6b8d31a7",
         "react-focus-lock": "^2.2.1",
@@ -36,6 +39,12 @@
         "tabbable": "^4.0.0",
         "typescript": "^3.6.4"
     },
+    "lint-staged": {
+        "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+            "prettier --write",
+            "git add"
+        ]
+    },
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
@@ -44,7 +53,8 @@
         "predeploy": "npm run build",
         "deploy": "gh-pages -d build",
         "eslint": "eslint --max-warnings 0 \"src/**/*.{js,jsx,ts,tsx}\"",
-        "lint": "npm run eslint"
+        "lint": "npm run eslint",
+        "prettier-write": "./node_modules/.bin/prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\""
     },
     "eslintConfig": {
         "extends": "react-app"
@@ -62,9 +72,15 @@
         ]
     },
     "devDependencies": {
+        "eslint-plugin-import": "^2.18.2",
         "gh-pages": "^2.1.1"
     },
     "babelMacros": {
         "styledComponents": {}
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
     }
 }

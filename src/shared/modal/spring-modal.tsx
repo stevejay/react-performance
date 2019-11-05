@@ -2,9 +2,9 @@ import React from "react";
 import { Portal } from "react-portal";
 import FocusLock from "react-focus-lock";
 import { useTransition } from "react-spring";
-import { useTheme } from "../use-theme";
-import { useAriaHidden } from "../use-aria-hidden";
-import { useDocumentEventListener } from "../use-document-event-listener";
+import { useTheme } from "src/shared/use-theme";
+import { useAriaHidden } from "src/shared/use-aria-hidden";
+import { useDocumentEventListener } from "src/shared/use-document-event-listener";
 
 type Props = {
   readonly isOpen: boolean;

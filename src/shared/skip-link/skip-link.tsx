@@ -1,6 +1,6 @@
 import React from "react";
 import tabbable from "tabbable";
-import { VisuallyHidden } from "../visually-hidden";
+import { VisuallyHidden } from "src/shared/visually-hidden";
 import { SkipLinkButton } from "./skip-link-button";
 import { SkipLinkContext } from "./skip-link-context";
 

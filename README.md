@@ -4,6 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 - check out styled transition group again
 - An alternative to `styled-system` is `@xstyled/system`. It may be more performant.
+- When there is a [new release of eslint-plugin-import](https://github.com/benmosher/eslint-plugin-import/blob/master/CHANGELOG.md) (> v2.18.2), enable `import/group-exports` as an error.
 
 ## Justifications
 
