@@ -1,5 +1,12 @@
 {
-  "tags": ["compositing-animation-page"],
-  "exports": ["index"],
-  "imports": ["shared"]
+    "tags": [
+        "compositing-animation-page"
+    ],
+    "exports": [
+        "index"
+    ],
+    "imports": [
+        "state",
+        "shared"
+    ]
 }

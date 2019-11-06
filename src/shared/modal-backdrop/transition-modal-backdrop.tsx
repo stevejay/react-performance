@@ -3,10 +3,13 @@ import { Portal } from "react-portal";
 import { Transition, TransitionGroup } from "react-transition-group";
 import { TransitionStatus } from "react-transition-group/Transition";
 import styled from "styled-components/macro";
-import { useTheme } from "src/shared/use-theme";
 import { forceReflow } from "src/shared/dom-utils";
 
-const StyledModalBackdrop = styled.div`
+type StyledProps = {
+  readonly duration: number;
+};
+
+const StyledModalBackdrop = styled.div<StyledProps>`
   position: fixed;
   top: 0;
   left: 0;
@@ -16,14 +19,12 @@ const StyledModalBackdrop = styled.div`
   outline: 0;
   background-color: ${props => props.theme.colors.black};
   z-index: ${props => props.theme.zIndices.sidebar};
-  transition: opacity ${props => props.theme.timings.modalAnimation}ms ease-in;
+  transition: opacity ${props => props.duration}ms ease-in;
   will-change: opacity;
 `;
 
 const TRANSITION_STYLES: Partial<
-  {
-    [key in TransitionStatus]: React.CSSProperties;
-  }
+  Record<TransitionStatus, React.CSSProperties>
 > = {
   entering: { opacity: 0.5 },
   entered: { opacity: 0.5 },
@@ -33,32 +34,30 @@ const TRANSITION_STYLES: Partial<
 
 type Props = {
   readonly isOpen: boolean;
+  readonly duration: number;
 };
 
-const TransitionModalBackdrop: React.FC<Props> = ({ isOpen }) => {
-  const duration = useTheme().timings.modalAnimation || 0;
-
-  return (
-    <TransitionGroup component={null} appear>
-      {isOpen && (
-        <Transition
-          timeout={duration}
-          onEnter={forceReflow}
-          mountOnEnter
-          unmountOnExit
-        >
-          {(animationState: TransitionStatus) => (
-            <Portal>
-              <StyledModalBackdrop
-                style={TRANSITION_STYLES[animationState]}
-                role="presentation"
-              />
-            </Portal>
-          )}
-        </Transition>
-      )}
-    </TransitionGroup>
-  );
-};
+const TransitionModalBackdrop: React.FC<Props> = ({ isOpen, duration }) => (
+  <TransitionGroup component={null} appear>
+    {isOpen && (
+      <Transition
+        timeout={duration}
+        onEnter={forceReflow}
+        mountOnEnter
+        unmountOnExit
+      >
+        {(animationState: TransitionStatus) => (
+          <Portal>
+            <StyledModalBackdrop
+              style={TRANSITION_STYLES[animationState]}
+              duration={duration}
+              role="presentation"
+            />
+          </Portal>
+        )}
+      </Transition>
+    )}
+  </TransitionGroup>
+);
 
 export { TransitionModalBackdrop };

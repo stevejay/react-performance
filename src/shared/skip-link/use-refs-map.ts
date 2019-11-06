@@ -4,7 +4,7 @@ type Ref = React.RefObject<HTMLElement>;
 
 // A lookup of ID to component ref.
 const useRefsMap = () => {
-  const refsMap = React.useRef<{ [key in string]: Ref }>({});
+  const refsMap = React.useRef<Record<string, Ref>>({});
 
   const api = React.useMemo(
     () => ({

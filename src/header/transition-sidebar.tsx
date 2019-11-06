@@ -3,7 +3,11 @@ import styled from "styled-components/macro";
 import { TransitionStatus } from "react-transition-group/Transition";
 import { useBodyScrollLock } from "src/shared";
 
-const StyledNav = styled.nav`
+type StyledProps = {
+  readonly duration: number;
+};
+
+const StyledNav = styled.nav<StyledProps>`
   position: fixed;
   right: 0;
   top: 0;
@@ -16,15 +20,13 @@ const StyledNav = styled.nav`
   box-shadow: ${props => props.theme.shadows.xxl};
   z-index: ${props => props.theme.zIndices.sidebar};
   -webkit-overflow-scrolling: touch;
-  transition: opacity ${props => props.theme.timings.modalAnimation}ms ease-in,
-    transform ${props => props.theme.timings.modalAnimation}ms ease-in;
+  transition: opacity ${props => props.duration}ms ease-in,
+    transform ${props => props.duration}ms ease-in;
   will-change: opacity, transform;
 `;
 
 const TRANSITION_STYLES: Partial<
-  {
-    [key in TransitionStatus]: React.CSSProperties;
-  }
+  Record<TransitionStatus, React.CSSProperties>
 > = {
   entering: { opacity: 1, transform: "translateX(0)" },
   entered: { opacity: 1, transform: "translateX(0)" },
@@ -35,18 +37,25 @@ const TRANSITION_STYLES: Partial<
 type Props = {
   readonly animationState: TransitionStatus;
   readonly id: string;
+  readonly duration: number;
 };
 
 const TransitionSidebar: React.FC<Props> = ({
   animationState,
   id,
+  duration,
   children
 }) => {
   const ref = React.useRef<HTMLElement>(null);
   useBodyScrollLock(ref);
 
   return (
-    <StyledNav ref={ref} id={id} style={TRANSITION_STYLES[animationState]}>
+    <StyledNav
+      ref={ref}
+      id={id}
+      style={TRANSITION_STYLES[animationState]}
+      duration={duration}
+    >
       {children}
     </StyledNav>
   );

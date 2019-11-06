@@ -22,18 +22,15 @@ const useDelayedLinkClickHandler = (
         onClick(event);
       }
 
-      if (delayMs === 0) {
-        return;
-      }
-
-      if (event.defaultPrevented) {
-        return;
-      }
-
       // Stop the Link component from running the default handling:
       event.preventDefault();
 
       if (event.button !== 0 || isModifiedEvent(event)) {
+        return;
+      }
+
+      if (delayMs === 0) {
+        history.push(to);
         return;
       }
 

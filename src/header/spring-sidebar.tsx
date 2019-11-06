@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components/macro";
 import { animated, useTransition } from "react-spring";
-import { useBodyScrollLock, useTheme } from "src/shared";
+import { useBodyScrollLock } from "src/shared";
 
 const StyledNav = styled(animated.nav)`
   position: fixed;
@@ -22,14 +22,18 @@ const StyledNav = styled(animated.nav)`
 type Props = {
   readonly id: string;
   readonly animationState: boolean;
+  readonly duration: number;
   children: React.ReactNode;
 };
 
-const SpringSidebar = ({ id, animationState: isOpen, children }: Props) => {
+const SpringSidebar: React.FC<Props> = ({
+  id,
+  animationState: isOpen,
+  duration,
+  children
+}) => {
   const ref = React.useRef<HTMLElement>(null);
   useBodyScrollLock(ref);
-
-  const duration = useTheme().timings.modalAnimation;
 
   const transitions = useTransition(isOpen, null, {
     config: { duration },
@@ -38,13 +42,17 @@ const SpringSidebar = ({ id, animationState: isOpen, children }: Props) => {
     leave: { opacity: 0, transform: "translateX(100px)" }
   });
 
-  return transitions.map(
-    ({ item: visible, key, props }) =>
-      visible && (
-        <StyledNav key={key} ref={ref} id={id} style={props}>
-          {children}
-        </StyledNav>
-      )
+  return (
+    <>
+      {transitions.map(
+        ({ item: visible, key, props }) =>
+          visible && (
+            <StyledNav key={key} ref={ref} id={id} style={props}>
+              {children}
+            </StyledNav>
+          )
+      )}
+    </>
   );
 };
 

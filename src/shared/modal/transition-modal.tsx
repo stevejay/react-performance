@@ -3,20 +3,23 @@ import { Portal } from "react-portal";
 import FocusLock from "react-focus-lock";
 import { Transition, TransitionGroup } from "react-transition-group";
 import { TransitionStatus } from "react-transition-group/Transition";
-import { useTheme } from "src/shared/use-theme";
 import { useAriaHidden } from "src/shared/use-aria-hidden";
 import { useDocumentEventListener } from "src/shared/use-document-event-listener";
 import { forceReflow } from "src/shared/dom-utils";
 
 type Props = {
   readonly isOpen: boolean;
+  readonly duration: number;
   readonly onClose: () => void;
   children: (animationState: TransitionStatus) => React.ReactNode;
 };
 
-const TransitionModal = ({ isOpen, onClose, children }: Props) => {
-  const duration = useTheme().timings.modalAnimation || 0;
-
+const TransitionModal: React.FC<Props> = ({
+  isOpen,
+  duration,
+  onClose,
+  children
+}) => {
   const focusLockRef = React.useRef<HTMLElement>(null);
   useAriaHidden(focusLockRef, isOpen);
 

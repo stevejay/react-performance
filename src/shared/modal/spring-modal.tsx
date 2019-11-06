@@ -2,19 +2,22 @@ import React from "react";
 import { Portal } from "react-portal";
 import FocusLock from "react-focus-lock";
 import { useTransition } from "react-spring";
-import { useTheme } from "src/shared/use-theme";
 import { useAriaHidden } from "src/shared/use-aria-hidden";
 import { useDocumentEventListener } from "src/shared/use-document-event-listener";
 
 type Props = {
   readonly isOpen: boolean;
+  readonly duration: number;
   readonly onClose: () => void;
   children: (isOpen: boolean) => React.ReactNode;
 };
 
-const SpringModal = ({ isOpen, onClose, children }: Props) => {
-  const duration = useTheme().timings.modalAnimation || 0;
-
+const SpringModal: React.FC<Props> = ({
+  isOpen,
+  duration,
+  onClose,
+  children
+}) => {
   const focusLockRef = React.useRef<HTMLElement>(null);
   useAriaHidden(focusLockRef, isOpen);
 
@@ -50,15 +53,19 @@ const SpringModal = ({ isOpen, onClose, children }: Props) => {
     leave: { opacity: 0 }
   });
 
-  return transitions.map(
-    ({ item: visible, key }) =>
-      visible && (
-        <Portal key={key}>
-          <FocusLock ref={focusLockRef} autoFocus returnFocus>
-            {children(isOpen)}
-          </FocusLock>
-        </Portal>
-      )
+  return (
+    <>
+      {transitions.map(
+        ({ item: visible, key }) =>
+          visible && (
+            <Portal key={key}>
+              <FocusLock ref={focusLockRef} autoFocus returnFocus>
+                {children(isOpen)}
+              </FocusLock>
+            </Portal>
+          )
+      )}
+    </>
   );
 };
 

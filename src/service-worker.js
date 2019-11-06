@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 /* eslint-disable import/group-exports */
 /* eslint-disable import/exports-last */
 /* eslint-disable no-console */

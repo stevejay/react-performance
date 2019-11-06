@@ -1,13 +1,16 @@
 import React from "react";
 import { LoremIpsum } from "lorem-ipsum";
+import { useStoreState } from "pullstate";
 import {
   Box,
   Heading,
+  Page,
   Paragraph,
   Stack,
   useScrollToTop,
   useSkipLinkTarget
 } from "src/shared";
+import { AnimationStore, PageWeight } from "src/state";
 import { HeroImage } from "./hero-image";
 
 const lorem = new LoremIpsum({
@@ -17,8 +20,20 @@ const lorem = new LoremIpsum({
   }
 });
 
+const createParagraphs = (maxParagraphs: number) => {
+  const paragraphs: Array<JSX.Element> = [];
+
+  for (let i = 0; i < maxParagraphs; ++i) {
+    paragraphs.push(
+      <Paragraph key={i}>{lorem.generateParagraphs(1)}</Paragraph>
+    );
+  }
+
+  return paragraphs;
+};
+
 type Props = {
-  readonly title: string;
+  readonly title: Page["title"];
 };
 
 const PictureElementPage: React.FC<Props> = ({ title }) => {
@@ -27,17 +42,8 @@ const PictureElementPage: React.FC<Props> = ({ title }) => {
   const headingRef = React.useRef<HTMLHeadingElement>(null);
   useSkipLinkTarget("main-content", headingRef);
 
-  const createParagraphs = () => {
-    const paragraphs: Array<JSX.Element> = [];
-
-    for (let i = 0; i < 500; ++i) {
-      paragraphs.push(
-        <Paragraph key={i}>{lorem.generateParagraphs(1)}</Paragraph>
-      );
-    }
-
-    return paragraphs;
-  };
+  const pageWeight = useStoreState(AnimationStore, s => s.pageWeight);
+  const maxParagraphs = pageWeight === PageWeight.Heavy ? 500 : 1;
 
   return (
     <>
@@ -58,7 +64,7 @@ const PictureElementPage: React.FC<Props> = ({ title }) => {
           >
             {title}
           </Heading>
-          {createParagraphs()}
+          {createParagraphs(maxParagraphs)}
         </Stack>
       </Box>
     </>

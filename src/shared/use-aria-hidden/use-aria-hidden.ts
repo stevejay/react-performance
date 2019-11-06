@@ -8,11 +8,11 @@ const useAriaHidden = (
   shouldHide: boolean
 ) => {
   React.useEffect(() => {
-    if (!shouldHide) {
+    if (!shouldHide || !targetRef.current) {
       return;
     }
 
-    const undo = hideOthers(targetRef.current!);
+    const undo = hideOthers(targetRef.current);
     return () => undo();
   }, [targetRef, shouldHide]);
 };
