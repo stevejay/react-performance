@@ -1,0 +1,12 @@
+{
+    "tags": [
+        "home-page"
+    ],
+    "exports": [
+        "index"
+    ],
+    "imports": [
+        "state",
+        "shared"
+    ]
+}

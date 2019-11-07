@@ -14,7 +14,11 @@ import {
   SkipLink
 } from "src/shared";
 import { TransitionStatus } from "react-transition-group/Transition";
-import { AnimationStore, AnimationLibrary } from "src/state";
+import {
+  AnimationStore,
+  AnimationLibrary,
+  selectAnimationDurationMs
+} from "src/state";
 import { TransitionSidebar } from "./transition-sidebar";
 import { SpringSidebar } from "./spring-sidebar";
 import { NavLinkList } from "./nav-link-list";
@@ -33,7 +37,10 @@ const Header: React.FC<Props> = ({ pages }) => {
   const location = useLocation();
   React.useEffect(handleClose, [location]);
 
-  const duration = useStoreState(AnimationStore, s => s.animationDurationMs);
+  const duration = useStoreState(AnimationStore, s =>
+    selectAnimationDurationMs(s)
+  );
+
   const animationLibrary = useStoreState(
     AnimationStore,
     s => s.animationLibrary

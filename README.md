@@ -11,6 +11,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Justifications
 
 - [use `type` for React props](https://medium.com/@martin_hotell/interface-vs-type-alias-in-typescript-2-7-2a8f1777af4c) (and also [here](https://stackoverflow.com/a/52682220)).
+- use arrow functions for [less lines and less nesting in the simple case](https://www.sitepoint.com/es6-arrow-functions-new-fat-concise-syntax-javascript/), plus it's consistent with how styled components are created. (Counterpoint available [here](https://stackoverflow.com/questions/49306148/why-is-arrow-syntax-preferred-over-standard-functions-for-pure-react-components).)
 
 ### Exceptions
 

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useStoreState } from "pullstate";
 import styled from "styled-components/macro";
 import { useDelayedLinkClickHandler } from "src/shared";
-import { AnimationStore } from "src/state";
+import { AnimationStore, selectAnimationDurationMs } from "src/state";
 
 const EXTRA_DELAY_MS = 50;
 
@@ -22,14 +22,19 @@ type Props = {
 };
 
 function NavLink({ to, label, onClick }: Props): JSX.Element {
-  const duration = useStoreState(AnimationStore, s => s.animationDurationMs);
-  const shouldDelayNavigation = useStoreState(
+  const { duration, shouldDelayNavigation } = useStoreState(
     AnimationStore,
-    s => s.shouldDelayNavigation
+    s => ({
+      duration: selectAnimationDurationMs(s),
+      shouldDelayNavigation: s.shouldDelayNavigation
+    })
   );
 
-  const delay = shouldDelayNavigation ? duration + EXTRA_DELAY_MS : 0;
-  const handleClick = useDelayedLinkClickHandler(to, delay, onClick);
+  const adjustedDuration = shouldDelayNavigation
+    ? duration + EXTRA_DELAY_MS
+    : 0;
+
+  const handleClick = useDelayedLinkClickHandler(to, adjustedDuration, onClick);
 
   return (
     <Link to={to} component={StyledLink} onClick={handleClick}>

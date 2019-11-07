@@ -5,11 +5,17 @@ import { Box, Pages, SkipLinkProvider } from "src/shared";
 import { Header } from "src/header";
 import { PictureElementPage } from "src/modules/picture-element";
 import { CompositingAnimationPage } from "src/modules/compositing-animation";
+import { HomePage } from "src/modules/home";
 import { GlobalStyle } from "./global-style";
 import { theme } from "./theme";
 
 const PAGES: Pages = [
-  { path: "/", title: "Picture Element", component: PictureElementPage },
+  { path: "/", title: "Options", component: HomePage },
+  {
+    path: "/picture-element",
+    title: "Picture Element",
+    component: PictureElementPage
+  },
   {
     path: "/compositing-animation",
     title: "Compositing Animation",

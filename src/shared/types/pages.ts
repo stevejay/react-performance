@@ -1,13 +1,9 @@
-import React from "react";
-
-type Props = {
-  readonly title: string;
-};
-
 export type Page = {
-  path: string;
-  title: string;
-  component: React.FunctionComponent<Props>;
+  readonly path: string;
+  readonly title: string;
+  readonly component: import("react").FunctionComponent<{
+    readonly title: string;
+  }>;
 };
 
 export type Pages = ReadonlyArray<Page>;
