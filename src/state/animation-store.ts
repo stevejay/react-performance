@@ -16,17 +16,17 @@ enum AnimationDuration {
 }
 
 interface AnimationStore {
-  animationLibrary: AnimationLibrary;
   animationDuration: AnimationDuration;
-  shouldDelayNavigation: boolean;
+  animationLibrary: AnimationLibrary;
   pageWeight: PageWeight;
+  shouldDelayNavigation: boolean;
 }
 
 const AnimationStore = new Store<AnimationStore>({
-  animationLibrary: AnimationLibrary.ReactTransitionGroup,
   animationDuration: AnimationDuration.Fast,
-  shouldDelayNavigation: true,
-  pageWeight: PageWeight.Heavy
+  animationLibrary: AnimationLibrary.ReactTransitionGroup,
+  pageWeight: PageWeight.Heavy,
+  shouldDelayNavigation: true
 });
 
 const selectAnimationDurationMs = (store: AnimationStore) =>

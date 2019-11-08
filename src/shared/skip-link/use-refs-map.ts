@@ -11,12 +11,12 @@ const useRefsMap = () => {
       addRef: (id: string, ref: Ref): void => {
         refsMap.current[id] = ref;
       },
+      getRef: (id: string): Ref | null => refsMap.current[id] || null,
       removeRef: (id: string, ref: Ref): void => {
         if (refsMap.current[id] && refsMap.current[id] === ref) {
           delete refsMap.current[id];
         }
-      },
-      getRef: (id: string): Ref | null => refsMap.current[id] || null
+      }
     }),
     [refsMap]
   );

@@ -10,6 +10,7 @@ export * from "./paragraph";
 export * from "./radio-button";
 export * from "./skip-link";
 export * from "./stack";
+export * from "./switcher";
 export * from "./types";
 export * from "./typescript";
 export * from "./use-body-scroll-lock";

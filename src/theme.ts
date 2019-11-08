@@ -13,7 +13,7 @@ type ReadonlyArrayWithAliases<T, K extends string> = ReadonlyArray<T> &
 const space: ReadonlyArrayWithAliases<
   string,
   "none" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
-> = ["0", "0.5rem", "1rem", "1.5rem", "2.5rem", "4rem", "6.5rem"];
+> = ["0px", "0.5rem", "1rem", "1.5rem", "2.5rem", "4rem", "6.5rem"];
 
 space.none = space[0];
 space.xs = space[1];
@@ -103,7 +103,7 @@ const lineHeights: ReadonlyArray<number> = [1, 1.4, 1.5];
 
 // ----- radii -----
 
-const radii: ReadonlyArray<string> = ["0", "0.25em", "0.5em", "1em"];
+const radii: ReadonlyArray<string> = ["0px", "0.25em", "0.5em", "1em"];
 
 // ----- timings -----
 
@@ -138,7 +138,7 @@ shadows.xxl = shadows[5];
 
 // ----- borderWidths -----
 
-const borderWidths: ReadonlyArrayWithAliases<string, "hair"> = ["0", "1px"];
+const borderWidths: ReadonlyArrayWithAliases<string, "hair"> = ["0px", "1px"];
 
 borderWidths.hair = "1px";
 

@@ -10,16 +10,16 @@ import { GlobalStyle } from "./global-style";
 import { theme } from "./theme";
 
 const PAGES: Pages = [
-  { path: "/", title: "Options", component: HomePage },
+  { component: HomePage, path: "/", title: "Options" },
   {
+    component: PictureElementPage,
     path: "/picture-element",
-    title: "Picture Element",
-    component: PictureElementPage
+    title: "Picture Element"
   },
   {
+    component: CompositingAnimationPage,
     path: "/compositing-animation",
-    title: "Compositing Animation",
-    component: CompositingAnimationPage
+    title: "Compositing Animation"
   }
 ];
 

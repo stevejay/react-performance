@@ -1,1 +1,1 @@
-export { VisuallyHidden } from "./visually-hidden";
+export { VisuallyHidden, visuallyHidden } from "./visually-hidden";

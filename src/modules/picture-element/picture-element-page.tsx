@@ -15,8 +15,8 @@ import { HeroImage } from "./hero-image";
 
 const lorem = new LoremIpsum({
   sentencesPerParagraph: {
-    min: 8,
-    max: 8
+    max: 8,
+    min: 8
   }
 });
 

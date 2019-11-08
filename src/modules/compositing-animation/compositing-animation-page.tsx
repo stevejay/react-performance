@@ -1,12 +1,14 @@
 import React from "react";
 import global from "global";
 import {
+  blockDOMUpdates,
   Box,
   Button,
   Heading,
   Page,
   Paragraph,
   Stack,
+  Switcher,
   useScrollToTop,
   useSkipLinkTarget
 } from "src/shared";
@@ -26,7 +28,7 @@ const CompositingAnimationPage: React.FC<Props> = ({ title }) => {
     setIsLoading(true);
     global.setTimeout(() => {
       setIsLoading(false);
-    }, 3000);
+    }, 5000);
   };
 
   return (
@@ -43,20 +45,41 @@ const CompositingAnimationPage: React.FC<Props> = ({ title }) => {
           {title}
         </Heading>
         <Paragraph>
-          The button below will show the loading state for three seconds when
-          clicked.
+          The first two buttons show a spinner for five seconds when clicked,
+          but each animates the spinner in a different way. The second button
+          will enter a synchronous (blocking) loop for two seconds when clicked.
         </Paragraph>
-        <Box display="flex">
+        <Switcher spacing="1rem" threshold="66ch">
           <Button
             isLoading={isLoading}
+            useCSSAnimation
             variant="primary"
             py={1}
             px={2}
             onClick={handleClick}
           >
-            Perform some action
+            CSS animation
           </Button>
-        </Box>
+          <Button
+            isLoading={isLoading}
+            useCSSAnimation={false}
+            variant="primary"
+            py={1}
+            px={2}
+            onClick={handleClick}
+          >
+            rAF animation
+          </Button>
+          <Button
+            variant="primary"
+            useCSSAnimation={false}
+            py={1}
+            px={2}
+            onClick={() => blockDOMUpdates(2000)}
+          >
+            Freeze site for two seconds
+          </Button>
+        </Switcher>
       </Stack>
     </Box>
   );

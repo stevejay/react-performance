@@ -63,6 +63,7 @@ const Header: React.FC<Props> = ({ pages }) => {
         React Experiments
       </Heading>
       <Button
+        useCSSAnimation
         variant="outlineInverted"
         px="0.25em"
         aria-haspopup="menu"

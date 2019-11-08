@@ -30,11 +30,11 @@ type Props = {
   readonly isLoading: boolean;
 };
 
-const Loader: React.FC<Props> = ({ isLoading }) =>
+const CSSAnimationLoader: React.FC<Props> = ({ isLoading }) =>
   isLoading ? (
     <LoaderWrap>
       <Icons.Spinner size={5} />
     </LoaderWrap>
   ) : null;
 
-export { Loader };
+export { CSSAnimationLoader };

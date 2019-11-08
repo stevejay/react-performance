@@ -1,0 +1,53 @@
+import React from "react";
+import styled from "styled-components/macro";
+import { useSpring, animated } from "react-spring";
+import { useTheme } from "src/shared/use-theme";
+import { Icons } from "src/shared/icons";
+
+const LoaderWrap = styled.span`
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+`;
+
+const IconWrap = styled(animated.span)``;
+
+type Props = {
+  readonly isLoading: boolean;
+};
+
+const SpringAnimationLoader: React.FC<Props> = ({ isLoading }) => {
+  const duration = useTheme().timings.spinner || 0;
+
+  const animationProps = useSpring({
+    from: { transform: "rotate(0deg)" },
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    to: async (next: any) => {
+      while (isLoading) {
+        await next({ transform: "rotate(360deg)" });
+        await next({ reset: true });
+      }
+    },
+    config: { duration }
+  });
+
+  if (!isLoading) {
+    return null;
+  }
+
+  return (
+    <LoaderWrap>
+      <IconWrap style={animationProps}>
+        <Icons.Spinner size={5} />
+      </IconWrap>
+    </LoaderWrap>
+  );
+};
+
+export { SpringAnimationLoader };
