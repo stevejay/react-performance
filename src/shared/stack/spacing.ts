@@ -1,15 +1,15 @@
 /* eslint-disable import/group-exports */
-import { system, SpaceProps } from "styled-system";
+import { style } from "@xstyled/system";
 
-const spacing = system({
-  spacing: {
-    property: "marginTop",
-    scale: "space"
-  }
+const spacing = style({
+  prop: "spacing",
+  cssProperty: "marginTop",
+  key: "space"
 });
 
 export type SpacingProp = {
-  spacing: SpaceProps["margin"];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  spacing: any; // ????
 };
 
 export { spacing };

@@ -2,17 +2,23 @@
   "cSpell.words": [
     "browserslist",
     "checkbox",
+    "csstype",
     "ctrl",
     "destructure",
     "dialog",
     "dismissable",
+    "es",
+    "esnext",
     "flexbox",
+    "flexboxes",
     "force",
     "grays",
     "haspopup",
     "hyperlink",
+    "interop",
     "key",
     "keys",
+    "module",
     "no",
     "nowrap",
     "performant",
@@ -29,7 +35,8 @@
     "tabindex",
     "unused",
     "vars",
-    "webp"
+    "webp",
+    "xstyled"
 ],
   "eslint.validate": [
     "javascript",

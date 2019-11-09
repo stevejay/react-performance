@@ -1,5 +1,5 @@
 // Documentation for styled-system theme format:
-// https://styled-system.com/theme-specification
+// https://www.smooth-code.com/open-source/xstyled/docs/theme-specification/
 
 // ----- types -----
 
@@ -7,6 +7,10 @@ type ReadonlyArrayWithAliases<T, K extends string> = ReadonlyArray<T> &
   {
     [P in K]?: T;
   };
+
+type ReadonlyRecord<T, K extends string> = {
+  [P in K]: T;
+};
 
 // ----- space -----
 
@@ -69,24 +73,25 @@ const colors = {
 
 // ----- breakpoints -----
 
-// These are <600px, 600px, 900px, 1200px and 1800px, at 1rem === 16px:
-const breakpoints: ReadonlyArrayWithAliases<
-  string,
-  "tabletPortrait" | "tabletLandscape" | "desktop" | "wideDesktop"
-> = ["37.5rem", "56.25rem", "75rem", "112.5rem"];
-
-breakpoints.tabletPortrait = breakpoints[0];
-breakpoints.tabletLandscape = breakpoints[1];
-breakpoints.desktop = breakpoints[2];
-breakpoints.wideDesktop = breakpoints[3];
+// px values are for 1rem === 16px:
+const breakpoints: ReadonlyRecord<
+  string | number,
+  "xs" | "sm" | "md" | "lg" | "xl"
+> = {
+  xs: 0,
+  sm: "37.5rem", // tabletPortrait 600px
+  md: "56.25rem", // tabletLandscape 900px
+  lg: "75rem", // desktop 1200px
+  xl: "112.5rem" // wideDesktop 1800px
+};
 
 // ----- mediaQueries -----
 
 const mediaQueries = {
-  tabletPortrait: `@media screen and (min-width: ${breakpoints[0]})`,
-  tabletLandscape: `@media screen and (min-width: ${breakpoints[1]})`,
-  desktop: `@media screen and (min-width: ${breakpoints[2]})`,
-  wideDesktop: `@media screen and (min-width: ${breakpoints[3]})`
+  tabletPortrait: `@media screen and (min-width: ${breakpoints.sm})`,
+  tabletLandscape: `@media screen and (min-width: ${breakpoints.md})`,
+  desktop: `@media screen and (min-width: ${breakpoints.lg})`,
+  wideDesktop: `@media screen and (min-width: ${breakpoints.xl})`
 } as const;
 
 // ----- fontWeights -----
@@ -171,14 +176,15 @@ const buttons = {
 // ----- theme -----
 
 const theme = {
+  name: "default",
   space,
   fonts,
   fontSizes,
+  fontWeights,
   colors,
   breakpoints,
   borderWidths,
   mediaQueries,
-  fontWeights,
   lineHeights,
   radii,
   shadows,

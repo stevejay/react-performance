@@ -29,9 +29,7 @@ const HeroImage: React.FC<Props> = ({
   const createPortraitSrcSet = (imagePath: string, extension: string) =>
     `${imagePath}@half${extension} 600w, ${imagePath}${extension} 1200w`;
 
-  const landscapeMediaQuery = `(min-width: ${
-    useTheme().breakpoints.tabletPortrait
-  })`;
+  const landscapeMediaQuery = `(min-width: ${useTheme().breakpoints.sm})`;
 
   return (
     <HeroImageWrap>

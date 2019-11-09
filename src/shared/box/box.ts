@@ -1,34 +1,38 @@
 import styled from "styled-components/macro";
 import {
+  backgrounds,
   color,
-  flexbox,
+  flexboxes,
   layout,
-  position,
-  shadow,
+  positioning,
+  shadows,
   space,
+  BackgroundsProps,
   ColorProps,
-  FlexboxProps,
+  FlexboxesProps,
   LayoutProps,
-  PositionProps,
-  ShadowProps,
+  PositioningProps,
+  ShadowsProps,
   SpaceProps
-} from "styled-system";
+} from "@xstyled/system";
 
-type Props = ColorProps &
-  FlexboxProps &
+type Props = BackgroundsProps &
+  ColorProps &
+  FlexboxesProps &
   LayoutProps &
-  PositionProps &
-  ShadowProps &
+  PositioningProps &
+  ShadowsProps &
   SpaceProps;
 
 const Box = styled.div<Props>`
   min-width: 0;
   display: flex;
+  ${backgrounds}
   ${color}
-  ${flexbox}
+  ${flexboxes}
   ${layout}
-  ${position}
-  ${shadow}
+  ${positioning}
+  ${shadows}
   ${space}
 `;
 
