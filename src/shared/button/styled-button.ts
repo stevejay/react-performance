@@ -21,7 +21,7 @@ const StyledButton = styled.button<StyledButtonProps>(
     ${space}
     appearance: none;
     background: none repeat scroll 0 0 transparent;
-    border: none;
+    /* border: none; */
     border-spacing: 0;
     padding: 0;
     margin: 0;
