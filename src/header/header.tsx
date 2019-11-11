@@ -52,7 +52,6 @@ const Header: React.FC<Props> = ({ pages }) => {
       color="white"
       backgroundColor="primary900"
       p={{ xs: 1, sm: 2 }}
-      display="flex"
       justifyContent="space-between"
       alignItems="center"
       boxShadow="md"

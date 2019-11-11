@@ -46,12 +46,8 @@ const StyledInput = styled.input`
     content: "";
     position: absolute;
     display: none;
-
-    /* left: 0.45em;
-    top: 0.2em; */
     left: 0.625em;
     top: 0.625em;
-
     width: 0.375em;
     height: 0.75em;
     border: solid white;

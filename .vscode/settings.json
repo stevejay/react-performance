@@ -36,6 +36,8 @@
     "unused",
     "vars",
     "webp",
+    "xgrid",
+    "xgrids",
     "xstyled"
 ],
   "eslint.validate": [

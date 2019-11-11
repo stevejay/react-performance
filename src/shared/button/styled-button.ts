@@ -1,16 +1,24 @@
 import styled from "styled-components/macro";
-// eslint-disable-next-line import/named
-import { DefaultTheme, css } from "styled-components";
-import { space, typography, SpaceProps, TypographyProps } from "styled-system";
+import { css } from "styled-components";
+import {
+  space,
+  typography,
+  SpaceProps,
+  TypographyProps
+} from "@xstyled/system";
 import { darken, lighten } from "polished";
 
+type ButtonVariants = import("styled-components").DefaultTheme["buttons"];
+
 type StyledButtonProps = {
-  readonly variant: keyof DefaultTheme["buttons"];
+  readonly variant: keyof ButtonVariants;
 } & SpaceProps &
   TypographyProps;
 
 const StyledButton = styled.button<StyledButtonProps>(
   ({ theme, variant }) => css`
+    ${typography}
+    ${space}
     appearance: none;
     background: none repeat scroll 0 0 transparent;
     border: none;
@@ -23,13 +31,9 @@ const StyledButton = styled.button<StyledButtonProps>(
     color: ${theme.buttons[variant].color};
     font-weight: ${theme.fontWeights.normal};
     line-height: ${theme.lineHeights[2]};
-    border-width: ${theme.borderWidths.hair};
-    border-style: solid;
-    border-color: ${theme.buttons[variant].borderColor};
+    border: ${theme.borderWidths.hair} solid
+      ${theme.buttons[variant].borderColor};
     border-radius: ${theme.radii[1]};
-
-    ${typography}
-    ${space}
 
     &:disabled {
       background-color: ${lighten(0.5, theme.buttons[variant].backgroundColor)};

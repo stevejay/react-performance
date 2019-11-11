@@ -1,5 +1,5 @@
 import styled from "styled-components/macro";
-// import { css } from "styled-components";
+import { css } from "styled-components";
 
 // See https://zellwk.com/blog/hide-content-accessibly/
 // Compatibility: IE9+ and modern browsers; see
@@ -9,7 +9,7 @@ type Props = {
   readonly isFocusable?: boolean;
 };
 
-const visuallyHidden = (props: Props) => `
+const visuallyHidden = (props: Props) => css`
   /* && is for increased specificity: */
   &&${props.isFocusable ? ":not(:focus):not(:active)" : ""} {
     border: 0;

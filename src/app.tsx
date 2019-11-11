@@ -28,7 +28,7 @@ const App: React.FC = () => (
     <>
       <GlobalStyle />
       <SkipLinkProvider>
-        <Box minHeight="100vh" display="flex" flexDirection="column">
+        <Box minHeight="100vh" flexDirection="column">
           <Header pages={PAGES} />
           <Box as="main" flexGrow={1} flexDirection="column">
             <Switch>
