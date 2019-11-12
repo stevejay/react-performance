@@ -17,27 +17,29 @@ type StyledButtonProps = {
 
 const StyledButton = styled.button<StyledButtonProps>(
   ({ theme, variant }) => css`
-    ${typography}
-    ${space}
     appearance: none;
     background: none repeat scroll 0 0 transparent;
-    /* border: none; */
     border-spacing: 0;
     padding: 0;
     margin: 0;
     cursor: pointer;
     position: relative;
-    background-color: ${theme.buttons[variant].backgroundColor};
-    color: ${theme.buttons[variant].color};
     font-weight: ${theme.fontWeights.normal};
     line-height: ${theme.lineHeights[2]};
+    border-radius: ${theme.radii[1]};
+    background-color: ${theme.buttons[variant].backgroundColor};
+    color: ${theme.buttons[variant].color};
     border: ${theme.borderWidths.hair} solid
       ${theme.buttons[variant].borderColor};
-    border-radius: ${theme.radii[1]};
+    ${typography}
+    ${space}
 
     &:disabled {
-      background-color: ${lighten(0.5, theme.buttons[variant].backgroundColor)};
-      border-color: ${lighten(0.5, theme.buttons[variant].borderColor)};
+      background-color: ${lighten(
+        0.35,
+        theme.buttons[variant].backgroundColor
+      )};
+      border-color: ${lighten(0.35, theme.buttons[variant].borderColor)};
     }
 
     &:disabled,

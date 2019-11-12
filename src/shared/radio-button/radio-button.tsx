@@ -3,13 +3,10 @@ import styled from "styled-components/macro";
 import useId from "@charlietango/use-id";
 import { focusRing } from "src/shared/mixins";
 import { RadioButtonGroupContext } from "./radio-button-group";
-// import { visuallyHidden } from "src/shared/visually-hidden";
 
 // Guide used for styling this control:
 // https://scottaohara.github.io/a11y_styled_form_controls/src/radio-button/
 // (pattern 1)
-
-// TODO: could control groupName via RadioButtonGroup.
 
 type Props = {
   readonly label: string;

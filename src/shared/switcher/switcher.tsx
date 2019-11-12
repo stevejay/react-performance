@@ -43,6 +43,7 @@ const StyledInnerWrap = styled.div<Required<Props>>(
   `
 );
 
+// A.k.a. the holy albatross
 const Switcher: React.FC<Props> = ({ limit, spacing, threshold, children }) => (
   <StyledOuterWrap>
     <StyledInnerWrap

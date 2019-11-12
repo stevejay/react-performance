@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/class-name-casing */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-// Note: This is an early draft; there may be issues and some typings use any.
+// Note: This is an early draft; there may be issues and a few typings use any.
 
 // Acknowledgements:
 // - The `styled-system` typings on DefinitelyTyped:
@@ -19,46 +19,46 @@ declare module "@xstyled/system" {
     propTypes?: ReadonlyArray<string>;
   }
 
-  declare type ThemeGetterFunc = (
+  export type ThemeGetterFunc = (
     props: Partial<{ theme: StyledComponents.DefaultTheme }>
   ) => React.ReactText;
 
-  export declare type TLengthStyledSystem = string | 0 | number;
+  export type TLengthStyledSystem = string | 0 | number;
 
-  export declare type ResponsiveValue<T> = T | { [key: string]: T };
+  export type ResponsiveValue<T> = T | { [key: string]: T };
 
   // ----- GETTERS -----
 
-  declare function getColor(value: string | number): ThemeGetterFunc;
-  declare function getPx(value: string | number): ThemeGetterFunc;
-  declare function getPercent(value: string | number): ThemeGetterFunc;
-  declare function getRadius(value: string | number): ThemeGetterFunc;
-  declare function getTransition(value: string | number): ThemeGetterFunc;
-  declare function getSpace(value: string | number): ThemeGetterFunc;
-  declare function getSize(value: string | number): ThemeGetterFunc;
-  declare function getFont(value: string | number): ThemeGetterFunc;
-  declare function getLineHeight(value: string | number): ThemeGetterFunc;
-  declare function getFontWeight(value: string | number): ThemeGetterFunc;
-  declare function getLetterSpacing(value: string | number): ThemeGetterFunc;
-  declare function getFontSize(value: string | number): ThemeGetterFunc;
-  declare function getZIndex(value: string | number): ThemeGetterFunc;
-  declare function getBorder(value: string | number): ThemeGetterFunc;
-  declare function getBorderWidth(value: string | number): ThemeGetterFunc;
-  declare function getBorderStyle(value: string | number): ThemeGetterFunc;
-  declare function getShadow(value: string | number): ThemeGetterFunc;
+  export function getColor(value: string | number): ThemeGetterFunc;
+  export function getPx(value: string | number): ThemeGetterFunc;
+  export function getPercent(value: string | number): ThemeGetterFunc;
+  export function getRadius(value: string | number): ThemeGetterFunc;
+  export function getTransition(value: string | number): ThemeGetterFunc;
+  export function getSpace(value: string | number): ThemeGetterFunc;
+  export function getSize(value: string | number): ThemeGetterFunc;
+  export function getFont(value: string | number): ThemeGetterFunc;
+  export function getLineHeight(value: string | number): ThemeGetterFunc;
+  export function getFontWeight(value: string | number): ThemeGetterFunc;
+  export function getLetterSpacing(value: string | number): ThemeGetterFunc;
+  export function getFontSize(value: string | number): ThemeGetterFunc;
+  export function getZIndex(value: string | number): ThemeGetterFunc;
+  export function getBorder(value: string | number): ThemeGetterFunc;
+  export function getBorderWidth(value: string | number): ThemeGetterFunc;
+  export function getBorderStyle(value: string | number): ThemeGetterFunc;
+  export function getShadow(value: string | number): ThemeGetterFunc;
 
   // ----- BASICS -----
 
-  export declare const color: StyleFn;
+  export const color: StyleFn;
 
   export interface ColorProps {
     readonly color?: ResponsiveValue<CSS.ColorProperty>;
   }
 
-  export declare const opacity: StyleFn;
-  export declare const overflow: StyleFn;
-  export declare const transition: StyleFn;
-  export declare const basics: StyleFn;
+  export const opacity: StyleFn;
+  export const overflow: StyleFn;
+  export const transition: StyleFn;
+  export const basics: StyleFn;
 
   export interface OpacityProps {
     readonly opacity?: ResponsiveValue<CSS.GlobalsNumber>;
@@ -79,21 +79,21 @@ declare module "@xstyled/system" {
 
   // ----- SPACE -----
 
-  export declare const margin: StyleFn;
-  export declare const marginTop: StyleFn;
-  export declare const marginRight: StyleFn;
-  export declare const marginBottom: StyleFn;
-  export declare const marginLeft: StyleFn;
-  export declare const mx: StyleFn;
-  export declare const my: StyleFn;
-  export declare const padding: StyleFn;
-  export declare const paddingTop: StyleFn;
-  export declare const paddingRight: StyleFn;
-  export declare const paddingBottom: StyleFn;
-  export declare const paddingLeft: StyleFn;
-  export declare const px: StyleFn;
-  export declare const py: StyleFn;
-  export declare const space: StyleFn;
+  export const margin: StyleFn;
+  export const marginTop: StyleFn;
+  export const marginRight: StyleFn;
+  export const marginBottom: StyleFn;
+  export const marginLeft: StyleFn;
+  export const mx: StyleFn;
+  export const my: StyleFn;
+  export const padding: StyleFn;
+  export const paddingTop: StyleFn;
+  export const paddingRight: StyleFn;
+  export const paddingBottom: StyleFn;
+  export const paddingLeft: StyleFn;
+  export const px: StyleFn;
+  export const py: StyleFn;
+  export const space: StyleFn;
 
   export interface MarginProps<TLength = TLengthStyledSystem> {
     readonly m?: ResponsiveValue<CSS.MarginTopProperty<TLength>>;
@@ -181,16 +181,16 @@ declare module "@xstyled/system" {
 
   // ----- LAYOUT -----
 
-  export declare const display: StyleFn;
-  export declare const width: StyleFn;
-  export declare const height: StyleFn;
-  export declare const maxWidth: StyleFn;
-  export declare const maxHeight: StyleFn;
-  export declare const minWidth: StyleFn;
-  export declare const minHeight: StyleFn;
-  export declare const size: StyleFn; // sets both width and height
-  export declare const verticalAlign: StyleFn;
-  export declare const layout: StyleFn;
+  export const display: StyleFn;
+  export const width: StyleFn;
+  export const height: StyleFn;
+  export const maxWidth: StyleFn;
+  export const maxHeight: StyleFn;
+  export const minWidth: StyleFn;
+  export const minHeight: StyleFn;
+  export const size: StyleFn;
+  export const verticalAlign: StyleFn;
+  export const layout: StyleFn;
 
   export interface DisplayProps {
     readonly display?: ResponsiveValue<CSS.DisplayProperty>;
@@ -243,9 +243,9 @@ declare module "@xstyled/system" {
 
   // ----- XGRID -----
 
-  export declare const col: StyleFn;
-  export declare const row: StyleFn;
-  export declare const xgrids: StyleFn;
+  export const col: StyleFn;
+  export const row: StyleFn;
+  export const xgrids: StyleFn;
 
   export interface ColProps {
     readonly col?: ResponsiveValue<string | number | boolean>;
@@ -259,14 +259,14 @@ declare module "@xstyled/system" {
 
   // ----- TYPOGRAPHY -----
 
-  export declare const fontFamily: StyleFn;
-  export declare const fontSize: StyleFn;
-  export declare const lineHeight: StyleFn;
-  export declare const fontWeight: StyleFn;
-  export declare const textAlign: StyleFn;
-  export declare const letterSpacing: StyleFn;
-  export declare const textTransform: StyleFn;
-  export declare const typography: StyleFn;
+  export const fontFamily: StyleFn;
+  export const fontSize: StyleFn;
+  export const lineHeight: StyleFn;
+  export const fontWeight: StyleFn;
+  export const textAlign: StyleFn;
+  export const letterSpacing: StyleFn;
+  export const textTransform: StyleFn;
+  export const typography: StyleFn;
 
   export interface FontFamilyProps {
     readonly fontFamily?: ResponsiveValue<CSS.FontFamilyProperty>;
@@ -310,18 +310,18 @@ declare module "@xstyled/system" {
 
   // ----- FLEXBOXES -----
 
-  export declare const alignItems: StyleFn;
-  export declare const alignContent: StyleFn;
-  export declare const justifyContent: StyleFn;
-  export declare const justifyItems: StyleFn;
-  export declare const flexWrap: StyleFn;
-  export declare const flexBasis: StyleFn;
-  export declare const flexDirection: StyleFn;
-  export declare const flex: StyleFn;
-  export declare const justifySelf: StyleFn;
-  export declare const alignSelf: StyleFn;
-  export declare const order: StyleFn;
-  export declare const flexboxes: StyleFn;
+  export const alignItems: StyleFn;
+  export const alignContent: StyleFn;
+  export const justifyContent: StyleFn;
+  export const justifyItems: StyleFn;
+  export const flexWrap: StyleFn;
+  export const flexBasis: StyleFn;
+  export const flexDirection: StyleFn;
+  export const flex: StyleFn;
+  export const justifySelf: StyleFn;
+  export const alignSelf: StyleFn;
+  export const order: StyleFn;
+  export const flexboxes: StyleFn;
 
   export interface AlignItemsProps {
     readonly alignItems?: ResponsiveValue<CSS.AlignItemsProperty>;
@@ -383,19 +383,19 @@ declare module "@xstyled/system" {
 
   // ----- GRIDS -----
 
-  export declare const gridGap: StyleFn;
-  export declare const gridColumnGap: StyleFn;
-  export declare const gridRowGap: StyleFn;
-  export declare const gridColumn: StyleFn;
-  export declare const gridRow: StyleFn;
-  export declare const gridAutoFlow: StyleFn;
-  export declare const gridAutoColumns: StyleFn;
-  export declare const gridAutoRows: StyleFn;
-  export declare const gridTemplateColumns: StyleFn;
-  export declare const gridTemplateRows: StyleFn;
-  export declare const gridTemplateAreas: StyleFn;
-  export declare const gridArea: StyleFn;
-  export declare const grids: StyleFn;
+  export const gridGap: StyleFn;
+  export const gridColumnGap: StyleFn;
+  export const gridRowGap: StyleFn;
+  export const gridColumn: StyleFn;
+  export const gridRow: StyleFn;
+  export const gridAutoFlow: StyleFn;
+  export const gridAutoColumns: StyleFn;
+  export const gridAutoRows: StyleFn;
+  export const gridTemplateColumns: StyleFn;
+  export const gridTemplateRows: StyleFn;
+  export const gridTemplateAreas: StyleFn;
+  export const gridArea: StyleFn;
+  export const grids: StyleFn;
 
   export interface GridGapProps<TLength = TLengthStyledSystem> {
     readonly gridGap?: ResponsiveValue<CSS.GridGapProperty<TLength>>;
@@ -469,13 +469,13 @@ declare module "@xstyled/system" {
 
   // ----- BACKGROUNDS -----
 
-  export declare const background: StyleFn;
-  export declare const backgroundColor: StyleFn;
-  export declare const backgroundImage: StyleFn;
-  export declare const backgroundSize: StyleFn;
-  export declare const backgroundPosition: StyleFn;
-  export declare const backgroundRepeat: StyleFn;
-  export declare const backgrounds: StyleFn;
+  export const background: StyleFn;
+  export const backgroundColor: StyleFn;
+  export const backgroundImage: StyleFn;
+  export const backgroundSize: StyleFn;
+  export const backgroundPosition: StyleFn;
+  export const backgroundRepeat: StyleFn;
+  export const backgrounds: StyleFn;
 
   export interface BackgroundProps {
     readonly background?: ResponsiveValue<CSS.BackgroundProperty<TLength>>;
@@ -515,13 +515,13 @@ declare module "@xstyled/system" {
 
   // ----- POSITIONING -----
 
-  export declare const position: StyleFn;
-  export declare const zIndex: StyleFn;
-  export declare const top: StyleFn;
-  export declare const right: StyleFn;
-  export declare const bottom: StyleFn;
-  export declare const left: StyleFn;
-  export declare const positioning: StyleFn;
+  export const position: StyleFn;
+  export const zIndex: StyleFn;
+  export const top: StyleFn;
+  export const right: StyleFn;
+  export const bottom: StyleFn;
+  export const left: StyleFn;
+  export const positioning: StyleFn;
 
   export interface PositionProps {
     readonly position?: ResponsiveValue<CSS.PositionProperty>;
@@ -557,20 +557,20 @@ declare module "@xstyled/system" {
 
   // ----- BORDERS -----
 
-  export declare const border: StyleFn;
-  export declare const borderTop: StyleFn;
-  export declare const borderTopColor: StyleFn;
-  export declare const borderRight: StyleFn;
-  export declare const borderRightColor: StyleFn;
-  export declare const borderBottom: StyleFn;
-  export declare const borderBottomColor: StyleFn;
-  export declare const borderLeft: StyleFn;
-  export declare const borderLeftColor: StyleFn;
-  export declare const borderColor: StyleFn;
-  export declare const borderWidth: StyleFn;
-  export declare const borderStyle: StyleFn;
-  export declare const borderRadius: StyleFn;
-  export declare const borders: StyleFn;
+  export const border: StyleFn;
+  export const borderTop: StyleFn;
+  export const borderTopColor: StyleFn;
+  export const borderRight: StyleFn;
+  export const borderRightColor: StyleFn;
+  export const borderBottom: StyleFn;
+  export const borderBottomColor: StyleFn;
+  export const borderLeft: StyleFn;
+  export const borderLeftColor: StyleFn;
+  export const borderColor: StyleFn;
+  export const borderWidth: StyleFn;
+  export const borderStyle: StyleFn;
+  export const borderRadius: StyleFn;
+  export const borders: StyleFn;
 
   export interface BorderProps<TLength = TLengthStyledSystem> {
     readonly border?: ResponsiveValue<CSS.BorderProperty<TLength>>;
@@ -641,9 +641,9 @@ declare module "@xstyled/system" {
 
   // ----- SHADOWS -----
 
-  export declare const boxShadow: StyleFn;
-  export declare const textShadow: StyleFn;
-  export declare const shadows: StyleFn;
+  export const boxShadow: StyleFn;
+  export const textShadow: StyleFn;
+  export const shadows: StyleFn;
 
   export interface BoxShadowProps {
     readonly boxShadow?: ResponsiveValue<CSS.BoxShadowProperty | number>;
@@ -657,7 +657,7 @@ declare module "@xstyled/system" {
 
   // ----- SYSTEM -----
 
-  export declare const system: StyleFn;
+  export const system: StyleFn;
 
   export interface SystemProps
     extends BackgroundsProps,
@@ -674,13 +674,11 @@ declare module "@xstyled/system" {
 
   // ----- COMPOSE -----
 
-  export declare function compose(...parsers: ReadonlyArray<StyleFn>): StyleFn;
+  export function compose(...parsers: ReadonlyArray<StyleFn>): StyleFn;
 
-  // ----- createSystemComponent -----
+  // ----- CREATE_SYSTEM_COMPONENT -----
 
-  //  <C extends AnyStyledComponent>(component: C)
-
-  export declare function createSystemComponent(
+  export function createSystemComponent(
     react: typeof React,
     defaultComponent: string | React.ReactNode,
     system: StyleFn
@@ -688,31 +686,31 @@ declare module "@xstyled/system" {
 
   // ----- TH -----
 
-  declare function th(path: string): ThemeGetterFunc;
+  export function th(path: string): ThemeGetterFunc;
 
-  declare namespace th {
-    declare function color(value: string | number): ThemeGetterFunc;
-    declare function px(value: string | number): ThemeGetterFunc;
-    declare function percent(value: string | number): ThemeGetterFunc;
-    declare function radius(value: string | number): ThemeGetterFunc;
-    declare function transition(value: string | number): ThemeGetterFunc;
-    declare function space(value: string | number): ThemeGetterFunc;
-    declare function size(value: string | number): ThemeGetterFunc;
-    declare function font(value: string | number): ThemeGetterFunc;
-    declare function fontSize(value: string | number): ThemeGetterFunc;
-    declare function lineHeight(value: string | number): ThemeGetterFunc;
-    declare function fontWeight(value: string | number): ThemeGetterFunc;
-    declare function letterSpacing(value: string | number): ThemeGetterFunc;
-    declare function zIndex(value: string | number): ThemeGetterFunc;
-    declare function border(value: string | number): ThemeGetterFunc;
-    declare function borderWidth(value: string | number): ThemeGetterFunc;
-    declare function borderStyle(value: string | number): ThemeGetterFunc;
-    declare function shadow(value: string | number): ThemeGetterFunc;
+  namespace th {
+    export function color(value: string | number): ThemeGetterFunc;
+    export function px(value: string | number): ThemeGetterFunc;
+    export function percent(value: string | number): ThemeGetterFunc;
+    export function radius(value: string | number): ThemeGetterFunc;
+    export function transition(value: string | number): ThemeGetterFunc;
+    export function space(value: string | number): ThemeGetterFunc;
+    export function size(value: string | number): ThemeGetterFunc;
+    export function font(value: string | number): ThemeGetterFunc;
+    export function fontSize(value: string | number): ThemeGetterFunc;
+    export function lineHeight(value: string | number): ThemeGetterFunc;
+    export function fontWeight(value: string | number): ThemeGetterFunc;
+    export function letterSpacing(value: string | number): ThemeGetterFunc;
+    export function zIndex(value: string | number): ThemeGetterFunc;
+    export function border(value: string | number): ThemeGetterFunc;
+    export function borderWidth(value: string | number): ThemeGetterFunc;
+    export function borderStyle(value: string | number): ThemeGetterFunc;
+    export function shadow(value: string | number): ThemeGetterFunc;
   }
 
   // ----- STYLE -----
 
-  declare function style(config: {
+  export function style(config: {
     prop: string | Array<string>;
     cssProperty: string | Array<string>;
     key?: any;
@@ -720,10 +718,10 @@ declare module "@xstyled/system" {
     themeGet?: any;
   }): StyleFn;
 
-  // ----- VARIANT UTILITY -----
+  // ----- VARIANT -----
 
   // from https://github.com/RetailMeNot/anchor/blob/master/src/typings.d.ts
-  export declare const variant: <T extends {}>({
+  export function variant<T extends {}>({
     key,
     default: defaultValue,
     variants,
@@ -736,31 +734,31 @@ declare module "@xstyled/system" {
       [key: number]: T;
     };
     prop?: string;
-  }) => (props: any) => any;
+  }): (props: any) => any;
 
   // ----- RESPONSIVE UTILITIES -----
 
-  declare interface BreakPointsRules {
+  export interface BreakPointsRules {
     [key: string]: StyledComponents.BaseThemedCssFunction<any>;
   }
 
-  export declare const breakpoints: (
+  export function breakpoints(
     values: BreakPointsRules
-  ) => (props: any) => SimpleInterpolation;
+  ): (props: any) => SimpleInterpolation;
 
-  export declare const up: (
+  export function up(
     key: string,
     rules: StyledComponents.BaseThemedCssFunction
-  ) => (props: any) => SimpleInterpolation;
+  ): (props: any) => SimpleInterpolation;
 
-  export declare const down: (
+  export function down(
     key: string,
     rules: StyledComponents.BaseThemedCssFunction
-  ) => (props: any) => SimpleInterpolation;
+  ): (props: any) => SimpleInterpolation;
 
-  export declare const between: (
+  export function between(
     lower: string,
     upper: string,
     rules: StyledComponents.BaseThemedCssFunction
-  ) => (props: any) => SimpleInterpolation;
+  ): (props: any) => SimpleInterpolation;
 }
