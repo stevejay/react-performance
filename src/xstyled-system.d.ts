@@ -744,21 +744,21 @@ declare module "@xstyled/system" {
 
   export function breakpoints(
     values: BreakPointsRules
-  ): (props: any) => SimpleInterpolation;
+  ): (props: any) => StyledComponents.SimpleInterpolation;
 
   export function up(
     key: string,
-    rules: StyledComponents.BaseThemedCssFunction
-  ): (props: any) => SimpleInterpolation;
+    rules: StyledComponents.BaseThemedCssFunction<any>
+  ): (props: any) => StyledComponents.SimpleInterpolation;
 
   export function down(
     key: string,
-    rules: StyledComponents.BaseThemedCssFunction
-  ): (props: any) => SimpleInterpolation;
+    rules: StyledComponents.BaseThemedCssFunction<any>
+  ): (props: any) => StyledComponents.SimpleInterpolation;
 
   export function between(
     lower: string,
     upper: string,
-    rules: StyledComponents.BaseThemedCssFunction
-  ): (props: any) => SimpleInterpolation;
+    rules: StyledComponents.BaseThemedCssFunction<any>
+  ): (props: any) => StyledComponents.SimpleInterpolation;
 }
