@@ -62,6 +62,7 @@
         "src/**/*.{js,jsx,ts,tsx}": [
             "good-fences",
             "eslint --max-warnings 0 --fix",
+            "npm run lint:css",
             "prettier --write",
             "git add"
         ]
