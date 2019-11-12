@@ -7,13 +7,13 @@ const PageWeightField: React.FC = () => {
   const pageWeight = useStoreState(AnimationStore, s => s.pageWeight);
 
   return (
-    <RadioButton.Group title="Page Weight">
+    <RadioButton.Group title="Page Weight" groupName="pageWeight">
       {Object.keys(PageWeight).map(key => (
         <RadioButton
           key={key}
           label={key}
-          groupName="pageWeight"
-          checked={pageWeight === key}
+          value={key}
+          selectedValue={pageWeight}
           onChange={() =>
             AnimationStore.update(s => {
               s.pageWeight = asEnum(PageWeight, key);

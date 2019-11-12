@@ -20,24 +20,23 @@ const StyledOuterWrap = styled.div`
 `;
 
 const StyledInnerWrap = styled.div<Required<Props>>(
-  props => css`
+  ({ spacing, limit, threshold }) => css`
     display: flex;
     flex-wrap: wrap;
     overflow: hidden;
-    margin: calc((${getSpace(props.spacing)} / 2) * -1);
+    margin: calc((${getSpace(spacing)} / 2) * -1);
 
     & > * {
       flex-basis: calc(
-        (${getSize(props.threshold)} - (100% - ${getSpace(props.spacing)})) *
-          999
+        (${getSize(threshold)} - (100% - ${getSpace(spacing)})) * 999
       );
-      margin: calc(${getSpace(props.spacing)} / 2);
+      margin: calc(${getSpace(spacing)} / 2);
       flex-grow: 1;
     }
 
     /* If there are more than limit children, force them to stack */
-    & > :nth-last-child(n + ${props.limit + 1}),
-    & > :nth-last-child(n + ${props.limit + 1}) ~ * {
+    & > :nth-last-child(n + ${limit + 1}),
+    & > :nth-last-child(n + ${limit + 1}) ~ * {
       flex-basis: 100%;
     }
   `

@@ -12,24 +12,26 @@ import {
 // Object fit could be an option in the future (no support in IE).
 // https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit
 
+const createLandscapeSrcSet = (imagePath: string, extension: string) =>
+  `${imagePath}@half${extension} 1000w, ${imagePath}${extension} 2000w`;
+
+const createPortraitSrcSet = (imagePath: string, extension: string) =>
+  `${imagePath}@half${extension} 600w, ${imagePath}${extension} 1200w`;
+
 type Props = {
   readonly landscapeImagePath: string;
   readonly portraitImagePath: string;
   readonly altText: string;
 };
+
 const HeroImage: React.FC<Props> = ({
   landscapeImagePath,
   portraitImagePath,
   altText,
   children
 }) => {
-  const createLandscapeSrcSet = (imagePath: string, extension: string) =>
-    `${imagePath}@half${extension} 1000w, ${imagePath}${extension} 2000w`;
-
-  const createPortraitSrcSet = (imagePath: string, extension: string) =>
-    `${imagePath}@half${extension} 600w, ${imagePath}${extension} 1200w`;
-
-  const landscapeMediaQuery = `(min-width: ${useTheme().breakpoints.sm})`;
+  const theme = useTheme();
+  const landscapeMediaQuery = `(min-width: ${theme.breakpoints.sm})`;
 
   return (
     <HeroImageWrap>

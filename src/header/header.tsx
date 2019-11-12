@@ -58,7 +58,7 @@ const Header: React.FC<Props> = ({ pages }) => {
       zIndex={0} // should render as 100!!
     >
       <SkipLink targetId="main-content">Skip to main content</SkipLink>
-      <Heading as="h2" fontSize={[3, 4]} fontWeight="lighter">
+      <Heading as="h2" fontSize={{ xs: 3, sm: 4 }} fontWeight="lighter">
         React Experiments
       </Heading>
       <Button

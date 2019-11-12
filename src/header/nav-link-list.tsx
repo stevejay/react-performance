@@ -1,18 +1,21 @@
 import React from "react";
 import styled from "styled-components/macro";
+import { css } from "styled-components";
 import { Pages } from "src/shared";
 import { NavLink } from "./nav-link";
 
-const StyledList = styled.ul`
-  margin: 0;
-  padding: ${props => props.theme.space[1]} ${props => props.theme.space[2]};
-  list-style: none;
+const StyledList = styled.ul(
+  ({ theme }) => css`
+    margin: 0;
+    padding: ${theme.space[1]} ${theme.space[2]};
+    list-style: none;
 
-  & > * + * {
-    border-top: ${props => props.theme.borderWidths.hair} solid
-      ${props => props.theme.colors.contrastHot500};
-  }
-`;
+    & > * + * {
+      border-top: ${theme.borderWidths.hair} solid
+        ${theme.colors.contrastHot500};
+    }
+  `
+);
 
 type Props = {
   readonly pages: Pages;
