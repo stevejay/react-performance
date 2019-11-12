@@ -32,7 +32,11 @@ const App: React.FC = () => (
         <SkipLinkProvider>
           <Box minHeight="100vh" flexDirection="column">
             <Header pages={PAGES} />
-            <Box as="main" flexGrow={1} flexDirection="column">
+            <Box
+              as="main"
+              // flexGrow={1}
+              flexDirection="column"
+            >
               <Switch>
                 {PAGES.map(({ path, title, component: PageComponent }) => (
                   <Route key={path} exact path={path}>

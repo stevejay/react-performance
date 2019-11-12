@@ -477,7 +477,7 @@ declare module "@xstyled/system" {
   export const backgroundRepeat: StyleFn;
   export const backgrounds: StyleFn;
 
-  export interface BackgroundProps {
+  export interface BackgroundProps<TLength = TLengthStyledSystem> {
     readonly background?: ResponsiveValue<CSS.BackgroundProperty<TLength>>;
   }
 
