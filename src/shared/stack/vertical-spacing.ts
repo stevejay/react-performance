@@ -1,4 +1,4 @@
-import { TLengthStyledSystem, style, getSpace } from "@xstyled/system";
+import { MarginTopProps, style, getSpace } from "@xstyled/system";
 
 const verticalSpacing = style({
   prop: "verticalSpacing",
@@ -7,9 +7,7 @@ const verticalSpacing = style({
 });
 
 export type VerticalSpacingProps = {
-  readonly verticalSpacing: import("csstype").MarginTopProperty<
-    TLengthStyledSystem
-  >;
+  readonly verticalSpacing: MarginTopProps["marginTop"];
 };
 
 export { verticalSpacing };

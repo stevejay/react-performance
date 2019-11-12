@@ -80,8 +80,10 @@ const colors = {
   transparent: "rgba(0,0,0,0)",
   gray900: charlestonGreen,
   gray600: onyx,
+  gray500: "#565656",
   gray100: "#ECEFF1",
-  link
+  link,
+  focus: "#228BEC"
 } as const;
 
 // ----- breakpoints -----
@@ -114,7 +116,7 @@ const radii: ReadonlyArrayWithAliases<string, "circle"> = [
   "0.25em",
   "0.5em",
   "1em",
-  "99999px"
+  "100%"
 ];
 
 radii.circle = radii[4];

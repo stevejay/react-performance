@@ -1,6 +1,11 @@
 import styled from "styled-components/macro";
 import { css } from "styled-components";
-import { color, typography, ColorProps, TypographyProps } from "styled-system";
+import {
+  color,
+  typography,
+  ColorProps,
+  TypographyProps
+} from "@xstyled/system";
 
 type Props = ColorProps & TypographyProps;
 

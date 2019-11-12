@@ -1,81 +1,128 @@
 import React from "react";
 import styled from "styled-components/macro";
-import { visuallyHidden } from "src/shared/visually-hidden";
+import useId from "@charlietango/use-id";
+import { focusRing } from "src/shared/mixins";
+import { RadioButtonGroupContext } from "./radio-button-group";
+// import { visuallyHidden } from "src/shared/visually-hidden";
+
+// Guide used for styling this control:
+// https://scottaohara.github.io/a11y_styled_form_controls/src/radio-button/
+// (pattern 1)
+
+// TODO: could control groupName via RadioButtonGroup.
 
 type Props = {
   readonly label: string;
-  readonly groupName: string;
-  readonly checked: boolean;
-  readonly onChange: () => void;
+  readonly value: string;
+  readonly selectedValue: string;
+  readonly disabled?: boolean;
+  readonly onChange: (value: string) => void;
 };
 
-const StyledLabel = styled.label`
-  user-select: none;
-  cursor: pointer;
-  align-self: flex-start;
+const StyledWrap = styled.div`
   position: relative;
-  padding-left: 1.75em;
-  line-height: 1;
-
-  /* get rid of this */
-  /* stylelint-disable */
-  &:hover > span {
-    background-color: ${props => props.theme.colors.primary100};
-  }
+  align-self: flex-start;
 `;
 
 const StyledInput = styled.input`
-  ${visuallyHidden}
+  position: absolute;
+  appearance: none;
+  background: none;
+  opacity: 1e-6;
+  z-index: 2;
+  margin: 0;
+  padding: 0;
+  border: 1px solid;
+  width: 1.125em;
+  height: 1.125em;
+  font-size: 1rem;
+  left: 0.125em;
+  top: 50%;
+  transform: translateY(-50%);
   cursor: pointer;
 
-  & ~ span {
+  /*
+  Had to add the rule here instead of in StyledLabel because
+  CSS auto-formatting was breaking the rule.
+  */
+  &[disabled] + label {
+    opacity: 0.5;
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+`;
+
+const StyledLabel = styled.label`
+  display: inline-block;
+  padding-left: 2em;
+  user-select: none;
+
+  ${StyledInput}:not([disabled]) + & {
+    cursor: pointer;
+  }
+
+  /* before is the outer border, after is the inner indicator */
+
+  &::before,
+  &::after {
+    content: " ";
     position: absolute;
+    box-sizing: border-box;
+    border-radius: 100%;
+    border: 1px solid;
+    width: 1.125em;
+    height: 1.125em;
+    left: 0.125em;
     top: 50%;
     transform: translateY(-50%);
-    left: 0;
-    height: 1.25em;
-    width: 1.25em;
-    background-color: ${props => props.theme.colors.gray100};
   }
 
-  &:checked ~ span {
-    background-color: ${props => props.theme.colors.primary900};
+  &::before {
+    box-shadow: 0 0 0 1px ${props => props.theme.colors.gray500};
   }
 
-  & ~ span:after {
-    content: "";
-    position: absolute;
-    display: none;
-    left: 0.625em;
-    top: 0.625em;
-    width: 0.375em;
-    height: 0.75em;
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    transform: translate(-50%, -62.5%) rotate(45deg);
+  ${StyledInput}:checked + &::before {
+    border-color: transparent;
+    box-shadow: 0 0 0 2px ${props => props.theme.colors.primary900};
   }
 
-  &:checked ~ span:after {
-    display: block;
+  ${StyledInput}:focus + &::before {
+    border-color: transparent;
+    ${focusRing}
+  }
+
+  ${StyledInput}:checked + &::after {
+    border-color: ${props => props.theme.colors.white};
+    border-width: 4px;
+    box-shadow: inset 0 0 0 5px ${props => props.theme.colors.primary900};
   }
 `;
 
 const RadioButton: React.FC<Props> = ({
   label,
-  groupName,
-  checked,
+  value,
+  selectedValue,
+  disabled,
   onChange
-}) => (
-  <StyledLabel>
-    {label}
-    <StyledInput
-      type="radio"
-      name={groupName}
-      checked={checked}
-      onChange={onChange}
-    />
-    <span />
-  </StyledLabel>
-);
+}) => {
+  const inputId = useId("radio-button");
+  const groupName = React.useContext(RadioButtonGroupContext);
+
+  return (
+    <StyledWrap>
+      <StyledInput
+        id={inputId}
+        type="radio"
+        name={groupName}
+        checked={selectedValue === value}
+        disabled={disabled}
+        onChange={() => onChange(value)}
+      />
+      <StyledLabel htmlFor={inputId}>{label}</StyledLabel>
+    </StyledWrap>
+  );
+};
 
 export { RadioButton };

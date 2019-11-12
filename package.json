@@ -4,6 +4,7 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
+        "@charlietango/use-id": "^1.5.2",
         "@styled-system/theme-get": "^5.1.2",
         "@types/body-scroll-lock": "^2.6.1",
         "@types/jest": "^24.0.22",
@@ -39,7 +40,6 @@
         "styled-components": "^4.4.1",
         "styled-icons": "^8.6.0",
         "styled-normalize": "^8.0.6",
-        "styled-system": "^5.1.2",
         "tabbable": "^4.0.0",
         "typescript": "^3.6.4"
     },
@@ -83,6 +83,7 @@
     },
     "devDependencies": {
         "@storybook/addon-actions": "^5.2.6",
+        "@storybook/addon-knobs": "^5.2.6",
         "@storybook/addon-links": "^5.2.6",
         "@storybook/addons": "^5.2.6",
         "@storybook/preset-create-react-app": "^1.2.0",

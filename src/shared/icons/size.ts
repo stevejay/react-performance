@@ -1,14 +1,13 @@
-import { system, FontSizeProps } from "styled-system";
+import { FontSizeProps, style, getFontSize } from "@xstyled/system";
 
-const size = system({
-  size: {
-    properties: ["width", "height"],
-    scale: "fontSizes"
-  }
+const size = style({
+  prop: "size",
+  cssProperty: ["width", "height"],
+  themeGet: getFontSize
 });
 
-export type SizeProp = {
-  size: FontSizeProps["fontSize"];
+export type SizeProps = {
+  readonly size: FontSizeProps["fontSize"];
 };
 
 export { size };
