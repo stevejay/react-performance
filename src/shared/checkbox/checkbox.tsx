@@ -51,7 +51,7 @@ const StyledLabel = styled.label`
   padding-left: 2em;
   user-select: none;
 
-  ${StyledInput}:not([disabled]) + & {
+  ${/* sc-selector */ StyledInput}:not([disabled]) + & {
     cursor: pointer;
   }
 
@@ -75,21 +75,21 @@ const StyledLabel = styled.label`
     transform: translateY(-50%);
   }
 
-  ${StyledInput}:checked + &::before {
+  ${/* sc-selector */ StyledInput}:checked + &::before {
     border-color: transparent;
     box-shadow: 0 0 0 2px ${props => props.theme.colors.gray500};
   }
 
-  ${StyledInput}:checked:not([disabled]) + &::before {
+  ${/* sc-selector */ StyledInput}:checked:not([disabled]) + &::before {
     box-shadow: 0 0 0 2px ${props => props.theme.colors.primary900};
   }
 
-  ${StyledInput}:focus + &::before {
+  ${/* sc-selector */ StyledInput}:focus + &::before {
     border-color: transparent;
     ${focusRing}
   }
 
-  ${StyledInput}:checked + &::after {
+  ${/* sc-selector */ StyledInput}:checked + &::after {
     border: 0;
     border-bottom: 4px solid ${props => props.theme.colors.gray500};
     border-right: 4px solid ${props => props.theme.colors.gray500};
@@ -101,7 +101,7 @@ const StyledLabel = styled.label`
     width: 0.5em;
   }
 
-  ${StyledInput}:checked:not([disabled]) + &::after {
+  ${/* sc-selector */ StyledInput}:checked:not([disabled]) + &::after {
     border-bottom: 4px solid ${props => props.theme.colors.primary900};
     border-right: 4px solid ${props => props.theme.colors.primary900};
   }
