@@ -50,9 +50,8 @@ const Header: React.FC<Props> = ({ pages }) => {
     <Box
       as="header"
       color="white"
-      bg="primary900"
-      p={[1, 2]}
-      display="flex"
+      backgroundColor="primary900"
+      p={{ xs: 1, sm: 2 }}
       justifyContent="space-between"
       alignItems="center"
       boxShadow="md"

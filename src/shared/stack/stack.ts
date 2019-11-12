@@ -1,14 +1,17 @@
 import styled from "styled-components/macro";
-import { spacing, SpacingProp } from "./spacing";
+import { verticalSpacing, VerticalSpacingProps } from "./vertical-spacing";
 
-type Props = SpacingProp;
+type Props = VerticalSpacingProps;
 
 const Stack = styled.div<Props>`
   & > * + * {
-    ${spacing}
+    ${verticalSpacing}
   }
 
-  /* Allow 'margin-bottom: auto' to be used on a stack child */
+  /*
+    Allow 'margin-bottom: auto' to be used on a stack child
+    so that child can push its following sibling down.
+    */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

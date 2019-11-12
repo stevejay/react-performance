@@ -1,43 +1,49 @@
 import React from "react";
 import styled from "styled-components/macro";
-
-/*
-spacing
-
-
-
-*/
+import { css } from "styled-components";
+import { getSize, getSpace, TLengthStyledSystem } from "@xstyled/system";
 
 type Props = {
+  // If there is more than `limit` children, stack them on top of each other
+  // regardless of the width of the available content area. Defaults to the
+  // number of children.
   readonly limit?: number;
-  readonly spacing: string;
-  readonly threshold: string;
+  // The margin between the children.
+  readonly spacing: import("csstype").MarginTopProperty<TLengthStyledSystem>;
+  // If the width of the available content area is less than this threshold
+  // then the children are always stacked on top of each other.
+  readonly threshold: import("csstype").WidthProperty<TLengthStyledSystem>;
 };
 
 const StyledOuterWrap = styled.div`
   display: block;
 `;
 
-const StyledInnerWrap = styled.div<Props>`
-  display: flex;
-  flex-wrap: wrap;
-  overflow: hidden;
-  margin: calc((${props => props.spacing} / 2) * -1);
+const StyledInnerWrap = styled.div<Required<Props>>(
+  props => css`
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    margin: calc((${getSpace(props.spacing)} / 2) * -1);
 
-  & > * {
-    flex-basis: calc(
-      (${props => props.threshold} - (100% - ${props => props.spacing})) * 999
-    );
-    margin: calc(${props => props.spacing} / 2);
-    flex-grow: 1;
-  }
+    & > * {
+      flex-basis: calc(
+        (${getSize(props.threshold)} - (100% - ${getSpace(props.spacing)})) *
+          999
+      );
+      margin: calc(${getSpace(props.spacing)} / 2);
+      flex-grow: 1;
+    }
 
-  & > :nth-last-child(n + ${props => props.limit} + 1),
-  & > :nth-last-child(n + ${props => props.limit} + 1) ~ * {
-    flex-basis: 100%;
-  }
-`;
+    /* If there are more than limit children, force them to stack */
+    & > :nth-last-child(n + ${props.limit + 1}),
+    & > :nth-last-child(n + ${props.limit + 1}) ~ * {
+      flex-basis: 100%;
+    }
+  `
+);
 
+// A.k.a. the holy albatross
 const Switcher: React.FC<Props> = ({ limit, spacing, threshold, children }) => (
   <StyledOuterWrap>
     <StyledInnerWrap

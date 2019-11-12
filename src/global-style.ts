@@ -8,6 +8,10 @@ const GlobalStyle = createGlobalStyle`
         font-family: ${props => props.theme.fonts.body};
     }
 
+    p, label {
+        line-height: ${props => props.theme.lineHeights[2]}
+    }
+
     /*
     Change the box model to be border-box by default,
     using the inherit method:

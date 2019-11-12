@@ -52,7 +52,7 @@ const PictureElementPage: React.FC<Props> = ({ title }) => {
         portraitImagePath={`${process.env.PUBLIC_URL}/images/light/desert-portrait`}
         altText="Desert landscape"
       />
-      <Box m={[3, 5]}>
+      <Box m={{ xs: 3, sm: 5 }}>
         <Stack spacing={[2, 3]}>
           <Heading
             ref={headingRef}

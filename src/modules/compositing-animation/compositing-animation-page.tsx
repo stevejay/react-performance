@@ -32,7 +32,7 @@ const CompositingAnimationPage: React.FC<Props> = ({ title }) => {
   };
 
   return (
-    <Box m={[3, 5]}>
+    <Box m={{ xs: 3, sm: 5 }}>
       <Stack spacing={[2, 3]}>
         <Heading
           ref={headingRef}

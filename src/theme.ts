@@ -1,5 +1,5 @@
 // Documentation for styled-system theme format:
-// https://styled-system.com/theme-specification
+// https://www.smooth-code.com/open-source/xstyled/docs/theme-specification/
 
 // ----- types -----
 
@@ -7,6 +7,10 @@ type ReadonlyArrayWithAliases<T, K extends string> = ReadonlyArray<T> &
   {
     [P in K]?: T;
   };
+
+type ReadonlyRecord<T, K extends string> = {
+  [P in K]: T;
+};
 
 // ----- space -----
 
@@ -44,6 +48,18 @@ const fontSizes: ReadonlyArrayWithAliases<string, "body"> = [
 
 fontSizes.body = fontSizes[2];
 
+// ----- fontWeights -----
+
+const fontWeights = {
+  lighter: 300,
+  normal: 400,
+  bold: 600
+} as const;
+
+// ----- lineHeights -----
+
+const lineHeights: ReadonlyArray<number> = [1, 1.4, 1.5];
+
 // ----- colors -----
 
 const redViolet = "#C52184";
@@ -61,49 +77,49 @@ const colors = {
   contrastCool500: "#60B4B4",
   black: "#000",
   white: "#FFF",
+  transparent: "rgba(0,0,0,0)",
   gray900: charlestonGreen,
   gray600: onyx,
+  gray500: "#565656",
   gray100: "#ECEFF1",
-  link
+  link,
+  focus: "#228BEC"
 } as const;
 
 // ----- breakpoints -----
 
-// These are <600px, 600px, 900px, 1200px and 1800px, at 1rem === 16px:
-const breakpoints: ReadonlyArrayWithAliases<
-  string,
-  "tabletPortrait" | "tabletLandscape" | "desktop" | "wideDesktop"
-> = ["37.5rem", "56.25rem", "75rem", "112.5rem"];
-
-breakpoints.tabletPortrait = breakpoints[0];
-breakpoints.tabletLandscape = breakpoints[1];
-breakpoints.desktop = breakpoints[2];
-breakpoints.wideDesktop = breakpoints[3];
+// px values are for 1rem === 16px:
+const breakpoints: ReadonlyRecord<
+  string | number,
+  "xs" | "sm" | "md" | "lg" | "xl"
+> = {
+  xs: 0,
+  sm: "37.5rem", // tabletPortrait 600px
+  md: "56.25rem", // tabletLandscape 900px
+  lg: "75rem", // desktop 1200px
+  xl: "112.5rem" // wideDesktop 1800px
+};
 
 // ----- mediaQueries -----
 
 const mediaQueries = {
-  tabletPortrait: `@media screen and (min-width: ${breakpoints[0]})`,
-  tabletLandscape: `@media screen and (min-width: ${breakpoints[1]})`,
-  desktop: `@media screen and (min-width: ${breakpoints[2]})`,
-  wideDesktop: `@media screen and (min-width: ${breakpoints[3]})`
+  tabletPortrait: `@media screen and (min-width: ${breakpoints.sm})`,
+  tabletLandscape: `@media screen and (min-width: ${breakpoints.md})`,
+  desktop: `@media screen and (min-width: ${breakpoints.lg})`,
+  wideDesktop: `@media screen and (min-width: ${breakpoints.xl})`
 } as const;
-
-// ----- fontWeights -----
-
-const fontWeights = {
-  lighter: 300,
-  normal: 400,
-  bold: 600
-} as const;
-
-// ----- lineHeights -----
-
-const lineHeights: ReadonlyArray<number> = [1, 1.4, 1.5];
 
 // ----- radii -----
 
-const radii: ReadonlyArray<string> = ["0px", "0.25em", "0.5em", "1em"];
+const radii: ReadonlyArrayWithAliases<string, "circle"> = [
+  "0px",
+  "0.25em",
+  "0.5em",
+  "1em",
+  "100%"
+];
+
+radii.circle = radii[4];
 
 // ----- timings -----
 
@@ -168,23 +184,91 @@ const buttons = {
   }
 } as const;
 
+// ----- sizes -----
+
+const sizes: ReadonlyArrayWithAliases<string, "copy"> = ["66ch"];
+
+sizes.copy = sizes[0];
+
 // ----- theme -----
 
-const theme = {
+const theme = Object.freeze({
+  name: "default",
   space,
   fonts,
   fontSizes,
+  fontWeights,
   colors,
   breakpoints,
   borderWidths,
   mediaQueries,
-  fontWeights,
   lineHeights,
   radii,
   shadows,
+  sizes,
   timings,
   zIndices,
   buttons
-};
+});
 
 export { theme };
+
+/*
+style-system's theme:
+
+export interface Theme {
+    breakpoints?: string[] | number[] | object;
+    mediaQueries?: { [size: string]: string };
+    space?: ObjectOrArray<number | string>;
+    fontSizes?: ObjectOrArray<CSS.FontSizeProperty<number>>;
+    colors?: ObjectOrArray<CSS.ColorProperty>;
+    fonts?: ObjectOrArray<CSS.FontFamilyProperty>;
+    fontWeights?: ObjectOrArray<CSS.FontWeightProperty>;
+    lineHeights?: ObjectOrArray<CSS.LineHeightProperty<{}>>;
+    letterSpacings?: ObjectOrArray<CSS.LetterSpacingProperty<{}>>;
+    sizes?: ObjectOrArray<CSS.HeightProperty<{}> | CSS.WidthProperty<{}>>;
+    borders?: ObjectOrArray<CSS.BorderProperty<{}>>;
+    borderStyles?: ObjectOrArray<CSS.BorderProperty<{}>>;
+    borderWidths?: ObjectOrArray<CSS.BorderWidthProperty<{}>>;
+    radii?: ObjectOrArray<CSS.BorderRadiusProperty<{}>>;
+    shadows?: ObjectOrArray<CSS.BoxShadowProperty>;
+    zIndices?: ObjectOrArray<CSS.ZIndexProperty>;
+    buttons?: ObjectOrArray<CSS.StandardProperties>;
+    colorStyles?: ObjectOrArray<CSS.StandardProperties>;
+    textStyles?: ObjectOrArray<CSS.StandardProperties>;
+}
+
+example:
+
+const theme: Theme = {
+  breakpoints: ['1200px'],
+  fontSizes: [10, 12, 14, 16, 24, 32],
+  space: [0, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40],
+  fontWeights: { normal: 400, bold: 500, bolder: 700 },
+  fonts: {
+    primary: 'Roboto, system-ui, sans-serif',
+  },
+  radii: {
+    none: 0,
+    small: 2,
+    medium: 4,
+    large: 40,
+    circle: 99999,
+  },
+  colors: {
+    transparent: 'rgba(0,0,0,0)',
+
+    white: '#ffffff',
+  },
+  lineHeights: ['14px', '16px', '18px', '20px', '28px', '36px'],
+  letterSpacings: ['normal'],
+  shadows: {
+    none: 'none',
+    dark50: '0px 2px 8px rgba(0, 0, 0, 0.05)',
+    dark100: '0px 2px 10px rgba(0, 0, 0, 0.1)',
+    dark150: '0px 1px 6px rgba(0, 0, 0, 0.15)',
+    dark200: '0px 2px 16px rgba(0, 0, 0, 0.20)',
+    dark250: '0px 1px 4px rgba(0, 0, 0, 0.25)',
+  },
+};
+*/

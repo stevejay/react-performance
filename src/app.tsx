@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
+import { IdProvider } from "@charlietango/use-id";
 import { Box, Pages, SkipLinkProvider } from "src/shared";
 import { Header } from "src/header";
 import { PictureElementPage } from "src/modules/picture-element";
@@ -24,25 +25,27 @@ const PAGES: Pages = [
 ];
 
 const App: React.FC = () => (
-  <ThemeProvider theme={theme}>
-    <>
-      <GlobalStyle />
-      <SkipLinkProvider>
-        <Box minHeight="100vh" display="flex" flexDirection="column">
-          <Header pages={PAGES} />
-          <Box as="main" flexGrow={1} flexDirection="column">
-            <Switch>
-              {PAGES.map(({ path, title, component: PageComponent }) => (
-                <Route key={path} exact path={path}>
-                  <PageComponent title={title} />
-                </Route>
-              ))}
-            </Switch>
+  <IdProvider>
+    <ThemeProvider theme={theme}>
+      <>
+        <GlobalStyle />
+        <SkipLinkProvider>
+          <Box minHeight="100vh" flexDirection="column">
+            <Header pages={PAGES} />
+            <Box as="main" flexGrow={1} flexDirection="column">
+              <Switch>
+                {PAGES.map(({ path, title, component: PageComponent }) => (
+                  <Route key={path} exact path={path}>
+                    <PageComponent title={title} />
+                  </Route>
+                ))}
+              </Switch>
+            </Box>
           </Box>
-        </Box>
-      </SkipLinkProvider>
-    </>
-  </ThemeProvider>
+        </SkipLinkProvider>
+      </>
+    </ThemeProvider>
+  </IdProvider>
 );
 
 export { App };

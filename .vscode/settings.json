@@ -1,18 +1,26 @@
 {
   "cSpell.words": [
     "browserslist",
+    "charlietango",
     "checkbox",
+    "csstype",
     "ctrl",
     "destructure",
     "dialog",
     "dismissable",
+    "es",
+    "esnext",
     "flexbox",
+    "flexboxes",
     "force",
     "grays",
     "haspopup",
     "hyperlink",
+    "interop",
     "key",
     "keys",
+    "mixins",
+    "module",
     "no",
     "nowrap",
     "performant",
@@ -29,7 +37,10 @@
     "tabindex",
     "unused",
     "vars",
-    "webp"
+    "webp",
+    "xgrid",
+    "xgrids",
+    "xstyled"
 ],
   "eslint.validate": [
     "javascript",

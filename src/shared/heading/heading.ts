@@ -9,7 +9,7 @@ import {
   ColorProps,
   SpaceProps,
   TypographyProps
-} from "styled-system";
+} from "@xstyled/system";
 
 type Props = BorderProps & ColorProps & SpaceProps & TypographyProps;
 
