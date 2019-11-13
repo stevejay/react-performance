@@ -10,13 +10,13 @@ const AnimationDurationField: React.FC = () => {
   );
 
   return (
-    <RadioButton.Group title="Animation Duration">
+    <RadioButton.Group title="Animation Duration" groupName="animationDuration">
       {Object.keys(AnimationDuration).map(key => (
         <RadioButton
           key={key}
           label={key}
-          groupName="animationDuration"
-          checked={animationDuration === key}
+          value={key}
+          selectedValue={animationDuration}
           onChange={() =>
             AnimationStore.update(s => {
               s.animationDuration = asEnum(AnimationDuration, key);

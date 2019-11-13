@@ -33,11 +33,11 @@ const CompositingAnimationPage: React.FC<Props> = ({ title }) => {
 
   return (
     <Box m={{ xs: 3, sm: 5 }}>
-      <Stack spacing={[2, 3]}>
+      <Stack verticalSpacing={{ xs: 2, sm: 3 }}>
         <Heading
           ref={headingRef}
-          pb={[1, 2]}
-          fontSize={[4, 5]}
+          pb={{ xs: 1, sm: 2 }}
+          fontSize={{ xs: 4, sm: 5 }}
           fontWeight="lighter"
           borderBottom="1px solid"
           borderColor="contrastCool500"

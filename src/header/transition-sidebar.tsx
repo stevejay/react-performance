@@ -9,35 +9,36 @@ type StyledProps = {
   readonly animationState: TransitionStatus;
 };
 
-const StyledNav = styled.nav<StyledProps>`
-  position: fixed;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  width: 80vw;
-  max-width: 300px;
-  color: ${props => props.theme.colors.white};
-  background-color: ${props => props.theme.colors.primary900};
-  overflow-y: scroll;
-  box-shadow: ${props => props.theme.shadows.xxl};
-  z-index: ${props => props.theme.zIndices.sidebar};
-  -webkit-overflow-scrolling: touch;
-  will-change: opacity, transform;
-  transition: opacity ${props => props.duration / 2}ms ease-in,
-    transform ${props => props.duration}ms ease-in;
+const StyledNav = styled.nav<StyledProps>(
+  ({ theme, duration, animationState }) => css`
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 80vw;
+    max-width: 300px;
+    color: ${theme.colors.white};
+    background-color: ${theme.colors.primary900};
+    overflow-y: scroll;
+    box-shadow: ${theme.shadows.xxl};
+    z-index: ${theme.zIndices.sidebar};
+    -webkit-overflow-scrolling: touch;
+    will-change: opacity, transform;
+    transition: opacity ${duration / 2}ms ease-in,
+      transform ${duration}ms ease-in;
 
-  ${props =>
-    (props.animationState === "exiting" || props.animationState === "exited") &&
-    css`
-      transition: opacity ${props.duration / 2}ms ease-in
-          ${props.duration / 2}ms,
-        transform ${props.duration}ms ease-in;
-    `}
-`;
+    ${(animationState === "exiting" || animationState === "exited") &&
+      css`
+        transition: opacity ${duration / 2}ms ease-in ${duration / 2}ms,
+          transform ${duration}ms ease-in;
+      `}
+  `
+);
 
-const TRANSITION_STYLES: Partial<
-  Record<TransitionStatus, React.CSSProperties>
-> = {
+const TRANSITION_STYLES: Partial<Record<
+  TransitionStatus,
+  React.CSSProperties
+>> = {
   entering: { opacity: 1, transform: "translateX(0)" },
   entered: { opacity: 1, transform: "translateX(0)" },
   exiting: { opacity: 0, transform: "translateX(100px)" },

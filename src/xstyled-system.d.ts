@@ -477,7 +477,7 @@ declare module "@xstyled/system" {
   export const backgroundRepeat: StyleFn;
   export const backgrounds: StyleFn;
 
-  export interface BackgroundProps<TLength = TLengthStyledSystem> {
+  export interface BackgroundProps {
     readonly background?: ResponsiveValue<CSS.BackgroundProperty<TLength>>;
   }
 
@@ -744,21 +744,21 @@ declare module "@xstyled/system" {
 
   export function breakpoints(
     values: BreakPointsRules
-  ): (props: any) => StyledComponents.SimpleInterpolation;
+  ): (props: any) => SimpleInterpolation;
 
   export function up(
     key: string,
-    rules: StyledComponents.BaseThemedCssFunction<any>
-  ): (props: any) => StyledComponents.SimpleInterpolation;
+    rules: StyledComponents.BaseThemedCssFunction
+  ): (props: any) => SimpleInterpolation;
 
   export function down(
     key: string,
-    rules: StyledComponents.BaseThemedCssFunction<any>
-  ): (props: any) => StyledComponents.SimpleInterpolation;
+    rules: StyledComponents.BaseThemedCssFunction
+  ): (props: any) => SimpleInterpolation;
 
   export function between(
     lower: string,
     upper: string,
-    rules: StyledComponents.BaseThemedCssFunction<any>
-  ): (props: any) => StyledComponents.SimpleInterpolation;
+    rules: StyledComponents.BaseThemedCssFunction
+  ): (props: any) => SimpleInterpolation;
 }

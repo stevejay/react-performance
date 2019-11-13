@@ -21,13 +21,13 @@ const AnimationLibraryField: React.FC = () => {
   );
 
   return (
-    <RadioButton.Group title="Animation Library">
+    <RadioButton.Group title="Animation Library" groupName="animationLibrary">
       {Object.keys(AnimationLibrary).map(key => (
         <RadioButton
           key={key}
           label={getOptionLabel(key)}
-          groupName="animationLibrary"
-          checked={animationLibrary === key}
+          value={key}
+          selectedValue={animationLibrary}
           onChange={() =>
             AnimationStore.update(s => {
               s.animationLibrary = asEnum(AnimationLibrary, key);
