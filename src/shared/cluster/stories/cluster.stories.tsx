@@ -4,14 +4,14 @@ import { Box } from "src/shared/box";
 import { Button } from "src/shared/button";
 
 const ExampleButton: React.FC = ({ children }) => (
-  <Button useCSSAnimation variant="primary" py={1} px={2} onClick={() => {}}>
+  <Button useCSSAnimation variant="primary" py="xs" px="sm" onClick={() => {}}>
     {children}
   </Button>
 );
 
 const Default = () => (
-  <Box backgroundColor="papayawhip" display="block" p={3}>
-    <Cluster spacing={2} justifyContent="right">
+  <Box backgroundColor="papayawhip" display="block" p="md">
+    <Cluster spacing="sm" justifyContent="right">
       <ExampleButton>Button One</ExampleButton>
       <ExampleButton>Button Two</ExampleButton>
     </Cluster>

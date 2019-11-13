@@ -33,7 +33,7 @@ type Props = {
 const CSSAnimationLoader: React.FC<Props> = ({ isLoading }) =>
   isLoading ? (
     <LoaderWrap>
-      <Icons.Spinner size={5} />
+      <Icons.Spinner size="xxl" />
     </LoaderWrap>
   ) : null;
 

@@ -9,7 +9,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     p, label {
-        line-height: ${props => props.theme.lineHeights[2]}
+        line-height: ${props => props.theme.lineHeights.md}
     }
 
     /*

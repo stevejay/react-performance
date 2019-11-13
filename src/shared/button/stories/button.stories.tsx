@@ -4,14 +4,14 @@ import { Box } from "src/shared/box";
 import { Stack } from "src/shared/stack";
 
 const Default = () => (
-  <Box margin={2} display="flex" flexDirection="column">
-    <Stack verticalSpacing={2}>
+  <Box margin="sm" display="flex" flexDirection="column">
+    <Stack verticalSpacing="sm">
       <Button
         isLoading={false}
         useCSSAnimation
         variant="primary"
-        py={1}
-        px={2}
+        py="xs"
+        px="sm"
         onClick={() => {}}
       >
         Button One
@@ -20,8 +20,8 @@ const Default = () => (
         isLoading
         useCSSAnimation
         variant="primary"
-        py={1}
-        px={2}
+        py="xs"
+        px="sm"
         onClick={() => {}}
       >
         Button Two
@@ -31,8 +31,8 @@ const Default = () => (
         disabled
         useCSSAnimation
         variant="primary"
-        py={1}
-        px={2}
+        py="xs"
+        px="sm"
         onClick={() => {}}
       >
         Button Three

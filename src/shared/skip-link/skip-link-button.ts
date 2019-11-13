@@ -9,7 +9,7 @@ const SkipLinkButton = styled.button(
     appearance: none;
     background: ${theme.colors.white};
     border-spacing: 0;
-    border-radius: ${theme.radii[1]};
+    border-radius: ${theme.radii.xs};
     color: ${theme.colors.link};
     font-weight: ${theme.fontWeights.normal};
     text-decoration: underline;

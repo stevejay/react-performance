@@ -56,7 +56,6 @@ const StyledLabel = styled.label`
   }
 
   /* before is the outer border, after is the inner indicator */
-
   &::before,
   &::after {
     content: " ";

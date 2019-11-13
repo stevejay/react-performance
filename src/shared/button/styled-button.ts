@@ -25,8 +25,8 @@ const StyledButton = styled.button<StyledButtonProps>(
     cursor: pointer;
     position: relative;
     font-weight: ${theme.fontWeights.normal};
-    line-height: ${theme.lineHeights[2]};
-    border-radius: ${theme.radii[1]};
+    line-height: ${theme.lineHeights.md};
+    border-radius: ${theme.radii.xs};
     background-color: ${theme.buttons[variant].backgroundColor};
     color: ${theme.buttons[variant].color};
     border: ${theme.borderWidths.hair} solid

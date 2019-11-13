@@ -12,7 +12,7 @@ const StyledLink = styled.a`
   text-decoration: none;
   display: flex;
   align-items: center;
-  padding: ${props => props.theme.space[1]} 0;
+  padding: ${props => props.theme.space.xs} 0;
 `;
 
 type Props = {

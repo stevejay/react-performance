@@ -4,8 +4,8 @@ import { Box } from "src/shared/box";
 
 const Default = () => (
   <Box backgroundColor="papayawhip" display="block">
-    <Center px={1} maxWidth={200} centeredText>
-      <Box display="block" backgroundColor="gray" color="white" p={2}>
+    <Center px="xs" maxWidth="200px" centeredText>
+      <Box display="block" backgroundColor="gray" color="white" p="sm">
         Some Content
       </Box>
     </Center>

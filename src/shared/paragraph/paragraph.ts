@@ -14,7 +14,7 @@ const Paragraph = styled.p<Props>(
     margin: 0;
     padding: 0;
     max-width: ${theme.sizes.copy};
-    line-height: ${theme.lineHeights[2]};
+    line-height: ${theme.lineHeights.md};
     ${color}
     ${typography}
   `

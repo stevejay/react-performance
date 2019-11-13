@@ -1,5 +1,4 @@
 import styled from "styled-components/macro";
-import { css } from "styled-components";
 import {
   borders,
   color,
@@ -13,16 +12,14 @@ import {
 
 type Props = BordersProps & ColorProps & SpaceProps & TypographyProps;
 
-const Heading = styled.h1<Props>(
-  ({ theme }) => css`
+const Heading = styled.h1<Props>`
   margin: 0;
   padding: 0;
-  font-family: ${theme.fonts.display};
+  font-family: ${props => props.theme.fonts.display};
   ${borders}
   ${color}
   ${space}
   ${typography}
-`
-);
+`;
 
 export { Heading };

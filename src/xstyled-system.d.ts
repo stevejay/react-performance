@@ -14,7 +14,7 @@ declare module "@xstyled/system" {
   import * as CSS from "csstype";
   import * as StyledComponents from "styled-components";
 
-  export interface StyleFn {
+  export interface StyleFunc {
     (...args: ReadonlyArray<any>): any;
     propTypes?: ReadonlyArray<string>;
   }
@@ -23,9 +23,11 @@ declare module "@xstyled/system" {
     props: Partial<{ theme: StyledComponents.DefaultTheme }>
   ) => React.ReactText;
 
-  export type TLengthStyledSystem = string | 0 | number;
+  export type StyledSystemLength = string | 0 | number;
 
   export type ResponsiveValue<T> = T | { [key: string]: T };
+
+  export type AliasKey = string;
 
   // ----- GETTERS -----
 
@@ -49,16 +51,16 @@ declare module "@xstyled/system" {
 
   // ----- BASICS -----
 
-  export const color: StyleFn;
+  export const color: StyleFunc;
 
   export interface ColorProps {
     readonly color?: ResponsiveValue<CSS.ColorProperty>;
   }
 
-  export const opacity: StyleFn;
-  export const overflow: StyleFn;
-  export const transition: StyleFn;
-  export const basics: StyleFn;
+  export const opacity: StyleFunc;
+  export const overflow: StyleFunc;
+  export const transition: StyleFunc;
+  export const basics: StyleFunc;
 
   export interface OpacityProps {
     readonly opacity?: ResponsiveValue<CSS.GlobalsNumber>;
@@ -79,87 +81,87 @@ declare module "@xstyled/system" {
 
   // ----- SPACE -----
 
-  export const margin: StyleFn;
-  export const marginTop: StyleFn;
-  export const marginRight: StyleFn;
-  export const marginBottom: StyleFn;
-  export const marginLeft: StyleFn;
-  export const mx: StyleFn;
-  export const my: StyleFn;
-  export const padding: StyleFn;
-  export const paddingTop: StyleFn;
-  export const paddingRight: StyleFn;
-  export const paddingBottom: StyleFn;
-  export const paddingLeft: StyleFn;
-  export const px: StyleFn;
-  export const py: StyleFn;
-  export const space: StyleFn;
+  export const margin: StyleFunc;
+  export const marginTop: StyleFunc;
+  export const marginRight: StyleFunc;
+  export const marginBottom: StyleFunc;
+  export const marginLeft: StyleFunc;
+  export const mx: StyleFunc;
+  export const my: StyleFunc;
+  export const padding: StyleFunc;
+  export const paddingTop: StyleFunc;
+  export const paddingRight: StyleFunc;
+  export const paddingBottom: StyleFunc;
+  export const paddingLeft: StyleFunc;
+  export const px: StyleFunc;
+  export const py: StyleFunc;
+  export const space: StyleFunc;
 
-  export interface MarginProps<TLength = TLengthStyledSystem> {
+  export interface MarginProps<TLength = StyledSystemLength> {
     readonly m?: ResponsiveValue<CSS.MarginTopProperty<TLength>>;
     readonly margin?: ResponsiveValue<CSS.MarginTopProperty<TLength>>;
   }
 
-  export interface MarginTopProps<TLength = TLengthStyledSystem> {
+  export interface MarginTopProps<TLength = StyledSystemLength> {
     readonly mt?: ResponsiveValue<CSS.MarginTopProperty<TLength>>;
     readonly marginTop?: ResponsiveValue<CSS.MarginTopProperty<TLength>>;
   }
 
-  export interface MarginRightProps<TLength = TLengthStyledSystem> {
+  export interface MarginRightProps<TLength = StyledSystemLength> {
     readonly mr?: ResponsiveValue<CSS.MarginRightProperty<TLength>>;
     readonly marginRight?: ResponsiveValue<CSS.MarginRightProperty<TLength>>;
   }
 
-  export interface MarginBottomProps<TLength = TLengthStyledSystem> {
+  export interface MarginBottomProps<TLength = StyledSystemLength> {
     readonly mb?: ResponsiveValue<CSS.MarginBottomProperty<TLength>>;
     readonly marginBottom?: ResponsiveValue<CSS.MarginBottomProperty<TLength>>;
   }
 
-  export interface MarginLeftProps<TLength = TLengthStyledSystem> {
+  export interface MarginLeftProps<TLength = StyledSystemLength> {
     readonly ml?: ResponsiveValue<CSS.MarginLeftProperty<TLength>>;
     readonly marginLeft?: ResponsiveValue<CSS.MarginLeftProperty<TLength>>;
   }
 
-  export interface MarginXProps<TLength = TLengthStyledSystem> {
+  export interface MarginXProps<TLength = StyledSystemLength> {
     readonly mx?: ResponsiveValue<CSS.MarginLeftProperty<TLength>>;
   }
 
-  export interface MarginYProps<TLength = TLengthStyledSystem> {
+  export interface MarginYProps<TLength = StyledSystemLength> {
     readonly my?: ResponsiveValue<CSS.MarginTopProperty<TLength>>;
   }
 
-  export interface PaddingProps<TLength = TLengthStyledSystem> {
+  export interface PaddingProps<TLength = StyledSystemLength> {
     readonly p?: ResponsiveValue<CSS.PaddingProperty<TLength>>;
     readonly padding?: ResponsiveValue<CSS.PaddingProperty<TLength>>;
   }
 
-  export interface PaddingTopProps<TLength = TLengthStyledSystem> {
+  export interface PaddingTopProps<TLength = StyledSystemLength> {
     readonly pt?: ResponsiveValue<CSS.PaddingTopProperty<TLength>>;
     readonly paddingTop?: ResponsiveValue<CSS.PaddingTopProperty<TLength>>;
   }
 
-  export interface PaddingRightProps<TLength = TLengthStyledSystem> {
+  export interface PaddingRightProps<TLength = StyledSystemLength> {
     readonly pr?: ResponsiveValue<CSS.PaddingRightProperty<TLength>>;
     readonly paddingRight?: ResponsiveValue<CSS.PaddingRightProperty<TLength>>;
   }
 
-  export interface PaddingBottomProps<TLength = TLengthStyledSystem> {
+  export interface PaddingBottomProps<TLength = StyledSystemLength> {
     readonly pb?: ResponsiveValue<CSS.PaddingBottomProperty<TLength>>;
     readonly paddingBottom?: ResponsiveValue<
       CSS.PaddingBottomProperty<TLength>
     >;
   }
 
-  export interface PaddingLeftProps<TLength = TLengthStyledSystem> {
+  export interface PaddingLeftProps<TLength = StyledSystemLength> {
     readonly pl?: ResponsiveValue<CSS.PaddingLeftProperty<TLength>>;
     readonly paddingLeft?: ResponsiveValue<CSS.PaddingLeftProperty<TLength>>;
   }
 
-  export interface PaddingXProps<TLength = TLengthStyledSystem> {
+  export interface PaddingXProps<TLength = StyledSystemLength> {
     readonly px?: ResponsiveValue<CSS.PaddingLeftProperty<TLength>>;
   }
 
-  export interface PaddingYProps<TLength = TLengthStyledSystem> {
+  export interface PaddingYProps<TLength = StyledSystemLength> {
     readonly py?: ResponsiveValue<CSS.PaddingTopProperty<TLength>>;
   }
 
@@ -181,50 +183,50 @@ declare module "@xstyled/system" {
 
   // ----- LAYOUT -----
 
-  export const display: StyleFn;
-  export const width: StyleFn;
-  export const height: StyleFn;
-  export const maxWidth: StyleFn;
-  export const maxHeight: StyleFn;
-  export const minWidth: StyleFn;
-  export const minHeight: StyleFn;
-  export const size: StyleFn;
-  export const verticalAlign: StyleFn;
-  export const layout: StyleFn;
+  export const display: StyleFunc;
+  export const width: StyleFunc;
+  export const height: StyleFunc;
+  export const maxWidth: StyleFunc;
+  export const maxHeight: StyleFunc;
+  export const minWidth: StyleFunc;
+  export const minHeight: StyleFunc;
+  export const size: StyleFunc;
+  export const verticalAlign: StyleFunc;
+  export const layout: StyleFunc;
 
   export interface DisplayProps {
     readonly display?: ResponsiveValue<CSS.DisplayProperty>;
   }
 
-  export interface WidthProps<TLength = TLengthStyledSystem> {
+  export interface WidthProps<TLength = StyledSystemLength> {
     readonly width?: ResponsiveValue<CSS.WidthProperty<TLength>>;
   }
 
-  export interface HeightProps<TLength = TLengthStyledSystem> {
+  export interface HeightProps<TLength = StyledSystemLength> {
     readonly height?: ResponsiveValue<CSS.HeightProperty<TLength>>;
   }
 
-  export interface MaxWidthProps<TLength = TLengthStyledSystem> {
+  export interface MaxWidthProps<TLength = StyledSystemLength> {
     readonly maxWidth?: ResponsiveValue<CSS.MaxWidthProperty<TLength>>;
   }
 
-  export interface MaxHeightProps<TLength = TLengthStyledSystem> {
+  export interface MaxHeightProps<TLength = StyledSystemLength> {
     readonly maxHeight?: ResponsiveValue<CSS.MaxHeightProperty<TLength>>;
   }
 
-  export interface MinWidthProps<TLength = TLengthStyledSystem> {
+  export interface MinWidthProps<TLength = StyledSystemLength> {
     readonly minWidth?: ResponsiveValue<CSS.MinWidthProperty<TLength>>;
   }
 
-  export interface MinHeightProps<TLength = TLengthStyledSystem> {
+  export interface MinHeightProps<TLength = StyledSystemLength> {
     readonly minHeight?: ResponsiveValue<CSS.MinHeightProperty<TLength>>;
   }
 
-  export interface SizeProps<TLength = TLengthStyledSystem> {
+  export interface SizeProps<TLength = StyledSystemLength> {
     readonly size?: ResponsiveValue<CSS.HeightProperty<TLength>>;
   }
 
-  export interface VerticalAlignProps<TLength = TLengthStyledSystem> {
+  export interface VerticalAlignProps<TLength = StyledSystemLength> {
     readonly verticalAlign?: ResponsiveValue<
       CSS.VerticalAlignProperty<TLength>
     >;
@@ -243,9 +245,9 @@ declare module "@xstyled/system" {
 
   // ----- XGRID -----
 
-  export const col: StyleFn;
-  export const row: StyleFn;
-  export const xgrids: StyleFn;
+  export const col: StyleFunc;
+  export const row: StyleFunc;
+  export const xgrids: StyleFunc;
 
   export interface ColProps {
     readonly col?: ResponsiveValue<string | number | boolean>;
@@ -259,36 +261,36 @@ declare module "@xstyled/system" {
 
   // ----- TYPOGRAPHY -----
 
-  export const fontFamily: StyleFn;
-  export const fontSize: StyleFn;
-  export const lineHeight: StyleFn;
-  export const fontWeight: StyleFn;
-  export const textAlign: StyleFn;
-  export const letterSpacing: StyleFn;
-  export const textTransform: StyleFn;
-  export const typography: StyleFn;
+  export const fontFamily: StyleFunc;
+  export const fontSize: StyleFunc;
+  export const lineHeight: StyleFunc;
+  export const fontWeight: StyleFunc;
+  export const textAlign: StyleFunc;
+  export const letterSpacing: StyleFunc;
+  export const textTransform: StyleFunc;
+  export const typography: StyleFunc;
 
   export interface FontFamilyProps {
     readonly fontFamily?: ResponsiveValue<CSS.FontFamilyProperty>;
   }
 
-  export interface FontSizeProps<TLength = TLengthStyledSystem> {
+  export interface FontSizeProps<TLength = StyledSystemLength> {
     readonly fontSize?: ResponsiveValue<CSS.FontSizeProperty<TLength>>;
   }
 
-  export interface LineHeightProps<TLength = TLengthStyledSystem> {
+  export interface LineHeightProps<TLength = StyledSystemLength> {
     readonly lineHeight?: ResponsiveValue<CSS.LineHeightProperty<TLength>>;
   }
 
   export interface FontWeightProps {
-    readonly fontWeight?: ResponsiveValue<CSS.FontWeightProperty>;
+    readonly fontWeight?: ResponsiveValue<CSS.FontWeightProperty | AliasKey>; // ????
   }
 
   export interface TextAlignProps {
     readonly textAlign?: ResponsiveValue<CSS.TextAlignProperty>;
   }
 
-  export interface LetterSpacingProps<TLength = TLengthStyledSystem> {
+  export interface LetterSpacingProps<TLength = StyledSystemLength> {
     readonly letterSpacing?: ResponsiveValue<
       CSS.LetterSpacingProperty<TLength>
     >;
@@ -310,18 +312,18 @@ declare module "@xstyled/system" {
 
   // ----- FLEXBOXES -----
 
-  export const alignItems: StyleFn;
-  export const alignContent: StyleFn;
-  export const justifyContent: StyleFn;
-  export const justifyItems: StyleFn;
-  export const flexWrap: StyleFn;
-  export const flexBasis: StyleFn;
-  export const flexDirection: StyleFn;
-  export const flex: StyleFn;
-  export const justifySelf: StyleFn;
-  export const alignSelf: StyleFn;
-  export const order: StyleFn;
-  export const flexboxes: StyleFn;
+  export const alignItems: StyleFunc;
+  export const alignContent: StyleFunc;
+  export const justifyContent: StyleFunc;
+  export const justifyItems: StyleFunc;
+  export const flexWrap: StyleFunc;
+  export const flexBasis: StyleFunc;
+  export const flexDirection: StyleFunc;
+  export const flex: StyleFunc;
+  export const justifySelf: StyleFunc;
+  export const alignSelf: StyleFunc;
+  export const order: StyleFunc;
+  export const flexboxes: StyleFunc;
 
   export interface AlignItemsProps {
     readonly alignItems?: ResponsiveValue<CSS.AlignItemsProperty>;
@@ -343,7 +345,7 @@ declare module "@xstyled/system" {
     readonly flexWrap?: ResponsiveValue<CSS.FlexWrapProperty>;
   }
 
-  export interface FlexBasisProps<TLength = TLengthStyledSystem> {
+  export interface FlexBasisProps<TLength = StyledSystemLength> {
     readonly flexBasis?: ResponsiveValue<CSS.FlexBasisProperty<TLength>>;
   }
 
@@ -351,7 +353,7 @@ declare module "@xstyled/system" {
     readonly flexDirection?: ResponsiveValue<CSS.FlexDirectionProperty>;
   }
 
-  export interface FlexProps<TLength = TLengthStyledSystem> {
+  export interface FlexProps<TLength = StyledSystemLength> {
     readonly flex?: ResponsiveValue<CSS.FlexProperty<TLength>>;
   }
 
@@ -383,31 +385,31 @@ declare module "@xstyled/system" {
 
   // ----- GRIDS -----
 
-  export const gridGap: StyleFn;
-  export const gridColumnGap: StyleFn;
-  export const gridRowGap: StyleFn;
-  export const gridColumn: StyleFn;
-  export const gridRow: StyleFn;
-  export const gridAutoFlow: StyleFn;
-  export const gridAutoColumns: StyleFn;
-  export const gridAutoRows: StyleFn;
-  export const gridTemplateColumns: StyleFn;
-  export const gridTemplateRows: StyleFn;
-  export const gridTemplateAreas: StyleFn;
-  export const gridArea: StyleFn;
-  export const grids: StyleFn;
+  export const gridGap: StyleFunc;
+  export const gridColumnGap: StyleFunc;
+  export const gridRowGap: StyleFunc;
+  export const gridColumn: StyleFunc;
+  export const gridRow: StyleFunc;
+  export const gridAutoFlow: StyleFunc;
+  export const gridAutoColumns: StyleFunc;
+  export const gridAutoRows: StyleFunc;
+  export const gridTemplateColumns: StyleFunc;
+  export const gridTemplateRows: StyleFunc;
+  export const gridTemplateAreas: StyleFunc;
+  export const gridArea: StyleFunc;
+  export const grids: StyleFunc;
 
-  export interface GridGapProps<TLength = TLengthStyledSystem> {
+  export interface GridGapProps<TLength = StyledSystemLength> {
     readonly gridGap?: ResponsiveValue<CSS.GridGapProperty<TLength>>;
   }
 
-  export interface GridColumnGapProps<TLength = TLengthStyledSystem> {
+  export interface GridColumnGapProps<TLength = StyledSystemLength> {
     readonly gridColumnGap?: ResponsiveValue<
       CSS.GridColumnGapProperty<TLength>
     >;
   }
 
-  export interface GridRowGapProps<TLength = TLengthStyledSystem> {
+  export interface GridRowGapProps<TLength = StyledSystemLength> {
     readonly gridRowGap?: ResponsiveValue<CSS.GridRowGapProperty<TLength>>;
   }
 
@@ -423,23 +425,23 @@ declare module "@xstyled/system" {
     readonly gridAutoFlow?: ResponsiveValue<CSS.GridAutoFlowProperty>;
   }
 
-  export interface GridAutoColumnsProps<TLength = TLengthStyledSystem> {
+  export interface GridAutoColumnsProps<TLength = StyledSystemLength> {
     readonly gridAutoColumns?: ResponsiveValue<
       CSS.GridAutoColumnsProperty<TLength>
     >;
   }
 
-  export interface GridAutoRowsProps<TLength = TLengthStyledSystem> {
+  export interface GridAutoRowsProps<TLength = StyledSystemLength> {
     readonly gridAutoRows?: ResponsiveValue<CSS.GridAutoRowsProperty<TLength>>;
   }
 
-  export interface GridTemplateColumnsProps<TLength = TLengthStyledSystem> {
+  export interface GridTemplateColumnsProps<TLength = StyledSystemLength> {
     readonly gridTemplateColumns?: ResponsiveValue<
       CSS.GridTemplateColumnsProperty<TLength>
     >;
   }
 
-  export interface GridTemplateRowsProps<TLength = TLengthStyledSystem> {
+  export interface GridTemplateRowsProps<TLength = StyledSystemLength> {
     readonly gridTemplateRows?: ResponsiveValue<
       CSS.GridTemplateRowsProperty<TLength>
     >;
@@ -469,19 +471,19 @@ declare module "@xstyled/system" {
 
   // ----- BACKGROUNDS -----
 
-  export const background: StyleFn;
-  export const backgroundColor: StyleFn;
-  export const backgroundImage: StyleFn;
-  export const backgroundSize: StyleFn;
-  export const backgroundPosition: StyleFn;
-  export const backgroundRepeat: StyleFn;
-  export const backgrounds: StyleFn;
+  export const background: StyleFunc;
+  export const backgroundColor: StyleFunc;
+  export const backgroundImage: StyleFunc;
+  export const backgroundSize: StyleFunc;
+  export const backgroundPosition: StyleFunc;
+  export const backgroundRepeat: StyleFunc;
+  export const backgrounds: StyleFunc;
 
-  export interface BackgroundProps {
+  export interface BackgroundProps<TLength = StyledSystemLength> {
     readonly background?: ResponsiveValue<CSS.BackgroundProperty<TLength>>;
   }
 
-  export interface BackgroundColorProps<TLength = TLengthStyledSystem> {
+  export interface BackgroundColorProps<TLength = StyledSystemLength> {
     readonly backgroundColor?: ResponsiveValue<CSS.BackgroundProperty<TLength>>;
   }
 
@@ -489,13 +491,13 @@ declare module "@xstyled/system" {
     readonly backgroundImage?: ResponsiveValue<CSS.BackgroundImageProperty>;
   }
 
-  export interface BackgroundSizeProps<TLength = TLengthStyledSystem> {
+  export interface BackgroundSizeProps<TLength = StyledSystemLength> {
     readonly backgroundSize?: ResponsiveValue<
       CSS.BackgroundSizeProperty<TLength>
     >;
   }
 
-  export interface BackgroundPositionProps<TLength = TLengthStyledSystem> {
+  export interface BackgroundPositionProps<TLength = StyledSystemLength> {
     readonly backgroundPosition?: ResponsiveValue<
       CSS.BackgroundPositionProperty<TLength>
     >;
@@ -515,35 +517,35 @@ declare module "@xstyled/system" {
 
   // ----- POSITIONING -----
 
-  export const position: StyleFn;
-  export const zIndex: StyleFn;
-  export const top: StyleFn;
-  export const right: StyleFn;
-  export const bottom: StyleFn;
-  export const left: StyleFn;
-  export const positioning: StyleFn;
+  export const position: StyleFunc;
+  export const zIndex: StyleFunc;
+  export const top: StyleFunc;
+  export const right: StyleFunc;
+  export const bottom: StyleFunc;
+  export const left: StyleFunc;
+  export const positioning: StyleFunc;
 
   export interface PositionProps {
     readonly position?: ResponsiveValue<CSS.PositionProperty>;
   }
 
   export interface ZIndexProps {
-    readonly zIndex?: ResponsiveValue<CSS.ZIndexProperty>;
+    readonly zIndex?: ResponsiveValue<CSS.ZIndexProperty | AliasKey>;
   }
 
-  export interface TopProps<TLength = TLengthStyledSystem> {
+  export interface TopProps<TLength = StyledSystemLength> {
     readonly top?: ResponsiveValue<CSS.TopProperty<TLength>>;
   }
 
-  export interface RightProps<TLength = TLengthStyledSystem> {
+  export interface RightProps<TLength = StyledSystemLength> {
     readonly right?: ResponsiveValue<CSS.RightProperty<TLength>>;
   }
 
-  export interface BottomProps<TLength = TLengthStyledSystem> {
+  export interface BottomProps<TLength = StyledSystemLength> {
     readonly bottom?: ResponsiveValue<CSS.BottomProperty<TLength>>;
   }
 
-  export interface LeftProps<TLength = TLengthStyledSystem> {
+  export interface LeftProps<TLength = StyledSystemLength> {
     readonly left?: ResponsiveValue<CSS.LeftProperty<TLength>>;
   }
 
@@ -557,26 +559,26 @@ declare module "@xstyled/system" {
 
   // ----- BORDERS -----
 
-  export const border: StyleFn;
-  export const borderTop: StyleFn;
-  export const borderTopColor: StyleFn;
-  export const borderRight: StyleFn;
-  export const borderRightColor: StyleFn;
-  export const borderBottom: StyleFn;
-  export const borderBottomColor: StyleFn;
-  export const borderLeft: StyleFn;
-  export const borderLeftColor: StyleFn;
-  export const borderColor: StyleFn;
-  export const borderWidth: StyleFn;
-  export const borderStyle: StyleFn;
-  export const borderRadius: StyleFn;
-  export const borders: StyleFn;
+  export const border: StyleFunc;
+  export const borderTop: StyleFunc;
+  export const borderTopColor: StyleFunc;
+  export const borderRight: StyleFunc;
+  export const borderRightColor: StyleFunc;
+  export const borderBottom: StyleFunc;
+  export const borderBottomColor: StyleFunc;
+  export const borderLeft: StyleFunc;
+  export const borderLeftColor: StyleFunc;
+  export const borderColor: StyleFunc;
+  export const borderWidth: StyleFunc;
+  export const borderStyle: StyleFunc;
+  export const borderRadius: StyleFunc;
+  export const borders: StyleFunc;
 
-  export interface BorderProps<TLength = TLengthStyledSystem> {
+  export interface BorderProps<TLength = StyledSystemLength> {
     readonly border?: ResponsiveValue<CSS.BorderProperty<TLength>>;
   }
 
-  export interface BorderTopProps<TLength = TLengthStyledSystem> {
+  export interface BorderTopProps<TLength = StyledSystemLength> {
     readonly borderTop?: ResponsiveValue<CSS.BorderTopProperty<TLength>>;
   }
 
@@ -584,7 +586,7 @@ declare module "@xstyled/system" {
     readonly borderTopColor?: ResponsiveValue<CSS.BorderColorProperty>;
   }
 
-  export interface BorderRightProps<TLength = TLengthStyledSystem> {
+  export interface BorderRightProps<TLength = StyledSystemLength> {
     readonly borderRight?: ResponsiveValue<CSS.BorderRightProperty<TLength>>;
   }
 
@@ -592,7 +594,7 @@ declare module "@xstyled/system" {
     readonly borderRightColor?: ResponsiveValue<CSS.BorderColorProperty>;
   }
 
-  export interface BorderBottomProps<TLength = TLengthStyledSystem> {
+  export interface BorderBottomProps<TLength = StyledSystemLength> {
     readonly borderBottom?: ResponsiveValue<CSS.BorderBottomProperty<TLength>>;
   }
 
@@ -600,7 +602,7 @@ declare module "@xstyled/system" {
     readonly borderBottomColor?: ResponsiveValue<CSS.BorderColorProperty>;
   }
 
-  export interface BorderLeftProps<TLength = TLengthStyledSystem> {
+  export interface BorderLeftProps<TLength = StyledSystemLength> {
     readonly borderLeft?: ResponsiveValue<CSS.BorderLeftProperty<TLength>>;
   }
 
@@ -612,7 +614,7 @@ declare module "@xstyled/system" {
     readonly borderColor?: ResponsiveValue<CSS.BorderColorProperty>;
   }
 
-  export interface BorderWidthProps<TLength = TLengthStyledSystem> {
+  export interface BorderWidthProps<TLength = StyledSystemLength> {
     readonly borderWidth?: ResponsiveValue<CSS.BorderWidthProperty<TLength>>;
   }
 
@@ -620,7 +622,7 @@ declare module "@xstyled/system" {
     readonly borderStyle?: ResponsiveValue<CSS.BorderStyleProperty>;
   }
 
-  export interface BorderRadiusProps<TLength = TLengthStyledSystem> {
+  export interface BorderRadiusProps<TLength = StyledSystemLength> {
     readonly borderRadius?: ResponsiveValue<CSS.BorderRadiusProperty<TLength>>;
   }
 
@@ -641,9 +643,9 @@ declare module "@xstyled/system" {
 
   // ----- SHADOWS -----
 
-  export const boxShadow: StyleFn;
-  export const textShadow: StyleFn;
-  export const shadows: StyleFn;
+  export const boxShadow: StyleFunc;
+  export const textShadow: StyleFunc;
+  export const shadows: StyleFunc;
 
   export interface BoxShadowProps {
     readonly boxShadow?: ResponsiveValue<CSS.BoxShadowProperty | number>;
@@ -657,7 +659,7 @@ declare module "@xstyled/system" {
 
   // ----- SYSTEM -----
 
-  export const system: StyleFn;
+  export const system: StyleFunc;
 
   export interface SystemProps
     extends BackgroundsProps,
@@ -674,15 +676,15 @@ declare module "@xstyled/system" {
 
   // ----- COMPOSE -----
 
-  export function compose(...parsers: ReadonlyArray<StyleFn>): StyleFn;
+  export function compose(...parsers: ReadonlyArray<StyleFunc>): StyleFunc;
 
   // ----- CREATE_SYSTEM_COMPONENT -----
 
   export function createSystemComponent(
     react: typeof React,
-    defaultComponent: string | React.ReactNode,
-    system: StyleFn
-  ): React.ReactNode;
+    defaultComponent?: string | React.ReactNode,
+    system?: StyleFunc
+  ): React.ComponentType<any>;
 
   // ----- TH -----
 
@@ -711,12 +713,12 @@ declare module "@xstyled/system" {
   // ----- STYLE -----
 
   export function style(config: {
-    prop: string | Array<string>;
-    cssProperty: string | Array<string>;
+    prop: string | ReadonlyArray<string>;
+    cssProperty: string | ReadonlyArray<string>;
     key?: any;
     transform?: any;
     themeGet?: any;
-  }): StyleFn;
+  }): StyleFunc;
 
   // ----- VARIANT -----
 

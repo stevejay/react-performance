@@ -10,7 +10,7 @@ const HeroImageWrap = styled.div`
   overflow: hidden;
   background-color: ${props => props.theme.colors.gray100};
 
-  ${props => props.theme.mediaQueries.tabletPortrait} {
+  @media screen and (min-width: ${props => props.theme.breakpoints.sm}) {
     padding-top: 60%; /* Rectangular aspect ratio for landscape mode */
   }
 

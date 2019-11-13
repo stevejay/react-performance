@@ -7,7 +7,7 @@ import { NavLink } from "./nav-link";
 const StyledList = styled.ul(
   ({ theme }) => css`
     margin: 0;
-    padding: ${theme.space[1]} ${theme.space[2]};
+    padding: ${theme.space.xs} ${theme.space.sm};
     list-style: none;
 
     & > * + * {

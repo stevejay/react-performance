@@ -51,14 +51,14 @@ const Header: React.FC<Props> = ({ pages }) => {
       as="header"
       color="white"
       backgroundColor="primary900"
-      p={{ xs: 1, sm: 2 }}
+      p={{ xs: "xs", sm: "sm" }}
       justifyContent="space-between"
       alignItems="center"
       boxShadow="md"
-      zIndex={0} // should render as 100!!
+      zIndex="header"
     >
       <SkipLink targetId="main-content">Skip to main content</SkipLink>
-      <Heading as="h2" fontSize={{ xs: 3, sm: 4 }} fontWeight="lighter">
+      <Heading as="h2" fontSize={{ xs: "lg", sm: "xl" }} fontWeight="light">
         React Experiments
       </Heading>
       <Button
@@ -71,7 +71,7 @@ const Header: React.FC<Props> = ({ pages }) => {
         aria-label="Open site navigation menu"
         onClick={() => setSidebarIsOpen(true)}
       >
-        <Icons.Menu color="white" size={5} />
+        <Icons.Menu color="white" size="xxl" />
       </Button>
       {animationLibrary === AnimationLibrary.ReactTransitionGroup && (
         <>

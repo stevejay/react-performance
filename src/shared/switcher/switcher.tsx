@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components/macro";
 import { css } from "styled-components";
-import { getSize, getSpace, TLengthStyledSystem } from "@xstyled/system";
+import { getSize, getSpace, StyledSystemLength } from "@xstyled/system";
 
 type Props = {
   // If there is more than `limit` children, stack them on top of each other
@@ -9,10 +9,10 @@ type Props = {
   // number of children.
   readonly limit?: number;
   // The margin between the children.
-  readonly spacing: import("csstype").MarginTopProperty<TLengthStyledSystem>;
+  readonly spacing: import("csstype").MarginTopProperty<StyledSystemLength>;
   // If the width of the available content area is less than this threshold
   // then the children are always stacked on top of each other.
-  readonly threshold: import("csstype").WidthProperty<TLengthStyledSystem>;
+  readonly threshold: import("csstype").WidthProperty<StyledSystemLength>;
 };
 
 const StyledOuterWrap = styled.div`

@@ -6,13 +6,12 @@ import {
   justifyContent,
   getSpace,
   AlignItemsProps,
-  JustifyContentProps,
-  TLengthStyledSystem
+  JustifyContentProps
 } from "@xstyled/system";
 
 type Props = AlignItemsProps &
   JustifyContentProps & {
-    readonly spacing: import("csstype").MarginTopProperty<TLengthStyledSystem>;
+    readonly spacing: string | number;
   };
 
 const StyledOuterWrap = styled.div`

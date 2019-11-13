@@ -4,14 +4,14 @@ import { Box } from "src/shared/box";
 import { Button } from "src/shared/button";
 
 const ExampleButton: React.FC = ({ children }) => (
-  <Button useCSSAnimation variant="primary" py={1} px={2} onClick={() => {}}>
+  <Button useCSSAnimation variant="primary" py="xs" px="sm" onClick={() => {}}>
     {children}
   </Button>
 );
 
 const Default = () => (
-  <Box margin={2} display="flex" flexDirection="column">
-    <Switcher spacing={3} threshold={600}>
+  <Box margin="sm" display="flex" flexDirection="column">
+    <Switcher spacing="md" threshold="600px">
       <ExampleButton>Button One</ExampleButton>
       <ExampleButton>Button Two</ExampleButton>
       <ExampleButton>Button Three</ExampleButton>

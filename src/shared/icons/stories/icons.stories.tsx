@@ -3,9 +3,9 @@ import { Icons } from "src/shared/icons";
 
 const Default = () => (
   <>
-    <Icons.ArrowRight size={5} />
-    <Icons.Menu size={5} />
-    <Icons.Spinner size={5} />
+    <Icons.ArrowRight size="xxl" />
+    <Icons.Menu size="xxl" />
+    <Icons.Spinner size="xxl" />
   </>
 );
 
