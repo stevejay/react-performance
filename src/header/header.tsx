@@ -46,19 +46,25 @@ const Header: React.FC<Props> = ({ pages }) => {
     s => s.animationLibrary
   );
 
+  // eslint-disable-next-line no-console
+  console.log(
+    "%c JavaScript!!",
+    "font-weight: bold; font-size: 50px;color: red; text-shadow: 3px 3px 0 rgb(217,31,38) , 6px 6px 0 rgb(226,91,14) , 9px 9px 0 rgb(245,221,8) , 12px 12px 0 rgb(5,148,68) , 15px 15px 0 rgb(2,135,206) , 18px 18px 0 rgb(4,77,145) , 21px 21px 0 rgb(42,21,113)"
+  );
+
   return (
     <Box
       as="header"
       color="white"
       backgroundColor="primary900"
-      p={{ xs: "xs", sm: "sm" }}
+      p={{ xs: 1, sm: 2 }}
       justifyContent="space-between"
       alignItems="center"
       boxShadow="md"
       zIndex="header"
     >
       <SkipLink targetId="main-content">Skip to main content</SkipLink>
-      <Heading as="h2" fontSize={{ xs: "lg", sm: "xl" }} fontWeight="light">
+      <Heading as="h2" fontSize={{ xs: 3, sm: 4 }} fontWeight="light">
         React Experiments
       </Heading>
       <Button
@@ -71,7 +77,7 @@ const Header: React.FC<Props> = ({ pages }) => {
         aria-label="Open site navigation menu"
         onClick={() => setSidebarIsOpen(true)}
       >
-        <Icons.Menu color="white" size="xxl" />
+        <Icons.Menu color="white" size={5} />
       </Button>
       {animationLibrary === AnimationLibrary.ReactTransitionGroup && (
         <>

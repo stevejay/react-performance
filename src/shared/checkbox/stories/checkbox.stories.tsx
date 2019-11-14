@@ -11,8 +11,8 @@ const Default = () => {
   const [selectedFour, setSelectedFour] = React.useState(true);
 
   return (
-    <Box margin="sm" display="flex" flexDirection="column">
-      <Stack verticalSpacing="sm">
+    <Box margin={2} display="flex" flexDirection="column">
+      <Stack verticalSpacing={2}>
         <Checkbox
           label="Option 1"
           name="optionOne"

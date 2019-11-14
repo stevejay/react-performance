@@ -2,7 +2,7 @@ import React from "react";
 import { Stack } from "src/shared/stack";
 
 const Default = () => (
-  <Stack verticalSpacing={{ xs: "sm", md: "md" }}>
+  <Stack verticalSpacing={{ xs: 2, md: 3 }}>
     <div>Some Content</div>
     <div>Some Other Content</div>
   </Stack>

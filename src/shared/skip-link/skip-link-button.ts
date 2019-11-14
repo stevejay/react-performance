@@ -13,7 +13,7 @@ const SkipLinkButton = styled.button(
     color: ${theme.colors.link};
     font-weight: ${theme.fontWeights.normal};
     text-decoration: underline;
-    padding: ${theme.space.xs};
+    padding: ${theme.space[1]};
   `
 );
 

@@ -32,12 +32,12 @@ const CompositingAnimationPage: React.FC<Props> = ({ title }) => {
   };
 
   return (
-    <Box m={{ xs: "md", sm: "xl" }}>
-      <Stack verticalSpacing={{ xs: "sm", sm: "md" }}>
+    <Box m={{ xs: 3, sm: 5 }}>
+      <Stack verticalSpacing={{ xs: 2, sm: 3 }}>
         <Heading
           ref={headingRef}
-          pb={{ xs: "xs", sm: "sm" }}
-          fontSize={{ xs: "xl", sm: "xxl" }}
+          pb={{ xs: 1, sm: 2 }}
+          fontSize={{ xs: 4, sm: 5 }}
           fontWeight="light"
           borderBottom="1px solid"
           borderColor="contrastCool500"
@@ -54,8 +54,8 @@ const CompositingAnimationPage: React.FC<Props> = ({ title }) => {
             isLoading={isLoading}
             useCSSAnimation
             variant="primary"
-            py="xs"
-            px="sm"
+            py={1}
+            px={2}
             onClick={handleClick}
           >
             CSS animation
@@ -64,8 +64,8 @@ const CompositingAnimationPage: React.FC<Props> = ({ title }) => {
             isLoading={isLoading}
             useCSSAnimation={false}
             variant="primary"
-            py="xs"
-            px="sm"
+            py={1}
+            px={2}
             onClick={handleClick}
           >
             rAF animation
@@ -73,8 +73,8 @@ const CompositingAnimationPage: React.FC<Props> = ({ title }) => {
           <Button
             variant="primary"
             useCSSAnimation={false}
-            py="xs"
-            px="sm"
+            py={1}
+            px={2}
             onClick={() => blockDOMUpdates(2000)}
           >
             Freeze site for two seconds

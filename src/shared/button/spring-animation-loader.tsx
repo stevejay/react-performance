@@ -44,7 +44,7 @@ const SpringAnimationLoader: React.FC<Props> = ({ isLoading }) => {
   return (
     <LoaderWrap>
       <IconWrap style={animationProps}>
-        <Icons.Spinner size="xxl" />
+        <Icons.Spinner size={5} />
       </IconWrap>
     </LoaderWrap>
   );

@@ -3,7 +3,6 @@ import { maxWidth, MaxWidthProps, px, PaddingXProps } from "@xstyled/system";
 
 type Props = MaxWidthProps &
   PaddingXProps & {
-    // I'm not sure what this represents
     readonly intrinsic?: boolean;
     // Add `text-align: center` rule:
     readonly centeredText?: boolean;

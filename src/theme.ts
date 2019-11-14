@@ -1,48 +1,38 @@
 // Documentation for styled-system theme format:
 // https://www.smooth-code.com/open-source/xstyled/docs/theme-specification/
 
-const colors = {
-  primary900: "#C52184",
-  primary500: "#E574BC",
-  primary100: "#F9B4ED",
-  contrastHot500: "#F8CA1F",
-  contrastCool500: "#60B4B4",
-  black: "#000",
-  white: "#FFF",
-  transparent: "rgba(0,0,0,0)",
-  gray900: "#1E2D24",
-  gray600: "#334139",
-  gray500: "#565656",
-  gray100: "#ECEFF1",
-  link: "#0000EE",
-  focus: "#228BEC"
-} as const;
-
-const theme = {
+const baseTheme = {
   name: "default",
-  colors,
-  space: {
-    none: "0px",
-    xs: "0.5rem",
-    sm: "1rem",
-    md: "1.5rem",
-    lg: "2.5rem",
-    xl: "4rem",
-    xxl: "6.5rem"
+  colors: {
+    primary900: "#C52184",
+    primary500: "#E574BC",
+    primary100: "#F9B4ED",
+    contrastHot500: "#F8CA1F",
+    contrastCool500: "#60B4B4",
+    transparent: "rgba(0,0,0,0)",
+    black: "#000",
+    gray900: "#1E2D24",
+    gray600: "#334139",
+    gray500: "#565656",
+    gray100: "#ECEFF1",
+    white: "#FFF",
+    link: "#0000EE",
+    focus: "#228BEC"
   },
+  space: ["0px", "0.5rem", "1rem", "1.5rem", "2.5rem", "4rem", "6.5rem"],
   fonts: {
     body: "'Open Sans', sans-serif",
     display: "'Montserrat', sans-serif"
   },
-  fontSizes: {
-    xs: "0.75rem",
-    sm: "0.875rem",
-    md: "1rem",
-    lg: "1.25rem",
-    xl: "1.5rem",
-    xxl: "2rem",
-    banner: "3rem"
-  },
+  fontSizes: [
+    "0.75rem",
+    "0.875rem",
+    "1rem",
+    "1.25rem",
+    "1.5rem",
+    "2rem",
+    "3rem"
+  ],
   fontWeights: {
     light: 300,
     normal: 400,
@@ -95,17 +85,21 @@ const theme = {
     header: 100,
     sidebar: 200,
     modalDialog: 300
-  },
+  }
+} as const;
+
+const theme = {
+  ...baseTheme,
   buttons: {
     primary: {
-      color: colors.white,
-      backgroundColor: colors.primary900,
-      borderColor: colors.primary900
+      color: baseTheme.colors.white,
+      backgroundColor: baseTheme.colors.primary900,
+      borderColor: baseTheme.colors.primary900
     },
     outlineInverted: {
-      color: colors.white,
+      color: baseTheme.colors.white,
       backgroundColor: "transparent",
-      borderColor: colors.white
+      borderColor: baseTheme.colors.white
     }
   }
 } as const;

@@ -3,7 +3,7 @@ import { Box } from "src/shared/box";
 
 const Default = () => (
   <Box
-    p={{ xs: "sm", sm: "xl" }}
+    p={{ xs: 2, sm: 5 }}
     zIndex="header"
     backgroundColor="primary900"
     color="white"

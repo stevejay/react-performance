@@ -722,21 +722,19 @@ declare module "@xstyled/system" {
 
   // ----- VARIANT -----
 
-  // from https://github.com/RetailMeNot/anchor/blob/master/src/typings.d.ts
+  export interface VariantArgs {
+    key?: string;
+    default?: string | number;
+    prop?: string;
+    variants?: object;
+  }
+
   export function variant<T extends {}>({
     key,
     default: defaultValue,
-    variants,
-    prop
-  }: {
-    key?: string;
-    default?: string | number;
-    variants?: {
-      [key: string]: T;
-      [key: number]: T;
-    };
-    prop?: string;
-  }): (props: any) => any;
+    prop,
+    variants
+  }: VariantArgs): (props: any) => any;
 
   // ----- RESPONSIVE UTILITIES -----
 

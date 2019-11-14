@@ -7,7 +7,7 @@ const Default = () => {
   const [selectedOption, setSelectedOption] = React.useState("");
 
   return (
-    <Box margin="sm" display="flex" flexDirection="column">
+    <Box margin={2} display="flex" flexDirection="column">
       <RadioButton.Group title="The Options" groupName="options">
         <RadioButton
           label="Option 1"
