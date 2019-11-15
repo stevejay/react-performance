@@ -1,6 +1,7 @@
 import styled from "styled-components/macro";
 import {
   backgrounds,
+  basics,
   color,
   flexboxes,
   layout,
@@ -8,21 +9,26 @@ import {
   shadows,
   space,
   BackgroundsProps,
+  BasicsProps,
   ColorProps,
   FlexboxesProps,
   LayoutProps,
   PositioningProps,
   ShadowsProps,
-  SpaceProps
+  SpaceProps,
+  borders,
+  BordersProps
 } from "@xstyled/system";
 
 type Props = BackgroundsProps &
+  BasicsProps &
   ColorProps &
   FlexboxesProps &
   LayoutProps &
   PositioningProps &
   ShadowsProps &
-  SpaceProps;
+  SpaceProps &
+  BordersProps; /* TODO REMOVE */
 
 const Box = styled.div<Props>`
   min-width: 0;
@@ -34,6 +40,8 @@ const Box = styled.div<Props>`
   ${positioning}
   ${shadows}
   ${space}
+  ${basics}
+  ${borders} /* TODO REMOVE */
 `;
 
 export { Box };

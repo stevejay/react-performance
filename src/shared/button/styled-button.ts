@@ -3,20 +3,26 @@ import { css } from "styled-components";
 import {
   space,
   typography,
+  variant,
   SpaceProps,
   TypographyProps
 } from "@xstyled/system";
-import { darken, lighten } from "polished";
 
 type ButtonVariants = import("styled-components").DefaultTheme["buttons"];
 
 type StyledButtonProps = {
-  readonly variant: keyof ButtonVariants;
+  readonly variant?: keyof ButtonVariants;
 } & SpaceProps &
   TypographyProps;
 
+const variants = variant({
+  key: "buttons",
+  prop: "variant",
+  default: "primary"
+});
+
 const StyledButton = styled.button<StyledButtonProps>(
-  ({ theme, variant }) => css`
+  ({ theme }) => css`
     appearance: none;
     background: none repeat scroll 0 0 transparent;
     border-spacing: 0;
@@ -27,19 +33,14 @@ const StyledButton = styled.button<StyledButtonProps>(
     font-weight: ${theme.fontWeights.normal};
     line-height: ${theme.lineHeights.md};
     border-radius: ${theme.radii.xs};
-    background-color: ${theme.buttons[variant].backgroundColor};
-    color: ${theme.buttons[variant].color};
-    border: ${theme.borderWidths.hair} solid
-      ${theme.buttons[variant].borderColor};
+    border-width: ${theme.borderWidths.hair};
+    border-style: solid;
+    ${variants}
     ${typography}
     ${space}
 
     &:disabled {
-      background-color: ${lighten(
-        0.35,
-        theme.buttons[variant].backgroundColor
-      )};
-      border-color: ${lighten(0.35, theme.buttons[variant].borderColor)};
+      opacity: 0.65;
     }
 
     &:disabled,
@@ -49,8 +50,7 @@ const StyledButton = styled.button<StyledButtonProps>(
 
     &:hover:not(:disabled):not([data-loading="true"]),
     &:active:not(:disabled):not([data-loading="true"]) {
-      background-color: ${darken(0.1, theme.buttons[variant].backgroundColor)};
-      border-color: ${darken(0.1, theme.buttons[variant].borderColor)};
+      filter: contrast(1.4);
     }
   `
 );

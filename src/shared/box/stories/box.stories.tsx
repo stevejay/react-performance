@@ -6,9 +6,14 @@ const Default = () => (
     p={{ xs: 2, sm: 5 }}
     zIndex="header"
     backgroundColor="primary900"
-    color="white"
+    color={{ xs: "red", md: "blue" }}
+    transition="opacity 3s"
+    boxShadow={{
+      xs: 3,
+      sm: "none"
+    }}
   >
-    Some content
+    The Content
   </Box>
 );
 

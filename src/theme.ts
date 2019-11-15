@@ -45,7 +45,7 @@ const baseTheme = {
   },
   // px values are for 1rem === 16px:
   breakpoints: {
-    xs: "0em",
+    xs: "0px",
     sm: "37.5rem", // tabletPortrait 600px
     md: "56.25rem", // tabletLandscape 900px
     lg: "75rem", // desktop 1200px
@@ -85,7 +85,8 @@ const baseTheme = {
     header: 100,
     sidebar: 200,
     modalDialog: 300
-  }
+  },
+  borderStyles: ["solid dashed"]
 } as const;
 
 const theme = {
