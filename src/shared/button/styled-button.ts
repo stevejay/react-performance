@@ -8,10 +8,8 @@ import {
   TypographyProps
 } from "@xstyled/system";
 
-type ButtonVariants = import("styled-components").DefaultTheme["buttons"];
-
 type StyledButtonProps = {
-  readonly variant?: keyof ButtonVariants;
+  readonly variant?: keyof import("styled-components").DefaultTheme["buttons"];
 } & SpaceProps &
   TypographyProps;
 

@@ -2,7 +2,6 @@ import React from "react";
 import {
   Box,
   Heading,
-  Page,
   Stack,
   useScrollToTop,
   useSkipLinkTarget
@@ -13,7 +12,7 @@ import { PageWeightField } from "./page-weight-field";
 import { ShouldDelayNavigationField } from "./should-delay-navigation-field";
 
 type Props = {
-  readonly title: Page["title"];
+  readonly title: string;
 };
 
 const HomePage: React.FC<Props> = ({ title }) => {

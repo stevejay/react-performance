@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { IdProvider } from "@charlietango/use-id";
-import { Box, Pages, SkipLinkProvider } from "src/shared";
+import { Box, SkipLinksProvider } from "src/shared";
 import { Header } from "src/header";
 import { PictureElementPage } from "src/modules/picture-element";
 import { CompositingAnimationPage } from "src/modules/compositing-animation";
@@ -10,7 +10,7 @@ import { HomePage } from "src/modules/home";
 import { GlobalStyle } from "./global-style";
 import { theme } from "./theme";
 
-const PAGES: Pages = [
+const PAGES = [
   { component: HomePage, path: "/", title: "Options" },
   {
     component: PictureElementPage,
@@ -22,21 +22,17 @@ const PAGES: Pages = [
     path: "/compositing-animation",
     title: "Compositing Animation"
   }
-];
+] as const;
 
-const App: React.FC = () => (
+const App = () => (
   <IdProvider>
     <ThemeProvider theme={theme}>
       <>
         <GlobalStyle />
-        <SkipLinkProvider>
+        <SkipLinksProvider>
           <Box minHeight="100vh" flexDirection="column">
             <Header pages={PAGES} />
-            <Box
-              as="main"
-              // flexGrow={1}
-              flexDirection="column"
-            >
+            <Box as="main" flexGrow={1} flexDirection="column">
               <Switch>
                 {PAGES.map(({ path, title, component: PageComponent }) => (
                   <Route key={path} exact path={path}>
@@ -46,7 +42,7 @@ const App: React.FC = () => (
               </Switch>
             </Box>
           </Box>
-        </SkipLinkProvider>
+        </SkipLinksProvider>
       </>
     </ThemeProvider>
   </IdProvider>

@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
 import { css } from "styled-components";
-import { Pages } from "src/shared";
 import { NavLink } from "./nav-link";
 
 const StyledList = styled.ul(
@@ -18,7 +17,10 @@ const StyledList = styled.ul(
 );
 
 type Props = {
-  readonly pages: Pages;
+  readonly pages: readonly {
+    readonly path: string;
+    readonly title: string;
+  }[];
   readonly onClick: () => void;
 };
 

@@ -3,7 +3,7 @@ import { useStoreState } from "pullstate";
 import { asEnum, RadioButton } from "src/shared";
 import { AnimationStore, PageWeight } from "src/state";
 
-const PageWeightField: React.FC = () => {
+const PageWeightField = () => {
   const pageWeight = useStoreState(AnimationStore, s => s.pageWeight);
 
   return (

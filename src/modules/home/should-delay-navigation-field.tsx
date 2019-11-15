@@ -3,7 +3,7 @@ import { useStoreState } from "pullstate";
 import { Checkbox } from "src/shared";
 import { AnimationStore } from "src/state";
 
-const ShouldDelayNavigationField: React.FC = () => {
+const ShouldDelayNavigationField = () => {
   const shouldDelayNavigation = useStoreState(
     AnimationStore,
     s => s.shouldDelayNavigation

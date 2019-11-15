@@ -1,6 +1,6 @@
 {
     "tags": [
-        "compositing-animation-page"
+        "compositing-animation-module"
     ],
     "exports": [
         "index"

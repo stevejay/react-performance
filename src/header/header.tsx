@@ -6,7 +6,6 @@ import {
   Button,
   Heading,
   Icons,
-  Pages,
   SpringModal,
   SpringModalBackdrop,
   TransitionModal,
@@ -26,7 +25,10 @@ import { NavLinkList } from "./nav-link-list";
 const SIDEBAR_ID = "main-sidebar";
 
 type Props = {
-  readonly pages: Pages;
+  readonly pages: readonly {
+    readonly path: string;
+    readonly title: string;
+  }[];
 };
 
 const Header: React.FC<Props> = ({ pages }) => {
@@ -44,12 +46,6 @@ const Header: React.FC<Props> = ({ pages }) => {
   const animationLibrary = useStoreState(
     AnimationStore,
     s => s.animationLibrary
-  );
-
-  // eslint-disable-next-line no-console
-  console.log(
-    "%c JavaScript!!",
-    "font-weight: bold; font-size: 50px;color: red; text-shadow: 3px 3px 0 rgb(217,31,38) , 6px 6px 0 rgb(226,91,14) , 9px 9px 0 rgb(245,221,8) , 12px 12px 0 rgb(5,148,68) , 15px 15px 0 rgb(2,135,206) , 18px 18px 0 rgb(4,77,145) , 21px 21px 0 rgb(42,21,113)"
   );
 
   return (

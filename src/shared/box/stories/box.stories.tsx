@@ -8,10 +8,6 @@ const Default = () => (
     backgroundColor="primary900"
     color={{ xs: "red", md: "blue" }}
     transition="opacity 3s"
-    boxShadow={{
-      xs: 3,
-      sm: "none"
-    }}
   >
     The Content
   </Box>

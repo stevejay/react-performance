@@ -14,7 +14,7 @@ const getOptionLabel = (key: string) => {
   }
 };
 
-const AnimationLibraryField: React.FC = () => {
+const AnimationLibraryField = () => {
   const animationLibrary = useStoreState(
     AnimationStore,
     s => s.animationLibrary

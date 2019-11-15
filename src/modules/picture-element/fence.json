@@ -1,6 +1,6 @@
 {
     "tags": [
-        "picture-element"
+        "picture-element-module"
     ],
     "exports": [
         "index"

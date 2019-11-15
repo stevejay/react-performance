@@ -5,7 +5,6 @@ import {
   Box,
   Button,
   Heading,
-  Page,
   Paragraph,
   Stack,
   Switcher,
@@ -14,7 +13,7 @@ import {
 } from "src/shared";
 
 type Props = {
-  readonly title: Page["title"];
+  readonly title: string;
 };
 
 const CompositingAnimationPage: React.FC<Props> = ({ title }) => {

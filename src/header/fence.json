@@ -8,7 +8,7 @@
     "imports": [
         "state",
         "shared",
-        "compositing-animation-page",
-        "picture-element"
+        "compositing-animation-module",
+        "picture-element-module"
     ]
 }

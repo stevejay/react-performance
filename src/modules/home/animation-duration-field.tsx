@@ -3,7 +3,7 @@ import { useStoreState } from "pullstate";
 import { asEnum, RadioButton } from "src/shared";
 import { AnimationStore, AnimationDuration } from "src/state";
 
-const AnimationDurationField: React.FC = () => {
+const AnimationDurationField = () => {
   const animationDuration = useStoreState(
     AnimationStore,
     s => s.animationDuration

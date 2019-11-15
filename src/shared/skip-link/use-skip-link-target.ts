@@ -1,20 +1,20 @@
 import React from "react";
-import { SkipLinkContext } from "./skip-link-context";
+import { SkipLinksContext } from "./skip-links-context";
 
 const useSkipLinkTarget = (
   targetId: string,
   targetRef: React.RefObject<HTMLElement>
 ) => {
-  const contextValue = React.useContext(SkipLinkContext);
+  const skipLinks = React.useContext(SkipLinksContext);
 
   React.useEffect(() => {
     if (!targetId || !targetRef) {
       return;
     }
 
-    contextValue.addRef(targetId, targetRef);
-    return () => contextValue.removeRef(targetId, targetRef);
-  }, [targetId, targetRef, contextValue]);
+    skipLinks.addRef(targetId, targetRef);
+    return () => skipLinks.removeRef(targetId, targetRef);
+  }, [targetId, targetRef, skipLinks]);
 };
 
 export { useSkipLinkTarget };

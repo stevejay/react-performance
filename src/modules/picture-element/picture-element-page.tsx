@@ -1,39 +1,18 @@
 import React from "react";
-import { LoremIpsum } from "lorem-ipsum";
 import { useStoreState } from "pullstate";
 import {
   Box,
   Heading,
-  Page,
-  Paragraph,
   Stack,
   useScrollToTop,
   useSkipLinkTarget
 } from "src/shared";
 import { AnimationStore, PageWeight } from "src/state";
 import { HeroImage } from "./hero-image";
-
-const lorem = new LoremIpsum({
-  sentencesPerParagraph: {
-    max: 8,
-    min: 8
-  }
-});
-
-const createParagraphs = (maxParagraphs: number) => {
-  const paragraphs: Array<JSX.Element> = [];
-
-  for (let i = 0; i < maxParagraphs; ++i) {
-    paragraphs.push(
-      <Paragraph key={i}>{lorem.generateParagraphs(1)}</Paragraph>
-    );
-  }
-
-  return paragraphs;
-};
+import { createParagraphs } from "./create-paragraphs";
 
 type Props = {
-  readonly title: Page["title"];
+  readonly title: string;
 };
 
 const PictureElementPage: React.FC<Props> = ({ title }) => {

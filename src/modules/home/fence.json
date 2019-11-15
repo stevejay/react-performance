@@ -1,6 +1,6 @@
 {
     "tags": [
-        "home-page"
+        "home-module"
     ],
     "exports": [
         "index"

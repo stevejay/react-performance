@@ -15,20 +15,21 @@ import {
   LayoutProps,
   PositioningProps,
   ShadowsProps,
-  SpaceProps,
-  borders,
-  BordersProps
+  SpaceProps
 } from "@xstyled/system";
+import { flexGrow, FlexGrowProps } from "./flex-grow";
+import { flexShrink, FlexShrinkProps } from "./flex-shrinker";
 
 type Props = BackgroundsProps &
   BasicsProps &
   ColorProps &
   FlexboxesProps &
+  FlexGrowProps &
+  FlexShrinkProps &
   LayoutProps &
   PositioningProps &
   ShadowsProps &
-  SpaceProps &
-  BordersProps; /* TODO REMOVE */
+  SpaceProps;
 
 const Box = styled.div<Props>`
   min-width: 0;
@@ -36,12 +37,13 @@ const Box = styled.div<Props>`
   ${backgrounds}
   ${color}
   ${flexboxes}
+  ${flexGrow}
+  ${flexShrink}
   ${layout}
   ${positioning}
   ${shadows}
   ${space}
   ${basics}
-  ${borders} /* TODO REMOVE */
 `;
 
 export { Box };

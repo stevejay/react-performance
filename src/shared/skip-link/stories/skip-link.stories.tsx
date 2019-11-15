@@ -1,14 +1,14 @@
 import React from "react";
 import {
   SkipLink,
-  SkipLinkProvider,
+  SkipLinksProvider,
   useSkipLinkTarget
 } from "src/shared/skip-link";
 
 const Default = () => (
-  <SkipLinkProvider>
+  <SkipLinksProvider>
     <Inner />
-  </SkipLinkProvider>
+  </SkipLinksProvider>
 );
 
 const Inner = () => {
