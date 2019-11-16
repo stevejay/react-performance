@@ -22,4 +22,3 @@ export * from "./use-delayed-link-click-handler";
 export * from "./use-scroll-to-top";
 export * from "./use-theme";
 export * from "./visually-hidden";
-export * from "./temp";
