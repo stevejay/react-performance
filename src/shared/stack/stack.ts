@@ -4,7 +4,7 @@ import { verticalSpacing, VerticalSpacingProps } from "./vertical-spacing";
 type Props = VerticalSpacingProps;
 
 const Stack = styled.div<Props>`
-  & > * + * {
+  && > * + * {
     ${verticalSpacing}
   }
 

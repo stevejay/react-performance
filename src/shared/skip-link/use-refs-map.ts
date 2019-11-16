@@ -2,26 +2,39 @@ import React from "react";
 
 type Ref = React.RefObject<HTMLElement>;
 
+type RefsMapValue = {
+  map: Record<string, Ref>;
+  api: {
+    addRef(id: string, ref: Ref): void;
+    getRef(id: string): Ref | null;
+    removeRef(id: string, ref: Ref): void;
+  };
+};
+
 // A lookup of ID to component ref.
 const useRefsMap = () => {
-  const refsMap = React.useRef<Record<string, Ref>>({});
+  const refsMapValue = React.useRef<RefsMapValue>();
 
-  const api = React.useMemo(
-    () => ({
-      addRef: (id: string, ref: Ref): void => {
-        refsMap.current[id] = ref;
-      },
-      getRef: (id: string): Ref | null => refsMap.current[id] || null,
-      removeRef: (id: string, ref: Ref): void => {
-        if (refsMap.current[id] && refsMap.current[id] === ref) {
-          delete refsMap.current[id];
+  if (!refsMapValue.current) {
+    const value = {
+      map: {} as Record<string, Ref>,
+      api: {
+        addRef: (id: string, ref: Ref): void => {
+          value.map[id] = ref;
+        },
+        getRef: (id: string): Ref | null => value.map[id] || null,
+        removeRef: (id: string, ref: Ref): void => {
+          if (value.map[id] && value.map[id] === ref) {
+            delete value.map[id];
+          }
         }
       }
-    }),
-    [refsMap]
-  );
+    };
 
-  return api;
+    refsMapValue.current = value;
+  }
+
+  return refsMapValue.current.api;
 };
 
 export { useRefsMap };

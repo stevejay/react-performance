@@ -26,7 +26,7 @@ const StyledInnerWrap = styled.div<Required<Props>>(
     overflow: hidden;
     margin: calc((${getSpace(spacing)} / 2) * -1);
 
-    & > * {
+    && > * {
       flex-basis: calc(
         (${getSize(threshold)} - (100% - ${getSpace(spacing)})) * 999
       );
@@ -35,8 +35,8 @@ const StyledInnerWrap = styled.div<Required<Props>>(
     }
 
     /* If there are more than limit children, force them to stack */
-    & > :nth-last-child(n + ${limit + 1}),
-    & > :nth-last-child(n + ${limit + 1}) ~ * {
+    && > :nth-last-child(n + ${limit + 1}),
+    && > :nth-last-child(n + ${limit + 1}) ~ * {
       flex-basis: 100%;
     }
   `

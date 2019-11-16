@@ -1,5 +1,5 @@
 import React from "react";
-import useId from "@charlietango/use-id";
+import { useId } from "react-use-id-hook";
 import { Heading } from "src/shared/heading";
 import { Stack } from "src/shared/stack";
 
@@ -11,8 +11,8 @@ type Props = {
 const RadioButtonGroupContext = React.createContext("");
 
 const RadioButtonGroup: React.FC<Props> = ({ title, groupName, children }) => {
-  const headingId = useId("radio-button-group-label");
-  const groupNameId = useId(groupName) || "";
+  const headingId = useId();
+  const groupNameId = useId();
 
   return (
     <Stack

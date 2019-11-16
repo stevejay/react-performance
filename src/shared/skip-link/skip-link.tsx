@@ -1,6 +1,6 @@
 import React from "react";
-import tabbable from "tabbable";
 import { VisuallyHidden } from "src/shared/visually-hidden";
+import { makeFocusable } from "src/shared/dom-utils";
 import { SkipLinkButton } from "./skip-link-button";
 import { SkipLinksContext } from "./skip-links-context";
 
@@ -18,15 +18,7 @@ const SkipLink: React.FC<Props> = ({ targetId, children }) => {
     }
 
     const element = targetRef.current;
-
-    if (!tabbable.isFocusable(element)) {
-      element.setAttribute("tabindex", "-1");
-
-      element.onblur = () => {
-        element.removeAttribute("tabindex");
-      };
-    }
-
+    makeFocusable(element);
     element.scrollIntoView();
     element.focus();
   }, [targetId, skipLinks]);

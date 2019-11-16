@@ -1,3 +1,5 @@
+import { css } from "styled-components";
+
 // Documentation for styled-system theme format:
 // https://www.smooth-code.com/open-source/xstyled/docs/theme-specification/
 
@@ -102,7 +104,17 @@ const theme = {
       backgroundColor: "transparent",
       borderColor: baseTheme.colors.white
     }
+  },
+  buttonSizes: {
+    medium: css`
+      padding: 0.5rem 1rem;
+    `,
+    icon: css`
+      padding: 0 0.25em;
+    `
   }
 } as const;
+
+// ${props => props.theme.space[1]} ${props => props.theme.space[2]};
 
 export { theme };

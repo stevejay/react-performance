@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
-import useId from "@charlietango/use-id";
+import { useId } from "react-use-id-hook";
 import { focusRing } from "src/shared/mixins";
 import { RadioButtonGroupContext } from "./radio-button-group";
 
@@ -104,7 +104,7 @@ const RadioButton: React.FC<Props> = ({
   disabled,
   onChange
 }) => {
-  const inputId = useId("radio-button");
+  const inputId = useId();
   const groupName = React.useContext(RadioButtonGroupContext);
 
   return (

@@ -1,0 +1,12 @@
+{
+    "tags": [
+        "refs-experiments-module"
+    ],
+    "exports": [
+        "index"
+    ],
+    "imports": [
+        "state",
+        "shared"
+    ]
+}

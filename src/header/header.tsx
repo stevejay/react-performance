@@ -66,7 +66,7 @@ const Header: React.FC<Props> = ({ pages }) => {
       <Button
         useCSSAnimation
         variant="outlineInverted"
-        px="0.25em"
+        size="icon"
         aria-haspopup="menu"
         aria-expanded={sidebarIsOpen}
         aria-controls={SIDEBAR_ID}

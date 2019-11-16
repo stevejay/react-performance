@@ -2,7 +2,6 @@
   "cSpell.words": [
     "browserslist",
     "centered",
-    "charlietango",
     "checkbox",
     "csstype",
     "ctrl",
@@ -43,7 +42,7 @@
     "xgrid",
     "xgrids",
     "xstyled"
-],
+  ],
   "eslint.validate": [
     "javascript",
     "javascriptreact",

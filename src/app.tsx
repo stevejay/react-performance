@@ -1,11 +1,12 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
-import { IdProvider } from "@charlietango/use-id";
+import { IdProvider } from "react-use-id-hook";
 import { Box, SkipLinksProvider } from "src/shared";
 import { Header } from "src/header";
 import { PictureElementPage } from "src/modules/picture-element";
 import { CompositingAnimationPage } from "src/modules/compositing-animation";
+import { RefsExperimentsPage } from "src/modules/refs-experiments";
 import { HomePage } from "src/modules/home";
 import { GlobalStyle } from "./global-style";
 import { theme } from "./theme";
@@ -21,6 +22,11 @@ const PAGES = [
     component: CompositingAnimationPage,
     path: "/compositing-animation",
     title: "Compositing Animation"
+  },
+  {
+    component: RefsExperimentsPage,
+    path: "/refs-experiments",
+    title: "Refs Experiments"
   }
 ] as const;
 

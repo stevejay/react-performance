@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
-import useId from "@charlietango/use-id";
+import { useId } from "react-use-id-hook";
 import { focusRing } from "src/shared/mixins";
 
 type Props = {
@@ -83,7 +83,7 @@ const StyledLabel = styled.label`
     box-shadow: 0 0 0 2px ${props => props.theme.colors.primary900};
   }
 
-  ${/* sc-selector */ StyledInput}:focus + &::before {
+  ${/* sc-selector */ StyledInput}:focus:not([disabled]) + &::before {
     border-color: transparent;
     ${focusRing}
   }
@@ -113,7 +113,7 @@ const Checkbox: React.FC<Props> = ({
   disabled,
   onChange
 }) => {
-  const inputId = useId("checkbox");
+  const inputId = useId();
 
   return (
     <StyledWrap>

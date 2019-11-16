@@ -1,22 +1,22 @@
 import styled from "styled-components/macro";
 import { css } from "styled-components";
-import {
-  space,
-  typography,
-  variant,
-  SpaceProps,
-  TypographyProps
-} from "@xstyled/system";
+import { typography, variant, TypographyProps } from "@xstyled/system";
 
 type StyledButtonProps = {
   readonly variant?: keyof import("styled-components").DefaultTheme["buttons"];
-} & SpaceProps &
-  TypographyProps;
+  readonly size?: keyof import("styled-components").DefaultTheme["buttonSizes"];
+} & TypographyProps;
 
 const variants = variant({
   key: "buttons",
   prop: "variant",
   default: "primary"
+});
+
+const sizes = variant({
+  key: "buttonSizes",
+  prop: "size",
+  default: "medium"
 });
 
 const StyledButton = styled.button<StyledButtonProps>(
@@ -34,8 +34,8 @@ const StyledButton = styled.button<StyledButtonProps>(
     border-width: ${theme.borderWidths.hair};
     border-style: solid;
     ${variants}
+    ${sizes}
     ${typography}
-    ${space}
 
     &:disabled {
       opacity: 0.65;

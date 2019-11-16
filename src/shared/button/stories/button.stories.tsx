@@ -1,21 +1,17 @@
 import React from "react";
 import { Button } from "src/shared/button";
 import { Box } from "src/shared/box";
+import { Cluster } from "src/shared/cluster";
+import { Icons } from "src/shared/icons";
 import { Stack } from "src/shared/stack";
 
 const Default = () => (
   <Box margin={2} display="flex" flexDirection="column">
     <Stack verticalSpacing={2}>
-      <Button
-        isLoading={false}
-        useCSSAnimation
-        py={1}
-        px={2}
-        onClick={() => {}}
-      >
+      <Button isLoading={false} useCSSAnimation onClick={() => {}}>
         Button One
       </Button>
-      <Button isLoading useCSSAnimation py={1} px={2} onClick={() => {}}>
+      <Button isLoading useCSSAnimation onClick={() => {}}>
         Button Two
       </Button>
       <Button
@@ -23,22 +19,37 @@ const Default = () => (
         disabled
         useCSSAnimation
         variant="primary"
-        py={1}
-        px={2}
         onClick={() => {}}
       >
         Button Three
       </Button>
+      <Button useCSSAnimation variant="primary" onClick={() => {}}>
+        <Icons.Menu color="white" size={4} mr="0.5em" />
+        Button Five
+      </Button>
       <Box backgroundColor="black" p={1}>
-        <Button
-          useCSSAnimation
-          variant="outlineInverted"
-          py={1}
-          px={2}
-          onClick={() => {}}
-        >
-          Button Four
-        </Button>
+        <Cluster spacing={1}>
+          <Button
+            useCSSAnimation
+            variant="outlineInverted"
+            size="medium"
+            onClick={() => {}}
+          >
+            Button Four
+          </Button>
+          <Button useCSSAnimation variant="outlineInverted" onClick={() => {}}>
+            <Icons.Menu color="white" size={4} mr="0.5em" ml="-0.25em" />
+            Button Six
+          </Button>
+          <Button
+            useCSSAnimation
+            variant="outlineInverted"
+            size="icon"
+            onClick={() => {}}
+          >
+            <Icons.Menu color="white" size={5} />
+          </Button>
+        </Cluster>
       </Box>
     </Stack>
   </Box>

@@ -7,6 +7,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - [Every Layout as React styled-components](https://danscan.github.io/react-every-layout/?path=/story/welcome--base-css).
 - Maybe add [storybook docs](https://gist.github.com/shilman/bc9cbedb2a7efb5ec6710337cbd20c0c).
 
+## Design System Issues
+
+- Be careful about zero-ing out margin values on components, because a parent layout component might want to add it. E.g., zero-ing out `margin-top` on a `Paragraph` component but this prevents this component working properly when in a `Stack`.
+
 ## Justifications
 
 - [use `type` for React props](https://medium.com/@martin_hotell/interface-vs-type-alias-in-typescript-2-7-2a8f1777af4c) (and also [here](https://stackoverflow.com/a/52682220)).

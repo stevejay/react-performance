@@ -26,7 +26,7 @@ const StyledInnerWrap = styled.div<Required<Props>>(
     ${justifyContent}
     margin: calc((${getSpace(spacing)} / 2) * -1);
 
-    & > * {
+    && > * {
       margin: calc(${getSpace(spacing)} / 2);
     }
   `
