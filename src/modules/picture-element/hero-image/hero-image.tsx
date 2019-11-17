@@ -1,5 +1,6 @@
 import React from "react";
-import { useTheme } from "src/shared";
+import { useTheme } from "emotion-theming";
+import { theme } from "src/shared";
 import { HeroImageWrap } from "./hero-image-wrap";
 import { InnerImage } from "./inner-image";
 import {
@@ -30,8 +31,8 @@ const HeroImage: React.FC<Props> = ({
   altText,
   children
 }) => {
-  const theme = useTheme();
-  const landscapeMediaQuery = `(min-width: ${theme.breakpoints.sm})`;
+  const themeObj = useTheme<typeof theme>(); // TODO Typed version of useTheme?
+  const landscapeMediaQuery = `(min-width: ${themeObj.breakpoints.sm})`;
 
   return (
     <HeroImageWrap>

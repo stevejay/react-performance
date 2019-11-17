@@ -6,7 +6,7 @@ const Default = () => (
     p={{ xs: 2, sm: 5 }}
     zIndex="header"
     backgroundColor="primary900"
-    color={{ xs: "red", md: "blue" }}
+    color="primary100"
     transition="opacity 3s"
   >
     The Content

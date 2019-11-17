@@ -1,10 +1,9 @@
-import styled from "styled-components/macro";
-import { css } from "styled-components";
 import { typography, variant, TypographyProps } from "@xstyled/system";
+import { styled, theme } from "src/shared/styled";
 
 type StyledButtonProps = {
-  readonly variant?: keyof import("styled-components").DefaultTheme["buttons"];
-  readonly size?: keyof import("styled-components").DefaultTheme["buttonSizes"];
+  readonly variant?: keyof typeof theme["buttons"];
+  readonly size?: keyof typeof theme["buttonSizes"];
 } & TypographyProps;
 
 const variants = variant({
@@ -19,8 +18,7 @@ const sizes = variant({
   default: "medium"
 });
 
-const StyledButton = styled.button<StyledButtonProps>(
-  ({ theme }) => css`
+const StyledButton = styled.button<StyledButtonProps>`
     appearance: none;
     background: none repeat scroll 0 0 transparent;
     border-spacing: 0;
@@ -28,10 +26,10 @@ const StyledButton = styled.button<StyledButtonProps>(
     margin: 0;
     cursor: pointer;
     position: relative;
-    font-weight: ${theme.fontWeights.normal};
-    line-height: ${theme.lineHeights.md};
-    border-radius: ${theme.radii.xs};
-    border-width: ${theme.borderWidths.hair};
+    font-weight: ${props => props.theme.fontWeights.normal};
+    line-height: ${props => props.theme.lineHeights.md};
+    border-radius: ${props => props.theme.radii.xs};
+    border-width: ${props => props.theme.borderWidths.hair};
     border-style: solid;
     ${variants}
     ${sizes}
@@ -50,7 +48,6 @@ const StyledButton = styled.button<StyledButtonProps>(
     &:active:not(:disabled):not([data-loading="true"]) {
       filter: contrast(1.4);
     }
-  `
-);
+  `;
 
 export { StyledButton };

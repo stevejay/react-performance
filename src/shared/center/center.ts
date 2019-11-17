@@ -1,5 +1,5 @@
-import styled from "styled-components/macro";
 import { maxWidth, MaxWidthProps, px, PaddingXProps } from "@xstyled/system";
+import { styled } from "src/shared/styled";
 
 type Props = MaxWidthProps &
   PaddingXProps & {

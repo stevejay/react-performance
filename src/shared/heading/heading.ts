@@ -1,4 +1,3 @@
-import styled from "styled-components/macro";
 import {
   borders,
   color,
@@ -9,6 +8,7 @@ import {
   SpaceProps,
   TypographyProps
 } from "@xstyled/system";
+import { styled } from "src/shared/styled";
 
 type Props = BordersProps & ColorProps & SpaceProps & TypographyProps;
 

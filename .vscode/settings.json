@@ -37,13 +37,14 @@
     "tabbable",
     "tabindex",
     "text",
+    "theming",
     "unused",
     "vars",
     "webp",
     "xgrid",
     "xgrids",
     "xstyled"
-  ],
+],
   "eslint.validate": [
     "javascript",
     "javascriptreact",

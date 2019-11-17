@@ -1,6 +1,7 @@
-import styled from "styled-components/macro";
-import { css } from "styled-components";
+import css from "@emotion/css/macro";
+import { styled } from "src/shared/styled";
 
+// TODO why does this work with embedded lambda???
 const SkipLinkButton = styled.button(
   ({ theme }) => css`
     position: absolute;

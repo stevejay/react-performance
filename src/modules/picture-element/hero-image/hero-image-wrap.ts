@@ -1,4 +1,4 @@
-import styled from "styled-components/macro";
+import { styled } from "src/shared";
 
 // An intrinsic placeholder wrapper for the hero image
 // http://daverupert.com/2015/12/intrinsic-placeholders-with-picture/

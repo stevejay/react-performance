@@ -2,8 +2,8 @@ import React from "react";
 import { Portal } from "react-portal";
 import { Transition, TransitionGroup } from "react-transition-group";
 import { TransitionStatus } from "react-transition-group/Transition";
-import styled from "styled-components/macro";
 import { forceReflow } from "src/shared/dom-utils";
+import { styled } from "src/shared/styled";
 
 type StyledProps = {
   readonly duration: number;
@@ -23,9 +23,10 @@ const StyledModalBackdrop = styled.div<StyledProps>`
   will-change: opacity;
 `;
 
-const TRANSITION_STYLES: Partial<
-  Record<TransitionStatus, React.CSSProperties>
-> = {
+const TRANSITION_STYLES: Partial<Record<
+  TransitionStatus,
+  React.CSSProperties
+>> = {
   entering: { opacity: 0.5 },
   entered: { opacity: 0.5 },
   exiting: { opacity: 0 },

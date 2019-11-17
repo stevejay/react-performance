@@ -1,6 +1,6 @@
 import React from "react";
-import styled from "styled-components/macro";
-import { css } from "styled-components";
+import css from "@emotion/css/macro";
+import { styled } from "src/shared";
 import { NavLink } from "./nav-link";
 
 const StyledList = styled.ul(

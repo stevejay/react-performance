@@ -1,7 +1,6 @@
 import React from "react";
-import styled from "styled-components/macro";
-import { css } from "styled-components";
 import { getSize, getSpace, StyledSystemLength } from "@xstyled/system";
+import { styled } from "src/shared/styled";
 
 type Props = {
   // If there is more than `limit` children, stack them on top of each other
@@ -19,28 +18,30 @@ const StyledOuterWrap = styled.div`
   display: block;
 `;
 
-const StyledInnerWrap = styled.div<Required<Props>>(
-  ({ spacing, limit, threshold }) => css`
-    display: flex;
-    flex-wrap: wrap;
-    overflow: hidden;
-    margin: calc((${getSpace(spacing)} / 2) * -1);
+// TODO replace long lambdas:
+const StyledInnerWrap = styled.div<Required<Props>>`
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+  margin: calc((${props => getSpace(props.spacing)} / 2) * -1);
 
-    && > * {
-      flex-basis: calc(
-        (${getSize(threshold)} - (100% - ${getSpace(spacing)})) * 999
-      );
-      margin: calc(${getSpace(spacing)} / 2);
-      flex-grow: 1;
-    }
+  && > * {
+    flex-basis: calc(
+      (
+          ${props => getSize(props.threshold)} -
+            (100% - ${props => getSpace(props.spacing)})
+        ) * 999
+    );
+    margin: calc(${props => getSpace(props.spacing)} / 2);
+    flex-grow: 1;
+  }
 
-    /* If there are more than limit children, force them to stack */
-    && > :nth-last-child(n + ${limit + 1}),
-    && > :nth-last-child(n + ${limit + 1}) ~ * {
-      flex-basis: 100%;
-    }
-  `
-);
+  /* If there are more than limit children, force them to stack */
+  && > :nth-last-child(n + ${props => props.limit + 1}),
+  && > :nth-last-child(n + ${props => props.limit + 1}) ~ * {
+    flex-basis: 100%;
+  }
+`;
 
 // A.k.a. the holy albatross
 const Switcher: React.FC<Props> = ({ limit, spacing, threshold, children }) => (

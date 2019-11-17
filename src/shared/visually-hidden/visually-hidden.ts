@@ -1,5 +1,5 @@
-import styled from "styled-components/macro";
-import { css } from "styled-components";
+import css from "@emotion/css/macro";
+import { styled } from "src/shared/styled";
 
 // See https://zellwk.com/blog/hide-content-accessibly/
 // Compatibility: IE9+ and modern browsers; see

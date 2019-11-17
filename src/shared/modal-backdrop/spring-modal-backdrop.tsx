@@ -1,7 +1,7 @@
 import React from "react";
 import { Portal } from "react-portal";
-import styled from "styled-components/macro";
 import { animated, useTransition } from "react-spring";
+import { styled } from "src/shared/styled";
 
 const StyledModalBackdrop = styled(animated.div)`
   position: fixed;

@@ -1,8 +1,7 @@
 import React from "react";
-import styled from "styled-components/macro";
-import { css } from "styled-components";
+import css from "@emotion/css/macro";
 import { animated, useTransition } from "react-spring";
-import { useBodyScrollLock } from "src/shared";
+import { useBodyScrollLock, styled } from "src/shared";
 
 const StyledNav = styled(animated.nav)(
   ({ theme }) => css`

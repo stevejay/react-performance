@@ -1,4 +1,3 @@
-import styled from "styled-components/macro";
 import {
   backgrounds,
   basics,
@@ -17,6 +16,7 @@ import {
   ShadowsProps,
   SpaceProps
 } from "@xstyled/system";
+import { styled } from "src/shared/styled";
 import { flexGrow, FlexGrowProps } from "./flex-grow";
 import { flexShrink, FlexShrinkProps } from "./flex-shrink";
 
@@ -29,7 +29,7 @@ type Props = BackgroundsProps &
   LayoutProps &
   PositioningProps &
   ShadowsProps &
-  SpaceProps;
+  SpaceProps & { as?: string }; // TODO how to fix this?
 
 const Box = styled.div<Props>`
   min-width: 0;

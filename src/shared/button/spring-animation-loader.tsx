@@ -1,8 +1,8 @@
 import React from "react";
-import styled from "styled-components/macro";
 import { useSpring, animated } from "react-spring";
-import { useTheme } from "src/shared/use-theme";
+import { useTheme } from "emotion-theming";
 import { Icons } from "src/shared/icons";
+import { styled, theme } from "src/shared/styled";
 
 const LoaderWrap = styled.span`
   position: absolute;
@@ -16,14 +16,16 @@ const LoaderWrap = styled.span`
   overflow: hidden;
 `;
 
-const IconWrap = styled(animated.span)``;
+const IconWrap = styled(animated.span)`
+  visibility: visible;
+`;
 
 type Props = {
   readonly isLoading: boolean;
 };
 
 const SpringAnimationLoader: React.FC<Props> = ({ isLoading }) => {
-  const duration = useTheme().timings.spinner || 0;
+  const duration = useTheme<typeof theme>().timings.spinner || 0; // TODO fix useTheme type
 
   const animationProps = useSpring({
     from: { transform: "rotate(0deg)" },

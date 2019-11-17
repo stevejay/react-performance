@@ -1,7 +1,7 @@
 import React from "react";
-import styled from "styled-components/macro";
 import { useId } from "react-use-id-hook";
 import { focusRing } from "src/shared/mixins";
+import { styled } from "src/shared/styled";
 
 type Props = {
   readonly label: string;
@@ -51,7 +51,7 @@ const StyledLabel = styled.label`
   padding-left: 2em;
   user-select: none;
 
-  ${/* sc-selector */ StyledInput}:not([disabled]) + & {
+  input:not([disabled]) + & {
     cursor: pointer;
   }
 
@@ -74,21 +74,21 @@ const StyledLabel = styled.label`
     transform: translateY(-50%);
   }
 
-  ${/* sc-selector */ StyledInput}:checked + &::before {
+  input:checked + &::before {
     border-color: transparent;
     box-shadow: 0 0 0 2px ${props => props.theme.colors.gray500};
   }
 
-  ${/* sc-selector */ StyledInput}:checked:not([disabled]) + &::before {
+  input:checked:not([disabled]) + &::before {
     box-shadow: 0 0 0 2px ${props => props.theme.colors.primary900};
   }
 
-  ${/* sc-selector */ StyledInput}:focus:not([disabled]) + &::before {
+  input:focus:not([disabled]) + &::before {
     border-color: transparent;
     ${focusRing}
   }
 
-  ${/* sc-selector */ StyledInput}:checked + &::after {
+  input:checked + &::after {
     border: 0;
     border-bottom: 4px solid ${props => props.theme.colors.gray500};
     border-right: 4px solid ${props => props.theme.colors.gray500};
@@ -100,7 +100,7 @@ const StyledLabel = styled.label`
     width: 0.5em;
   }
 
-  ${/* sc-selector */ StyledInput}:checked:not([disabled]) + &::after {
+  input:checked:not([disabled]) + &::after {
     border-bottom: 4px solid ${props => props.theme.colors.primary900};
     border-right: 4px solid ${props => props.theme.colors.primary900};
   }
