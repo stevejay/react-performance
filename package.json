@@ -56,7 +56,7 @@
         "eslint": "eslint --max-warnings 0 \"src/**/*.{js,jsx,ts,tsx}\"",
         "lint:css": "stylelint --max-warnings 0 \"./src/**/*.{ts,tsx}\"",
         "good-fences": "gf",
-        "lint": "npm run eslint && npm run lint:css && npm run good-fences",
+        "lint": "npm run eslint && npm run good-fences",
         "storybook": "start-storybook -p 9009 -s public",
         "build-storybook": "build-storybook -s public",
         "upgrade-interactive": "npm-check --update"
