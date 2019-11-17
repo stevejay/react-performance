@@ -21,7 +21,7 @@ type Props = {
   readonly onClick: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
 };
 
-function NavLink({ to, label, onClick }: Props): JSX.Element {
+const NavLink = ({ to, label, onClick }: Props) => {
   const { duration, shouldDelayNavigation } = useStoreState(
     AnimationStore,
     s => ({
@@ -41,6 +41,6 @@ function NavLink({ to, label, onClick }: Props): JSX.Element {
       {label}
     </Link>
   );
-}
+};
 
 export { NavLink };

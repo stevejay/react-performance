@@ -89,7 +89,7 @@ const Header: React.FC<Props> = ({ pages }) => {
                 id={SIDEBAR_ID}
                 duration={duration}
               >
-                <NavLinkList pages={pages} onClick={handleClose}></NavLinkList>
+                <NavLinkList pages={pages} onClick={handleClose} />
               </TransitionSidebar>
             )}
           </TransitionModal>
@@ -109,7 +109,7 @@ const Header: React.FC<Props> = ({ pages }) => {
                 id={SIDEBAR_ID}
                 duration={duration}
               >
-                <NavLinkList pages={pages} onClick={handleClose}></NavLinkList>
+                <NavLinkList pages={pages} onClick={handleClose} />
               </SpringSidebar>
             )}
           </SpringModal>

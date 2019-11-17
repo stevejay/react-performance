@@ -32,7 +32,7 @@ const CompositingAnimationPage: React.FC<Props> = ({ title }) => {
         each animates the spinner in a different way. The second button will
         enter a synchronous (blocking) loop for two seconds when clicked.
       </Paragraph>
-      <Switcher spacing="1rem" threshold="66ch">
+      <Switcher spacing="1rem" threshold="copy">
         <Button
           isLoading={isLoading}
           useCSSAnimation
