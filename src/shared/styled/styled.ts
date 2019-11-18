@@ -1,7 +1,7 @@
 import styled, { CreateStyled } from "@emotion/styled";
-import { theme } from "./theme";
+import { AppTheme } from "app-theme";
 
-const typedStyled = styled as CreateStyled<typeof theme>;
+const typedStyled = styled as CreateStyled<AppTheme>;
 
 export type AsProps = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -9,4 +9,3 @@ export type AsProps = {
 };
 
 export { typedStyled as styled };
-export { useTheme } from "./use-theme";

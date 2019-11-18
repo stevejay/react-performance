@@ -1,9 +1,10 @@
 import { typography, variant, TypographyProps, th } from "@xstyled/system";
-import { styled, theme } from "src/shared/styled";
+import { styled } from "src/shared/styled";
+import { AppTheme } from "app-theme";
 
 type StyledButtonProps = {
-  readonly variant?: keyof typeof theme["buttons"];
-  readonly size?: keyof typeof theme["buttonSizes"];
+  readonly variant?: keyof AppTheme["buttons"];
+  readonly size?: keyof AppTheme["buttonSizes"];
 } & TypographyProps;
 
 const variants = variant({

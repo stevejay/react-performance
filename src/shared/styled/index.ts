@@ -1,2 +1,2 @@
 export * from "./styled";
-export { theme } from "./theme";
+export { useTheme } from "./use-theme";
