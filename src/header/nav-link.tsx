@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { getColor, getSpace } from "@xstyled/system";
 import { useStoreState } from "pullstate";
 import { useDelayedLinkClickHandler, styled } from "src/shared";
 import { AnimationStore, selectAnimationDurationMs } from "src/state";
@@ -7,11 +8,11 @@ import { AnimationStore, selectAnimationDurationMs } from "src/state";
 const EXTRA_DELAY_MS = 50;
 
 const StyledLink = styled.a`
-  color: ${props => props.theme.colors.white};
+  color: ${getColor("white")};
   text-decoration: none;
   display: flex;
   align-items: center;
-  padding: ${props => props.theme.space[1]} 0;
+  padding: ${getSpace(1)} 0;
 `;
 
 type Props = {

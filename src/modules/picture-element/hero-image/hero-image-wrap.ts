@@ -1,3 +1,5 @@
+import { up } from "@xstyled/system";
+import { css } from "@emotion/core";
 import { styled } from "src/shared";
 
 // An intrinsic placeholder wrapper for the hero image
@@ -10,9 +12,12 @@ const HeroImageWrap = styled.div`
   overflow: hidden;
   background-color: ${props => props.theme.colors.gray100};
 
-  @media screen and (min-width: ${props => props.theme.breakpoints.sm}) {
-    padding-top: 60%; /* Rectangular aspect ratio for landscape mode */
-  }
+  ${up(
+    "sm",
+    css`
+      padding-top: 60%; /* Rectangular aspect ratio for landscape mode */
+    `
+  )}
 
   /*
     IE 10 and 11 only (not Edge).

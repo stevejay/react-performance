@@ -1,7 +1,2 @@
-import { styled } from "./styled";
-
-// eslint-disable-next-line no-console
-console.log("styled", styled);
-export { styled };
-
+export * from "./styled";
 export { theme } from "./theme";

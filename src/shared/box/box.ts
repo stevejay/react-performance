@@ -16,7 +16,8 @@ import {
   ShadowsProps,
   SpaceProps
 } from "@xstyled/system";
-import { styled } from "src/shared/styled";
+import isPropValid from "@emotion/is-prop-valid";
+import { styled, AsProps } from "src/shared/styled";
 import { flexGrow, FlexGrowProps } from "./flex-grow";
 import { flexShrink, FlexShrinkProps } from "./flex-shrink";
 
@@ -29,21 +30,28 @@ type Props = BackgroundsProps &
   LayoutProps &
   PositioningProps &
   ShadowsProps &
-  SpaceProps & { as?: string }; // TODO how to fix this?
+  SpaceProps &
+  AsProps;
 
-const Box = styled.div<Props>`
-  min-width: 0;
-  display: flex;
-  ${backgrounds}
-  ${color}
-  ${flexboxes}
-  ${flexGrow}
-  ${flexShrink}
-  ${layout}
-  ${positioning}
-  ${shadows}
-  ${space}
-  ${basics}
-`;
+const options = {
+  shouldForwardProp: (prop: string) => isPropValid(prop) && prop !== "color"
+};
+
+const Box = styled("div", options)<Props>(
+  {
+    minWidth: 0,
+    display: "flex"
+  },
+  backgrounds,
+  color,
+  flexboxes,
+  flexGrow,
+  flexShrink,
+  layout,
+  positioning,
+  shadows,
+  space,
+  basics
+);
 
 export { Box };

@@ -12,7 +12,7 @@ const StyledImage = styled.img<StyledProps>`
   top: 0;
   left: 0;
   opacity: ${props => (props.isLoaded ? 1 : 0)};
-  transition: ${props => props.theme.timings.contentFade}ms;
+  transition: opacity ${props => props.theme.timings.contentFade}ms ease-in;
   will-change: opacity;
 `;
 

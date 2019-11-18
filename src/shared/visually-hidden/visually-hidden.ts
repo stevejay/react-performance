@@ -1,11 +1,11 @@
 import css from "@emotion/css/macro";
-import { styled } from "src/shared/styled";
+import { styled, AsProps } from "src/shared/styled";
 
 // See https://zellwk.com/blog/hide-content-accessibly/
 // Compatibility: IE9+ and modern browsers; see
 // https://caniuse.com/#feat=mdn-css_selectors_not
 
-type Props = {
+type Props = AsProps & {
   readonly isFocusable?: boolean;
 };
 

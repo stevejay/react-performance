@@ -89,7 +89,7 @@ const baseTheme = {
     instant: 0,
     modalAnimation: 250,
     contentFade: 500,
-    spinner: 750
+    spinner: 1250
   },
   zIndices: {
     header: 100,
@@ -122,7 +122,5 @@ const theme = {
     `
   }
 } as const;
-
-// ${props => props.theme.space[1]} ${props => props.theme.space[2]};
 
 export { theme };

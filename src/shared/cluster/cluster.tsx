@@ -1,3 +1,5 @@
+/** @jsx jsx */
+import { jsx, css } from "@emotion/core";
 import React from "react";
 import {
   alignItems,
@@ -13,21 +15,52 @@ type Props = AlignItemsProps &
     readonly spacing: string | number;
   };
 
-const StyledOuterWrap = styled.div`
-  display: block;
-`;
+// const StyledOuterWrap = styled.div`
+//   display: block;
+// `;
 
-const StyledInnerWrap = styled.div<Required<Props>>`
-  display: flex;
-  flex-wrap: wrap;
-  ${alignItems}
-  ${justifyContent}
-  margin: calc((${props => getSpace(props.spacing)} / 2) * -1);
+// const StyledInnerWrap = styled.div<Required<Props>>`
+//   display: flex;
+//   flex-wrap: wrap;
+//   ${alignItems}
+//   ${justifyContent}
+//   margin: calc((${props => getSpace(props.spacing)} / 2) * -1);
 
-  && > * {
-    margin: calc(${props => getSpace(props.spacing)} / 2);
+//   && > * {
+//     margin: calc(${props => getSpace(props.spacing)} / 2);
+//   }
+// `;
+
+// const Foo = styled.div<Required<Props>>`
+//   ${alignItems}
+// `;
+
+const StyledInnerWrap = styled.div<Required<Props>>(
+  alignItems,
+  justifyContent,
+  props => {
+    const space = getSpace(props.spacing)(props);
+    return css`
+      display: flex;
+      flex-wrap: wrap;
+      margin: calc((${space} / 2) * -1);
+
+      && > * {
+        margin: calc(${space} / 2);
+      }
+    `;
   }
-`;
+
+  //   css`
+  //     display: flex;
+  //     flex-wrap: wrap;
+  //     margin: calc((${getSpace(props.spacing)(props)} / 2) * -1);
+
+  //     && > * {
+  //       margin: calc(${getSpace(props.spacing)(props)} / 2);
+  //     }
+  //   `
+);
 
 const Cluster: React.FC<Props> = ({
   alignItems = "center",
@@ -35,7 +68,7 @@ const Cluster: React.FC<Props> = ({
   spacing,
   children
 }) => (
-  <StyledOuterWrap>
+  <div css={{ display: "block" }}>
     <StyledInnerWrap
       alignItems={alignItems}
       justifyContent={justifyContent}
@@ -43,7 +76,7 @@ const Cluster: React.FC<Props> = ({
     >
       {children}
     </StyledInnerWrap>
-  </StyledOuterWrap>
+  </div>
 );
 
 export { Cluster };

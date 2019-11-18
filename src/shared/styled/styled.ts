@@ -1,9 +1,12 @@
 import styled, { CreateStyled } from "@emotion/styled";
 import { theme } from "./theme";
 
-const foo = styled as CreateStyled<typeof theme>;
+const typedStyled = styled as CreateStyled<typeof theme>;
 
-// eslint-disable-next-line import/no-default-export
-// export default styled as CreateStyled<typeof theme>;
+export type AsProps = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  as?: React.ComponentType<any> | keyof JSX.IntrinsicElements;
+};
 
-export { foo as styled };
+export { typedStyled as styled };
+export { useTheme } from "./use-theme";

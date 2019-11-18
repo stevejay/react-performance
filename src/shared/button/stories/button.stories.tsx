@@ -12,7 +12,7 @@ const Default = () => (
         Button One
       </Button>
       <Button isLoading useCSSAnimation>
-        Button Two
+        Button Two - CSS
       </Button>
       <Button isLoading={false} disabled useCSSAnimation variant="primary">
         Button Three

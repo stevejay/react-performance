@@ -1,26 +1,23 @@
 import React from "react";
-import css from "@emotion/css/macro";
+import { getBorderWidth, getColor, getSpace } from "@xstyled/system";
 import { styled } from "src/shared";
 import { NavLink } from "./nav-link";
 
-const StyledList = styled.ul(
-  ({ theme }) => css`
-    margin: 0;
-    padding: ${theme.space[1]} ${theme.space[2]};
-    list-style: none;
+const StyledList = styled.ul`
+  margin: 0;
+  padding: ${getSpace(1)} ${getSpace(2)};
+  list-style: none;
 
-    & > * + * {
-      border-top: ${theme.borderWidths.hair} solid
-        ${theme.colors.contrastHot500};
-    }
-  `
-);
+  & > * + * {
+    border-top: ${getBorderWidth("hair")} solid ${getColor("contrastHot500")};
+  }
+`;
 
 type Props = {
-  readonly pages: readonly {
+  readonly pages: ReadonlyArray<{
     readonly path: string;
     readonly title: string;
-  }[];
+  }>;
   readonly onClick: () => void;
 };
 

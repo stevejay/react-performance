@@ -8,9 +8,9 @@ import {
   SpaceProps,
   TypographyProps
 } from "@xstyled/system";
-import { styled } from "src/shared/styled";
+import { styled, AsProps } from "src/shared/styled";
 
-type Props = BordersProps & ColorProps & SpaceProps & TypographyProps;
+type Props = BordersProps & ColorProps & SpaceProps & TypographyProps & AsProps;
 
 const Heading = styled.h1<Props>`
   margin: 0;

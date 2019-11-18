@@ -1,25 +1,23 @@
 import React from "react";
-import css from "@emotion/css/macro";
+import { getColor, getShadow, getZIndex } from "@xstyled/system";
 import { animated, useTransition } from "react-spring";
 import { useBodyScrollLock, styled } from "src/shared";
 
-const StyledNav = styled(animated.nav)(
-  ({ theme }) => css`
-    position: fixed;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    width: 80vw;
-    max-width: 300px;
-    color: ${theme.colors.white};
-    background-color: ${theme.colors.primary900};
-    overflow-y: scroll;
-    box-shadow: ${theme.shadows.xxl};
-    z-index: ${theme.zIndices.sidebar};
-    will-change: opacity, transform;
-    -webkit-overflow-scrolling: touch;
-  `
-);
+const StyledNav = styled(animated.nav)`
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 80vw;
+  max-width: 300px;
+  color: ${getColor("white")};
+  background-color: ${getColor("primary900")};
+  overflow-y: scroll;
+  box-shadow: ${getShadow("xxl")};
+  z-index: ${getZIndex("sidebar")};
+  will-change: opacity, transform;
+  -webkit-overflow-scrolling: touch;
+`;
 
 type Props = {
   readonly id: string;

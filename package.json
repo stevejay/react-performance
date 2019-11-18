@@ -5,6 +5,7 @@
     "private": true,
     "dependencies": {
         "@emotion/core": "^10.0.22",
+        "@emotion/is-prop-valid": "^0.8.5",
         "@emotion/styled": "^10.0.23",
         "@styled-icons/feather": "^9.1.0",
         "@styled-system/theme-get": "^5.1.2",

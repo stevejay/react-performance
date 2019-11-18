@@ -9,6 +9,11 @@ const Default = () => (
         Some Content
       </Box>
     </Center>
+    <Center px={1} maxWidth="200px" intrinsic>
+      <Box display="block" backgroundColor="gray" color="white" p={2}>
+        Some Content
+      </Box>
+    </Center>
   </Box>
 );
 

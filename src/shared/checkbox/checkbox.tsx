@@ -1,4 +1,5 @@
 import React from "react";
+import { getColor } from "@xstyled/system";
 import { useId } from "react-use-id-hook";
 import { focusRing } from "src/shared/mixins";
 import { styled } from "src/shared/styled";
@@ -33,19 +34,12 @@ const StyledInput = styled.input`
   transform: translateY(-50%);
   cursor: pointer;
 
-  /*
-  Had to add the rule here instead of in StyledLabel because
-  CSS auto-formatting was breaking the rule.
-  */
-  &[disabled] + label {
-    opacity: 0.5;
-  }
-
   &[disabled] {
     cursor: not-allowed;
   }
 `;
 
+/* before is the outer border, after is the inner indicator */
 const StyledLabel = styled.label`
   display: inline-block;
   padding-left: 2em;
@@ -55,7 +49,6 @@ const StyledLabel = styled.label`
     cursor: pointer;
   }
 
-  /* before is the outer border, after is the inner indicator */
   &::before,
   &::after {
     content: " ";
@@ -66,7 +59,7 @@ const StyledLabel = styled.label`
     box-sizing: border-box;
     border-radius: 2px;
     border: 1px solid;
-    box-shadow: 0 0 0 1px ${props => props.theme.colors.gray500};
+    box-shadow: 0 0 0 1px ${getColor("gray500")};
     width: 1.125em;
     height: 1.125em;
     left: 0.125em;
@@ -76,11 +69,11 @@ const StyledLabel = styled.label`
 
   input:checked + &::before {
     border-color: transparent;
-    box-shadow: 0 0 0 2px ${props => props.theme.colors.gray500};
+    box-shadow: 0 0 0 2px ${getColor("gray500")};
   }
 
   input:checked:not([disabled]) + &::before {
-    box-shadow: 0 0 0 2px ${props => props.theme.colors.primary900};
+    box-shadow: 0 0 0 2px ${getColor("primary900")};
   }
 
   input:focus:not([disabled]) + &::before {
@@ -90,8 +83,8 @@ const StyledLabel = styled.label`
 
   input:checked + &::after {
     border: 0;
-    border-bottom: 4px solid ${props => props.theme.colors.gray500};
-    border-right: 4px solid ${props => props.theme.colors.gray500};
+    border-bottom: 4px solid ${getColor("gray500")};
+    border-right: 4px solid ${getColor("gray500")};
     height: 0.825em;
     left: 0.425em;
     top: calc(50% - 0.1em);
@@ -101,8 +94,12 @@ const StyledLabel = styled.label`
   }
 
   input:checked:not([disabled]) + &::after {
-    border-bottom: 4px solid ${props => props.theme.colors.primary900};
-    border-right: 4px solid ${props => props.theme.colors.primary900};
+    border-bottom: 4px solid ${getColor("primary900")};
+    border-right: 4px solid ${getColor("primary900")};
+  }
+
+  input[disabled] + & {
+    opacity: 0.5;
   }
 `;
 
