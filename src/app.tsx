@@ -8,10 +8,8 @@ import { PictureElementPage } from "src/modules/picture-element";
 import { CompositingAnimationPage } from "src/modules/compositing-animation";
 import { RefsExperimentsPage } from "src/modules/refs-experiments";
 import { HomePage } from "src/modules/home";
+import { AriaLivePage } from "src/modules/aria-live";
 import { GlobalStyle } from "./global-style";
-
-// eslint-disable-next-line no-console
-console.log("APP THEME ", theme);
 
 const PAGES = [
   { component: HomePage, path: "/", title: "Options" },
@@ -29,6 +27,11 @@ const PAGES = [
     component: RefsExperimentsPage,
     path: "/refs-experiments",
     title: "Refs Experiments"
+  },
+  {
+    component: AriaLivePage,
+    path: "/aria-live",
+    title: "Aria Live Experiment"
   }
 ] as const;
 

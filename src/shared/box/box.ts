@@ -1,6 +1,7 @@
 import {
   backgrounds,
   basics,
+  borders,
   color,
   flexboxes,
   layout,
@@ -9,6 +10,7 @@ import {
   space,
   BackgroundsProps,
   BasicsProps,
+  BordersProps,
   ColorProps,
   FlexboxesProps,
   LayoutProps,
@@ -23,6 +25,7 @@ import { flexShrink, FlexShrinkProps } from "./flex-shrink";
 
 type Props = BackgroundsProps &
   BasicsProps &
+  BordersProps &
   ColorProps &
   FlexboxesProps &
   FlexGrowProps &
@@ -44,6 +47,7 @@ const Box = styled("div", options)<Props>(
     display: "flex"
   },
   backgrounds,
+  borders,
   color,
   flexboxes,
   flexGrow,

@@ -14,7 +14,6 @@ type Props = {
 
 const StyledWrap = styled.div`
   position: relative;
-  align-self: flex-start;
 `;
 
 const StyledInput = styled.input`
@@ -86,7 +85,7 @@ const StyledLabel = styled.label`
     border-bottom: 4px solid ${th.color("gray500")};
     border-right: 4px solid ${th.color("gray500")};
     height: 0.825em;
-    left: 0.425em;
+    left: 0.45em;
     top: calc(50% - 0.1em);
     transform-origin: center center;
     transform: translateY(-50%) rotate(45deg) scale(1);

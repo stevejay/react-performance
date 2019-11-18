@@ -1,0 +1,12 @@
+{
+    "tags": [
+        "aria-live-module"
+    ],
+    "exports": [
+        "index"
+    ],
+    "imports": [
+        "state",
+        "shared"
+    ]
+}
