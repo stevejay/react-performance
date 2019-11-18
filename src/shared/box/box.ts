@@ -34,7 +34,8 @@ type Props = BackgroundsProps &
   AsProps;
 
 const options = {
-  shouldForwardProp: (prop: string) => isPropValid(prop) && prop !== "color"
+  shouldForwardProp: (prop: string) =>
+    isPropValid(prop) && prop !== "color" && prop !== "display"
 };
 
 const Box = styled("div", options)<Props>(

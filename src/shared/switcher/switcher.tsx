@@ -1,5 +1,6 @@
 import React from "react";
 import { th, StyledSystemLength } from "@xstyled/system";
+import isPropValid from "@emotion/is-prop-valid";
 import { styled } from "src/shared/styled";
 
 type Props = {
@@ -18,7 +19,11 @@ const StyledOuterWrap = styled.div`
   display: block;
 `;
 
-const StyledInnerWrap = styled.div<Required<Props>>`
+const innerWrapOptions = {
+  shouldForwardProp: (prop: string) => isPropValid(prop) && prop !== "spacing"
+};
+
+const StyledInnerWrap = styled("div", innerWrapOptions)<Required<Props>>`
   display: flex;
   flex-wrap: wrap;
   overflow: hidden;

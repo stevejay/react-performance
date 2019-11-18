@@ -6,6 +6,7 @@ import {
   AlignItemsProps,
   JustifyContentProps
 } from "@xstyled/system";
+import isPropValid from "@emotion/is-prop-valid";
 import { styled } from "src/shared/styled";
 
 type Props = AlignItemsProps &
@@ -17,7 +18,11 @@ const StyledOuterWrap = styled.div`
   display: block;
 `;
 
-const StyledInnerWrap = styled.div<Required<Props>>`
+const innerWrapOptions = {
+  shouldForwardProp: (prop: string) => isPropValid(prop) && prop !== "spacing"
+};
+
+const StyledInnerWrap = styled("div", innerWrapOptions)<Required<Props>>`
   ${alignItems}
   ${justifyContent}
   display: flex;
