@@ -1,5 +1,6 @@
 import React from "react";
 import { Portal } from "react-portal";
+import { th } from "@xstyled/system";
 import { Transition, TransitionGroup } from "react-transition-group";
 import { TransitionStatus } from "react-transition-group/Transition";
 import { forceReflow } from "src/shared/dom-utils";
@@ -17,8 +18,8 @@ const StyledModalBackdrop = styled.div<StyledProps>`
   right: 0;
   margin: 0;
   outline: 0;
-  background-color: ${props => props.theme.colors.black};
-  z-index: ${props => props.theme.zIndices.sidebar};
+  background-color: ${th.color("black")};
+  z-index: ${th.zIndex("sidebar")};
   transition: opacity ${props => props.duration}ms ease-in;
   will-change: opacity;
 `;

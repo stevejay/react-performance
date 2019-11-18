@@ -1,16 +1,20 @@
-// import React from "react";
-import { color, space } from "@xstyled/system";
+import {
+  color,
+  space,
+  ColorProps,
+  SpaceProps,
+  SizeProps
+} from "@xstyled/system";
 import { styled } from "src/shared/styled";
 import { size } from "./size";
 
-// type Props = ColorProps & SpaceProps & SizeProps;
+type Props = ColorProps & SpaceProps & SizeProps;
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const createIcon = (
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  component: any // TODO fix any
+  component: import("react").ComponentType<any>
 ) =>
-  styled(component)`
+  styled(component)<Props>`
     ${size}
     ${color}
     ${space}

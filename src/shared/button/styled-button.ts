@@ -1,4 +1,4 @@
-import { typography, variant, TypographyProps } from "@xstyled/system";
+import { typography, variant, TypographyProps, th } from "@xstyled/system";
 import { styled, theme } from "src/shared/styled";
 
 type StyledButtonProps = {
@@ -18,35 +18,35 @@ const sizes = variant({
   default: "medium"
 });
 
-const StyledButton = styled.button<StyledButtonProps>(
-  ({ theme }) => ({
-    appearance: "none",
-    background: "none repeat scroll 0 0 transparent",
-    borderSpacing: 0,
-    padding: 0,
-    margin: 0,
-    cursor: "pointer",
-    position: "relative",
-    fontWeight: theme.fontWeights.normal,
-    lineHeight: theme.lineHeights.md,
-    borderRadius: theme.radii.xs,
-    borderWidth: theme.borderWidths.hair,
-    borderStyle: "solid"
-  }),
-  variants,
-  sizes,
-  typography,
-  {
-    "&:disabled": {
-      opacity: 0.65
-    },
-    '&:disabled, &[data-loading="true"]': {
-      cursor: "not-allowed"
-    },
-    '&:hover:not(:disabled):not([data-loading="true"]), &:active:not(:disabled):not([data-loading="true"])': {
-      filter: "contrast(1.4)"
+const StyledButton = styled.button<StyledButtonProps>`
+    appearance: none;
+    background: none repeat scroll 0 0 transparent;
+    border-spacing: 0;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    position: relative;
+    font-weight: ${th.fontWeight("normal")};
+    line-height: ${th.lineHeight("md")};
+    border-radius: ${th.radius("xs")};
+    border-width: ${th.borderWidth("hair")};
+    border-style: solid;
+    ${variants}
+    ${sizes}
+    ${typography}
+
+    &:disabled {
+        opacity: 0.65;
     }
-  }
-);
+
+    &:disabled, &[data-loading="true"] {
+        cursor: not-allowed;
+    }
+
+    &:hover:not(:disabled):not([data-loading="true"]),
+    &:active:not(:disabled):not([data-loading="true"]) {
+        filter: contrast(1.4);
+    }
+`;
 
 export { StyledButton };

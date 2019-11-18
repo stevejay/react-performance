@@ -10,7 +10,7 @@ const AnimationDurationField = () => {
   );
 
   return (
-    <RadioButton.Group title="Animation Duration" groupName="animationDuration">
+    <RadioButton.Group title="Animation Duration">
       {Object.keys(AnimationDuration).map(key => (
         <RadioButton
           key={key}

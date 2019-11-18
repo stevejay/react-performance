@@ -21,7 +21,7 @@ const AnimationLibraryField = () => {
   );
 
   return (
-    <RadioButton.Group title="Animation Library" groupName="animationLibrary">
+    <RadioButton.Group title="Animation Library">
       {Object.keys(AnimationLibrary).map(key => (
         <RadioButton
           key={key}

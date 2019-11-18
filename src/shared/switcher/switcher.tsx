@@ -1,5 +1,5 @@
 import React from "react";
-import { getSize, getSpace, StyledSystemLength } from "@xstyled/system";
+import { th, StyledSystemLength } from "@xstyled/system";
 import { styled } from "src/shared/styled";
 
 type Props = {
@@ -18,21 +18,20 @@ const StyledOuterWrap = styled.div`
   display: block;
 `;
 
-// TODO replace long lambdas:
 const StyledInnerWrap = styled.div<Required<Props>>`
   display: flex;
   flex-wrap: wrap;
   overflow: hidden;
-  margin: calc((${props => getSpace(props.spacing)} / 2) * -1);
+  margin: calc((${props => th.space(props.spacing)} / 2) * -1);
 
   && > * {
     flex-basis: calc(
       (
-          ${props => getSize(props.threshold)} -
-            (100% - ${props => getSpace(props.spacing)})
+          ${props => th.size(props.threshold)} -
+            (100% - ${props => th.space(props.spacing)})
         ) * 999
     );
-    margin: calc(${props => getSpace(props.spacing)} / 2);
+    margin: calc(${props => th.space(props.spacing)} / 2);
     flex-grow: 1;
   }
 

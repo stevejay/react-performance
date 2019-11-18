@@ -1,5 +1,5 @@
 import React from "react";
-import { getColor } from "@xstyled/system";
+import { th } from "@xstyled/system";
 import { useId } from "react-use-id-hook";
 import { focusRing } from "src/shared/mixins";
 import { styled } from "src/shared/styled";
@@ -59,7 +59,7 @@ const StyledLabel = styled.label`
     box-sizing: border-box;
     border-radius: 2px;
     border: 1px solid;
-    box-shadow: 0 0 0 1px ${getColor("gray500")};
+    box-shadow: 0 0 0 1px ${th.color("gray500")};
     width: 1.125em;
     height: 1.125em;
     left: 0.125em;
@@ -69,11 +69,11 @@ const StyledLabel = styled.label`
 
   input:checked + &::before {
     border-color: transparent;
-    box-shadow: 0 0 0 2px ${getColor("gray500")};
+    box-shadow: 0 0 0 2px ${th.color("gray500")};
   }
 
   input:checked:not([disabled]) + &::before {
-    box-shadow: 0 0 0 2px ${getColor("primary900")};
+    box-shadow: 0 0 0 2px ${th.color("primary900")};
   }
 
   input:focus:not([disabled]) + &::before {
@@ -83,8 +83,8 @@ const StyledLabel = styled.label`
 
   input:checked + &::after {
     border: 0;
-    border-bottom: 4px solid ${getColor("gray500")};
-    border-right: 4px solid ${getColor("gray500")};
+    border-bottom: 4px solid ${th.color("gray500")};
+    border-right: 4px solid ${th.color("gray500")};
     height: 0.825em;
     left: 0.425em;
     top: calc(50% - 0.1em);
@@ -94,8 +94,8 @@ const StyledLabel = styled.label`
   }
 
   input:checked:not([disabled]) + &::after {
-    border-bottom: 4px solid ${getColor("primary900")};
-    border-right: 4px solid ${getColor("primary900")};
+    border-bottom: 4px solid ${th.color("primary900")};
+    border-right: 4px solid ${th.color("primary900")};
   }
 
   input[disabled] + & {

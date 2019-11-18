@@ -5,12 +5,11 @@ import { Stack } from "src/shared/stack";
 
 type Props = {
   readonly title: string;
-  readonly groupName: string;
 };
 
 const RadioButtonGroupContext = React.createContext("");
 
-const RadioButtonGroup: React.FC<Props> = ({ title, groupName, children }) => {
+const RadioButtonGroup: React.FC<Props> = ({ title, children }) => {
   const headingId = useId();
   const groupNameId = useId();
 

@@ -10,7 +10,7 @@ const Default = () => {
   return (
     <IdProvider>
       <Box margin={2} display="flex" flexDirection="column">
-        <RadioButton.Group title="The Options" groupName="options">
+        <RadioButton.Group title="The Options">
           <RadioButton
             label="Option 1"
             value="one"

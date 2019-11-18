@@ -1,6 +1,7 @@
 import {
   borders,
   color,
+  th,
   space,
   typography,
   BordersProps,
@@ -15,7 +16,7 @@ type Props = BordersProps & ColorProps & SpaceProps & TypographyProps & AsProps;
 const Heading = styled.h1<Props>`
   margin: 0;
   padding: 0;
-  font-family: ${props => props.theme.fonts.display};
+  font-family: ${th.font("display")};
   ${borders}
   ${color}
   ${space}
