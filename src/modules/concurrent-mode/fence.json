@@ -1,0 +1,12 @@
+{
+    "tags": [
+        "concurrent-mode-module"
+    ],
+    "exports": [
+        "index"
+    ],
+    "imports": [
+        "state",
+        "shared"
+    ]
+}
