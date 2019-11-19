@@ -1,8 +1,8 @@
 import { theme } from "./theme";
 
 declare module "app-theme" {
-  type AppThemeType = typeof theme;
+  type DefaultThemeType = typeof theme;
 
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
-  interface AppTheme extends AppThemeType {}
+  interface DefaultTheme extends DefaultThemeType {}
 }

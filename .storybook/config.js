@@ -1,7 +1,7 @@
 import React from "react";
 import { configure, addDecorator } from "@storybook/react";
 import { ThemeProvider } from "emotion-theming";
-import { theme } from "../src/shared";
+import { theme } from "../src/theme";
 import { GlobalStyle } from "../src/global-style";
 
 configure(require.context("../src", true, /\.stories\.tsx?$/), module);

@@ -1,7 +1,7 @@
 import styled, { CreateStyled } from "@emotion/styled";
-import { AppTheme } from "app-theme";
+import { DefaultTheme } from "app-theme";
 
-const typedStyled = styled as CreateStyled<AppTheme>;
+const typedStyled = styled as CreateStyled<DefaultTheme>;
 
 export type AsProps = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
