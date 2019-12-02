@@ -42,7 +42,9 @@ const StyledInnerWrap = styled("div", innerWrapOptions)<Required<Props>>`
 
   /* If there are more than limit children, force them to stack */
   && > :nth-last-child(n + ${props => props.limit + 1}),
-  && > :nth-last-child(n + ${props => props.limit + 1}) ~ * {
+  && > :nth-last-child(n + ${props =>
+    props.limit +
+    1}) ~ * /* emotion-disable-server-rendering-unsafe-selector-warning-please-do-not-use-this-the-warning-exists-for-a-reason */ {
     flex-basis: 100%;
   }
 `;

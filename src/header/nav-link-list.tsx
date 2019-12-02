@@ -8,7 +8,7 @@ const StyledList = styled.ul`
   padding: ${getSpace(1)} ${getSpace(2)};
   list-style: none;
 
-  & > * + * {
+  & > li + li {
     border-top: ${getBorderWidth("hair")} solid ${getColor("contrastHot500")};
   }
 `;

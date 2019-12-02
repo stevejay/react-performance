@@ -1,6 +1,6 @@
 {
     "tags": [
-        "concurrent-mode-module"
+        "react-select-experiment-module"
     ],
     "exports": [
         "index"
