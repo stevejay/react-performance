@@ -1,9 +1,13 @@
 import { css } from "styled-components";
+import { rpxTransformers } from "@xstyled/system";
 
 // Documentation for styled-system theme format:
 // https://www.smooth-code.com/open-source/xstyled/docs/theme-specification/
 
 const baseTheme = {
+  transformers: {
+    ...rpxTransformers
+  },
   name: "default",
   colors: {
     primary900: "#C52184",
