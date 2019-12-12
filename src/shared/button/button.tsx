@@ -23,7 +23,7 @@ const Button: React.FC<ButtonProps> = ({
     {...rest}
     disabled={disabled || !onClick}
     data-loading={isLoading}
-    onClick={isLoading ? undefined : onClick}
+    onClick={onClick}
   >
     <ContentWrap isLoading={Boolean(isLoading)}>{children}</ContentWrap>
     {useCSSAnimation && <CSSAnimationLoader isLoading={Boolean(isLoading)} />}

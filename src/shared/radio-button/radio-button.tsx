@@ -1,7 +1,8 @@
 import React from "react";
-import styled from "styled-components/macro";
+import { th } from "@xstyled/system";
 import { useId } from "react-use-id-hook";
 import { focusRing } from "src/shared/mixins";
+import { styled } from "src/shared/styled";
 import { RadioButtonGroupContext } from "./radio-button-group";
 
 // Guide used for styling this control:
@@ -56,7 +57,7 @@ const StyledLabel = styled.label`
   padding-left: 2em;
   user-select: none;
 
-  ${/* sc-selector */ StyledInput}:not([disabled]) + & {
+  input:not([disabled]) + & {
     cursor: pointer;
   }
 
@@ -77,23 +78,23 @@ const StyledLabel = styled.label`
   }
 
   &::before {
-    box-shadow: 0 0 0 1px ${props => props.theme.colors.gray500};
+    box-shadow: 0 0 0 1px ${th.color("gray500")};
   }
 
-  ${/* sc-selector */ StyledInput}:checked + &::before {
+  input:checked + &::before {
     border-color: transparent;
-    box-shadow: 0 0 0 2px ${props => props.theme.colors.primary900};
+    box-shadow: 0 0 0 2px ${th.color("primary900")};
   }
 
-  ${/* sc-selector */ StyledInput}:focus + &::before {
+  input:focus + &::before {
     border-color: transparent;
     ${focusRing}
   }
 
-  ${/* sc-selector */ StyledInput}:checked + &::after {
-    border-color: ${props => props.theme.colors.white};
+  input:checked + &::after {
+    border-color: ${th.color("white")};
     border-width: 4px;
-    box-shadow: inset 0 0 0 5px ${props => props.theme.colors.primary900};
+    box-shadow: inset 0 0 0 5px ${th.color("primary900")};
   }
 `;
 

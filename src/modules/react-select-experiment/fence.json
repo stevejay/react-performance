@@ -1,0 +1,12 @@
+{
+    "tags": [
+        "react-select-experiment-module"
+    ],
+    "exports": [
+        "index"
+    ],
+    "imports": [
+        "state",
+        "shared"
+    ]
+}

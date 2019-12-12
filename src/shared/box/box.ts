@@ -1,7 +1,7 @@
-import styled from "styled-components/macro";
 import {
   backgrounds,
   basics,
+  borders,
   color,
   flexboxes,
   layout,
@@ -10,6 +10,7 @@ import {
   space,
   BackgroundsProps,
   BasicsProps,
+  BordersProps,
   ColorProps,
   FlexboxesProps,
   LayoutProps,
@@ -17,11 +18,14 @@ import {
   ShadowsProps,
   SpaceProps
 } from "@xstyled/system";
+import isPropValid from "@emotion/is-prop-valid";
+import { styled, AsProps } from "src/shared/styled";
 import { flexGrow, FlexGrowProps } from "./flex-grow";
 import { flexShrink, FlexShrinkProps } from "./flex-shrink";
 
 type Props = BackgroundsProps &
   BasicsProps &
+  BordersProps &
   ColorProps &
   FlexboxesProps &
   FlexGrowProps &
@@ -29,21 +33,30 @@ type Props = BackgroundsProps &
   LayoutProps &
   PositioningProps &
   ShadowsProps &
-  SpaceProps;
+  SpaceProps &
+  AsProps;
 
-const Box = styled.div<Props>`
-  min-width: 0;
-  display: flex;
-  ${backgrounds}
-  ${color}
-  ${flexboxes}
-  ${flexGrow}
-  ${flexShrink}
-  ${layout}
-  ${positioning}
-  ${shadows}
-  ${space}
-  ${basics}
-`;
+const options = {
+  shouldForwardProp: (prop: string) =>
+    isPropValid(prop) && prop !== "color" && prop !== "display"
+};
+
+const Box = styled("div", options)<Props>(
+  {
+    minWidth: 0,
+    display: "flex"
+  },
+  backgrounds,
+  borders,
+  color,
+  flexboxes,
+  flexGrow,
+  flexShrink,
+  layout,
+  positioning,
+  shadows,
+  space,
+  basics
+);
 
 export { Box };

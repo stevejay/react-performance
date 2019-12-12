@@ -5,32 +5,45 @@ import { Cluster } from "src/shared/cluster";
 import { Icons } from "src/shared/icons";
 import { Stack } from "src/shared/stack";
 
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+const noop = () => {};
+
 const Default = () => (
   <Box margin={2} display="flex" flexDirection="column">
     <Stack verticalSpacing={2}>
-      <Button isLoading={false} useCSSAnimation>
+      <Button isLoading={false} useCSSAnimation onClick={noop}>
         Button One
       </Button>
-      <Button isLoading useCSSAnimation>
-        Button Two
+      <Button isLoading useCSSAnimation onClick={noop}>
+        Button Two - CSS
       </Button>
       <Button isLoading={false} disabled useCSSAnimation variant="primary">
         Button Three
       </Button>
-      <Button useCSSAnimation variant="primary">
+      <Button useCSSAnimation variant="primary" onClick={noop}>
         <Icons.Menu color="white" size={4} mr="0.5em" />
         Button Five
       </Button>
       <Box backgroundColor="black" p={1}>
         <Cluster spacing={1}>
-          <Button useCSSAnimation variant="outlineInverted" size="medium">
+          <Button
+            useCSSAnimation
+            variant="outlineInverted"
+            size="medium"
+            onClick={noop}
+          >
             Button Four
           </Button>
-          <Button useCSSAnimation variant="outlineInverted">
+          <Button useCSSAnimation variant="outlineInverted" onClick={noop}>
             <Icons.Menu color="white" size={4} mr="0.5em" ml="-0.25em" />
             Button Six
           </Button>
-          <Button useCSSAnimation variant="outlineInverted" size="icon">
+          <Button
+            useCSSAnimation
+            variant="outlineInverted"
+            size="icon"
+            onClick={noop}
+          >
             <Icons.Menu color="white" size={5} />
           </Button>
         </Cluster>

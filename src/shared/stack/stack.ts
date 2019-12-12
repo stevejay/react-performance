@@ -1,4 +1,4 @@
-import styled from "styled-components/macro";
+import { styled } from "src/shared/styled";
 import { verticalSpacing, VerticalSpacingProps } from "./vertical-spacing";
 
 type Props = VerticalSpacingProps;
@@ -6,6 +6,11 @@ type Props = VerticalSpacingProps;
 const Stack = styled.div<Props>`
   && > * + * {
     ${verticalSpacing}
+  }
+
+  /* Fix for emotion SSR: */
+  && > style + * {
+    margin-top: 0 !important;
   }
 
   /*

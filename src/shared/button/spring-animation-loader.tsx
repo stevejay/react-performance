@@ -1,8 +1,7 @@
 import React from "react";
-import styled from "styled-components/macro";
 import { useSpring, animated } from "react-spring";
-import { useTheme } from "src/shared/use-theme";
 import { Icons } from "src/shared/icons";
+import { styled, useTheme } from "src/shared/styled";
 
 const LoaderWrap = styled.span`
   position: absolute;
@@ -14,16 +13,15 @@ const LoaderWrap = styled.span`
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  line-height: 0;
 `;
-
-const IconWrap = styled(animated.span)``;
 
 type Props = {
   readonly isLoading: boolean;
 };
 
 const SpringAnimationLoader: React.FC<Props> = ({ isLoading }) => {
-  const duration = useTheme().timings.spinner || 0;
+  const duration = useTheme().timings.spinner;
 
   const animationProps = useSpring({
     from: { transform: "rotate(0deg)" },
@@ -43,9 +41,9 @@ const SpringAnimationLoader: React.FC<Props> = ({ isLoading }) => {
 
   return (
     <LoaderWrap>
-      <IconWrap style={animationProps}>
+      <animated.span style={animationProps}>
         <Icons.Spinner size={5} />
-      </IconWrap>
+      </animated.span>
     </LoaderWrap>
   );
 };

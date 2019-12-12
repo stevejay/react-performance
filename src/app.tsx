@@ -1,13 +1,15 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import { ThemeProvider } from "styled-components";
+import { ThemeProvider } from "emotion-theming";
 import { IdProvider } from "react-use-id-hook";
 import { Box, SkipLinksProvider } from "src/shared";
 import { Header } from "src/header";
 import { PictureElementPage } from "src/modules/picture-element";
 import { CompositingAnimationPage } from "src/modules/compositing-animation";
 import { RefsExperimentsPage } from "src/modules/refs-experiments";
+import { ReactSelectExperimentPage } from "src/modules/react-select-experiment";
 import { HomePage } from "src/modules/home";
+import { AriaLivePage } from "src/modules/aria-live";
 import { GlobalStyle } from "./global-style";
 import { theme } from "./theme";
 
@@ -27,6 +29,16 @@ const PAGES = [
     component: RefsExperimentsPage,
     path: "/refs-experiments",
     title: "Refs Experiments"
+  },
+  {
+    component: AriaLivePage,
+    path: "/aria-live",
+    title: "Aria Live Experiment"
+  },
+  {
+    component: ReactSelectExperimentPage,
+    path: "/react-select-experiment",
+    title: "React Select Experiment"
   }
 ] as const;
 

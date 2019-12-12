@@ -1,10 +1,10 @@
 import React from "react";
 import { createSystemComponent } from "@xstyled/system";
 import {
-  ArrowRight as ArrowRightIcon,
-  Menu as MenuIcon,
-  Loader as SpinnerIcon
-} from "@styled-icons/feather";
+  FiArrowRight as ArrowRightIcon,
+  FiMenu as MenuIcon,
+  FiLoader as SpinnerIcon
+} from "react-icons/fi";
 import { createIcon } from "./create-icon";
 
 const SystemArrowRightIcon = createSystemComponent(React, ArrowRightIcon);

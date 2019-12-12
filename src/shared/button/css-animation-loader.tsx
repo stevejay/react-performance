@@ -1,7 +1,7 @@
 import React from "react";
-import styled from "styled-components/macro";
-import { keyframes } from "styled-components";
+import { keyframes } from "@emotion/core";
 import { Icons } from "src/shared/icons";
+import { styled } from "src/shared/styled";
 
 const spinKeyframes = keyframes`
   100% {

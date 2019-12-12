@@ -30,8 +30,8 @@ const HeroImage: React.FC<Props> = ({
   altText,
   children
 }) => {
-  const theme = useTheme();
-  const landscapeMediaQuery = `(min-width: ${theme.breakpoints.sm})`;
+  const themeObj = useTheme();
+  const landscapeMediaQuery = `(min-width: ${themeObj.breakpoints.sm})`;
 
   return (
     <HeroImageWrap>

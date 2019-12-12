@@ -1,13 +1,13 @@
 import React from "react";
-import styled from "styled-components/macro";
-import { css } from "styled-components";
 import {
   alignItems,
   justifyContent,
-  getSpace,
+  th,
   AlignItemsProps,
   JustifyContentProps
 } from "@xstyled/system";
+import isPropValid from "@emotion/is-prop-valid";
+import { styled } from "src/shared/styled";
 
 type Props = AlignItemsProps &
   JustifyContentProps & {
@@ -18,19 +18,21 @@ const StyledOuterWrap = styled.div`
   display: block;
 `;
 
-const StyledInnerWrap = styled.div<Required<Props>>(
-  ({ spacing }) => css`
-    display: flex;
-    flex-wrap: wrap;
-    ${alignItems}
-    ${justifyContent}
-    margin: calc((${getSpace(spacing)} / 2) * -1);
+const innerWrapOptions = {
+  shouldForwardProp: (prop: string) => isPropValid(prop) && prop !== "spacing"
+};
 
-    && > * {
-      margin: calc(${getSpace(spacing)} / 2);
-    }
-  `
-);
+const StyledInnerWrap = styled("div", innerWrapOptions)<Required<Props>>`
+  ${alignItems}
+  ${justifyContent}
+  display: flex;
+  flex-wrap: wrap;
+  margin: calc((${props => th.space(props.spacing)} / 2) * -1);
+
+  && > * {
+    margin: calc(${props => th.space(props.spacing)} / 2);
+  }
+`;
 
 const Cluster: React.FC<Props> = ({
   alignItems = "center",

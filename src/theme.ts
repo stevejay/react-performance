@@ -1,5 +1,5 @@
-import { css } from "styled-components";
 import { rpxTransformers } from "@xstyled/system";
+import css from "@emotion/css/macro";
 
 // Documentation for styled-system theme format:
 // https://www.smooth-code.com/open-source/xstyled/docs/theme-specification/
@@ -85,7 +85,7 @@ const baseTheme = {
     instant: 0,
     modalAnimation: 250,
     contentFade: 500,
-    spinner: 750
+    spinner: 1250
   },
   zIndices: {
     header: 100,
@@ -118,7 +118,5 @@ const theme = {
     `
   }
 } as const;
-
-// ${props => props.theme.space[1]} ${props => props.theme.space[2]};
 
 export { theme };

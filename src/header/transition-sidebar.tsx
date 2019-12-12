@@ -1,39 +1,39 @@
 import React from "react";
-import styled from "styled-components/macro";
-import { css } from "styled-components";
+import css from "@emotion/css/macro";
+import { getColor, getShadow, getZIndex } from "@xstyled/system";
 import { TransitionStatus } from "react-transition-group/Transition";
-import { useBodyScrollLock } from "src/shared";
+import { useBodyScrollLock, styled } from "src/shared";
 
-type StyledProps = {
-  readonly duration: number;
+type Props = {
   readonly animationState: TransitionStatus;
+  readonly id: string;
+  readonly duration: number;
 };
 
-const StyledNav = styled.nav<StyledProps>(
-  ({ theme, duration, animationState }) => css`
-    position: fixed;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    width: 80vw;
-    max-width: 300px;
-    color: ${theme.colors.white};
-    background-color: ${theme.colors.primary900};
-    overflow-y: scroll;
-    box-shadow: ${theme.shadows.xxl};
-    z-index: ${theme.zIndices.sidebar};
-    -webkit-overflow-scrolling: touch;
-    will-change: opacity, transform;
-    transition: opacity ${duration / 2}ms ease-in,
-      transform ${duration}ms ease-in;
+const StyledNav = styled.nav<Props>`
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 80vw;
+  max-width: 300px;
+  color: ${getColor("white")};
+  background-color: ${getColor("primary900")};
+  overflow-y: scroll;
+  box-shadow: ${getShadow("xxl")};
+  z-index: ${getZIndex("sidebar")};
+  -webkit-overflow-scrolling: touch;
+  will-change: opacity, transform;
+  transition: opacity ${props => props.duration / 2}ms ease-in,
+    transform ${props => props.duration}ms ease-in;
 
-    ${(animationState === "exiting" || animationState === "exited") &&
-      css`
-        transition: opacity ${duration / 2}ms ease-in ${duration / 2}ms,
-          transform ${duration}ms ease-in;
-      `}
-  `
-);
+  ${({ animationState, duration }) =>
+    (animationState === "exiting" || animationState === "exited") &&
+    css`
+      transition: opacity ${duration / 2}ms ease-in ${duration / 2}ms,
+        transform ${duration}ms ease-in;
+    `}
+`;
 
 const TRANSITION_STYLES: Partial<Record<
   TransitionStatus,
@@ -43,12 +43,6 @@ const TRANSITION_STYLES: Partial<Record<
   entered: { opacity: 1, transform: "translateX(0)" },
   exiting: { opacity: 0, transform: "translateX(100px)" },
   exited: { opacity: 0, transform: "translateX(100px)" }
-};
-
-type Props = {
-  readonly animationState: TransitionStatus;
-  readonly id: string;
-  readonly duration: number;
 };
 
 const TransitionSidebar: React.FC<Props> = ({

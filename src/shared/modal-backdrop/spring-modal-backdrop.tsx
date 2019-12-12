@@ -1,7 +1,8 @@
 import React from "react";
 import { Portal } from "react-portal";
-import styled from "styled-components/macro";
+import { th } from "@xstyled/system";
 import { animated, useTransition } from "react-spring";
+import { styled } from "src/shared/styled";
 
 const StyledModalBackdrop = styled(animated.div)`
   position: fixed;
@@ -11,8 +12,8 @@ const StyledModalBackdrop = styled(animated.div)`
   right: 0;
   margin: 0;
   outline: 0;
-  background-color: ${props => props.theme.colors.black};
-  z-index: ${props => props.theme.zIndices.sidebar};
+  background-color: ${th.color("black")};
+  z-index: ${th.zIndex("sidebar")};
   will-change: opacity;
 `;
 

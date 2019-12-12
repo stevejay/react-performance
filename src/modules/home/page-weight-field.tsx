@@ -7,7 +7,7 @@ const PageWeightField = () => {
   const pageWeight = useStoreState(AnimationStore, s => s.pageWeight);
 
   return (
-    <RadioButton.Group title="Page Weight" groupName="pageWeight">
+    <RadioButton.Group title="Page Weight">
       {Object.keys(PageWeight).map(key => (
         <RadioButton
           key={key}

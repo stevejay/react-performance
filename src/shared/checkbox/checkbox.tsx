@@ -1,7 +1,8 @@
 import React from "react";
-import styled from "styled-components/macro";
+import { th } from "@xstyled/system";
 import { useId } from "react-use-id-hook";
 import { focusRing } from "src/shared/mixins";
+import { styled } from "src/shared/styled";
 
 type Props = {
   readonly label: string;
@@ -13,7 +14,6 @@ type Props = {
 
 const StyledWrap = styled.div`
   position: relative;
-  align-self: flex-start;
 `;
 
 const StyledInput = styled.input`
@@ -33,29 +33,21 @@ const StyledInput = styled.input`
   transform: translateY(-50%);
   cursor: pointer;
 
-  /*
-  Had to add the rule here instead of in StyledLabel because
-  CSS auto-formatting was breaking the rule.
-  */
-  &[disabled] + label {
-    opacity: 0.5;
-  }
-
   &[disabled] {
     cursor: not-allowed;
   }
 `;
 
+/* before is the outer border, after is the inner indicator */
 const StyledLabel = styled.label`
   display: inline-block;
   padding-left: 2em;
   user-select: none;
 
-  ${/* sc-selector */ StyledInput}:not([disabled]) + & {
+  input:not([disabled]) + & {
     cursor: pointer;
   }
 
-  /* before is the outer border, after is the inner indicator */
   &::before,
   &::after {
     content: " ";
@@ -66,7 +58,7 @@ const StyledLabel = styled.label`
     box-sizing: border-box;
     border-radius: 2px;
     border: 1px solid;
-    box-shadow: 0 0 0 1px ${props => props.theme.colors.gray500};
+    box-shadow: 0 0 0 1px ${th.color("gray500")};
     width: 1.125em;
     height: 1.125em;
     left: 0.125em;
@@ -74,35 +66,39 @@ const StyledLabel = styled.label`
     transform: translateY(-50%);
   }
 
-  ${/* sc-selector */ StyledInput}:checked + &::before {
+  input:checked + &::before {
     border-color: transparent;
-    box-shadow: 0 0 0 2px ${props => props.theme.colors.gray500};
+    box-shadow: 0 0 0 2px ${th.color("gray500")};
   }
 
-  ${/* sc-selector */ StyledInput}:checked:not([disabled]) + &::before {
-    box-shadow: 0 0 0 2px ${props => props.theme.colors.primary900};
+  input:checked:not([disabled]) + &::before {
+    box-shadow: 0 0 0 2px ${th.color("primary900")};
   }
 
-  ${/* sc-selector */ StyledInput}:focus:not([disabled]) + &::before {
+  input:focus:not([disabled]) + &::before {
     border-color: transparent;
     ${focusRing}
   }
 
-  ${/* sc-selector */ StyledInput}:checked + &::after {
+  input:checked + &::after {
     border: 0;
-    border-bottom: 4px solid ${props => props.theme.colors.gray500};
-    border-right: 4px solid ${props => props.theme.colors.gray500};
+    border-bottom: 4px solid ${th.color("gray500")};
+    border-right: 4px solid ${th.color("gray500")};
     height: 0.825em;
-    left: 0.425em;
+    left: 0.45em;
     top: calc(50% - 0.1em);
     transform-origin: center center;
     transform: translateY(-50%) rotate(45deg) scale(1);
     width: 0.5em;
   }
 
-  ${/* sc-selector */ StyledInput}:checked:not([disabled]) + &::after {
-    border-bottom: 4px solid ${props => props.theme.colors.primary900};
-    border-right: 4px solid ${props => props.theme.colors.primary900};
+  input:checked:not([disabled]) + &::after {
+    border-bottom: 4px solid ${th.color("primary900")};
+    border-right: 4px solid ${th.color("primary900")};
+  }
+
+  input[disabled] + & {
+    opacity: 0.5;
   }
 `;
 
