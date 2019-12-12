@@ -18,7 +18,7 @@ import {
   SpaceProps
 } from "@xstyled/system";
 import { flexGrow, FlexGrowProps } from "./flex-grow";
-import { flexShrink, FlexShrinkProps } from "./flex-shrinker";
+import { flexShrink, FlexShrinkProps } from "./flex-shrink";
 
 type Props = BackgroundsProps &
   BasicsProps &
