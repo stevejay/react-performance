@@ -1,9 +1,5 @@
-<<<<<<< HEAD:src/theme.ts
-import { css } from "styled-components";
 import { rpxTransformers } from "@xstyled/system";
-=======
 import css from "@emotion/css/macro";
->>>>>>> convert to emotion and get storybook working:src/shared/styled/theme.ts
 
 // Documentation for styled-system theme format:
 // https://www.smooth-code.com/open-source/xstyled/docs/theme-specification/
