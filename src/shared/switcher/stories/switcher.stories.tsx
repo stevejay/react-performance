@@ -4,7 +4,7 @@ import { Box } from "src/shared/box";
 import { Button } from "src/shared/button";
 
 const ExampleButton: React.FC = ({ children }) => (
-  <Button useCSSAnimation variant="primary" onClick={() => {}}>
+  <Button useCSSAnimation variant="primary">
     {children}
   </Button>
 );

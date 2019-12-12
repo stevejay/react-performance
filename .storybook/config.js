@@ -12,6 +12,7 @@ const GlobalStyleDecorator = storyFn => (
     {storyFn()}
   </>
 );
+
 addDecorator(GlobalStyleDecorator);
 
 const themes = [theme];

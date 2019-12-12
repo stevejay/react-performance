@@ -8,45 +8,29 @@ import { Stack } from "src/shared/stack";
 const Default = () => (
   <Box margin={2} display="flex" flexDirection="column">
     <Stack verticalSpacing={2}>
-      <Button isLoading={false} useCSSAnimation onClick={() => {}}>
+      <Button isLoading={false} useCSSAnimation>
         Button One
       </Button>
-      <Button isLoading useCSSAnimation onClick={() => {}}>
+      <Button isLoading useCSSAnimation>
         Button Two
       </Button>
-      <Button
-        isLoading={false}
-        disabled
-        useCSSAnimation
-        variant="primary"
-        onClick={() => {}}
-      >
+      <Button isLoading={false} disabled useCSSAnimation variant="primary">
         Button Three
       </Button>
-      <Button useCSSAnimation variant="primary" onClick={() => {}}>
+      <Button useCSSAnimation variant="primary">
         <Icons.Menu color="white" size={4} mr="0.5em" />
         Button Five
       </Button>
       <Box backgroundColor="black" p={1}>
         <Cluster spacing={1}>
-          <Button
-            useCSSAnimation
-            variant="outlineInverted"
-            size="medium"
-            onClick={() => {}}
-          >
+          <Button useCSSAnimation variant="outlineInverted" size="medium">
             Button Four
           </Button>
-          <Button useCSSAnimation variant="outlineInverted" onClick={() => {}}>
+          <Button useCSSAnimation variant="outlineInverted">
             <Icons.Menu color="white" size={4} mr="0.5em" ml="-0.25em" />
             Button Six
           </Button>
-          <Button
-            useCSSAnimation
-            variant="outlineInverted"
-            size="icon"
-            onClick={() => {}}
-          >
+          <Button useCSSAnimation variant="outlineInverted" size="icon">
             <Icons.Menu color="white" size={5} />
           </Button>
         </Cluster>

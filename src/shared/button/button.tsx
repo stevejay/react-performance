@@ -8,7 +8,7 @@ type ButtonProps = React.ComponentProps<typeof StyledButton> & {
   readonly disabled?: boolean;
   readonly isLoading?: boolean;
   readonly useCSSAnimation: boolean;
-  readonly onClick: () => void;
+  readonly onClick?: () => void;
 };
 
 const Button: React.FC<ButtonProps> = ({
