@@ -5,14 +5,16 @@ const useBodyScrollLock = (ref: React.RefObject<HTMLElement>) => {
   React.useEffect(() => {
     const targetElement = ref.current;
     if (!targetElement) {
-      return;
+      return undefined;
     }
 
     disableBodyScroll(targetElement, {
       reserveScrollBarGap: true
     });
 
-    return () => enableBodyScroll(targetElement);
+    return () => {
+      enableBodyScroll(targetElement);
+    };
   }, [ref]);
 };
 

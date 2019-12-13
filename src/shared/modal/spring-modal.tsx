@@ -12,6 +12,8 @@ type Props = {
   children: (isOpen: boolean) => React.ReactNode;
 };
 
+// TODO fix ref dep
+
 const SpringModal: React.FC<Props> = ({
   isOpen,
   duration,

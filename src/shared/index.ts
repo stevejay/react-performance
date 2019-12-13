@@ -12,6 +12,7 @@ export * from "./modal";
 export * from "./modal-backdrop";
 export * from "./page";
 export * from "./paragraph";
+export * from "./portal";
 export * from "./radio-button";
 export * from "./skip-link";
 export * from "./stack";

@@ -1,20 +1,15 @@
 import React from "react";
 import { hideOthers } from "aria-hidden";
 
-// 'aria-hidden' package requires polyfill for WeakMap for IE <= 10.
-
-const useAriaHidden = (
-  targetRef: React.RefObject<HTMLElement>,
-  shouldHide: boolean
-) => {
+const useAriaHidden = (targetRef: React.RefObject<HTMLElement>) => {
   React.useEffect(() => {
-    if (!shouldHide || !targetRef.current) {
-      return;
+    if (!targetRef.current) {
+      return undefined;
     }
 
     const undo = hideOthers(targetRef.current);
     return () => undo();
-  }, [targetRef, shouldHide]);
+  }, [targetRef]);
 };
 
 export { useAriaHidden };

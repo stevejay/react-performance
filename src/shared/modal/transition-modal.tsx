@@ -14,6 +14,8 @@ type Props = {
   children: (animationState: TransitionStatus) => React.ReactNode;
 };
 
+// TODO fix ref dep
+
 const TransitionModal: React.FC<Props> = ({
   isOpen,
   duration,
