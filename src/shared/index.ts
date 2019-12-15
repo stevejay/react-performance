@@ -9,7 +9,6 @@ export * from "./heading";
 export * from "./icons";
 export * from "./mixins";
 export * from "./modal";
-export * from "./modal-backdrop";
 export * from "./page";
 export * from "./paragraph";
 export * from "./portal";

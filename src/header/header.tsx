@@ -1,25 +1,9 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import { useStoreState } from "pullstate";
-import {
-  Box,
-  Button,
-  Heading,
-  Icons,
-  SpringModal,
-  SpringModalBackdrop,
-  TransitionModal,
-  TransitionModalBackdrop,
-  SkipLink
-} from "src/shared";
-import { TransitionStatus } from "react-transition-group/Transition";
-import {
-  AnimationStore,
-  AnimationLibrary,
-  selectAnimationDurationMs
-} from "src/state";
-import { TransitionSidebar } from "./transition-sidebar";
-import { SpringSidebar } from "./spring-sidebar";
+import { Box, Button, Heading, Icons, SkipLink } from "src/shared";
+import { AnimationStore, selectAnimationDurationMs } from "src/state";
+import { ModalSidebar } from "./modal-sidebar";
 import { NavLinkList } from "./nav-link-list";
 
 const SIDEBAR_ID = "main-sidebar";
@@ -41,11 +25,6 @@ const Header: React.FC<Props> = ({ pages }) => {
 
   const duration = useStoreState(AnimationStore, s =>
     selectAnimationDurationMs(s)
-  );
-
-  const animationLibrary = useStoreState(
-    AnimationStore,
-    s => s.animationLibrary
   );
 
   return (
@@ -75,46 +54,14 @@ const Header: React.FC<Props> = ({ pages }) => {
       >
         <Icons.Menu color="white" size={5} />
       </Button>
-      {animationLibrary === AnimationLibrary.ReactTransitionGroup && (
-        <>
-          <TransitionModalBackdrop isOpen={sidebarIsOpen} duration={duration} />
-          <TransitionModal
-            isOpen={sidebarIsOpen}
-            onClose={handleClose}
-            duration={duration}
-          >
-            {(animationState: TransitionStatus) => (
-              <TransitionSidebar
-                animationState={animationState}
-                id={SIDEBAR_ID}
-                duration={duration}
-              >
-                <NavLinkList pages={pages} onClick={handleClose} />
-              </TransitionSidebar>
-            )}
-          </TransitionModal>
-        </>
-      )}
-      {animationLibrary === AnimationLibrary.ReactSpring && (
-        <>
-          <SpringModalBackdrop isOpen={sidebarIsOpen} duration={duration} />
-          <SpringModal
-            isOpen={sidebarIsOpen}
-            onClose={handleClose}
-            duration={duration}
-          >
-            {(animationState: boolean) => (
-              <SpringSidebar
-                animationState={animationState}
-                id={SIDEBAR_ID}
-                duration={duration}
-              >
-                <NavLinkList pages={pages} onClick={handleClose} />
-              </SpringSidebar>
-            )}
-          </SpringModal>
-        </>
-      )}
+      <ModalSidebar
+        isOpen={sidebarIsOpen}
+        onRequestClose={handleClose}
+        id={SIDEBAR_ID}
+        duration={duration}
+      >
+        <NavLinkList pages={pages} onClick={handleClose} />
+      </ModalSidebar>
     </Box>
   );
 };

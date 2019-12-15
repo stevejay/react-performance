@@ -7,7 +7,6 @@ import { Header } from "src/header";
 import { PictureElementPage } from "src/modules/picture-element";
 import { CompositingAnimationPage } from "src/modules/compositing-animation";
 import { RefsExperimentsPage } from "src/modules/refs-experiments";
-import { ReactSelectExperimentPage } from "src/modules/react-select-experiment";
 import { HomePage } from "src/modules/home";
 import { AriaLivePage } from "src/modules/aria-live";
 import { GlobalStyle } from "./global-style";
@@ -34,11 +33,6 @@ const PAGES = [
     component: AriaLivePage,
     path: "/aria-live",
     title: "Aria Live Experiment"
-  },
-  {
-    component: ReactSelectExperimentPage,
-    path: "/react-select-experiment",
-    title: "React Select Experiment"
   }
 ] as const;
 

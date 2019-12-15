@@ -1,10 +1,9 @@
 import React from "react";
 import { getSpace, getZIndex } from "@xstyled/system";
 import FocusLock from "react-focus-lock";
-import { styled } from "src/shared";
+import { styled } from "src/shared/styled";
 import { useAriaHidden } from "src/shared/use-aria-hidden";
 import { useBodyScrollLock } from "src/shared/use-body-scroll-lock";
-import { useDocumentEventListener } from "src/shared/use-document-event-listener";
 import { Portal } from "src/shared/portal";
 
 type Props = Readonly<{
@@ -60,16 +59,20 @@ const ModalBackdropInner: React.FC<Omit<Props, "isOpen">> = ({
   const handleKeyDown = React.useCallback(
     event => {
       if (event.key === "Escape") {
+        // Ensure that this Escape key down does not close the parent modal
+        // if this is a nested modal:
+        event.stopPropagation();
         onRequestClose();
       }
     },
     [onRequestClose]
   );
 
-  useDocumentEventListener("keydown", handleKeyDown);
-
   const handlePointerEvent = (event: React.SyntheticEvent) => {
-    // Prevent a click on the modal content from closing it.
+    // Also prevents the parent modal closing if this is a nested modal:
+    event.stopPropagation();
+
+    // Prevent a click on the modal content from closing it:
     if (
       backdropRef.current &&
       backdropRef.current.children[0].contains(event.target as HTMLElement)
@@ -78,9 +81,9 @@ const ModalBackdropInner: React.FC<Omit<Props, "isOpen">> = ({
     }
 
     onRequestClose();
-    event.stopPropagation();
   };
 
+  // Assert that there is only a single child component:
   React.Children.only(children);
 
   return (
@@ -89,6 +92,7 @@ const ModalBackdropInner: React.FC<Omit<Props, "isOpen">> = ({
         ref={backdropRef}
         onTouchStart={handlePointerEvent}
         onClick={handlePointerEvent}
+        onKeyDown={handleKeyDown}
         {...props}
       >
         {children}

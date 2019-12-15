@@ -1,7 +1,8 @@
 import React from "react";
+import log from "loglevel";
 import { getColor, getShadow, getRadius, getSpace } from "@xstyled/system";
 import { css } from "@emotion/core";
-import { styled } from "src/shared";
+import { styled } from "src/shared/styled";
 
 type Props = Readonly<{
   allowFocusOnContentBox?: boolean;
@@ -27,7 +28,7 @@ const StyledWrap = styled.div<Pick<Props, "allowFocusOnContentBox">>`
     `}
 `;
 
-export const ModalContent = React.forwardRef<HTMLDivElement, Props>(
+const ModalContent = React.forwardRef<HTMLDivElement, Props>(
   (
     {
       allowFocusOnContentBox,
@@ -39,8 +40,7 @@ export const ModalContent = React.forwardRef<HTMLDivElement, Props>(
     ref
   ) => {
     if (!ariaLabel && !ariaLabelledby) {
-      // eslint-disable-next-line no-console
-      console.error("One of ariaLabel or ariaLabelledby must be specified");
+      log.error("ariaLabel or ariaLabelledby must be defined");
     }
 
     return (
@@ -58,3 +58,5 @@ export const ModalContent = React.forwardRef<HTMLDivElement, Props>(
     );
   }
 );
+
+export { ModalContent };

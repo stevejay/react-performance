@@ -1,75 +1,91 @@
-import React from "react";
-import { Portal } from "react-portal";
-import FocusLock from "react-focus-lock";
+import React, { ComponentProps, CSSProperties, FC } from "react";
 import { Transition, TransitionGroup } from "react-transition-group";
 import { TransitionStatus } from "react-transition-group/Transition";
-import { useAriaHidden } from "src/shared/use-aria-hidden";
-import { useDocumentEventListener } from "src/shared/use-document-event-listener";
 import { forceReflow } from "src/shared/dom-utils";
+import { ModalBackdrop } from "./modal-backdrop";
+import { ModalContent } from "./modal-content";
 
-type Props = {
-  readonly isOpen: boolean;
-  readonly duration: number;
-  readonly onClose: () => void;
-  children: (animationState: TransitionStatus) => React.ReactNode;
+const ANIMATION_MS = 300;
+const OPACITY_TRANSITION = `opacity ${ANIMATION_MS}ms ease-in`;
+const TRANSFORM_TRANSITION = `transform ${ANIMATION_MS}ms ease-in`;
+
+const backdropTransitionStyles: Partial<Record<
+  TransitionStatus,
+  CSSProperties
+>> = {
+  entering: { opacity: 1 },
+  entered: { opacity: 1 },
+  exiting: { opacity: 0 },
+  exited: { opacity: 0 }
 };
 
-// TODO fix ref dep
+const contentTransitionStyles: Partial<Record<
+  TransitionStatus,
+  CSSProperties
+>> = {
+  entering: { opacity: 1, transform: "scale(1, 1)" },
+  entered: { opacity: 1, transform: "scale(1, 1)" },
+  exiting: { opacity: 0, transform: "scale(1.05, 1.05)" },
+  exited: { opacity: 0, transform: "scale(1.05, 1.05)" }
+};
 
-const TransitionModal: React.FC<Props> = ({
+type Props = Readonly<{
+  isOpen: boolean;
+  onRequestClose?: () => void;
+  onExited?: () => void;
+  allowFocusOnContentBox?: boolean;
+  focusLockProps?: ComponentProps<typeof ModalBackdrop>["focusLockProps"];
+  ariaLabel?: string;
+  ariaLabelledby?: string;
+}>;
+
+const TransitionModal: FC<Props> = ({
+  allowFocusOnContentBox,
+  focusLockProps,
+  ariaLabel,
+  ariaLabelledby,
   isOpen,
-  duration,
-  onClose,
+  onRequestClose,
+  onExited,
   children
-}) => {
-  const focusLockRef = React.useRef<HTMLElement>(null);
-  useAriaHidden(focusLockRef, isOpen);
-
-  const handleCloseOnKeyDown = React.useCallback(
-    event => {
-      if (event.key === "Esc" || event.key === "Escape") {
-        onClose();
-      }
-    },
-    [onClose]
-  );
-
-  const handleCloseOnTouch = React.useCallback(
-    event => {
-      // Prevent a click on the modal closing it.
-      if (focusLockRef.current && focusLockRef.current.contains(event.target)) {
-        return;
-      }
-
-      onClose();
-    },
-    [focusLockRef, onClose]
-  );
-
-  useDocumentEventListener("keydown", isOpen, handleCloseOnKeyDown);
-  useDocumentEventListener("mousedown", isOpen, handleCloseOnTouch);
-  useDocumentEventListener("touchstart", isOpen, handleCloseOnTouch);
-
-  return (
-    <TransitionGroup component={null} appear>
-      {isOpen && (
-        <Transition
-          timeout={duration}
-          onEnter={forceReflow}
-          mountOnEnter
-          unmountOnExit
-        >
-          {(animationState: TransitionStatus) => (
-            <Portal>
-              <FocusLock ref={focusLockRef} autoFocus returnFocus>
-                {children(animationState)}
-              </FocusLock>
-            </Portal>
-          )}
-        </Transition>
-      )}
-    </TransitionGroup>
-  );
-};
+}) => (
+  <TransitionGroup component={null} appear>
+    {isOpen && (
+      <Transition
+        timeout={ANIMATION_MS}
+        onEnter={forceReflow}
+        mountOnEnter
+        unmountOnExit
+        onExited={onExited}
+      >
+        {(animationState: TransitionStatus) => (
+          <ModalBackdrop
+            isOpen={isOpen}
+            onRequestClose={onRequestClose}
+            focusLockProps={focusLockProps}
+            style={{
+              ...backdropTransitionStyles[animationState],
+              willChange: "opacity",
+              transition: OPACITY_TRANSITION
+            }}
+          >
+            <ModalContent
+              ariaLabel={ariaLabel}
+              ariaLabelledby={ariaLabelledby}
+              allowFocusOnContentBox={allowFocusOnContentBox}
+              style={{
+                ...contentTransitionStyles[animationState],
+                willChange: "opacity, transform",
+                transition: `${OPACITY_TRANSITION}, ${TRANSFORM_TRANSITION}`
+              }}
+            >
+              {children}
+            </ModalContent>
+          </ModalBackdrop>
+        )}
+      </Transition>
+    )}
+  </TransitionGroup>
+);
 
 export { TransitionModal };
