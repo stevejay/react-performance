@@ -1,7 +1,7 @@
 import { rpxTransformers } from "@xstyled/system";
 import css from "@emotion/css/macro";
 
-// Documentation for styled-system theme format:
+// Documentation for xstyled system theme format:
 // https://www.smooth-code.com/open-source/xstyled/docs/theme-specification/
 
 const baseTheme = {
