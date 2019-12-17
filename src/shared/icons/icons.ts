@@ -3,7 +3,8 @@ import { createSystemComponent } from "@xstyled/system";
 import {
   FiArrowRight as ArrowRightIcon,
   FiMenu as MenuIcon,
-  FiLoader as SpinnerIcon
+  FiLoader as SpinnerIcon,
+  FiCheck as TickIcon
 } from "react-icons/fi";
 import { createIcon } from "./create-icon";
 
@@ -16,10 +17,14 @@ const Menu = createIcon(SystemMenuIcon);
 const SystemSpinnerIcon = createSystemComponent(React, SpinnerIcon);
 const Spinner = createIcon(SystemSpinnerIcon);
 
+const SystemTickIcon = createSystemComponent(React, TickIcon);
+const Tick = createIcon(SystemTickIcon);
+
 const Icons = {
   ArrowRight,
   Menu,
-  Spinner
+  Spinner,
+  Tick
 };
 
 export { Icons };

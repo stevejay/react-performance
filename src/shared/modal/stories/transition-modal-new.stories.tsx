@@ -12,7 +12,6 @@ const Default = () => {
       <TransitionModal
         isOpen={isOpen}
         onRequestClose={handleClose}
-        allowFocusOnContentBox
         ariaLabel="The aria label"
       >
         This is the modal content.

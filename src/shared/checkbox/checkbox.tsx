@@ -3,6 +3,7 @@ import { th } from "@xstyled/system";
 import { useId } from "react-use-id-hook";
 import { focusRing } from "src/shared/mixins";
 import { styled } from "src/shared/styled";
+import { Icons } from "src/shared/icons";
 
 type Props = {
   readonly label: string;
@@ -85,7 +86,7 @@ const StyledLabel = styled.label`
     border-bottom: 4px solid ${th.color("gray500")};
     border-right: 4px solid ${th.color("gray500")};
     height: 0.825em;
-    left: 0.45em;
+    left: 0.4em;
     top: calc(50% - 0.1em);
     transform-origin: center center;
     transform: translateY(-50%) rotate(45deg) scale(1);
@@ -121,7 +122,10 @@ const Checkbox: React.FC<Props> = ({
         disabled={disabled}
         onChange={onChange}
       />
-      <StyledLabel htmlFor={inputId}>{label}</StyledLabel>
+      <StyledLabel htmlFor={inputId}>
+        <Icons.Tick size={2} />
+        {label}
+      </StyledLabel>
     </StyledWrap>
   );
 };

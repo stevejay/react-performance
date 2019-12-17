@@ -4,7 +4,8 @@ import FocusLock from "react-focus-lock";
 import { styled } from "src/shared/styled";
 import { useAriaHidden } from "src/shared/use-aria-hidden";
 import { useBodyScrollLock } from "src/shared/use-body-scroll-lock";
-import { Portal } from "src/shared/portal";
+import { Portal, PortalImperativeFunctions } from "src/shared/portal";
+import { useDocumentEventListener } from "src/shared/use-document-event-listener";
 
 type Props = Readonly<{
   isOpen: boolean;
@@ -32,26 +33,17 @@ const StyledBackdrop = styled.div`
   -webkit-overflow-scrolling: touch;
 `;
 
-const ModalBackdrop: React.FC<Props> = ({ isOpen, ...props }) => {
-  if (!isOpen) {
-    return null;
-  }
-
-  return (
-    <Portal>
-      <ModalBackdropInner {...props} />
-    </Portal>
-  );
-};
+const ModalBackdrop: React.FC<Props> = ({ isOpen, ...props }) =>
+  isOpen ? <ModalBackdropInner {...props} /> : null;
 
 const ModalBackdropInner: React.FC<Omit<Props, "isOpen">> = ({
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  onRequestClose = () => {},
+  onRequestClose,
   focusLockProps,
   children,
   ...props
 }) => {
   const backdropRef = React.useRef<HTMLDivElement>(null);
+  const portalRef = React.useRef<PortalImperativeFunctions>(null);
 
   useAriaHidden(backdropRef);
   useBodyScrollLock(backdropRef);
@@ -59,45 +51,52 @@ const ModalBackdropInner: React.FC<Omit<Props, "isOpen">> = ({
   const handleKeyDown = React.useCallback(
     event => {
       if (event.key === "Escape") {
-        // Ensure that this Escape key down does not close the parent modal
-        // if this is a nested modal:
-        event.stopPropagation();
-        onRequestClose();
+        if (portalRef.current && !portalRef.current.isHidden()) {
+          onRequestClose && onRequestClose();
+        }
       }
     },
     [onRequestClose]
   );
 
-  const handlePointerEvent = (event: React.SyntheticEvent) => {
-    // Also prevents the parent modal closing if this is a nested modal:
-    event.stopPropagation();
+  useDocumentEventListener("keydown", handleKeyDown);
 
-    // Prevent a click on the modal content from closing it:
-    if (
-      backdropRef.current &&
-      backdropRef.current.children[0].contains(event.target as HTMLElement)
-    ) {
-      return;
-    }
+  const handlePointerEvent = React.useCallback(
+    (event: React.SyntheticEvent) => {
+      // Prevents the parent modal closing if this is a nested modal:
+      event.stopPropagation();
+      const backdrop = backdropRef.current;
 
-    onRequestClose();
-  };
+      // Prevent a click on the modal content from closing it:
+      if (
+        backdrop &&
+        backdrop.children.length &&
+        backdrop.children[0].contains(event.target as HTMLElement)
+      ) {
+        return;
+      }
+
+      onRequestClose && onRequestClose();
+    },
+    [onRequestClose]
+  );
 
   // Assert that there is only a single child component:
   React.Children.only(children);
 
   return (
-    <FocusLock autoFocus returnFocus {...focusLockProps}>
-      <StyledBackdrop
-        ref={backdropRef}
-        onTouchStart={handlePointerEvent}
-        onClick={handlePointerEvent}
-        onKeyDown={handleKeyDown}
-        {...props}
-      >
-        {children}
-      </StyledBackdrop>
-    </FocusLock>
+    <Portal ref={portalRef}>
+      <FocusLock autoFocus returnFocus {...focusLockProps}>
+        <StyledBackdrop
+          ref={backdropRef}
+          onTouchStart={onRequestClose ? handlePointerEvent : undefined}
+          onClick={onRequestClose ? handlePointerEvent : undefined}
+          {...props}
+        >
+          {children}
+        </StyledBackdrop>
+      </FocusLock>
+    </Portal>
   );
 };
 
