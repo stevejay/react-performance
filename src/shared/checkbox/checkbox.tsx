@@ -39,27 +39,23 @@ const StyledInput = styled.input`
   }
 `;
 
-/* before is the outer border, after is the inner indicator */
+/* ::before is the outer border */
 const StyledLabel = styled.label`
   display: inline-block;
   padding-left: 2em;
-  user-select: none;
 
   input:not([disabled]) + & {
     cursor: pointer;
   }
 
-  &::before,
-  &::after {
-    content: " ";
-    position: absolute;
+  input[disabled] + & {
+    cursor: not-allowed;
   }
 
-  &::before {
+  &::before,
+  input + & > svg {
     box-sizing: border-box;
-    border-radius: 2px;
-    border: 1px solid;
-    box-shadow: 0 0 0 1px ${th.color("gray500")};
+    position: absolute;
     width: 1.125em;
     height: 1.125em;
     left: 0.125em;
@@ -67,13 +63,17 @@ const StyledLabel = styled.label`
     transform: translateY(-50%);
   }
 
-  input:checked + &::before {
-    border-color: transparent;
-    box-shadow: 0 0 0 2px ${th.color("gray500")};
+  &::before {
+    content: " ";
+    border-radius: 2px;
+    border: 1px solid ${th.color("gray900")};
+    box-shadow: 0 0 0 1px ${th.color("gray500")};
   }
 
   input:checked:not([disabled]) + &::before {
-    box-shadow: 0 0 0 2px ${th.color("primary900")};
+    border-color: transparent;
+    background-color: ${th.color("primary900")};
+    box-shadow: 0 0 0 1px ${th.color("primary900")};
   }
 
   input:focus:not([disabled]) + &::before {
@@ -81,25 +81,25 @@ const StyledLabel = styled.label`
     ${focusRing}
   }
 
-  input:checked + &::after {
-    border: 0;
-    border-bottom: 4px solid ${th.color("gray500")};
-    border-right: 4px solid ${th.color("gray500")};
-    height: 0.825em;
-    left: 0.4em;
-    top: calc(50% - 0.1em);
-    transform-origin: center center;
-    transform: translateY(-50%) rotate(45deg) scale(1);
-    width: 0.5em;
-  }
-
-  input:checked:not([disabled]) + &::after {
-    border-bottom: 4px solid ${th.color("primary900")};
-    border-right: 4px solid ${th.color("primary900")};
-  }
-
   input[disabled] + & {
     opacity: 0.5;
+  }
+
+  input[disabled] + &::before {
+    border-color: ${th.color("gray500")};
+  }
+
+  input + & > svg {
+    visibility: hidden;
+    color: ${th.color("white")};
+  }
+
+  input:checked + & > svg {
+    visibility: visible;
+  }
+
+  input[disabled]:checked + & > svg {
+    color: ${th.color("gray500")};
   }
 `;
 

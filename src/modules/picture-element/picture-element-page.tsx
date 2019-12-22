@@ -23,7 +23,7 @@ const PictureElementPage: React.FC<Props> = ({ title }) => {
         altText="Desert landscape"
       />
       <Box m={{ xs: 3, sm: 5 }}>
-        <Stack verticalSpacing={{ xs: 2, sm: 3 }}>
+        <Stack spacing={{ xs: 2, sm: 3 }}>
           <Page.Header title={title} />
           {createParagraphs(maxParagraphs)}
         </Stack>

@@ -18,10 +18,9 @@ import {
   ShadowsProps,
   SpaceProps
 } from "@xstyled/system";
-import isPropValid from "@emotion/is-prop-valid";
-import { styled, AsProps } from "src/shared/styled";
-import { flexGrow, FlexGrowProps } from "./flex-grow";
-import { flexShrink, FlexShrinkProps } from "./flex-shrink";
+import { styled, AsProps, shouldForwardProp } from "src/shared/styled";
+import { flexGrow, FlexGrowProps } from "./flex-grow-style";
+import { flexShrink, FlexShrinkProps } from "./flex-shrink-style";
 
 type Props = BackgroundsProps &
   BasicsProps &
@@ -36,12 +35,7 @@ type Props = BackgroundsProps &
   SpaceProps &
   AsProps;
 
-const options = {
-  shouldForwardProp: (prop: string) =>
-    isPropValid(prop) && prop !== "color" && prop !== "display"
-};
-
-const Box = styled("div", options)<Props>(
+const Box = styled("div", shouldForwardProp)<Props>(
   {
     minWidth: 0,
     display: "flex"

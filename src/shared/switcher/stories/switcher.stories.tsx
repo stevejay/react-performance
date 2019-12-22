@@ -4,18 +4,19 @@ import { Box } from "src/shared/box";
 import { Button } from "src/shared/button";
 
 const ExampleButton: React.FC = ({ children }) => (
-  <Button useCSSAnimation variant="primary">
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  <Button useCSSAnimation variant="primary" onClick={() => {}}>
     {children}
   </Button>
 );
 
 const Default = () => (
   <Box margin={2} display="flex" flexDirection="column">
-    <Switcher spacing={3} threshold="600px">
+    <Switcher spacing={3} threshold={600}>
       <ExampleButton>Button One</ExampleButton>
       <ExampleButton>Button Two</ExampleButton>
       <ExampleButton>Button Three</ExampleButton>
-      <ExampleButton>Button Four Four Four Four</ExampleButton>
+      <ExampleButton>Button with longer text</ExampleButton>
     </Switcher>
   </Box>
 );

@@ -6,6 +6,7 @@ const Default = () => (
     <Icons.ArrowRight size={5} />
     <Icons.Menu size={5} />
     <Icons.Spinner size={5} />
+    <Icons.Tick size={5} />
   </>
 );
 

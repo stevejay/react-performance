@@ -2,9 +2,11 @@ import React from "react";
 import { Stack } from "src/shared/stack";
 
 const Default = () => (
-  <Stack verticalSpacing={{ xs: 2, md: 3 }}>
-    <div>Some Content</div>
-    <div>Some Other Content</div>
+  <Stack spacing={{ xs: 2, md: 3 }}>
+    <div style={{ backgroundColor: "papayawhip" }}>Content One</div>
+    <div style={{ backgroundColor: "papayawhip" }}>Content Two</div>
+    <div style={{ backgroundColor: "papayawhip" }}>Content Three</div>
+    <div style={{ backgroundColor: "papayawhip" }}>Content Four</div>
   </Stack>
 );
 

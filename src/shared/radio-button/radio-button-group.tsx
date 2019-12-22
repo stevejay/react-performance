@@ -15,7 +15,7 @@ const RadioButtonGroup: React.FC<Props> = ({ title, children }) => {
 
   return (
     <Stack
-      verticalSpacing={{ xs: 2, md: 3 }}
+      spacing={{ xs: 2, md: 3 }}
       role="radiogroup"
       aria-labelledby={headingId}
     >

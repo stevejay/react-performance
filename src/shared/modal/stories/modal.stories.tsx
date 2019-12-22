@@ -1,5 +1,5 @@
 import React from "react";
-import { TransitionModal } from "src/shared/modal/transition-modal";
+import { Modal } from "src/shared/modal";
 
 const Default = () => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -9,7 +9,7 @@ const Default = () => {
   return (
     <>
       <button onClick={handleOpen}>Open modal</button>
-      <TransitionModal
+      <Modal
         isOpen={isOpen}
         onRequestClose={handleClose}
         ariaLabel="The aria label"
@@ -92,15 +92,15 @@ const Default = () => {
         <br />
         This is the modal content.
         <Default />
-      </TransitionModal>
+      </Modal>
     </>
   );
 };
 
 // eslint-disable-next-line import/no-default-export
 export default {
-  component: TransitionModal,
-  title: "TransitionModal"
+  component: Modal,
+  title: "Modal"
 };
 
 export { Default };

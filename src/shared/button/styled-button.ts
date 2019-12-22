@@ -44,7 +44,6 @@ const StyledButton = styled.button<StyledButtonProps>`
         cursor: not-allowed;
     }
 
-    &:hover:not(:disabled):not([data-loading="true"]),
     &:active:not(:disabled):not([data-loading="true"]) {
         filter: contrast(1.4);
     }

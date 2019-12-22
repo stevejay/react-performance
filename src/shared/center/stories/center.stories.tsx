@@ -4,14 +4,19 @@ import { Box } from "src/shared/box";
 
 const Default = () => (
   <Box backgroundColor="papayawhip" display="block">
-    <Center px={1} maxWidth="200px" centeredText>
+    <Center px={1} maxWidth="300px">
       <Box display="block" backgroundColor="gray" color="white" p={2}>
-        Some Content
+        Content
       </Box>
     </Center>
-    <Center px={1} maxWidth="200px" intrinsic>
+    <Center px={1} maxWidth="300px" centeredText>
       <Box display="block" backgroundColor="gray" color="white" p={2}>
-        Some Content
+        Centered Text
+      </Box>
+    </Center>
+    <Center px={1} maxWidth="300px" intrinsic>
+      <Box display="block" backgroundColor="gray" color="white" p={2}>
+        Intrinsic Content
       </Box>
     </Center>
   </Box>

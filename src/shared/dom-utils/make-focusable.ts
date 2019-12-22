@@ -4,9 +4,12 @@ const makeFocusable = (element: HTMLElement) => {
   if (!tabbable.isFocusable(element)) {
     element.setAttribute("tabindex", "-1");
 
-    element.onblur = () => {
+    const eventListener = () => {
+      element.removeEventListener("blur", eventListener);
       element.removeAttribute("tabindex");
     };
+
+    element.addEventListener("blur", eventListener);
   }
 };
 

@@ -1,7 +1,6 @@
 import React from "react";
 import { th, StyledSystemLength } from "@xstyled/system";
-import isPropValid from "@emotion/is-prop-valid";
-import { styled } from "src/shared/styled";
+import { styled, shouldForwardProp } from "src/shared/styled";
 
 type Props = {
   // If there is more than `limit` children, stack them on top of each other
@@ -19,11 +18,7 @@ const StyledOuterWrap = styled.div`
   display: block;
 `;
 
-const innerWrapOptions = {
-  shouldForwardProp: (prop: string) => isPropValid(prop) && prop !== "spacing"
-};
-
-const StyledInnerWrap = styled("div", innerWrapOptions)<Required<Props>>`
+const StyledInnerWrap = styled("div", shouldForwardProp)<Required<Props>>`
   display: flex;
   flex-wrap: wrap;
   overflow: hidden;

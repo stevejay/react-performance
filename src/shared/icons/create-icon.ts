@@ -15,6 +15,7 @@ const createIcon = (
   component: import("react").ComponentType<any>
 ) =>
   styled(component)<Props>`
+    display: block;
     ${size}
     ${color}
     ${space}

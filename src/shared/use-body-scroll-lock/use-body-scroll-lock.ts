@@ -1,9 +1,9 @@
 import React from "react";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 
-const useBodyScrollLock = (ref: React.RefObject<HTMLElement>) => {
+const useBodyScrollLock = (targetRef: React.RefObject<HTMLElement>) => {
   React.useEffect(() => {
-    const targetElement = ref.current;
+    const targetElement = targetRef.current;
 
     if (!targetElement) {
       return undefined;
@@ -16,7 +16,7 @@ const useBodyScrollLock = (ref: React.RefObject<HTMLElement>) => {
     return () => {
       enableBodyScroll(targetElement);
     };
-  }, [ref]);
+  }, [targetRef]);
 };
 
 export { useBodyScrollLock };

@@ -1,11 +1,11 @@
 import { styled } from "src/shared/styled";
-import { verticalSpacing, VerticalSpacingProps } from "./vertical-spacing";
+import { spacing, SpacingProps } from "./spacing";
 
-type Props = VerticalSpacingProps;
+type Props = SpacingProps;
 
 const Stack = styled.div<Props>`
   && > * + * {
-    ${verticalSpacing}
+    ${spacing}
   }
 
   /* Fix for emotion SSR: */
@@ -15,7 +15,7 @@ const Stack = styled.div<Props>`
 
   /*
     Allow 'margin-bottom: auto' to be used on a stack child
-    so that child can push its following sibling down.
+    so that a child can push its following sibling down.
     */
   display: flex;
   flex-direction: column;

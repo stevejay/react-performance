@@ -26,7 +26,7 @@ const RefsExperimentsPage: React.FC<Props> = ({ title }) => {
   return (
     <Page.Box>
       <Page.Header title={title} />
-      <Stack verticalSpacing={2}>
+      <Stack spacing={2}>
         <Checkbox
           label="Use a stable context value"
           name="useStableContextValue"

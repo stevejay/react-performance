@@ -61,6 +61,10 @@ const StyledLabel = styled.label`
     cursor: pointer;
   }
 
+  input[disabled] + & {
+    cursor: not-allowed;
+  }
+
   /* before is the outer border, after is the inner indicator */
 
   &::before,

@@ -2,12 +2,12 @@ import React from "react";
 import { VisuallyHidden } from "src/shared/visually-hidden";
 
 const AlwaysHidden = () => (
-  <VisuallyHidden>You should not see this content</VisuallyHidden>
+  <VisuallyHidden>You should not see this content at all</VisuallyHidden>
 );
 
 const VisibleOnFocus = () => (
   <VisuallyHidden isFocusable tabIndex={0}>
-    You should see this content on focus
+    You should only see this content on focus
   </VisuallyHidden>
 );
 

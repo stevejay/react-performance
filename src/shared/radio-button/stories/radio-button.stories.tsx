@@ -18,7 +18,7 @@ const Default = () => {
             onChange={setSelectedOption}
           />
           <RadioButton
-            label="Option 2 - this option is disabled and does not wrap, just like the other options that don't wrap, but it's specifically call it out here for reasons."
+            label="Option 2 - this option is disabled and has a very long label that will wrap over multiple lines if the screen is not too wide, so consider that when checking this"
             value="two"
             selectedValue={selectedOption}
             onChange={setSelectedOption}

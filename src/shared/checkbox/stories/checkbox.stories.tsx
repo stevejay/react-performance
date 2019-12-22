@@ -14,7 +14,7 @@ const Default = () => {
   return (
     <IdProvider>
       <Box margin={2} display="flex" flexDirection="column">
-        <Stack verticalSpacing={2}>
+        <Stack spacing={2}>
           <Checkbox
             label="Option 1"
             name="optionOne"
@@ -22,21 +22,21 @@ const Default = () => {
             onChange={() => setSelectedOne(selected => !selected)}
           />
           <Checkbox
-            label="Option 2 - this option is disabled and does not wrap, just like the other options that don't wrap, but it's specifically call it out here for reasons."
+            label="Option 2 - this option is disabled and has a very long label that will wrap over multiple lines if the screen is not too wide, so consider that when checking this"
             name="optionTwo"
             checked={selectedTwo}
             onChange={() => setSelectedTwo(selected => !selected)}
             disabled
           />
           <Checkbox
-            label="Option 3"
+            label="Option 3 - this option has a very long label that will wrap over multiple lines if the screen is not too wide, so consider that when checking this"
             name="optionThree"
             checked={selectedThree}
             onChange={() => setSelectedThree(selected => !selected)}
           />
           <Checkbox
-            label="Option 4"
-            name="optionThree"
+            label="Option 4 - this option is disabled"
+            name="optionFour"
             checked={selectedFour}
             onChange={() => setSelectedFour(selected => !selected)}
             disabled

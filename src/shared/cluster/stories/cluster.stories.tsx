@@ -2,19 +2,27 @@ import React from "react";
 import { Cluster } from "src/shared/cluster";
 import { Box } from "src/shared/box";
 import { Button } from "src/shared/button";
+import { Stack } from "src/shared/stack";
 
 const ExampleButton: React.FC = ({ children }) => (
-  <Button useCSSAnimation variant="primary">
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  <Button useCSSAnimation variant="primary" onClick={() => {}}>
     {children}
   </Button>
 );
 
 const Default = () => (
-  <Box backgroundColor="papayawhip" display="block" p={3}>
-    <Cluster spacing={2} justifyContent="right">
-      <ExampleButton>Button One</ExampleButton>
-      <ExampleButton>Button Two</ExampleButton>
-    </Cluster>
+  <Box backgroundColor="papayawhip" display="block" p={2}>
+    <Stack spacing={2}>
+      <Cluster spacing={2}>
+        <ExampleButton>Button One</ExampleButton>
+        <ExampleButton>Button Two</ExampleButton>
+      </Cluster>
+      <Cluster spacing={2} justifyContent="flex-end">
+        <ExampleButton>Button Three</ExampleButton>
+        <ExampleButton>Button Four</ExampleButton>
+      </Cluster>
+    </Stack>
   </Box>
 );
 

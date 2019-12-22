@@ -51,6 +51,8 @@ const ModalBackdropInner: React.FC<Omit<Props, "isOpen">> = ({
   const handleKeyDown = React.useCallback(
     event => {
       if (event.key === "Escape") {
+        // Only close this modal if it is not hidden by useAriaHidden,
+        // which means it must be the topmost modal.
         if (portalRef.current && !portalRef.current.isHidden()) {
           onRequestClose && onRequestClose();
         }

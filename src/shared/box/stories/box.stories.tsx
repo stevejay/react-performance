@@ -15,8 +15,8 @@ const Default = () => (
       as="section"
       p={{ xs: 2, sm: 5 }}
       zIndex="header"
-      backgroundColor="primary900"
-      color="green"
+      backgroundColor="primary100"
+      color="primary900"
     >
       The Section Content
     </Box>

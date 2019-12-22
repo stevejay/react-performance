@@ -6,6 +6,7 @@ import { styled, AsProps } from "src/shared/styled";
 // https://caniuse.com/#feat=mdn-css_selectors_not
 
 type Props = AsProps & {
+  // If true, make the content visible when it has focus.
   readonly isFocusable?: boolean;
 };
 

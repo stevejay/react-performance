@@ -39,7 +39,7 @@ type Props = Readonly<{
   ariaLabelledby?: string;
 }>;
 
-const TransitionModal: FC<Props> = ({
+const Modal: FC<Props> = ({
   allowFocusOnContentBox,
   focusLockProps,
   ariaLabel,
@@ -88,4 +88,4 @@ const TransitionModal: FC<Props> = ({
   </TransitionGroup>
 );
 
-export { TransitionModal };
+export { Modal };
