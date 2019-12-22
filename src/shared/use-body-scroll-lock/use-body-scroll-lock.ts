@@ -1,22 +1,26 @@
 import React from "react";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 
-const useBodyScrollLock = (targetRef: React.RefObject<HTMLElement>) => {
-  React.useEffect(() => {
-    const targetElement = targetRef.current;
+// Returns a ref that should be applied to the element which remains
+// scrollable while scrolling is locked everywhere else in the page.
+const useBodyScrollLock = <T extends HTMLElement>(): ((
+  instance: T | null
+) => void) => {
+  const [element, setElement] = React.useState<T | null>(null);
 
-    if (!targetElement) {
-      return undefined;
+  React.useEffect(() => {
+    if (!element) {
+      return;
     }
 
-    disableBodyScroll(targetElement, {
-      reserveScrollBarGap: true
-    });
+    disableBodyScroll(element, { reserveScrollBarGap: true });
 
     return () => {
-      enableBodyScroll(targetElement);
+      enableBodyScroll(element);
     };
-  }, [targetRef]);
+  }, [element]);
+
+  return setElement;
 };
 
 export { useBodyScrollLock };

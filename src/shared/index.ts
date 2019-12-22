@@ -20,5 +20,6 @@ export * from "./switcher";
 export * from "./typescript";
 export * from "./use-body-scroll-lock";
 export * from "./use-delayed-link-click-handler";
+export * from "./use-merged-refs";
 export * from "./use-scroll-to-top";
 export * from "./visually-hidden";
