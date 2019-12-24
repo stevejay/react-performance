@@ -17,7 +17,7 @@ const LoaderWrap = styled.span`
 `;
 
 type Props = {
-  readonly isLoading: boolean;
+  isLoading: boolean;
 };
 
 const SpringAnimationLoader: React.FC<Props> = ({ isLoading }) => {

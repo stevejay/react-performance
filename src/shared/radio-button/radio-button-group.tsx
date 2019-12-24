@@ -4,7 +4,7 @@ import { Heading } from "src/shared/heading";
 import { Stack } from "src/shared/stack";
 
 type Props = {
-  readonly title: string;
+  title: string;
 };
 
 const RadioButtonGroupContext = React.createContext("");

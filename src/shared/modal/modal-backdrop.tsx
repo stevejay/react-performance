@@ -1,5 +1,5 @@
 import React from "react";
-import { getSpace, getZIndex } from "@xstyled/system";
+import { th } from "@xstyled/system";
 import FocusLock from "react-focus-lock";
 // import composeRefs from "@seznam/compose-react-refs";
 import { styled } from "src/shared/styled";
@@ -25,13 +25,13 @@ const StyledBackdrop = styled.div`
   bottom: 0;
   right: 0;
   display: flex;
-  padding: ${getSpace(2)};
+  padding: ${th.space(2)};
   margin: auto;
   overflow-x: hidden;
   overflow-y: auto;
   background-color: rgba(0, 0, 0, 0.5);
   outline: 0;
-  z-index: ${getZIndex("modalDialog")};
+  z-index: ${th.zIndex("modalDialog")};
   -webkit-overflow-scrolling: touch;
 `;
 

@@ -6,7 +6,7 @@ const flexShrink = style({
 });
 
 export type FlexShrinkProps = {
-  readonly flexShrink?: ResponsiveValue<import("csstype").GlobalsNumber>;
+  flexShrink?: ResponsiveValue<import("csstype").GlobalsNumber>;
 };
 
 export { flexShrink };

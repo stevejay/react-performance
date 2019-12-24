@@ -1,23 +1,11 @@
-import { typography, variant, TypographyProps, th } from "@xstyled/system";
-import { styled } from "src/shared/styled";
+import { typography, TypographyProps, th } from "@xstyled/system";
+import { styled, buttonSizes, buttonVariants } from "src/shared/styled";
 import { DefaultTheme } from "app-theme";
 
 type StyledButtonProps = {
-  readonly variant?: keyof DefaultTheme["buttons"];
-  readonly size?: keyof DefaultTheme["buttonSizes"];
+  variant?: keyof DefaultTheme["buttons"];
+  size?: keyof DefaultTheme["buttonSizes"];
 } & TypographyProps;
-
-const variants = variant({
-  key: "buttons",
-  prop: "variant",
-  default: "primary"
-});
-
-const sizes = variant({
-  key: "buttonSizes",
-  prop: "size",
-  default: "medium"
-});
 
 const StyledButton = styled.button<StyledButtonProps>`
     appearance: none;
@@ -32,8 +20,8 @@ const StyledButton = styled.button<StyledButtonProps>`
     border-radius: ${th.radius("xs")};
     border-width: ${th.borderWidth("hair")};
     border-style: solid;
-    ${variants}
-    ${sizes}
+    ${buttonVariants}
+    ${buttonSizes}
     ${typography}
 
     &:disabled {

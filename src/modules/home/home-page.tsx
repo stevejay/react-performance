@@ -6,7 +6,7 @@ import { PageWeightField } from "./page-weight-field";
 import { ShouldDelayNavigationField } from "./should-delay-navigation-field";
 
 type Props = {
-  readonly title: string;
+  title: string;
 };
 
 const HomePage: React.FC<Props> = ({ title }) => {

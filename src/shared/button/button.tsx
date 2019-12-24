@@ -5,10 +5,10 @@ import { SpringAnimationLoader } from "./spring-animation-loader";
 import { StyledButton } from "./styled-button";
 
 type ButtonProps = React.ComponentProps<typeof StyledButton> & {
-  readonly disabled?: boolean;
-  readonly isLoading?: boolean;
-  readonly useCSSAnimation: boolean;
-  readonly onClick?: () => void;
+  disabled?: boolean;
+  isLoading?: boolean;
+  useCSSAnimation: boolean;
+  onClick?: () => void;
 };
 
 const Button: React.FC<ButtonProps> = ({
@@ -16,17 +16,21 @@ const Button: React.FC<ButtonProps> = ({
   disabled,
   isLoading,
   useCSSAnimation,
+  size,
   onClick,
   ...rest
 }) => (
   <StyledButton
     {...rest}
+    size={size}
     disabled={disabled || !onClick}
     data-loading={isLoading}
     onClick={onClick}
   >
     <ContentWrap isLoading={Boolean(isLoading)}>{children}</ContentWrap>
-    {useCSSAnimation && <CSSAnimationLoader isLoading={Boolean(isLoading)} />}
+    {useCSSAnimation && (
+      <CSSAnimationLoader isLoading={Boolean(isLoading)} size={size} />
+    )}
     {!useCSSAnimation && (
       <SpringAnimationLoader isLoading={Boolean(isLoading)} />
     )}

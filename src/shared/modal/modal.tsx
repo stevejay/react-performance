@@ -23,10 +23,10 @@ const contentTransitionStyles: Partial<Record<
   TransitionStatus,
   CSSProperties
 >> = {
-  entering: { opacity: 1, transform: "scale(1, 1)" },
-  entered: { opacity: 1, transform: "scale(1, 1)" },
-  exiting: { opacity: 0, transform: "scale(1.05, 1.05)" },
-  exited: { opacity: 0, transform: "scale(1.05, 1.05)" }
+  entering: { opacity: 1, transform: "scale3d(1, 1, 1)" },
+  entered: { opacity: 1, transform: "scale3d(1, 1, 1)" },
+  exiting: { opacity: 0, transform: "scale3d(1.05, 1.05, 1)" },
+  exited: { opacity: 0, transform: "scale3d(1.05, 1.05, 1)" }
 };
 
 type Props = Readonly<{

@@ -3,7 +3,7 @@ import { Heading } from "src/shared/heading";
 import { useSkipLinkTarget } from "src/shared/skip-link";
 
 type Props = {
-  readonly title: string;
+  title: string;
 };
 
 const PageHeader: React.FC<Props> = ({ title }) => {

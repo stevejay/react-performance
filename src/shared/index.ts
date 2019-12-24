@@ -7,6 +7,7 @@ export * from "./dom-utils";
 export * from "./get-random-color";
 export * from "./heading";
 export * from "./icons";
+export * from "./more-menu";
 export * from "./mixins";
 export * from "./modal";
 export * from "./page";

@@ -6,7 +6,7 @@ import { HeroImage } from "./hero-image";
 import { createParagraphs } from "./create-paragraphs";
 
 type Props = {
-  readonly title: string;
+  title: string;
 };
 
 const PictureElementPage: React.FC<Props> = ({ title }) => {

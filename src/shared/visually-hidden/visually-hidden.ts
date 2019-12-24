@@ -7,7 +7,7 @@ import { styled, AsProps } from "src/shared/styled";
 
 type Props = AsProps & {
   // If true, make the content visible when it has focus.
-  readonly isFocusable?: boolean;
+  isFocusable?: boolean;
 };
 
 const visuallyHidden = (props: Props) => css`

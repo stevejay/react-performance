@@ -10,11 +10,11 @@ import { RadioButtonGroupContext } from "./radio-button-group";
 // (pattern 1)
 
 type Props = {
-  readonly label: string;
-  readonly value: string;
-  readonly selectedValue: string;
-  readonly disabled?: boolean;
-  readonly onChange: (value: string) => void;
+  label: string;
+  value: string;
+  selectedValue: string;
+  disabled?: boolean;
+  onChange: (value: string) => void;
 };
 
 const StyledWrap = styled.div`

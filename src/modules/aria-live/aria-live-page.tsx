@@ -16,7 +16,7 @@ const LIVE_TEXT = [
 ] as const;
 
 type Props = {
-  readonly title: string;
+  title: string;
 };
 
 const AriaLivePage: React.FC<Props> = ({ title }) => {

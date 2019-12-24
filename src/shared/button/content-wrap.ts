@@ -1,7 +1,7 @@
 import { styled } from "src/shared/styled";
 
 type Props = {
-  readonly isLoading: boolean;
+  isLoading: boolean;
 };
 
 const ContentWrap = styled.span<Props>`

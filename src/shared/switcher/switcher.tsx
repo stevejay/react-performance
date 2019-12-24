@@ -6,12 +6,12 @@ type Props = {
   // If there is more than `limit` children, stack them on top of each other
   // regardless of the width of the available content area. Defaults to the
   // number of children.
-  readonly limit?: number;
+  limit?: number;
   // The margin between the children.
-  readonly spacing: import("csstype").MarginTopProperty<StyledSystemLength>;
+  spacing: import("csstype").MarginTopProperty<StyledSystemLength>;
   // If the width of the available content area is less than this threshold
   // then the children are always stacked on top of each other.
-  readonly threshold: import("csstype").WidthProperty<StyledSystemLength>;
+  threshold: import("csstype").WidthProperty<StyledSystemLength>;
 };
 
 const StyledOuterWrap = styled.div`

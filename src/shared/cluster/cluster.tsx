@@ -10,7 +10,7 @@ import { styled, shouldForwardProp } from "src/shared/styled";
 
 type Props = AlignItemsProps &
   JustifyContentProps & {
-    readonly spacing: string | number;
+    spacing: string | number;
   };
 
 const StyledOuterWrap = styled.div`

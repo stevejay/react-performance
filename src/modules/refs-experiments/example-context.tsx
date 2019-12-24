@@ -3,7 +3,7 @@ import React from "react";
 const ExampleContext = React.createContext({ someProperty: "" });
 
 type Props = {
-  readonly useStableContextValue: boolean;
+  useStableContextValue: boolean;
 };
 
 const ExampleContextProvider: React.FC<Props> = ({

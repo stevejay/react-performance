@@ -27,13 +27,14 @@ const LoaderWrap = styled.span`
 `;
 
 type Props = {
-  readonly isLoading: boolean;
+  isLoading: boolean;
+  size: "small" | "medium" | "icon" | undefined;
 };
 
-const CSSAnimationLoader: React.FC<Props> = ({ isLoading }) =>
+const CSSAnimationLoader: React.FC<Props> = ({ size, isLoading }) =>
   isLoading ? (
     <LoaderWrap>
-      <Icons.Spinner size={5} />
+      <Icons.Spinner size={size === "small" ? 4 : 5} />
     </LoaderWrap>
   ) : null;
 

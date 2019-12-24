@@ -5,9 +5,9 @@ import { styled } from "src/shared/styled";
 type Props = MaxWidthProps &
   PaddingXProps & {
     // Shrink the width to fit the content:
-    readonly intrinsic?: boolean;
+    intrinsic?: boolean;
     // Adds the `text-align: center` rule:
-    readonly centeredText?: boolean;
+    centeredText?: boolean;
   };
 
 const Center = styled.div<Props>`

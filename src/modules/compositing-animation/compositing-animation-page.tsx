@@ -10,7 +10,7 @@ import {
 } from "src/shared";
 
 type Props = {
-  readonly title: string;
+  title: string;
 };
 
 const CompositingAnimationPage: React.FC<Props> = ({ title }) => {
@@ -33,27 +33,17 @@ const CompositingAnimationPage: React.FC<Props> = ({ title }) => {
         enter a synchronous (blocking) loop for two seconds when clicked.
       </Paragraph>
       <Switcher spacing="1rem" threshold="copy">
-        <Button
-          isLoading={isLoading}
-          useCSSAnimation
-          variant="primary"
-          onClick={handleClick}
-        >
+        <Button isLoading={isLoading} useCSSAnimation onClick={handleClick}>
           CSS animation
         </Button>
         <Button
           isLoading={isLoading}
           useCSSAnimation={false}
-          variant="primary"
           onClick={handleClick}
         >
           rAF animation
         </Button>
-        <Button
-          variant="primary"
-          useCSSAnimation={false}
-          onClick={() => blockDOMUpdates(2000)}
-        >
+        <Button useCSSAnimation={false} onClick={() => blockDOMUpdates(2000)}>
           Freeze site for two seconds
         </Button>
       </Switcher>

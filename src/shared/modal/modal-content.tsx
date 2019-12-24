@@ -1,6 +1,6 @@
 import React from "react";
 import log from "loglevel";
-import { getColor, getShadow, getRadius, getSpace } from "@xstyled/system";
+import { th } from "@xstyled/system";
 import { css } from "@emotion/core";
 import { styled } from "src/shared/styled";
 
@@ -15,11 +15,11 @@ type Props = Readonly<{
 const StyledWrap = styled.div<Pick<Props, "allowFocusOnContentBox">>`
   display: flex;
   flex-direction: column;
-  padding: ${getSpace(2)};
+  padding: ${th.space(2)};
   margin: auto;
-  background-color: ${getColor("white")};
-  border-radius: ${getRadius(2)};
-  box-shadow: ${getShadow("xl")};
+  background-color: ${th.color("white")};
+  border-radius: ${th.radius(2)};
+  box-shadow: ${th.shadow("xl")};
 
   ${props =>
     props.allowFocusOnContentBox &&

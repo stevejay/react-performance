@@ -113,6 +113,9 @@ const theme = {
     medium: css`
       padding: 0.5rem 1rem;
     `,
+    small: css`
+      padding: 0.25rem 0.5rem;
+    `,
     icon: css`
       padding: 0 0.25em;
     `

@@ -12,7 +12,7 @@ import { ExampleContextProvider } from "./example-context";
 import { ExampleContextConsumer } from "./example-context-consumer";
 
 type Props = {
-  readonly title: string;
+  title: string;
 };
 
 const RefsExperimentsPage: React.FC<Props> = ({ title }) => {

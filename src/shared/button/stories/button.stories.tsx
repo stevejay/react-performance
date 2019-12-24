@@ -19,14 +19,30 @@ const Default = () => (
         <Button isLoading useCSSAnimation onClick={noop}>
           Button Two - CSS
         </Button>
-        <Button isLoading={false} disabled useCSSAnimation variant="primary">
+        <Button isLoading={false} disabled useCSSAnimation>
           Button Three
         </Button>
-        <Button useCSSAnimation variant="primary" onClick={noop}>
+        <Button useCSSAnimation onClick={noop}>
           <Icons.Menu color="white" size={4} mr="0.5em" />
           Button Five
         </Button>
       </Switcher>
+      <Cluster spacing={1}>
+        <Button useCSSAnimation onClick={noop}>
+          <Icons.Menu color="white" size={4} />
+        </Button>
+      </Cluster>
+      <Cluster spacing={1}>
+        <Button isLoading={false} useCSSAnimation size="small" onClick={noop}>
+          Button One
+        </Button>
+        <Button isLoading useCSSAnimation size="small" onClick={noop}>
+          Button Two
+        </Button>
+        <Button useCSSAnimation size="small" onClick={noop}>
+          <Icons.Menu color="white" size={4} />
+        </Button>
+      </Cluster>
       <Box backgroundColor="black" p={1}>
         <Cluster spacing={1}>
           <Button

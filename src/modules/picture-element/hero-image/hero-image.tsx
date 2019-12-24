@@ -19,9 +19,9 @@ const createPortraitSrcSet = (imagePath: string, extension: string) =>
   `${imagePath}@half${extension} 600w, ${imagePath}${extension} 1200w`;
 
 type Props = {
-  readonly landscapeImagePath: string;
-  readonly portraitImagePath: string;
-  readonly altText: string;
+  landscapeImagePath: string;
+  portraitImagePath: string;
+  altText: string;
 };
 
 const HeroImage: React.FC<Props> = ({

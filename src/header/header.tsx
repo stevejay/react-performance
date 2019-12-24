@@ -9,9 +9,9 @@ import { NavLinkList } from "./nav-link-list";
 const SIDEBAR_ID = "main-sidebar";
 
 type Props = {
-  readonly pages: readonly {
-    readonly path: string;
-    readonly title: string;
+  pages: readonly {
+    path: string;
+    title: string;
   }[];
 };
 

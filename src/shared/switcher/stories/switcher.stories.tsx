@@ -5,7 +5,7 @@ import { Button } from "src/shared/button";
 
 const ExampleButton: React.FC = ({ children }) => (
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  <Button useCSSAnimation variant="primary" onClick={() => {}}>
+  <Button useCSSAnimation onClick={() => {}}>
     {children}
   </Button>
 );

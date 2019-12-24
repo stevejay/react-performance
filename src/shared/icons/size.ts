@@ -7,7 +7,7 @@ const size = style({
 });
 
 export type SizeProps = {
-  readonly size: FontSizeProps["fontSize"];
+  size: FontSizeProps["fontSize"];
 };
 
 export { size };

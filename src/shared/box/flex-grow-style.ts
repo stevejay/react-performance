@@ -6,7 +6,7 @@ const flexGrow = style({
 });
 
 export type FlexGrowProps = {
-  readonly flexGrow?: ResponsiveValue<import("csstype").GlobalsNumber>;
+  flexGrow?: ResponsiveValue<import("csstype").GlobalsNumber>;
 };
 
 export { flexGrow };

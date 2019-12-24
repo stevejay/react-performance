@@ -1,5 +1,5 @@
 import React from "react";
-import { getColor, getShadow } from "@xstyled/system";
+import { th } from "@xstyled/system";
 import { css } from "@emotion/core";
 import { styled } from "src/shared";
 
@@ -17,9 +17,9 @@ const StyledWrap = styled.nav<Pick<Props, "allowFocusOnContentBox">>`
   bottom: 0;
   width: 80vw;
   max-width: 300px;
-  color: ${getColor("white")};
-  background-color: ${getColor("primary900")};
-  box-shadow: ${getShadow("xxl")};
+  color: ${th.color("white")};
+  background-color: ${th.color("primary900")};
+  box-shadow: ${th.shadow("xxl")};
 
   ${props =>
     props.allowFocusOnContentBox &&

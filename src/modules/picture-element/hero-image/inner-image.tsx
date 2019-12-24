@@ -2,7 +2,7 @@ import React from "react";
 import { styled } from "src/shared";
 
 type StyledProps = {
-  readonly isLoaded: boolean;
+  isLoaded: boolean;
 };
 
 const StyledImage = styled.img<StyledProps>`

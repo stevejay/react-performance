@@ -5,7 +5,7 @@ import { SkipLinkButton } from "./skip-link-button";
 import { SkipLinksContext } from "./skip-links-context";
 
 type Props = {
-  readonly targetId: string;
+  targetId: string;
 };
 
 const SkipLink: React.FC<Props> = ({ targetId, children }) => {

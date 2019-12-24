@@ -6,11 +6,11 @@ import { styled } from "src/shared/styled";
 import { Icons } from "src/shared/icons";
 
 type Props = {
-  readonly label: string;
-  readonly name: string;
-  readonly checked: boolean;
-  readonly disabled?: boolean;
-  readonly onChange: () => void;
+  label: string;
+  name: string;
+  checked: boolean;
+  disabled?: boolean;
+  onChange: () => void;
 };
 
 const StyledWrap = styled.div`

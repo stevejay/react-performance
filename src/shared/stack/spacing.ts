@@ -7,7 +7,7 @@ const spacing = style({
 });
 
 export type SpacingProps = {
-  readonly spacing: MarginTopProps["marginTop"];
+  spacing: MarginTopProps["marginTop"];
 };
 
 export { spacing };

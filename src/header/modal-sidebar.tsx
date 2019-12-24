@@ -18,10 +18,10 @@ const contentTransitionStyles: Partial<Record<
   TransitionStatus,
   CSSProperties
 >> = {
-  entering: { opacity: 1, transform: "translateX(0)" },
-  entered: { opacity: 1, transform: "translateX(0)" },
-  exiting: { opacity: 0, transform: "translateX(100px)" },
-  exited: { opacity: 0, transform: "translateX(100px)" }
+  entering: { opacity: 1, transform: "translate3d(0, 0, 0)" },
+  entered: { opacity: 1, transform: "translate3d(0, 0, 0)" },
+  exiting: { opacity: 0, transform: "translate3d(100px, 0, 0)" },
+  exited: { opacity: 0, transform: "translate3d(100px, 0, 0)" }
 };
 
 type Props = Readonly<{
