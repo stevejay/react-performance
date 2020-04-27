@@ -18,7 +18,7 @@ const Default = () => (
         </Button>
         <MoreMenu
           items={ITEMS}
-          placement="bottom"
+          placement="left-start"
           onSelectedItemChange={noop}
         />
       </Cluster>
@@ -29,7 +29,7 @@ const Default = () => (
         <MoreMenu
           items={ITEMS}
           size="small"
-          placement="bottom"
+          placement="right-start"
           onSelectedItemChange={noop}
         />
       </Cluster>

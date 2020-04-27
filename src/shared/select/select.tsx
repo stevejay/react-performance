@@ -1,41 +1,39 @@
 import React from "react";
 import { useSelect } from "downshift";
-import { Manager, Reference, Popper, PopperProps } from "react-popper";
-import { th } from "@xstyled/system";
+import { Manager, Reference, Popper } from "react-popper";
 import { Transition } from "react-transition-group";
+import { th } from "@xstyled/system";
 import { DefaultTheme } from "app-theme";
-import { styled, buttonSizes } from "src/shared/styled";
+import { Button } from "src/shared/button";
+import { styled } from "src/shared/styled";
 import { Icons } from "src/shared/icons";
-
-const TRANSITION_DURATION_MS = 200;
-
-const POPPER_MODIFIERS = {
-  keepTogether: { enabled: false },
-  arrow: { enabled: false },
-  offset: { offset: "-25%" }
-};
 
 type Props = {
   items: string[];
-  placement: PopperProps["placement"];
+  selectedItem: string;
+  //   placement: PopperProps["placement"];
   size?: keyof DefaultTheme["buttonSizes"];
   onSelectedItemChange: (changes: { selectedItem?: string }) => void;
 };
 
-// TODO split these out?
+const TRANSITION_DURATION_MS = 200;
+
+const POPPER_MODIFIERS = {
+  keepTogether: { enabled: true },
+  arrow: { enabled: false },
+  offset: { offset: 0 }
+};
+
+const TRANSITION_STYLES = {
+  entering: { opacity: 1 },
+  entered: { opacity: 1 },
+  exiting: { opacity: 0 },
+  exited: { opacity: 0 },
+  unmounted: { opacity: 0 }
+} as const;
 
 const StyledWrap = styled.div`
   position: "relative";
-`;
-
-const StyledButton = styled.button`
-  border: 1px solid transparent;
-  margin: 0;
-  appearance: none;
-  background: none repeat scroll 0 0 transparent;
-  border-spacing: 0;
-  cursor: pointer;
-  ${buttonSizes}
 `;
 
 const StyledList = styled.ul`
@@ -44,7 +42,8 @@ const StyledList = styled.ul`
   margin: 0;
   z-index: 1;
   background-color: ${th.color("white")};
-  border-radius: ${th.radius(3)};
+  border-bottom-left-radius: ${th.radius(3)};
+  border-bottom-right-radius: ${th.radius(3)};
   filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.2));
   will-change: opacity;
   transition: opacity ${TRANSITION_DURATION_MS}ms ease-in;
@@ -73,17 +72,10 @@ const StyledListItem = styled.li`
   }
 `;
 
-const TRANSITION_STYLES = {
-  entering: { opacity: 1 },
-  entered: { opacity: 1 },
-  exiting: { opacity: 0 },
-  exited: { opacity: 0 },
-  unmounted: { opacity: 0 }
-} as const;
-
-const MoreMenu: React.FC<Props> = ({
+const Select: React.FC<Props> = ({
   items,
-  placement,
+  selectedItem,
+  //   placement,
   size,
   onSelectedItemChange
 }) => {
@@ -93,20 +85,27 @@ const MoreMenu: React.FC<Props> = ({
     getMenuProps,
     highlightedIndex,
     getItemProps
-  } = useSelect({ items, onSelectedItemChange });
+  } = useSelect<string>({ items, selectedItem, onSelectedItemChange });
 
   return (
     <Manager>
       <StyledWrap>
         <Reference>
           {({ ref }) => (
-            <StyledButton size={size} {...getToggleButtonProps({ ref })}>
-              <Icons.More size={4} />
-            </StyledButton>
+            <Button
+              useCSSAnimation
+              variant="outline"
+              size={size}
+              width={250}
+              {...getToggleButtonProps({ ref })}
+            >
+              <span>{selectedItem}</span>
+              <Icons.ChevronDown color="gray500" size={3} ml="0.5em" />
+            </Button>
           )}
         </Reference>
         <Popper
-          placement={placement}
+          placement="bottom"
           modifiers={POPPER_MODIFIERS}
           eventsEnabled={isOpen}
         >
@@ -139,4 +138,4 @@ const MoreMenu: React.FC<Props> = ({
   );
 };
 
-export { MoreMenu };
+export { Select };

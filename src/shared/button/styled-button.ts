@@ -1,4 +1,4 @@
-import { typography, TypographyProps, th } from "@xstyled/system";
+import { layout, typography, TypographyProps, th } from "@xstyled/system";
 import { styled, buttonSizes, buttonVariants } from "src/shared/styled";
 import { DefaultTheme } from "app-theme";
 
@@ -23,6 +23,7 @@ const StyledButton = styled.button<StyledButtonProps>`
     ${buttonVariants}
     ${buttonSizes}
     ${typography}
+    ${layout}
 
     &:disabled {
         opacity: 0.65;

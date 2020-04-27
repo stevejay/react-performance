@@ -103,6 +103,11 @@ const theme = {
       backgroundColor: baseTheme.colors.primary900,
       borderColor: baseTheme.colors.primary900
     },
+    outline: {
+      color: baseTheme.colors.black,
+      backgroundColor: "transparent",
+      borderColor: baseTheme.colors.gray500
+    },
     outlineInverted: {
       color: baseTheme.colors.white,
       backgroundColor: "transparent",

@@ -16,6 +16,7 @@ const createIcon = (
 ) =>
   styled(component)<Props>`
     display: block;
+    flex-shrink: 0;
     ${size}
     ${color}
     ${space}

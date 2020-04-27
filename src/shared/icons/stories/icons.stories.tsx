@@ -5,6 +5,7 @@ import { Cluster } from "src/shared/cluster";
 const Default = () => (
   <Cluster spacing={2}>
     <Icons.ArrowRight size={5} />
+    <Icons.ChevronDown size={5} />
     <Icons.Menu size={5} />
     <Icons.More size={5} />
     <Icons.Spinner size={5} />
